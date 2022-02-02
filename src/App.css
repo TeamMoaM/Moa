@@ -1,0 +1,338 @@
+/*---------전체 적용 CSS---------*/
+@charset "utf=8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+:root{
+    /*색깔 지정*/
+    --primary-1: #2727AD;
+    --primary-2: #7F7FDA;
+    --primary-3: #BEBEF0;
+    --primary-4: #E4E4FF;
+    --primary-5: #F5F5FF;
+    --black: #212123;
+    --gray-1: #848492;
+    --gray-2: #BEBECA;
+    --gray-3: #E8E8EE;
+    --gray-4: #F7F7FA;
+    --white: #FFFFFF;
+    --danger: #FF375B;
+    --caution: #F2CE4D;
+    --success: #48C9C9;
+    --back-1: #FBFBFF;
+    --primary-hover: #16169F;
+    --primary-pressed: #0F0F89;
+    --primary-disabled: #E8E8F3;
+    --secondary-hover: #3F3F43;
+    --secondary-pressed: #646469;
+    --secondary-disabled: #F6F6F6;
+}
+h1{
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+  letter-spacing: -0.01em;
+}
+h2{
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+  letter-spacing: -0.01em;
+}
+h3{
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+  letter-spacing: -0.01em;
+}
+h4{
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+  letter-spacing: -0.01em;
+}
+h1.headline150{font-size: 60px; line-height: 150%;} h2.headline150{font-size: 52px;line-height: 150%;}
+h1.title150{font-size: 40px;line-height: 150%;} h2.title150{font-size: 36px; line-height: 150%;} h3.title150{font-size: 32px; line-height: 150%;} h4.title150{font-size: 24px; line-height: 150%;}
+h1.subhead150{font-size: 18px; line-height: 150%;} h2.subhead150{font-size: 16px; line-height: 150%;} h3.subhead150{font-size: 14px; line-height: 150%;} h4.subhead150{font-size: 12px; line-height: 150%;}
+h1.body150{line-height: 150%; font-size: 18px;} h2.body150{line-height: 150%; font-size: 16px;} h3.body150{line-height: 150%; font-size: 14px;} h4.body150{line-height: 150%; font-size: 12px;}
+h1.paragraph150{line-height: 150%; font-size: 16px;} h2.paragraph150{line-height: 150%; font-size: 14px;} h3.paragraph150{line-height: 150%; font-size: 12px;}
+h1.caption150{line-height: 150%; font-size: 12px;} h2.caption150{line-height: 150%; font-size: 10px;}
+h1.headline100{font-size: 60px; line-height: 100%;} h2.headline100{font-size: 52px;line-height: 100%;}
+h1.title100{font-size: 40px;line-height: 100%;} h2.title100{font-size: 36px; line-height: 100%;} h3.title100{font-size: 32px; line-height: 100%;} h4.title100{font-size: 24px; line-height: 100%;}
+h1.subhead100{font-size: 18px; line-height: 100%;} h2.subhead100{font-size: 16px; line-height: 100%;} h3.subhead100{font-size: 14px; line-height: 100%;} h4.subhead100{font-size: 12px; line-height: 100%;}
+h1.body100{line-height: 100%; font-size: 18px;} h2.body100{line-height: 100%; font-size: 16px;} h3.body100{line-height: 100%; font-size: 14px;} h4.body100{line-height: 100%; font-size: 12px;}
+h1.paragraph100{line-height: 100%; font-size: 16px;} h2.paragraph100{line-height: 100%; font-size: 14px;} h3.paragraph100{line-height: 100%; font-size: 12px;}
+h1.caption100{line-height: 100%; font-size: 12px;} h2.caption100{line-height: 100%; font-size: 10px;}
+
+
+
+html,
+body #root{
+  width: 100%;
+  height: 100%;
+  background-color: var(--white);
+}
+
+/*---------Nav CSS---------*/
+nav{
+  width: 100%;
+  height: 72px;
+  background-color: var(--white);
+}
+.navWrap{
+  position: relative;
+  width: 100%;
+  max-width: calc(100vmax * 2 / 3);
+  margin: 0 auto;
+}
+.divider{
+  position: relative;
+  height: 1px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: var(--gray-3);
+}
+.logoImage{
+  position: absolute;
+  width: 73.81px;
+  height: 22.88px;
+  left: 0px;
+  top: 25px;
+}
+.menuList{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0px;
+
+  position: relative;
+  width: 300px;
+  height: 71px;
+  left: calc(20% - 1px);
+  top: calc(50% - 72px/2 - 1px); 
+}
+.listItem{
+  /* position: absolute; */
+  height: 72px;
+  top: calc(50% - 20px/2);
+
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 150%;
+  /* or 24px */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+.login{
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 160%;
+  /* or 22px */
+
+  position: absolute;
+  top: 25px;
+  right: 10%;
+  letter-spacing: -0.01em;
+  color: var(--black);
+}
+.register{
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 160%;
+  /* or 22px */
+
+  position: absolute;
+  top: 25px;
+  right: 1px;
+  letter-spacing: -0.01em;
+  color: var(--black);
+}
+
+/*---------Mainpage CSS---------*/
+.mainPage{
+  position: relative;
+  width: 100%;
+  max-width: calc(100vmax * 2 / 3);
+  margin: 0 auto;
+  height: 100%;
+}
+.card{
+  position: absolute;
+  top: 96px;
+  width: 100%;
+  height: 500px;
+
+  background: var(--white);
+
+  border: 1px solid var(--gray-3);
+  box-sizing: border-box;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.title1{
+  position: absolute;
+  width: 506px;
+  height: 108px;
+  left: 80px;
+  top: calc(50% - 108px/2 - 32px);
+
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+
+  color: var(--black);
+}
+.sub{
+  position: absolute;
+  width: 506px;
+  height: 52px;
+  left: 80px;
+  top: calc(50% - 52px/2 + 60px);
+
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 160%;
+
+  letter-spacing: -0.01em;
+
+  color: var(--gray-1);
+}
+.cardImage{
+  width: 47%;
+  position: absolute;
+  left: 55%;
+  top: 30%;
+
+}
+/* BetaTest.js start*/
+.BetaTest{
+  display:flex;
+  flex-direction: column;
+  width:100%;
+  align-items: center;
+}
+.functions{
+  display:flex;
+  width:1200px;
+  max-width: calc(100vmax * 2 / 3);
+  justify-content: space-between;
+  align-items: center;
+  height:72px;
+}
+.BetaTestOrder{/*세로 중앙 안맞음 */
+  display:flex;
+  width:8vw;
+  justify-content: space-between;
+}
+.linkRecentOrder{
+  font-family: Noto Sans KR;
+  font-weight: 700;
+  font-size: 14px;
+}
+.BetaTestOrderBlockLine{
+  font-family: Noto Sans KR;
+  font-weight: 700;
+  font-size: 12px;
+}
+.linkLateOrder{
+  font-family: Noto Sans KR;
+  font-weight: 700;
+  font-size: 14px;
+}
+.functionsCreatePostButton{/*이부분 안맞는거 희범님 말씀드리기*/
+  background-color:  var(--primary-1);
+  width:9vw;
+  border-radius: 8px;
+  color:var(--white);
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  border:none;
+  height:1.8vw;
+}
+.functionsCreatePostLink{
+  color:var(--white);
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+}
+.BetaTestPosts{
+  display:flex;
+  width:1200px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: calc(100vmax * 2 / 3);
+}
+.post{
+  display:flex;
+  flex-direction: column;
+  border-radius: 8px;
+  width:282px;
+  height:310px;
+  justify-content: space-evenly;
+}
+#myimg{
+  width:282px;
+  object-fit: contain;
+  border: 1px solid var(--gray-3);
+  border-radius: 8px;
+}
+.post_title{
+  font-family: Noto Sans KR;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 150%;
+  width:282px;
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.post_content{
+  color:var(--black);
+  font-family: Noto Sans KR;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  line-height: 1.6;
+  width:282px;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  height:48px;
+}
+.post_commentAndreview{
+  display:flex;
+  width:282px;
+  justify-content: space-between;
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 160%;
+  margin-top: 1vw;
+  color: var(--gray-1);
+}
+.first_page{
+  color:var(--danger);
+}
+/* BetaTest.js end*/
+/* CreatePost.js start*/
+.createPost{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* CreatePost.js end*/
+
