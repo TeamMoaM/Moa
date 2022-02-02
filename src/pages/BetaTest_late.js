@@ -18,6 +18,9 @@ function BetaTest_late({currentPage}){
           }
         )
     },false)
+    const postClick = (id) => {
+        navigate(`/post/${id}`);
+    }
     //6 7 8 9 10
     
     // useEffect(()=>{
