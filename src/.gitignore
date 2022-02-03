@@ -6,6 +6,10 @@
 .pnp.js
 firebase-config.js
 # testing
+<<<<<<< HEAD
+=======
+index.css
+>>>>>>> jw
 /coverage
 
 # production
