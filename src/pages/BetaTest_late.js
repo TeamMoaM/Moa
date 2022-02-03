@@ -1,8 +1,10 @@
 import React,{useState,useEffect} from 'react';
 import {db} from '../firebase-config';
+import {useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import {orderBy,collection,onSnapshot,query, startAt, limit} from "firebase/firestore";
 function BetaTest_late({currentPage}){
+    const navigate = useNavigate();
     const postsCollectionRef = collection(db, "posts");
     const [posts,setPosts] = useState([]);
     // const [currentPage, setCurrentPage] = useState(1);
@@ -48,7 +50,7 @@ function BetaTest_late({currentPage}){
                 {
                     posts&&posts.map((post)=>{
                         return(
-                            <div className="post" onClick={()=>{postClick}}>
+                            <div className="post" onClick={()=>{postClick(post.id)}}>
                                 <img id="myimg" src={post.imageURL}></img>
                                 <div className="post_title">{post.title}</div>
                                 <div className="post_content">{post.content}</div>

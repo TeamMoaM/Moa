@@ -335,4 +335,115 @@ nav{
   align-items: center;
 }
 /* CreatePost.js end*/
+/*---------Post.js CSS---------*/
+.serviceInfo{
+  position: absolute;
+  width: 40%;
+  height: 142px;
+  top: 104px;
+  left: 30%;
+  display: flex;
+}
+.serviceImgWrap{
+  width: 142px;
+  height: 142px;
+  background-color: var(--primary-3);
+  border-radius: 8px;
+  float: left;
+}
+.serviceImg{
+  width: 100%;
+  height: 100%;
+}
+.serviceCon{
+  float: left;
+  width: calc( 100% - 142px );
+  margin-top: 6px;
+  margin-left: 3%;
+  margin-bottom: 4px;
+}
+.serviceInfo .title100{
+  position: relative;
+}
+.serviceInfo .userInfo{
+  position: relative;
+  width: 45%;
+  height: 24px;
+  top:14px;
+  display: flex;
+  justify-content: flex-start;
+}
+.serviceInfo .userImg{
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--caution);
+}
+.userInfo h4{
+  position: relative;
+  left: 4%;
+  line-height: 24px;
+  color: var(--gray-1);
+}
+.userInfo h2{
+  position: relative;
+  left: 8%;
+  line-height: 24px;
+  color: var(--gray-2);
+}
+.serviceEx{
+  position: relative;
+  top: 36px;
+  color: var(--black);
+}
+.tabList{
+  position: relative;
+  top: 206px;
+  left: 30%;
+  height: 40px;
 
+  display: inline-flex;
+}
+.serviceIntro{
+  color: var(--black);
+}
+.review{
+  color: var(--black);
+}
+.tabListItem + .tabListItem{
+  margin-left: 24px;
+}
+.tabListItem{
+  margin-top: 10px;
+}
+.tabList + .divider{
+  position: relative;
+  top: 206px;
+}
+.scrapReview{
+  position: absolute;
+  left:72%;
+  top: 104px;
+  width: 10%;
+  height: 84px;
+
+  display: flex;
+  flex-direction: column;
+}
+.scrap h3{
+  color: var(--black);
+}
+.scrap{
+  background-color: var(--gray-4);
+  border-radius: 8px;
+  height: 36px;
+  border: none;
+}
+.reviewButton{
+  margin-top: 12px;
+  background-color: var(--primary-1);
+  height: 36px;
+  color: var(--white);
+  border-radius: 8px;
+  border: none;
+}
