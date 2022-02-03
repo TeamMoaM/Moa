@@ -48,12 +48,12 @@ function BetaTest_late({currentPage}){
                 {
                     posts&&posts.map((post)=>{
                         return(
-                            <div className="post">
+                            <div className="post" onClick={()=>{postClick}}>
                                 <img id="myimg" src={post.imageURL}></img>
                                 <div className="post_title">{post.title}</div>
                                 <div className="post_content">{post.content}</div>
                                 <div className="post_commentAndreview">
-                                    댓글 {post.commentCount? post.commentCount: 0}개 | 리뷰 {post.reviewCount? post.reviewCount: 0}개
+                                   새 글 {post.commentCount? post.commentCount: 0}개 | 리뷰 {post.reviewCount? post.reviewCount: 0}개
                                 </div>
                             </div>
                         )
@@ -64,7 +64,7 @@ function BetaTest_late({currentPage}){
             {/* pagination */}
             <div className="pagination">
                 <button className="previous_page">&lt;</button>
-                <Link to='/BetaTest/lateOrder/1' onClick={()=>{window.loacation.reload()}} style={{}} className="first_page">{1}</Link>
+                <Link to='/BetaTest/lateOrder/1' onClick={()=>{window.loacation.reload()}} className="first_page">{1}</Link>
                 <Link to='/BetaTest/lateOrder/2' onClick={()=>{window.loacation.reload()}} className="second_page">{2}</Link>
                 <Link to='/BetaTest/lateOrder/3' onClick={()=>{window.loacation.reload()}} className="third_page">{3}</Link>
                 <Link to='/BetaTest/lateOrder/4' onClick={()=>{window.loacation.reload()}} className="fourth_page">{4}</Link>
