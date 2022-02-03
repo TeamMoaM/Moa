@@ -53,7 +53,7 @@ function BetaTest_late({currentPage}){
                                 <div className="post_title">{post.title}</div>
                                 <div className="post_content">{post.content}</div>
                                 <div className="post_commentAndreview">
-                                    글 {post.commentCount? post.commentCount: 0}개 | 리뷰 {post.reviewCount? post.reviewCount: 0}개
+                                   새 글 {post.commentCount? post.commentCount: 0}개 | 리뷰 {post.reviewCount? post.reviewCount: 0}개
                                 </div>
                             </div>
                         )
