@@ -18,12 +18,12 @@ function App() {
         <div className='navWrap'>
           <Link to='/'><img className='logoImage' src={Logo}/></Link>
           <list className='menuList'>
-            <ul className='listItem item1'><Link to='/'>메인페이지</Link></ul>
-            <ul className='listItem item2'><Link to='/BetaTest/recentOrder'>베타테스트</Link></ul>
-            <ul className='listItem item3'><Link to='/Community'>커뮤니티</Link></ul>
+            <ul className='listItem item1'><Link to='/'><h2 className='subhead100'>Main</h2></Link></ul>
+            <ul className='listItem item2'><Link to='/BetaTest/recentOrder'><h2 className='subhead100'>β - test</h2></Link></ul>
+            <ul className='listItem item3'><Link to='/Community'><h2 className='subhead100'>Community</h2></Link></ul>
           </list>
-          <div className='login'><Link to='/Login'>로그인</Link></div>
-          <div className='register'><Link to='/Register'>회원가입</Link></div>
+          <div className='login'><Link to='/Login'><h3 className='body100'>로그인</h3></Link></div>
+          <div className='register'><Link to='/Register'><h3 className='subhead100'>회원가입</h3></Link></div>
         </div>
       </nav>
 

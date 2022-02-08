@@ -42,18 +42,18 @@ h4{
   font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
   letter-spacing: -0.01em;
 }
-h1.headline150{font-size: 60px; line-height: 150%;} h2.headline150{font-size: 52px;line-height: 150%;}
-h1.title150{font-size: 40px;line-height: 150%;} h2.title150{font-size: 36px; line-height: 150%;} h3.title150{font-size: 32px; line-height: 150%;} h4.title150{font-size: 24px; line-height: 150%;}
-h1.subhead150{font-size: 18px; line-height: 150%;} h2.subhead150{font-size: 16px; line-height: 150%;} h3.subhead150{font-size: 14px; line-height: 150%;} h4.subhead150{font-size: 12px; line-height: 150%;}
-h1.body150{line-height: 150%; font-size: 18px;} h2.body150{line-height: 150%; font-size: 16px;} h3.body150{line-height: 150%; font-size: 14px;} h4.body150{line-height: 150%; font-size: 12px;}
-h1.paragraph150{line-height: 150%; font-size: 16px;} h2.paragraph150{line-height: 150%; font-size: 14px;} h3.paragraph150{line-height: 150%; font-size: 12px;}
-h1.caption150{line-height: 150%; font-size: 12px;} h2.caption150{line-height: 150%; font-size: 10px;}
-h1.headline100{font-size: 60px; line-height: 100%;} h2.headline100{font-size: 52px;line-height: 100%;}
-h1.title100{font-size: 40px;line-height: 100%;} h2.title100{font-size: 36px; line-height: 100%;} h3.title100{font-size: 32px; line-height: 100%;} h4.title100{font-size: 24px; line-height: 100%;}
-h1.subhead100{font-size: 18px; line-height: 100%;} h2.subhead100{font-size: 16px; line-height: 100%;} h3.subhead100{font-size: 14px; line-height: 100%;} h4.subhead100{font-size: 12px; line-height: 100%;}
-h1.body100{line-height: 100%; font-size: 18px;} h2.body100{line-height: 100%; font-size: 16px;} h3.body100{line-height: 100%; font-size: 14px;} h4.body100{line-height: 100%; font-size: 12px;}
-h1.paragraph100{line-height: 100%; font-size: 16px;} h2.paragraph100{line-height: 100%; font-size: 14px;} h3.paragraph100{line-height: 100%; font-size: 12px;}
-h1.caption100{line-height: 100%; font-size: 12px;} h2.caption100{line-height: 100%; font-size: 10px;}
+h1.headline150{font-size: 60px; line-height: 150%;font-weight: 700;} h2.headline150{font-size: 52px;line-height: 150%;font-weight: 700;}
+h1.title150{font-size: 40px;line-height: 150%;font-weight: 700;} h2.title150{font-size: 36px; line-height: 150%;font-weight: 700;} h3.title150{font-size: 32px; line-height: 150%;font-weight: 700;} h4.title150{font-size: 24px; line-height: 150%;font-weight: 700;}
+h1.subhead150{font-size: 18px; line-height: 150%;font-weight: 700;} h2.subhead150{font-size: 16px; line-height: 150%;font-weight: 700;} h3.subhead150{font-size: 14px; line-height: 150%;font-weight: 700;} h4.subhead150{font-size: 12px; line-height: 150%;font-weight: 700;}
+h1.body150{line-height: 150%; font-size: 18px;font-weight: 400;} h2.body150{line-height: 150%; font-size: 16px;font-weight: 400;} h3.body150{line-height: 150%; font-size: 14px;font-weight: 400;} h4.body150{line-height: 150%; font-size: 12px;font-weight: 400;}
+h1.paragraph150{line-height: 150%; font-size: 16px;font-weight: 400;} h2.paragraph150{line-height: 150%; font-size: 14px;font-weight: 400;} h3.paragraph150{line-height: 150%; font-size: 12px;font-weight: 400;}
+h1.caption150{line-height: 150%; font-size: 12px;font-weight: 400;} h2.caption150{line-height: 150%; font-size: 10px;font-weight: 400;}
+h1.headline100{font-size: 60px; line-height: 100%;font-weight: 700;} h2.headline100{font-size: 52px;line-height: 100%;font-weight: 700;}
+h1.title100{font-size: 40px;line-height: 100%;font-weight: 700;} h2.title100{font-size: 36px; line-height: 100%;font-weight: 700;} h3.title100{font-size: 32px; line-height: 100%;font-weight: 700;} h4.title100{font-size: 24px; line-height: 100%;font-weight: 700;}
+h1.subhead100{font-size: 18px; line-height: 100%;font-weight: 700;} h2.subhead100{font-size: 16px; line-height: 100%;font-weight: 700;} h3.subhead100{font-size: 14px; line-height: 100%;font-weight: 700;} h4.subhead100{font-size: 12px; line-height: 100%;font-weight: 700;}
+h1.body100{line-height: 100%; font-size: 18px;font-weight: 400;} h2.body100{line-height: 100%; font-size: 16px;font-weight: 400;} h3.body100{line-height: 100%; font-size: 14px;font-weight: 400;} h4.body100{line-height: 100%; font-size: 12px;font-weight: 400;}
+h1.paragraph100{line-height: 100%; font-size: 16px;font-weight: 400;} h2.paragraph100{line-height: 100%; font-size: 14px;font-weight: 400;} h3.paragraph100{line-height: 100%; font-size: 12px;font-weight: 400;}
+h1.caption100{line-height: 100%; font-size: 12px;font-weight: 400;} h2.caption100{line-height: 100%; font-size: 10px;font-weight: 400;}
 
 
 
@@ -72,9 +72,19 @@ nav{
 }
 .navWrap{
   position: relative;
-  width: 100%;
-  max-width: calc(100vmax * 2 / 3);
+  width: calc(100vmax * 2 / 3);
   margin: 0 auto;
+}
+@media screen and (max-width: 900px) {
+  nav{
+    width: 900px;
+  }
+  .navWrap{
+    width: 600px;
+  }
+  .divider{
+    width: 900px;
+  }
 }
 .divider{
   position: relative;
@@ -104,63 +114,55 @@ nav{
   left: calc(20% - 1px);
   top: calc(50% - 72px/2 - 1px); 
 }
-.listItem{
+.listItem h2{
   /* position: absolute; */
   height: 72px;
   top: calc(50% - 20px/2);
 
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 150%;
-  /* or 24px */
   display: flex;
   flex-direction: row;
   align-items: center;
   text-align: center;
   letter-spacing: -0.01em;
-}
-.login{
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 160%;
-  /* or 22px */
 
+  color: var(--black);
+}
+.login h3{
   position: absolute;
-  top: 25px;
+  top: 29px;
   right: 10%;
   letter-spacing: -0.01em;
   color: var(--black);
 }
-.register{
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 160%;
-  /* or 22px */
-
+.register h3{
   position: absolute;
-  top: 25px;
+  top: 29px;
   right: 1px;
   letter-spacing: -0.01em;
-  color: var(--black);
+  color: var(--primary-1);
 }
 
 /*---------Mainpage CSS---------*/
+.mainWrap{
+  width: 100%;
+}
 .mainPage{
   position: relative;
-  width: 100%;
-  max-width: calc(100vmax * 2 / 3);
+  width: calc(100vmax * 2 / 3);
   margin: 0 auto;
   height: 100%;
 }
+@media screen and (max-width: 900px) {
+  .mainPage{
+    width: 600px;
+  }
+  .mainWrap{
+    width: 900px;
+  }
+}
 .card{
   position: absolute;
-  top: 96px;
+  top: 24px;
   width: 100%;
   height: 500px;
 
@@ -178,13 +180,6 @@ nav{
   left: 80px;
   top: calc(50% - 108px/2 - 32px);
 
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 36px;
-  line-height: 150%;
-  letter-spacing: -0.01em;
-
   color: var(--black);
 }
 .sub{
@@ -194,22 +189,19 @@ nav{
   left: 80px;
   top: calc(50% - 52px/2 + 60px);
 
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 160%;
-
-  letter-spacing: -0.01em;
-
   color: var(--gray-1);
 }
 .cardImage{
-  width: 47%;
+  width: 563px;
   position: absolute;
-  left: 55%;
+  left: 500px;
   top: 30%;
 
+}
+@media screen and (max-width: 1300px) {
+  .cardImage{
+    width: 400px;
+  } 
 }
 /* BetaTest.js start*/
 .BetaTest{
@@ -218,10 +210,17 @@ nav{
   width:100%;
   align-items: center;
 }
+@media screen and (max-width: 900px) {
+  .BetaTest{
+    width: 900px;
+  }
+  .functions{
+    width: 600px;
+  }
+}
 .functions{
   display:flex;
-  width:1200px;
-  max-width: calc(100vmax * 2 / 3);
+  width: calc(100vmax * 2 / 3);
   justify-content: space-between;
   align-items: center;
   height:72px;
@@ -267,10 +266,14 @@ nav{
 }
 .BetaTestPosts{
   display:flex;
-  width:1200px;
+  width:calc(100vmax * 2 / 3);
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: calc(100vmax * 2 / 3);
+}
+@media screen and (max-width: 900px) {
+  .BetaTestPosts{
+    width: 600px;
+  }
 }
 .post{
   display:flex;
@@ -336,13 +339,25 @@ nav{
 }
 /* CreatePost.js end*/
 /*---------Post.js CSS---------*/
+.postWrap{
+  width: 100%;
+}
 .serviceInfo{
   position: absolute;
-  width: 40%;
+  width: 45%;
   height: 142px;
   top: 104px;
   left: 30%;
   display: flex;
+}
+@media screen and (max-width: 900px) {
+  .serviceInfo{
+    width: 405px;
+    left: 270px;
+  }
+  .postWrap{
+    width: 900px;
+  }
 }
 .serviceImgWrap{
   width: 142px;
@@ -367,7 +382,7 @@ nav{
 }
 .serviceInfo .userInfo{
   position: relative;
-  width: 45%;
+  /* width: 45%; */
   height: 24px;
   top:14px;
   display: flex;
@@ -422,7 +437,7 @@ nav{
 }
 .scrapReview{
   position: absolute;
-  left:72%;
+  right: 15%;
   top: 104px;
   width: 10%;
   height: 84px;
@@ -430,14 +445,41 @@ nav{
   display: flex;
   flex-direction: column;
 }
+@media screen and (max-width:1300px) {
+  .scrapReview{
+    width: 128px;
+  }  
+}
+@media screen and (max-width:900px) {
+  .scrapReview{
+    left: 636px;
+  }  
+}
 .scrap h3{
   color: var(--black);
 }
 .scrap{
+  position: relative;
   background-color: var(--gray-4);
   border-radius: 8px;
   height: 36px;
   border: none;
+}
+.scrapFrame{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+
+  position: absolute;
+  width: 87px;
+  height: 16px;
+  left: calc(50% - 87px/2 - 0.5px);
+  top: calc(50% - 16px/2);
+}
+.scrapFrame h3{
+  margin-left: 4px;
 }
 .reviewButton{
   margin-top: 12px;

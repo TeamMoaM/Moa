@@ -20,7 +20,7 @@ function Post() {
 
     return (
         // 레퍼런스로 쓰는 법 써놓은거임 참고하셈
-        <div>
+        <div className='postWrap'>
             <div className='serviceInfo'>
                 <div className='serviceImgWrap' style={styles}></div>
                 <div className='serviceCon'>
@@ -34,12 +34,12 @@ function Post() {
                 </div>
             </div>
             <div className='scrapReview'>
-                <button className='scrap'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/>스크랩 하기</div></button>
-                <button className='reviewButton'>리뷰 작성하기</button>
+                <button className='scrap'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>
+                <button className='reviewButton'><h3 className='subhead100'>리뷰 작성하기</h3></button>
             </div>
             <list className='tabList'>
-                <ul className='tabListItem'><Link to='' className='serviceIntro'><h3 className='subhead100'>서비스 소개</h3></Link></ul>
-                <ul className='tabListItem'><Link to='' className='review'><h3 className='subhead100'>리뷰</h3></Link></ul>
+                <ul className='tabListItem'><Link to='' className='serviceIntro'><h3 className='body100'>서비스 소개</h3></Link></ul>
+                <ul className='tabListItem'><Link to='' className='review'><h3 className='body100'>리뷰</h3></Link></ul>
             </list>
             <div className='divider'></div>
             {/* {roomId}
