@@ -2,10 +2,13 @@ import { collection, addDoc, doc,getDoc, setDoc} from "firebase/firestore";
 import {ref,uploadBytes,getDownloadURL} from 'firebase/storage';
 import {db,storage} from '../firebase-config';
 import React,{useState} from 'react';
+import 'react-quill/dist/quill.snow.css';
+import Editor from './Editor'
 const CreatePost = () => {
     const [title,setTitle] = useState("");
     const [content,setContent] = useState("");
     const postsCollectionRef = collection(db,"posts");
+    
     const formHandeler = (e) => {
         e.preventDefault();
         const file = e.target[0].files[0];
@@ -27,14 +30,18 @@ const CreatePost = () => {
         await addDoc(postsCollectionRef, {title:title,content:content,imageURL:urlResponse,time:new Date(),commentCount:0,reviewCount:0,id:docCount});
         await setDoc(doc(db, 'docCount','docCount'),{docCount:docCount});
     };
-    
+
     return (
         <div className="createPost">
-            <input placeholder="title" onChange={(event)=>{setTitle(event.target.value)}}></input>
-            <input placeholder="content" onChange={(event)=>{setContent(event.target.value)}}></input>
+            <div className="serviceInfo">
+                <input className="postTitle" placeholder="제목을 입력하세요" onChange={(event)=>{setTitle(event.target.value)}}></input>
+                <input className="postIntro" placeholder="서비스 개요를 입력하세요" onChange={(event)=>{setContent(event.target.value)}}></input>
+            </div>
+            <div className="divider"></div>
+            <Editor></Editor>
             <form onSubmit={formHandeler}>
-                <input type="file"/>
-                <button type="submit">Upload</button>
+                <input className="fileButton" type="file"/>
+                <button className="submitButton" type="submit"><h3 className="subhead100">글 등록하기</h3></button>
             </form>
             {/* <h1>Uploaded {progress}%</h1> */}
             {/* <button onClick= {createPostButton}>Submit</button> */}

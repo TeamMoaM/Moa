@@ -333,20 +333,68 @@ nav{
 /* BetaTest.js end*/
 /* CreatePost.js start*/
 .createPost{
-  display:flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
+  position: relative;
+}
+@media screen and (max-width: 900px) {
+  .createPost{
+    width: 900px;
+  }
+}
+.serviceInfo{
+  /*post.js 와 동일한 css (className 같다)*/
+}
+.createPost .divider{
+  position: relative;
+  top: 206px;
+}
+.submitButton{
+  position: absolute;
+  right: 15%;
+  top: 32px;
+  width: 10%;
+  height: 36px;
+
+  background-color: var(--primary-1);
+  border-radius: 8px;
+  border: none;
+  color: var(--white);
+  
+}
+.fileButton{
+  position: absolute;
+  right: 15%;
+  top: 262px;
+  width: 10%;
+  height: 36px;
 }
 /* CreatePost.js end*/
+/*---------Editor.js CSS---------*/
+.editor{
+  width: calc(100vmax * 2 / 3);
+  margin: 0 auto;
+
+  position: relative;
+  top: 206px;
+}
+.ql-editor{
+  min-height: 400px;
+}
+@media screen and (max-width: 900px) {
+  .editor{
+    width: 600px;
+  }
+}
 /*---------Post.js CSS---------*/
 .postWrap{
   width: 100%;
+  position: relative;
 }
 .serviceInfo{
   position: absolute;
   width: 45%;
   height: 142px;
-  top: 104px;
+  top: 32px;
   left: 30%;
   display: flex;
 }
@@ -438,7 +486,7 @@ nav{
 .scrapReview{
   position: absolute;
   right: 15%;
-  top: 104px;
+  top: 32px;
   width: 10%;
   height: 84px;
 
