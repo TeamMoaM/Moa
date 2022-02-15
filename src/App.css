@@ -203,7 +203,7 @@ nav{
     width: 400px;
   } 
 }
-/* BetaTest.js start*/
+/*---------BetaTest.js CSS---------*/
 .BetaTest{
   display:flex;
   flex-direction: column;
@@ -330,8 +330,7 @@ nav{
 .first_page{
   color:var(--danger);
 }
-/* BetaTest.js end*/
-/* CreatePost.js start*/
+/*---------Create.js CSS---------*/
 .createPost{
   width: 100%;
   position: relative;
@@ -344,6 +343,29 @@ nav{
 .serviceInfo{
   /*post.js 와 동일한 css (className 같다)*/
 }
+.postImgWrap{
+  width: 142px;
+  height: 142px;
+  background-color: var(--primary-3);
+  border-radius: 8px;
+  float: left;
+}
+.postCon{
+  float: left;
+  width: calc( 100% - 152px );
+  margin-top: 6px;
+  margin-left: 2%;
+  margin-bottom: 4px;
+}
+.postTitle{
+  position: relative;
+}
+.postIntro{
+  position: relative;
+  top: 36px;
+  color: var(--black);
+}
+/*userInfo 부분은 Post.js와 동일*/
 .createPost .divider{
   position: relative;
   top: 206px;
@@ -368,7 +390,6 @@ nav{
   width: 10%;
   height: 36px;
 }
-/* CreatePost.js end*/
 /*---------Editor.js CSS---------*/
 .editor{
   width: calc(100vmax * 2 / 3);
@@ -420,9 +441,9 @@ nav{
 }
 .serviceCon{
   float: left;
-  width: calc( 100% - 142px );
+  width: calc( 100% - 152px );
   margin-top: 6px;
-  margin-left: 3%;
+  margin-left: 2%;
   margin-bottom: 4px;
 }
 .serviceInfo .title100{
