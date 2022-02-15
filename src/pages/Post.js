@@ -4,7 +4,7 @@ import {Link, useParams} from 'react-router-dom';
 import {db} from '../firebase-config';
 import {getDoc} from 'firebase/firestore';
 import Bookmark from '../icons/bookmark.svg'
-
+import "../style/post.css";
 function Post() {
     const [post, setPost] = useState([]);
     const {roomId} = useParams();
