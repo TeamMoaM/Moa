@@ -1,8 +1,9 @@
 import './CssReset.css'
 import './App.css';
 import React,{useState} from 'react';
-
 import {BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import {onAuthStateChanged} from 'firebase/auth';
+import {auth} from './firebase-config';
 import Main from './pages/Main'; 
 import Login from './pages/Login';
 import Community from './pages/Community';
@@ -15,6 +16,10 @@ import Post from './pages/Post';
 
 function App() {
   const [isAuth,setIsAuth] = useState(false);
+  const [user, setUser] = useState({});
+  onAuthStateChanged(auth,(currentUser)=>{
+    setUser(currentUser);
+  })
   return(
     <Router>
       <nav>
@@ -47,7 +52,7 @@ function App() {
         <Route path="/BetaTest/lateOrder/3" element={<BetaTest_late currentPage={3}/>}></Route>
         <Route path="/BetaTest/lateOrder/4" element={<BetaTest_late currentPage={4}/>}></Route>
         <Route path="/BetaTest/lateOrder/5" element={<BetaTest_late currentPage={5}/>}></Route>
-        <Route path="/post/:roomId" element={<Post/>}></Route>
+        <Route path="/post/:roomId" element={<Post user={user}/>}></Route>
         <Route path="/Community" element={<Community/>}></Route>
         <Route path="/Register" element={<Register/>}></Route>
         <Route path="/CreatePost" element={<CreatePost/>}></Route>

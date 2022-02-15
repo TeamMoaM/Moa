@@ -26,6 +26,11 @@
     --secondary-pressed: #646469;
     --secondary-disabled: #F6F6F6;
 }
+button{
+  border:none;
+  text-decoration: none;
+  background-color: white;
+}
 h1{
   font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
   letter-spacing: -0.01em;
@@ -488,30 +493,6 @@ nav{
   top: 36px;
   color: var(--black);
 }
-.tabList{
-  position: relative;
-  top: 206px;
-  left: 30%;
-  height: 40px;
-
-  display: inline-flex;
-}
-.serviceIntro{
-  color: var(--black);
-}
-.review{
-  color: var(--black);
-}
-.tabListItem + .tabListItem{
-  margin-left: 24px;
-}
-.tabListItem{
-  margin-top: 10px;
-}
-.tabList + .divider{
-  position: relative;
-  top: 206px;
-}
 .scrapReview{
   position: absolute;
   right: 15%;
@@ -557,12 +538,4 @@ nav{
 }
 .scrapFrame h3{
   margin-left: 4px;
-}
-.reviewButton{
-  margin-top: 12px;
-  background-color: var(--primary-1);
-  height: 36px;
-  color: var(--white);
-  border-radius: 8px;
-  border: none;
 }
