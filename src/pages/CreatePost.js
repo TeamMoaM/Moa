@@ -35,7 +35,7 @@ const CreatePost = () => {
         <div className="createPost">
             <div className="serviceInfo">
                 <input className="postTitle" placeholder="제목을 입력하세요" onChange={(event)=>{setTitle(event.target.value)}}></input>
-                <input className="postIntro" placeholder="서비스 개요를 입력하세요" onChange={(event)=>{setContent(event.target.value)}}></input>
+                <input className="postIntro" placeholder="서비스 개요를 입력하세요 테스트로 더 써보자." onChange={(event)=>{setContent(event.target.value)}}></input>
             </div>
             <div className="divider"></div>
             <Editor></Editor>
