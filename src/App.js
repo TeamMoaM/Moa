@@ -12,6 +12,7 @@ import CreatePost from './pages/CreatePost';
 import Post from './pages/Post';
 
 function App() {
+  const [isAuth,setIsAuth] = useState(false);
   return(
     <Router>
       <nav>
@@ -28,10 +29,10 @@ function App() {
       </nav>
 
       <div className='divider'></div>
-
+      
       <Routes>
         <Route path="/" element={<Main/>}></Route>
-        <Route path="/Login" element={<Login />} ></Route>
+        <Route path="/Login" element={<Login setIsAuth={setIsAuth}/>} ></Route>
         <Route path="/BetaTest/recentOrder" element={<BetaTest_recent/>}></Route>
         <Route path="/BetaTest/recentOrder/1" element={<BetaTest_recent currentPage={1}/>}></Route>
         <Route path="/BetaTest/recentOrder/2" element={<BetaTest_recent currentPage={2}/>}></Route>
