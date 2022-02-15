@@ -15,7 +15,7 @@ function Post({user}) {
             setPost({title:docSnap.data().title,content:docSnap.data().content,imageUrl:docSnap.data().imageURL,id:docSnap.data().id, authorName:docSnap.data().author.name,authorId:docSnap.data().author.id})
         })
     },false);
-
+    const link = '/post/reviewpost/'+roomId;
    const styles = {backgroundImage: "url(" + post.imageUrl +")", backgroundSize: '142px',backgroundPosition: 'center',backgroundRepeat: 'no-repeat'}
     const [tabList,setTabList] = useState(1);
     return (
@@ -35,7 +35,7 @@ function Post({user}) {
             </div>
             <div className='scrapReview'>
                 <button className='scrap'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>
-                <Link to='reviewpost'className='reviewButton'><h3 className='subhead100'>리뷰 작성하기</h3></Link>
+                <Link to={link} className='reviewButton'><h3 className='subhead100'>리뷰 작성하기</h3></Link>
             </div>
             {tabList?
                 <list className='tabList'>

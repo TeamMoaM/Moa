@@ -13,7 +13,7 @@ import Register from './pages/Register';
 import Logo from './icons/MoaLogo.svg';
 import CreatePost from './pages/CreatePost';
 import Post from './pages/Post';
-
+import ReviewPost from './pages/ReviewPost';
 function App() {
   const [isAuth,setIsAuth] = useState(false);
   const [user, setUser] = useState({});
@@ -53,6 +53,7 @@ function App() {
         <Route path="/BetaTest/lateOrder/4" element={<BetaTest_late currentPage={4}/>}></Route>
         <Route path="/BetaTest/lateOrder/5" element={<BetaTest_late currentPage={5}/>}></Route>
         <Route path="/post/:roomId" element={<Post user={user}/>}></Route>
+        <Route path="/post/reviewpost/:roomId" element={<ReviewPost />}></Route>
         <Route path="/Community" element={<Community/>}></Route>
         <Route path="/Register" element={<Register/>}></Route>
         <Route path="/CreatePost" element={<CreatePost/>}></Route>
