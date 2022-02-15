@@ -1,0 +1,38 @@
+.serviceIntro1{
+    color: var(--primary-1);
+    cursor:pointer;
+}
+.serviceIntro0{
+    color:var(--black);
+    cursor:pointer;
+}
+.tabList{
+    position: relative;
+    top: 206px;
+    left: 30%;
+    height: 40px;
+    display: inline-flex;
+  }
+  
+  .tabListItem + .tabListItem{
+    margin-left: 24px;
+  }
+  .tabListItem{
+    margin-top: 10px;
+    cursor:pointer;
+  }
+  .tabList + .divider{
+    position: relative;
+    top: 206px;
+  }
+  .reviewButton{
+    margin-top: 12px;
+    background-color: var(--primary-1);
+    height: 36px;
+    color: var(--white);
+    border-radius: 8px;
+    border: none;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
