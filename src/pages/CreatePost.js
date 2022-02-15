@@ -34,8 +34,14 @@ const CreatePost = () => {
     return (
         <div className="createPost">
             <div className="serviceInfo">
-                <input className="postTitle" placeholder="제목을 입력하세요" onChange={(event)=>{setTitle(event.target.value)}}></input>
-                <input className="postIntro" placeholder="서비스 개요를 입력하세요 테스트로 더 써보자." onChange={(event)=>{setContent(event.target.value)}}></input>
+                <div className="postImgWrap"></div>
+                <div className="postCon">
+                    <input className="postTitle" placeholder="제목을 입력하세요" onChange={(event)=>{setTitle(event.target.value)}}></input>
+                    <div className='userInfo'>
+                        <div className='userImg'></div><h4 className='body100'>user name</h4><h2 className='caption100'>Company name</h2>
+                    </div>
+                    <input className="postIntro" placeholder="서비스 개요를 입력하세요" onChange={(event)=>{setContent(event.target.value)}}></input>
+                </div>
             </div>
             <div className="divider"></div>
             <Editor></Editor>
