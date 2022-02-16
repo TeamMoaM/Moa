@@ -8,6 +8,7 @@ const CreatePost = () => {
     const [title,setTitle] = useState("");
     const [content,setContent] = useState("");
     const postsCollectionRef = collection(db,"posts");
+    const [desc, setDesc] = useState('');
     
     const formHandeler = (e) => {
         e.preventDefault();
@@ -27,9 +28,14 @@ const CreatePost = () => {
         let docCount = await data.data().docCount;
         docCount = docCount+1;
         let urlResponse = await getDownloadURL(storageRef);
-        await addDoc(postsCollectionRef, {title:title,content:content,imageURL:urlResponse,time:new Date(),commentCount:0,reviewCount:0,id:docCount});
+        await addDoc(postsCollectionRef, {title:title,content:content,desc:desc,imageURL:urlResponse,time:new Date(),commentCount:0,reviewCount:0,id:docCount});
         await setDoc(doc(db, 'docCount','docCount'),{docCount:docCount});
     };
+
+    function onEditorChange(value) {
+        setDesc(value)
+    }
+
 
     return (
         <div className="createPost">
@@ -44,7 +50,7 @@ const CreatePost = () => {
                 </div>
             </div>
             <div className="divider"></div>
-            <Editor></Editor>
+            <Editor value={desc} onChange={onEditorChange}></Editor>
             <form onSubmit={formHandeler}>
                 <input className="fileButton" type="file"/>
                 <button className="submitButton" type="submit"><h3 className="subhead100">글 등록하기</h3></button>

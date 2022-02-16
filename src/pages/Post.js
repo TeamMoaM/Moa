@@ -12,7 +12,7 @@ function Post({user}) {
         getDoc(doc(db, "posts", roomId)).then(docSnap => {
             console.log(docSnap.data());
             console.log(docSnap.data().timestamp);
-            setPost({title:docSnap.data().title,content:docSnap.data().content,imageUrl:docSnap.data().imageURL,id:docSnap.data().id, authorName:docSnap.data().author.name,authorId:docSnap.data().author.id})
+            setPost({title:docSnap.data().title,content:docSnap.data().content,imageUrl:docSnap.data().imageURL,id:docSnap.data().id, authorName:docSnap.data().author.name,authorId:docSnap.data().author.id});
         })
     },false);
     const link = '/post/reviewpost/'+roomId;
