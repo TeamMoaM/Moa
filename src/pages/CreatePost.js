@@ -18,7 +18,7 @@ const CreatePost = () => {
 
     const uploadFiles = async(file) => {
         if(!file){
-            return
+            alert("썸네일 입력해 시키야");
         }
         const storageRef = ref(storage, `/files/${file.name}`);
         await uploadBytes(storageRef, file).then((snapshot) => {

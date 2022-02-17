@@ -2,7 +2,7 @@ import './CssReset.css'
 import './App.css';
 import React,{useState} from 'react';
 import {BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import {onAuthStateChanged} from 'firebase/auth';
+import {onAuthStateChanged,signOut} from 'firebase/auth';
 import {auth} from './firebase-config';
 import Main from './pages/Main'; 
 import Login from './pages/Login';
@@ -17,8 +17,16 @@ import ReviewPost from './pages/ReviewPost';
 function App() {
   const [isAuth,setIsAuth] = useState(false);
   const [user, setUser] = useState({});
+  const signUserOut = () => {
+    signOut(auth).then(()=>{
+        localStorage.clear();
+        setIsAuth(false);
+        window.location.pathname = "/";
+    });
+  }
   onAuthStateChanged(auth,(currentUser)=>{
     setUser(currentUser);
+    console.log(isAuth);
   })
   return(
     <Router>
@@ -30,8 +38,17 @@ function App() {
             <ul className='listItem item2'><Link to='/BetaTest/recentOrder'><h2 className='subhead100'>β - test</h2></Link></ul>
             <ul className='listItem item3'><Link to='/Community'><h2 className='subhead100'>Community</h2></Link></ul>
           </list>
-          <div className='login'><Link to='/Login'><h3 className='body100'>로그인</h3></Link></div>
-          <div className='register'><Link to='/Register'><h3 className='subhead100'>회원가입</h3></Link></div>
+          {!isAuth?
+          <>
+            <div className='login'><Link to='/Login'><h3 className='body100'>로그인</h3></Link></div>
+            <div className='register'><Link to='/Register'><h3 className='subhead100'>회원가입</h3></Link></div>
+          </>
+          :<>
+            <div className='login'><Link onClick={()=>{signUserOut()}}to='/Login'><h3 className='body100'>로그아웃</h3></Link></div>
+            <div className='register'><Link to='/Register'><h3 className='subhead100'>{user.displayName}</h3></Link></div>
+          </>
+          }
+         
         </div>
       </nav>
 
@@ -55,7 +72,7 @@ function App() {
         <Route path="/post/:roomId" element={<Post user={user}/>}></Route>
         <Route path="/post/reviewpost/:roomId" element={<ReviewPost />}></Route>
         <Route path="/Community" element={<Community/>}></Route>
-        <Route path="/Register" element={<Register/>}></Route>
+        <Route path="/Register" element={<Register setIsAuth={setIsAuth}/>}></Route>
         <Route path="/CreatePost" element={<CreatePost/>}></Route>
       </Routes>
     </Router>
