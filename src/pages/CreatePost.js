@@ -20,10 +20,13 @@ const CreatePost = () => {
         if(!file){
             alert("썸네일 입력해 시키야");
         }
+        
         const storageRef = ref(storage, `/files/${file.name}`);
         await uploadBytes(storageRef, file).then((snapshot) => {
             console.log('Uploaded a blob or file!');
         });
+        
+       
         let data = await getDoc(doc(db, "docCount","docCount"));
         let docCount = await data.data().docCount;
         docCount = docCount+1;
@@ -35,8 +38,6 @@ const CreatePost = () => {
     function onEditorChange(value) {
         setDesc(value)
     }
-
-
     return (
         <div className="createPost">
             <div className="serviceInfo">
@@ -55,8 +56,7 @@ const CreatePost = () => {
                 <input className="fileButton" type="file"/>
                 <button className="submitButton" type="submit"><h3 className="subhead100">글 등록하기</h3></button>
             </form>
-            {/* <h1>Uploaded {progress}%</h1> */}
-            {/* <button onClick= {createPostButton}>Submit</button> */}
+            
         </div>
     );
 };
