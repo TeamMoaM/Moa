@@ -2,7 +2,7 @@ import './CssReset.css'
 import './App.css';
 import React,{useState} from 'react';
 import {BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import {onAuthStateChanged,signOut} from 'firebase/auth';
+import {onAuthStateChanged,signOut,setPersistence,browserSessionPersistence} from 'firebase/auth';
 import {auth} from './firebase-config';
 import Main from './pages/Main'; 
 import Login from './pages/Login';
@@ -25,9 +25,11 @@ function App() {
         window.location.pathname = "/";
     });
   }
+  setPersistence(auth, browserSessionPersistence).then(()=>{console.log("success")});
   onAuthStateChanged(auth,(currentUser)=>{
     setUser(currentUser);
     console.log(isAuth);
+    setIsAuth(true);
   })
   return(
     <Router>
