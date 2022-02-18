@@ -29,7 +29,10 @@ function App() {
   onAuthStateChanged(auth,(currentUser)=>{
     setUser(currentUser);
     console.log(isAuth);
-    setIsAuth(true);
+    if(user.displayName){
+      setIsAuth(true);
+    }
+    // setIsAuth(true);
   })
   return(
     <Router>
