@@ -15,6 +15,7 @@ import CreatePost from './pages/CreatePost';
 import Post from './pages/Post';
 import ReviewPost from './pages/ReviewPost';
 import MyPage from './pages/MyPage';
+import MyPageEdit from './pages/MyPageEdit';
 function App() {
   const [isAuth,setIsAuth] = useState(false);
   const [user, setUser] = useState({});
@@ -63,7 +64,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Main/>}></Route>
         <Route path="/Login" element={<Login setIsAuth={setIsAuth}/>} ></Route>
-        <Route path="/Mypage" element={<MyPage user={user}/>} ></Route>
+        <Route path="/MyPage" element={<MyPage user={user}/>} ></Route>
+        <Route path="/MyPage/edit" element={<MyPageEdit user={user}/>}></Route>
         <Route path="/BetaTest/recentOrder" element={<BetaTest_recent/>}></Route>
         <Route path="/BetaTest/recentOrder/1" element={<BetaTest_recent currentPage={1}/>}></Route>
         <Route path="/BetaTest/recentOrder/2" element={<BetaTest_recent currentPage={2}/>}></Route>
