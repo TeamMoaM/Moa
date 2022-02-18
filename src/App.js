@@ -14,6 +14,7 @@ import Logo from './icons/MoaLogo.svg';
 import CreatePost from './pages/CreatePost';
 import Post from './pages/Post';
 import ReviewPost from './pages/ReviewPost';
+import MyPage from './pages/MyPage';
 function App() {
   const [isAuth,setIsAuth] = useState(false);
   const [user, setUser] = useState({});
@@ -45,7 +46,7 @@ function App() {
           </>
           :<>
             <div className='login'><Link onClick={()=>{signUserOut()}}to='/Login'><h3 className='body100'>로그아웃</h3></Link></div>
-            <div className='register'><Link to='/Register'><h3 className='subhead100'>{user.displayName}</h3></Link></div>
+            <div className='register'><Link to='/MyPage'><h3 className='subhead100'>{user.displayName}</h3></Link></div>
           </>
           }
          
@@ -57,6 +58,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main/>}></Route>
         <Route path="/Login" element={<Login setIsAuth={setIsAuth}/>} ></Route>
+        <Route path="/Mypage" element={<MyPage user={user}/>} ></Route>
         <Route path="/BetaTest/recentOrder" element={<BetaTest_recent/>}></Route>
         <Route path="/BetaTest/recentOrder/1" element={<BetaTest_recent currentPage={1}/>}></Route>
         <Route path="/BetaTest/recentOrder/2" element={<BetaTest_recent currentPage={2}/>}></Route>
