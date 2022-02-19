@@ -16,6 +16,7 @@ import Post from './pages/Post';
 import ReviewPost from './pages/ReviewPost';
 import MyPage from './pages/MyPage';
 import MyPageEdit from './pages/MyPageEdit';
+
 function App() {
   const [isAuth,setIsAuth] = useState(false);
   const [user, setUser] = useState({});
