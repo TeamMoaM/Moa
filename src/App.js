@@ -43,9 +43,9 @@ function App() {
           <div className="wrapLogoandMenu">
             <Link to='/'><img className='logoImage' src={Logo}/></Link>
             <list className='menuList'>
-              <ul className='listItem item1'><Link onClick={()=>{setList(1)}}to='/'>{list==1?<h2 id='listClicked' className='subhead100'>Main</h2>:<h2 id='listNotClicked' className='subhead100'>Main</h2>}</Link></ul>
-              <ul className='listItem item2'><Link onClick={()=>{setList(2)}}to='/BetaTest/recentOrder'>{list==2?<h2 id="listClicked" className='subhead100'>β - test</h2>:<h2 id="listNotClicked" className='subhead100'>β - test</h2>}</Link></ul>
-              <ul className='listItem item3'><Link onClick={()=>{setList(3)}}to='/Community'>{list==3?<h2 id="listClicked" className='subhead100'>Community</h2>:<h2 id="listNotClicked" className='subhead100'>Community</h2>}</Link></ul>
+              <ul className='listItem item1'><Link onClick={()=>{setList(1)}}to='/'>{list==1?<h2 id='listClicked1' className='subhead100'>Main</h2>:<h2 id='listNotClicked' className='subhead100'>Main</h2>}</Link></ul>
+              <ul className='listItem item2'><Link onClick={()=>{setList(2)}}to='/BetaTest/recentOrder'>{list==2?<h2 id="listClicked2" className='subhead100'>β - test</h2>:<h2 id="listNotClicked" className='subhead100'>β - test</h2>}</Link></ul>
+              <ul className='listItem item3'><Link onClick={()=>{setList(3)}}to='/Community'>{list==3?<h2 id="listClicked3" className='subhead100'>Community</h2>:<h2 id="listNotClicked" className='subhead100'>Community</h2>}</Link></ul>
             </list>
           </div>
           
@@ -71,17 +71,7 @@ function App() {
         <Route path="/MyPage" element={<MyPage user={user}/>} ></Route>
         <Route path="/MyPage/edit" element={<MyPageEdit user={user} isAuth={isAuth}/>}></Route>
         <Route path="/BetaTest/recentOrder" element={<BetaTest_recent/>}></Route>
-        <Route path="/BetaTest/recentOrder/1" element={<BetaTest_recent />}></Route>
-        <Route path="/BetaTest/recentOrder/2" element={<BetaTest_recent />}></Route>
-        <Route path="/BetaTest/recentOrder/3" element={<BetaTest_recent />}></Route>
-        <Route path="/BetaTest/recentOrder/4" element={<BetaTest_recent />}></Route>
-        <Route path="/BetaTest/recentOrder/5" element={<BetaTest_recent />}></Route>
-        <Route path="/BetaTest/lateOrder" element={<BetaTest_late currentPage={1}/>}></Route>
-        <Route path="/BetaTest/lateOrder/1" element={<BetaTest_late currentPage={1}/>}></Route>
-        <Route path="/BetaTest/lateOrder/2" element={<BetaTest_late currentPage={2}/>}></Route>
-        <Route path="/BetaTest/lateOrder/3" element={<BetaTest_late currentPage={3}/>}></Route>
-        <Route path="/BetaTest/lateOrder/4" element={<BetaTest_late currentPage={4}/>}></Route>
-        <Route path="/BetaTest/lateOrder/5" element={<BetaTest_late currentPage={5}/>}></Route>
+        <Route path="/BetaTest/lateOrder" element={<BetaTest_late />}></Route>
         <Route path="/post/:roomId" element={<Post user={user}/>}></Route>
         <Route path="/post/reviewpost/:roomId" element={<ReviewPost />}></Route>
         <Route path="/Community" element={<Community/>}></Route>

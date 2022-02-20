@@ -88,6 +88,12 @@ nav{
   justify-content: space-between;
   width:40%;
   min-width: 340px;
+  align-items: center;
+  height:71px;
+}
+.wrapLogoandMenu > a{
+  display:flex;
+  align-items: center;
 }
 @media screen and (max-width: 900px) {
   nav{
@@ -108,13 +114,6 @@ nav{
   bottom: 0px;
   background-color: var(--gray-3);
 }
-.logoImage{
-  position: absolute;
-  width: 73.81px;
-  height: 22.88px;
-  left: 0px;
-  top: 25px;
-}
 .menuList{
   display: flex;
   align-items: flex-start;
@@ -127,7 +126,7 @@ nav{
   left: calc(20% - 1px);
 }
 .listItem{
-  height:63px;
+  height:64px;
 }
 .listItem h2{
   /* position: absolute; */
@@ -137,14 +136,30 @@ nav{
   align-items: center;
   text-align: center;
   letter-spacing: -0.01em;
+  /* border:1px solid; */
 
   color: var(--black);
 }
-#listClicked{
+#listClicked1{
+  /* width:24px; */
   color:var(--primary-1);
-  z-index:10;
-  box-shadow: 0 10px 0 -6px var(--primary-1);
+  
+  box-shadow: 0 8px 0 -4px var(--primary-1);
 }
+#listClicked2{
+  /* width:24px; */
+  color:var(--primary-1);
+  
+  box-shadow: 0 16px 0 -12px var(--primary-1);
+}
+#listClicked3{
+  /* width:24px; */
+  color:var(--primary-1);
+  
+  box-shadow: 0 34px 0 -30px var(--primary-1);
+}
+
+
   
 #listNotClicked{
   color:var(--black);
@@ -161,8 +176,6 @@ nav{
 .registerLink{
   display:flex;
   align-items: center;
-  width:105px;
-  justify-content: space-between;
 }
 .registerAndLogin{
   width:135px;
@@ -178,6 +191,7 @@ nav{
 }
 #logineddisplayName{
   color:var(--black);
+  margin-left: 12px;
 }
 
 /*---------Mainpage CSS---------*/
@@ -278,6 +292,7 @@ nav{
 }
 #myimg{
   width:282px;
+  height:176px;
   object-fit: contain;
   border: 1px solid var(--gray-3);
   border-radius: 8px;

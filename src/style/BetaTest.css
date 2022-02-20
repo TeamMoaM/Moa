@@ -67,3 +67,36 @@
     font-weight: 600;
     font-size: 14px;
   }
+  /*pagination*/
+  .paginationBttns{
+    display:flex;
+    align-items: center;
+    margin-top:34px;
+  }
+  .paginationBttns a{
+    margin:19px;
+    cursor:pointer;
+    font-family: Spoqa Han Sans Neo;
+    font-style: normal;
+    /* font-weight: normal; */
+    font-size: 14px;
+    line-height: 100%;
+  }
+  .previousBttn{
+    color:#848492;
+  }
+  .nextBttn{
+    color:#848492;
+  }
+  .paginationActive{
+    color: var(--primary-1);
+    font-weight: bold;
+  }
+  .paginationDisabled{
+    color:var(--black);
+    font-weight: normal;
+
+  }
+  .footer{
+    height:300px;
+  }

@@ -12,8 +12,10 @@ function BetaTest_recent({}){
     const navigate = useNavigate();
     const [totalPage, setTotalPage] = useState(0);
     const [pageNumber,setPageNumber] = useState(0);
-    const q = query(postsCollectionRef, orderBy("id"),startAt((pageNumber)*16+1),limit(16));
- console.log(pageNumber);
+    const onepageNumber = 16;
+
+    const q = query(postsCollectionRef, orderBy("id"),startAt((pageNumber)*onepageNumber+1),limit(onepageNumber));
+    console.log(pageNumber);
     useEffect(()=>{
         onSnapshot(q, (snapshot)=>
           {
@@ -24,7 +26,7 @@ function BetaTest_recent({}){
         )
         getDoc(doc(db,'docCount','docCount')).then((docSnap)=>{
             if(docSnap.exists()){
-                setTotalPage(Math.ceil(docSnap.data().docCount/16));
+                setTotalPage(Math.ceil(docSnap.data().docCount/onepageNumber));
             }
         })
     },[pageNumber])
@@ -32,7 +34,6 @@ function BetaTest_recent({}){
         navigate(`/post/${id}`);
     }
     const changePage = ({selected}) => {
-        console.log("changed");
         setPageNumber(selected);
     }
     
@@ -66,25 +67,19 @@ function BetaTest_recent({}){
             </div>
             {/* pagination */}
             <div className="pagination">
-                {/* <button className="previous_page">&lt;</button>
-                <Link to='/BetaTest/recentOrder/1' onClick={()=>{window.loacation.reload()}} className="first_page">{1}</Link>
-                <Link to='/BetaTest/recentOrder/2' onClick={()=>{window.loacation.reload()}} className="second_page">{2}</Link>
-                <Link to='/BetaTest/recentOrder/3' onClick={()=>{window.loacation.reload()}} className="third_page">{3}</Link>
-                <Link to='/BetaTest/recentOrder/4' onClick={()=>{window.loacation.reload()}} className="fourth_page">{4}</Link>
-                <Link to='/BetaTest/recentOrder/5' onClick={()=>{window.loacation.reload()}} className="fifth_page">{5}</Link>
-                <button className="next_page" >&gt;</button> */}
                 <ReactPaginate 
-                    previousLabel={"Previous"}
-                    nextLabel={"Next"}
+                    previousLabel={"<"}
+                    nextLabel={">"}
                     pageCount={totalPage}
                     onPageChange={changePage}
                     containerClassName={"paginationBttns"}
                     previousLinkClassName={"previousBttn"}
                     nextLinkClassName={"nextBttn"}
-                    disabledClassName={"paginationDisabled"}
-                    activeClassName={"paginationActive"}
+                    disabledLinkClassName={"paginationDisabled"}
+                    activeLinkClassName={"paginationActive"}
                 />
             </div>
+            <div className="footer"></div>
             
         </div>
     )
