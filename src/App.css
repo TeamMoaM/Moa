@@ -235,20 +235,19 @@ nav{
   width:8vw;
   justify-content: space-between;
 }
-.linkRecentOrder{
-  font-family: Noto Sans KR;
-  font-weight: 700;
-  font-size: 14px;
+.linkRecentOrder > .subhead3{
+  width:44px;
+}
+.linkRecentOrder > a:visited{
+  text-decoration: none;
 }
 .BetaTestOrderBlockLine{
   font-family: Noto Sans KR;
   font-weight: 700;
   font-size: 12px;
 }
-.linkLateOrder{
-  font-family: Noto Sans KR;
-  font-weight: 700;
-  font-size: 14px;
+.linkLateOrder > .subhead3{
+  width:60px;
 }
 .functionsCreatePostButton{/*이부분 안맞는거 희범님 말씀드리기*/
   background-color:  var(--primary-1);

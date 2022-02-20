@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { getDocs, collection, deleteDoc, doc, addDoc,setDoc} from "firebase/firestore";
+import { getDocs, collection, deleteDoc, doc, addDoc} from "firebase/firestore";
 import {db,auth} from '../firebase-config';
-function MyPageEdit({user,isAuth}){
+function MyPageEdit({user}){
     const [company,setCompany] = useState("");
     const [time,setTime] = useState({
         timeStartYear:0,
@@ -14,10 +14,10 @@ function MyPageEdit({user,isAuth}){
         const userDocRef = doc(usersInfoCollectionRef,user.uid);
         const carrerCollectionRef = collection(userDocRef,'career');
     }
-    
+   
     const addData = async () => {
         try {
-            await setDoc(doc(db, 'userInfo',user.uid),{
+            await addDoc(carrerCollectionRef,{
                 company:{
                     name:company,
                     time
