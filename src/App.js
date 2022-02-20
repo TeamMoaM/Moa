@@ -16,6 +16,7 @@ import Post from './pages/Post';
 import ReviewPost from './pages/ReviewPost';
 import MyPage from './pages/MyPage';
 import MyPageEdit from './pages/MyPageEdit';
+import defaultprofileImg from './icons/userdefaultimg.svg';
 
 function App() {
   const [isAuth,setIsAuth] = useState(false);
@@ -53,8 +54,8 @@ function App() {
             <div className='login'><Link to='/Login'><h3 className='body100'>로그인</h3></Link></div>
             <div className='register'><Link to='/Register'><h3 className='subhead100'>회원가입</h3></Link></div>
           </div>
-          :<div className="registerAndLogin">
-            <div className='register'><Link to='/MyPage'><h3 className='subhead100'>{user.displayName}</h3></Link></div>
+          :<div className="registerAndLogins">
+            <div className='register'><Link className="registerLink"to='/MyPage'><img src={defaultprofileImg}/><h3 id="logineddisplayName"className='subhead100'>{user.displayName}</h3></Link></div>
             <div className='login'><Link onClick={()=>{signUserOut()}}to='/Login'><h3 className='body100'>로그아웃</h3></Link></div>
           </div>
           }

@@ -41,6 +41,7 @@
 
   .functions{
     display:flex;
+    position: relative;
     width: calc(100vmax * 2 / 3);
     justify-content: space-between;
     align-items: center;
@@ -49,7 +50,7 @@
   
   .functionsCreatePostButton{/*이부분 안맞는거 희범님 말씀드리기*/
     background-color:  var(--primary-1);
-    width:9vw;
+    width:180px;
     border-radius: 8px;
     color:var(--white);
     font-family: Noto Sans KR;
@@ -57,7 +58,7 @@
     font-weight: 600;
     font-size: 14px;
     border:none;
-    height:1.8vw;
+    height:36px;
   }
   .functionsCreatePostLink{
     color:var(--white);

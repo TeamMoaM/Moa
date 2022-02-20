@@ -87,7 +87,7 @@ nav{
   display:flex;
   justify-content: space-between;
   width:40%;
-  min-width: 350px;
+  min-width: 340px;
 }
 @media screen and (max-width: 900px) {
   nav{
@@ -152,16 +152,32 @@ nav{
 }
 .login h3{
   color: var(--black);
+  font-weight: 400;
 }
 .register h3{
   color: var(--primary-1);
+  font-weight: 700;
+}
+.registerLink{
+  display:flex;
+  align-items: center;
+  width:105px;
+  justify-content: space-between;
 }
 .registerAndLogin{
   width:135px;
   display:flex;
   align-items: center;
   justify-content: space-between;
-
+}
+.registerAndLogins{
+  width:180px;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#logineddisplayName{
+  color:var(--black);
 }
 
 /*---------Mainpage CSS---------*/
