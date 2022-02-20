@@ -45,14 +45,14 @@ function App() {
             <ul className='listItem item3'><Link to='/Community'><h2 className='subhead100'>Community</h2></Link></ul>
           </list>
           {!isAuth?
-          <>
+          <div className="registerAndLogin">
             <div className='login'><Link to='/Login'><h3 className='body100'>로그인</h3></Link></div>
             <div className='register'><Link to='/Register'><h3 className='subhead100'>회원가입</h3></Link></div>
-          </>
-          :<>
-            <div className='login'><Link onClick={()=>{signUserOut()}}to='/Login'><h3 className='body100'>로그아웃</h3></Link></div>
+          </div>
+          :<div className="registerAndLogin">
             <div className='register'><Link to='/MyPage'><h3 className='subhead100'>{user.displayName}</h3></Link></div>
-          </>
+            <div className='login'><Link onClick={()=>{signUserOut()}}to='/Login'><h3 className='body100'>로그아웃</h3></Link></div>
+          </div>
           }
          
         </div>

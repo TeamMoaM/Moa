@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import {orderBy,collection,onSnapshot,query, startAt, limit} from "firebase/firestore";
 import {useNavigate} from 'react-router-dom';
 import Post from './Post';
+import '../style/BetaTest.css';
 function BetaTest_recent({currentPage}){
     const postsCollectionRef = collection(db, "posts");
     const [posts,setPosts] = useState([]);

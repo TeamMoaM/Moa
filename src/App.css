@@ -79,6 +79,7 @@ nav{
   position: relative;
   width: calc(100vmax * 2 / 3);
   margin: 0 auto;
+  display:flex;
 }
 @media screen and (max-width: 900px) {
   nav{
@@ -133,18 +134,18 @@ nav{
   color: var(--black);
 }
 .login h3{
-  position: absolute;
-  top: 29px;
-  right: 10%;
-  letter-spacing: -0.01em;
   color: var(--black);
 }
 .register h3{
-  position: absolute;
-  top: 29px;
-  right: 1px;
-  letter-spacing: -0.01em;
   color: var(--primary-1);
+}
+.registerAndLogin{
+  width:135px;
+  border:1px solid;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+
 }
 
 /*---------Mainpage CSS---------*/
@@ -230,31 +231,7 @@ nav{
   align-items: center;
   height:72px;
 }
-.BetaTestOrder{
-  display:flex;
-  width:111px;
-  justify-content: space-between;
-}
-.linkRecentOrderLate{
-  color:var(--primary-1);
-}
-.linkLateOrderLate{
-  color:var(--black);
-}
-.linkRecentOrderLate > .subhead3{
-  width:44px;
-  font-weight: 700;
-}
 
-.BetaTestOrderBlockLine{
-  font-family: Noto Sans KR;
-  font-weight: 700;
-  font-size: 12px;
-}
-.linkLateOrderLate > .subhead3{
-  width:60px;
-  font-weight: 400;
-}
 .functionsCreatePostButton{/*이부분 안맞는거 희범님 말씀드리기*/
   background-color:  var(--primary-1);
   width:9vw;

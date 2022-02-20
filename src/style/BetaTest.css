@@ -1,0 +1,41 @@
+  .BetaTestOrder{
+    display:flex;
+    width:111px;
+    justify-content: space-between;
+  }
+  .linkRecentOrderLate{
+    color:var(--black);
+  }
+  .linkLateOrderLate{
+    color:var(--primary-1);
+  }
+  .linkRecentOrderLate > .subhead3{
+    width:44px;
+    font-weight: 400;
+  }
+  .linkLateOrderLate > .subhead3{
+    width:60px;
+    font-weight: 700;
+  }
+
+  .linkRecentOrderRecent{
+    color:var(--primary-1);
+  }
+  .linkLateOrderRecent{
+    color:var(--black);
+  }
+  .linkRecentOrderRecent > .subhead3{
+    width:44px;
+    font-weight: 700;
+  }
+  .linkLateOrderRecent > .subhead3{
+    width:60px;
+    font-weight: 400;
+  }
+  
+  .BetaTestOrderBlockLine{
+    font-family: Noto Sans KR;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
