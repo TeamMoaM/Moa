@@ -41,9 +41,9 @@ function BetaTest_recent({currentPage}){
         <div className="BetaTest">
             <div className="functions">
                 <div className="BetaTestOrder">
-                    <Link className="linkRecentOrder"to='/BetaTest/recentOrder'><h3 className="subhead3">최신순</h3></Link>
+                    <Link className="linkRecentOrderRecent"to='/BetaTest/recentOrder'><h3 className="subhead3">최신순</h3></Link>
                     <div className="BetaTestOrderBlockLine">|</div>
-                    <Link className="linkLateOrder"to='/BetaTest/lateOrder'><h3 className="subhead3">오래된순</h3></Link>
+                    <Link className="linkLateOrderRecent"to='/BetaTest/lateOrder'><h3 className="subhead3">오래된순</h3></Link>
                 </div>
                 <button className="functionsCreatePostButton"><Link className="functionsCreatePostLink" to='/createPost'>새 글 등록</Link></button>
             </div>

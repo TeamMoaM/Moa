@@ -232,22 +232,28 @@ nav{
 }
 .BetaTestOrder{
   display:flex;
-  width:8vw;
+  width:111px;
   justify-content: space-between;
 }
-.linkRecentOrder > .subhead3{
+.linkRecentOrderLate{
+  color:var(--primary-1);
+}
+.linkLateOrderLate{
+  color:var(--black);
+}
+.linkRecentOrderLate > .subhead3{
   width:44px;
+  font-weight: 700;
 }
-.linkRecentOrder > a:visited{
-  text-decoration: none;
-}
+
 .BetaTestOrderBlockLine{
   font-family: Noto Sans KR;
   font-weight: 700;
   font-size: 12px;
 }
-.linkLateOrder > .subhead3{
+.linkLateOrderLate > .subhead3{
   width:60px;
+  font-weight: 400;
 }
 .functionsCreatePostButton{/*이부분 안맞는거 희범님 말씀드리기*/
   background-color:  var(--primary-1);
