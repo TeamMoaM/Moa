@@ -80,6 +80,14 @@ nav{
   width: calc(100vmax * 2 / 3);
   margin: 0 auto;
   display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapLogoandMenu{
+  display:flex;
+  justify-content: space-between;
+  width:40%;
+  min-width: 350px;
 }
 @media screen and (max-width: 900px) {
   nav{
@@ -109,22 +117,21 @@ nav{
 }
 .menuList{
   display: flex;
-  flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
   padding: 0px;
-
+  align-items: center;
   position: relative;
   width: 300px;
   height: 71px;
   left: calc(20% - 1px);
-  top: calc(50% - 72px/2 - 1px); 
+}
+.listItem{
+  height:63px;
 }
 .listItem h2{
   /* position: absolute; */
-  height: 72px;
-  top: calc(50% - 20px/2);
-
+  height: 64px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -132,6 +139,16 @@ nav{
   letter-spacing: -0.01em;
 
   color: var(--black);
+}
+#listClicked{
+  color:var(--primary-1);
+  z-index:10;
+  box-shadow: 0 10px 0 -6px var(--primary-1);
+}
+  
+#listNotClicked{
+  color:var(--black);
+  border:none;
 }
 .login h3{
   color: var(--black);
@@ -141,7 +158,6 @@ nav{
 }
 .registerAndLogin{
   width:135px;
-  border:1px solid;
   display:flex;
   align-items: center;
   justify-content: space-between;
@@ -224,33 +240,7 @@ nav{
     width: 600px;
   }
 }
-.functions{
-  display:flex;
-  width: calc(100vmax * 2 / 3);
-  justify-content: space-between;
-  align-items: center;
-  height:72px;
-}
 
-.functionsCreatePostButton{/*이부분 안맞는거 희범님 말씀드리기*/
-  background-color:  var(--primary-1);
-  width:9vw;
-  border-radius: 8px;
-  color:var(--white);
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  border:none;
-  height:1.8vw;
-}
-.functionsCreatePostLink{
-  color:var(--white);
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-}
 .BetaTestPosts{
   display:flex;
   width:calc(100vmax * 2 / 3);

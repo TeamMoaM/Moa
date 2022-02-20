@@ -20,6 +20,7 @@ import MyPageEdit from './pages/MyPageEdit';
 function App() {
   const [isAuth,setIsAuth] = useState(false);
   const [user, setUser] = useState({});
+  const [list,setList] = useState(1);
   const signUserOut = () => {
     signOut(auth).then(()=>{
         localStorage.clear();
@@ -38,12 +39,15 @@ function App() {
     <Router>
       <nav>
         <div className='navWrap'>
-          <Link to='/'><img className='logoImage' src={Logo}/></Link>
-          <list className='menuList'>
-            <ul className='listItem item1'><Link to='/'><h2 className='subhead100'>Main</h2></Link></ul>
-            <ul className='listItem item2'><Link to='/BetaTest/recentOrder'><h2 className='subhead100'>β - test</h2></Link></ul>
-            <ul className='listItem item3'><Link to='/Community'><h2 className='subhead100'>Community</h2></Link></ul>
-          </list>
+          <div className="wrapLogoandMenu">
+            <Link to='/'><img className='logoImage' src={Logo}/></Link>
+            <list className='menuList'>
+              <ul className='listItem item1'><Link onClick={()=>{setList(1)}}to='/'>{list==1?<h2 id='listClicked' className='subhead100'>Main</h2>:<h2 id='listNotClicked' className='subhead100'>Main</h2>}</Link></ul>
+              <ul className='listItem item2'><Link onClick={()=>{setList(2)}}to='/BetaTest/recentOrder'>{list==2?<h2 id="listClicked" className='subhead100'>β - test</h2>:<h2 id="listNotClicked" className='subhead100'>β - test</h2>}</Link></ul>
+              <ul className='listItem item3'><Link onClick={()=>{setList(3)}}to='/Community'>{list==3?<h2 id="listClicked" className='subhead100'>Community</h2>:<h2 id="listNotClicked" className='subhead100'>Community</h2>}</Link></ul>
+            </list>
+          </div>
+          
           {!isAuth?
           <div className="registerAndLogin">
             <div className='login'><Link to='/Login'><h3 className='body100'>로그인</h3></Link></div>

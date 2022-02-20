@@ -1,6 +1,6 @@
   .BetaTestOrder{
     display:flex;
-    width:111px;
+    width:121px;
     justify-content: space-between;
   }
   .linkRecentOrderLate{
@@ -39,3 +39,30 @@
     font-size: 12px;
   }
 
+  .functions{
+    display:flex;
+    width: calc(100vmax * 2 / 3);
+    justify-content: space-between;
+    align-items: center;
+    height:72px;
+  }
+  
+  .functionsCreatePostButton{/*이부분 안맞는거 희범님 말씀드리기*/
+    background-color:  var(--primary-1);
+    width:9vw;
+    border-radius: 8px;
+    color:var(--white);
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    border:none;
+    height:1.8vw;
+  }
+  .functionsCreatePostLink{
+    color:var(--white);
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+  }
