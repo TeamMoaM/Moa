@@ -4,6 +4,7 @@ import {db,auth} from '../firebase-config';
 import {onAuthStateChanged} from 'firebase/auth';
 function MyPageEdit({user}){
     const [company,setCompany] = useState("");
+    const [tier,setTier] = useState("");
     const [time,setTime] = useState({
         timeStartYear:0,
         timeStartMonth:0,
@@ -27,6 +28,7 @@ function MyPageEdit({user}){
                         time:time
                     }
                 })
+                await setDoc(doc(db,'userInfo',users.uid),{tier:tier});
                 console.log("userinfo에 career 정보 올리기 성공!");
             }
         } catch (e) {
@@ -41,15 +43,14 @@ function MyPageEdit({user}){
         console.log(time);
     }
     useEffect(()=>{
-        console.log("useEffect started");
         if(users.displayName){
-            console.log("if inside");
             const careerRef = query(collection(doc(collection(db,'userInfo'),users.uid),'career'));
             onSnapshot(careerRef,(snapshot)=>{
                 setCareerList(snapshot.docs.map((doc)=>({
                     ...doc.data(),id:doc.id
                 })));
             })
+
         }
     },[users])
     // const createPost = async () => {
@@ -65,6 +66,7 @@ function MyPageEdit({user}){
             <input className='timeStartMonth' name='timeStartMonth' placeholder='시작한 달' type='number' min='1' max='12' onChange={updateTimeData} ></input>
             <input className='timeEndYear' name='timeEndYear' placeholder='끝난 연도' type='number' min='1900' max='2100' onChange={updateTimeData} ></input>
             <input className='timeEndMonth' name='timeEndMonth' placeholder='끝난 달' type='number' min='1' max='12' onChange={updateTimeData} ></input>
+            <input placeholder="티어" onChange={(event)=>{setTier(event.target.value)}}/>
             <button onClick = {addData} >Button Post</button>
             {careerList && careerList.map((post)=>{
                 return(
