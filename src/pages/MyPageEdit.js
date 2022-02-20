@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getDocs, collection, deleteDoc, doc, addDoc} from "firebase/firestore";
+import { getDocs, collection, deleteDoc, doc, addDoc,setDoc} from "firebase/firestore";
 import {db,auth} from '../firebase-config';
 function MyPageEdit({user}){
     const [company,setCompany] = useState("");
@@ -9,18 +9,20 @@ function MyPageEdit({user}){
         timeEndYear:0,
         timeEndMonth:0
     });
-    if(user.displayName){
-        const usersInfoCollectionRef = collection(db,'userInfo');
-        const userDocRef = doc(usersInfoCollectionRef,user.uid);
-        const carrerCollectionRef = collection(userDocRef,'career');
-    }
+    // if(user.displayName){
+    //     const usersInfoCollectionRef = collection(db,'userInfo');
+    //     const userDocRef = doc(usersInfoCollectionRef,user.uid);
+    //     // const carrerCollectionRef = collection(userDocRef,'career');
+    // }
    
     const addData = async () => {
         try {
-            await addDoc(carrerCollectionRef,{
-                company:{
-                    name:company,
-                    time
+            await setDoc(doc(db,'userInfo',user.uid),{
+                career:{
+                    company:{
+                        name:company,
+                        time:time
+                    }
                 }
             })
         } catch (e) {
@@ -29,7 +31,7 @@ function MyPageEdit({user}){
           console.log({
             company:{
                 name:company,
-                time
+                time:time
             }
         })
         }

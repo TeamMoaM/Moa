@@ -230,7 +230,7 @@ nav{
   align-items: center;
   height:72px;
 }
-.BetaTestOrder{/*세로 중앙 안맞음 */
+.BetaTestOrder{
   display:flex;
   width:8vw;
   justify-content: space-between;
