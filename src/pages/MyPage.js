@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { query, getDoc, collection, deleteDoc, doc, addDoc} from "firebase/firestore";
 import {db,auth} from '../firebase-config';
 import {Link} from 'react-router-dom';
+import "../style/myPage.css";
 function MyPage({user}){
     const [myPage, setMyPage] = useState([]);
     if(user.displayName){
@@ -26,9 +27,11 @@ function MyPage({user}){
         })
     },[MyPage]);
     return(
-        <div>
-            <div><h1>{user.displayName}</h1></div>
-            <Link to='/MyPage/edit'>추가</Link>
+        <div className='myPageWrap'>
+            <div className='contentsWrap'>
+                <div className='userCard'><h4 className='title100'>{user.displayName}</h4></div>
+                <div className='infoCard'><Link to='/MyPage/edit'>추가</Link></div>
+            </div>
         </div>
     )
 }

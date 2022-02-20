@@ -1,0 +1,32 @@
+.myPageWrap{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.contentsWrap{
+    position: relative;
+    width: calc(100vmax * 2 / 3);
+    height: 100%;
+    margin: 0 auto;
+}
+@media screen and (max-width: 900px) {
+    .myPageWrap{
+        width: 900px;
+    }
+    .contentsWrap{
+        width: 600px;
+    }
+  }
+.userCard{
+    position: relative;
+    top: 32px;
+    width: 30%;
+    height: 441px;
+    border: 1px solid #E8E8EE;
+    box-sizing: border-box;
+    border-radius: 16px;
+}
+.infoCard{
+    position: relative;
+    left: 34%;
+}
