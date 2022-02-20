@@ -27,14 +27,12 @@ function App() {
         window.location.pathname = "/";
     });
   }
-  setPersistence(auth, browserSessionPersistence).then(()=>{console.log("success")});
+  setPersistence(auth, browserSessionPersistence).then(()=>{console.log("browser session success")});
   onAuthStateChanged(auth,(currentUser)=>{
     setUser(currentUser);
-    console.log(isAuth);
-    if(user.displayName){
+    if(currentUser.displayName){
       setIsAuth(true);
     }
-    // setIsAuth(true);
   })
   return(
     <Router>
@@ -66,7 +64,7 @@ function App() {
         <Route path="/" element={<Main/>}></Route>
         <Route path="/Login" element={<Login setIsAuth={setIsAuth}/>} ></Route>
         <Route path="/MyPage" element={<MyPage user={user}/>} ></Route>
-        <Route path="/MyPage/edit" element={<MyPageEdit user={user}/>}></Route>
+        <Route path="/MyPage/edit" element={<MyPageEdit user={user} isAuth={isAuth}/>}></Route>
         <Route path="/BetaTest/recentOrder" element={<BetaTest_recent/>}></Route>
         <Route path="/BetaTest/recentOrder/1" element={<BetaTest_recent currentPage={1}/>}></Route>
         <Route path="/BetaTest/recentOrder/2" element={<BetaTest_recent currentPage={2}/>}></Route>
