@@ -1,18 +1,19 @@
 import React,{useState,useEffect} from 'react';
 import {db} from '../firebase-config';
 import {Link} from 'react-router-dom';
-import {orderBy,collection,onSnapshot,query, startAt, limit} from "firebase/firestore";
+import {orderBy,collection,onSnapshot,query, startAt, limit,doc, getDoc} from "firebase/firestore";
 import {useNavigate} from 'react-router-dom';
 import Post from './Post';
 import '../style/BetaTest.css';
-function BetaTest_recent({currentPage}){
+import ReactPaginate from 'react-paginate';
+function BetaTest_recent({}){
     const postsCollectionRef = collection(db, "posts");
     const [posts,setPosts] = useState([]);
-    // const [currentPage, setCurrentPage] = useState(1);
-    // const [currentPageList, setCurrentPageList] = useState([1,2,3,4,5]);
-    const q = query(postsCollectionRef, orderBy("id"),startAt((currentPage-1)*16+1),limit(16));
     const navigate = useNavigate();
-   
+    const [totalPage, setTotalPage] = useState(0);
+    const [pageNumber,setPageNumber] = useState(0);
+    const q = query(postsCollectionRef, orderBy("id"),startAt((pageNumber)*16+1),limit(16));
+ console.log(pageNumber);
     useEffect(()=>{
         onSnapshot(q, (snapshot)=>
           {
@@ -21,23 +22,21 @@ function BetaTest_recent({currentPage}){
             }))); 
           }
         )
-    },false)
+        getDoc(doc(db,'docCount','docCount')).then((docSnap)=>{
+            if(docSnap.exists()){
+                setTotalPage(Math.ceil(docSnap.data().docCount/16));
+            }
+        })
+    },[pageNumber])
     const postClick = (id) => {
         navigate(`/post/${id}`);
     }
-    //6 7 8 9 10
+    const changePage = ({selected}) => {
+        console.log("changed");
+        setPageNumber(selected);
+    }
     
-    // useEffect(()=>{
-    //     console.log(currentPage);
-    // },[currentPage]);
 
-    // function PageOnClick(clickedPage){
-    //     console.log("clickedpage:"+clickedPage);
-    //     let share = parseInt(currentPage/5);
-    //     setCurrentPage(share*5+clickedPage);
-    //     console.log("realcurrentPage:"+Number(share*5+clickedPage));
-
-    // }
     return(
         <div className="BetaTest">
             <div className="functions">
@@ -67,14 +66,24 @@ function BetaTest_recent({currentPage}){
             </div>
             {/* pagination */}
             <div className="pagination">
-                <button className="previous_page">&lt;</button>
+                {/* <button className="previous_page">&lt;</button>
                 <Link to='/BetaTest/recentOrder/1' onClick={()=>{window.loacation.reload()}} className="first_page">{1}</Link>
                 <Link to='/BetaTest/recentOrder/2' onClick={()=>{window.loacation.reload()}} className="second_page">{2}</Link>
                 <Link to='/BetaTest/recentOrder/3' onClick={()=>{window.loacation.reload()}} className="third_page">{3}</Link>
                 <Link to='/BetaTest/recentOrder/4' onClick={()=>{window.loacation.reload()}} className="fourth_page">{4}</Link>
                 <Link to='/BetaTest/recentOrder/5' onClick={()=>{window.loacation.reload()}} className="fifth_page">{5}</Link>
-                <button className="next_page" >&gt;</button>
-
+                <button className="next_page" >&gt;</button> */}
+                <ReactPaginate 
+                    previousLabel={"Previous"}
+                    nextLabel={"Next"}
+                    pageCount={totalPage}
+                    onPageChange={changePage}
+                    containerClassName={"paginationBttns"}
+                    previousLinkClassName={"previousBttn"}
+                    nextLinkClassName={"nextBttn"}
+                    disabledClassName={"paginationDisabled"}
+                    activeClassName={"paginationActive"}
+                />
             </div>
             
         </div>

@@ -71,11 +71,11 @@ function App() {
         <Route path="/MyPage" element={<MyPage user={user}/>} ></Route>
         <Route path="/MyPage/edit" element={<MyPageEdit user={user} isAuth={isAuth}/>}></Route>
         <Route path="/BetaTest/recentOrder" element={<BetaTest_recent/>}></Route>
-        <Route path="/BetaTest/recentOrder/1" element={<BetaTest_recent currentPage={1}/>}></Route>
-        <Route path="/BetaTest/recentOrder/2" element={<BetaTest_recent currentPage={2}/>}></Route>
-        <Route path="/BetaTest/recentOrder/3" element={<BetaTest_recent currentPage={3}/>}></Route>
-        <Route path="/BetaTest/recentOrder/4" element={<BetaTest_recent currentPage={4}/>}></Route>
-        <Route path="/BetaTest/recentOrder/5" element={<BetaTest_recent currentPage={5}/>}></Route>
+        <Route path="/BetaTest/recentOrder/1" element={<BetaTest_recent />}></Route>
+        <Route path="/BetaTest/recentOrder/2" element={<BetaTest_recent />}></Route>
+        <Route path="/BetaTest/recentOrder/3" element={<BetaTest_recent />}></Route>
+        <Route path="/BetaTest/recentOrder/4" element={<BetaTest_recent />}></Route>
+        <Route path="/BetaTest/recentOrder/5" element={<BetaTest_recent />}></Route>
         <Route path="/BetaTest/lateOrder" element={<BetaTest_late currentPage={1}/>}></Route>
         <Route path="/BetaTest/lateOrder/1" element={<BetaTest_late currentPage={1}/>}></Route>
         <Route path="/BetaTest/lateOrder/2" element={<BetaTest_late currentPage={2}/>}></Route>
