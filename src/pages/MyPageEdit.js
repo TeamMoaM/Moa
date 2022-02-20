@@ -24,7 +24,7 @@ function MyPageEdit({user}){
                         time:time
                     }
                 }
-            })
+            });
         } catch (e) {
           console.log(e);
           console.log(user.uid);
