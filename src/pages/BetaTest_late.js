@@ -1,17 +1,21 @@
 import React,{useState,useEffect} from 'react';
 import {db} from '../firebase-config';
-import {useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
-import {orderBy,collection,onSnapshot,query, startAt, limit} from "firebase/firestore";
+import {orderBy,collection,onSnapshot,query, startAt, limit,doc, getDoc} from "firebase/firestore";
+import {useNavigate} from 'react-router-dom';
+import Post from './Post';
 import '../style/BetaTest.css';
-function BetaTest_late({currentPage}){
-    const navigate = useNavigate();
+import ReactPaginate from 'react-paginate';
+function BetaTest_recent({}){
     const postsCollectionRef = collection(db, "posts");
     const [posts,setPosts] = useState([]);
-    // const [currentPage, setCurrentPage] = useState(1);
-    // const [currentPageList, setCurrentPageList] = useState([1,2,3,4,5]);
-    const q = query(postsCollectionRef, orderBy("id",'desc'),startAt(20-(currentPage-1)*16),limit(16));
-    
+    const navigate = useNavigate();
+    const [totalPage, setTotalPage] = useState(0);
+    const [pageNumber,setPageNumber] = useState(0);
+    const onepageNumber = 16;
+
+    const q = query(postsCollectionRef, orderBy("id",'desc'),startAt((pageNumber)*onepageNumber+1),limit(onepageNumber));
+    console.log(pageNumber);
     useEffect(()=>{
         onSnapshot(q, (snapshot)=>
           {
@@ -20,30 +24,27 @@ function BetaTest_late({currentPage}){
             }))); 
           }
         )
-    },false)
+        getDoc(doc(db,'docCount','docCount')).then((docSnap)=>{
+            if(docSnap.exists()){
+                setTotalPage(Math.ceil(docSnap.data().docCount/onepageNumber));
+            }
+        })
+    },[pageNumber])
     const postClick = (id) => {
         navigate(`/post/${id}`);
     }
-    //6 7 8 9 10
+    const changePage = ({selected}) => {
+        setPageNumber(selected);
+    }
     
-    // useEffect(()=>{
-    //     console.log(currentPage);
-    // },[currentPage]);
 
-    // function PageOnClick(clickedPage){
-    //     console.log("clickedpage:"+clickedPage);
-    //     let share = parseInt(currentPage/5);
-    //     setCurrentPage(share*5+clickedPage);
-    //     console.log("realcurrentPage:"+Number(share*5+clickedPage));
-
-    // }
     return(
         <div className="BetaTest">
             <div className="functions">
                 <div className="BetaTestOrder">
-                    <Link className="linkRecentOrderLate"to='/BetaTest/recentOrder'><h3 className="subhead3">최신순</h3></Link>
-                    <div className="BetaTestOrderBlockLine">|</div>
-                    <Link className="linkLateOrderLate"to='/BetaTest/lateOrder'><h3 className="subhead3">오래된순</h3></Link>
+                <Link className="linkRecentOrderLate"to='/BetaTest/recentOrder'><h3 className="subhead3">최신순</h3></Link>
+                <div className="BetaTestOrderBlockLine">|</div>
+                <Link className="linkLateOrderLate"to='/BetaTest/lateOrder'><h3 className="subhead3">오래된순</h3></Link>
                 </div>
                 <button className="functionsCreatePostButton"><Link className="functionsCreatePostLink" to='/createPost'>새 글 등록</Link></button>
             </div>
@@ -51,12 +52,12 @@ function BetaTest_late({currentPage}){
                 {
                     posts&&posts.map((post)=>{
                         return(
-                            <div className="post" onClick={()=>{postClick(post.id)}}>
+                            <div onClick={()=>{postClick(post.id)}} className="post">
                                 <img id="myimg" src={post.imageURL}></img>
                                 <div className="post_title">{post.title}</div>
                                 <div className="post_content">{post.content}</div>
                                 <div className="post_commentAndreview">
-                                   새 글 {post.commentCount? post.commentCount: 0}개 | 리뷰 {post.reviewCount? post.reviewCount: 0}개
+                                    댓글 {post.commentCount? post.commentCount: 0}개 | 리뷰 {post.reviewCount? post.reviewCount: 0}개
                                 </div>
                             </div>
                         )
@@ -66,17 +67,21 @@ function BetaTest_late({currentPage}){
             </div>
             {/* pagination */}
             <div className="pagination">
-                <button className="previous_page">&lt;</button>
-                <Link to='/BetaTest/lateOrder/1' onClick={()=>{window.loacation.reload()}} className="first_page">{1}</Link>
-                <Link to='/BetaTest/lateOrder/2' onClick={()=>{window.loacation.reload()}} className="second_page">{2}</Link>
-                <Link to='/BetaTest/lateOrder/3' onClick={()=>{window.loacation.reload()}} className="third_page">{3}</Link>
-                <Link to='/BetaTest/lateOrder/4' onClick={()=>{window.loacation.reload()}} className="fourth_page">{4}</Link>
-                <Link to='/BetaTest/lateOrder/5' onClick={()=>{window.loacation.reload()}} className="fifth_page">{5}</Link>
-                <button className="next_page" >&gt;</button>
-
+                <ReactPaginate 
+                    previousLabel={"<"}
+                    nextLabel={">"}
+                    pageCount={totalPage}
+                    onPageChange={changePage}
+                    containerClassName={"paginationBttns"}
+                    previousLinkClassName={"previousBttn"}
+                    nextLinkClassName={"nextBttn"}
+                    disabledLinkClassName={"paginationDisabled"}
+                    activeLinkClassName={"paginationActive"}
+                />
             </div>
+            <div className="footer"></div>
             
         </div>
     )
 }
-export default BetaTest_late;
+export default BetaTest_recent;
