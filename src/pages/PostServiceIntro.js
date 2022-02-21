@@ -6,19 +6,11 @@ import {getDoc} from 'firebase/firestore';
 function ServiceIntro() {
     const [post, setPost] = useState([]);
     const {roomId} = useParams();
-    useEffect(()=>{
-        getDoc(doc(db, "posts", roomId)).then(docSnap => {
-            console.log(docSnap.data());
-            console.log(docSnap.data().timestamp);
-            setPost({title:docSnap.data().title,content:docSnap.data().content,imageUrl:docSnap.data().imageURL,id:docSnap.data().id})
-        })
-    },false);
     
-   const styles = {backgroundImage: "url(" + post.imageUrl +")", backgroundSize: '142px',backgroundPosition: 'center',backgroundRepeat: 'no-repeat'}
-
     return (
         // 레퍼런스로 쓰는 법 써놓은거임 참고하셈
         <div>
+            PostServiceIntro
             {/* {roomId}
             <br/>
             {post.title}
