@@ -8,6 +8,9 @@
     width: calc(100vmax * 2 / 3);
     height: 100%;
     margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between
 }
 @media screen and (max-width: 900px) {
     .myPageWrap{
@@ -22,11 +25,33 @@
     top: 32px;
     width: 30%;
     height: 441px;
-    border: 1px solid #E8E8EE;
+    border: 1px solid var(--gray-3);
     box-sizing: border-box;
     border-radius: 16px;
 }
+.gray4Button{
+    background-color: var(--gray-4);
+    border-radius: 8px;
+}
+.userCard button{
+    width: 95px;
+    height: 36px;
+}
+.leftArea{
+    width: 68%;
+}
+.myPageTab{
+    border: 1px solid red;
+    width: 64%;
+    height: 40px;
+    position: relative;
+    top: 32px;
+}
 .infoCard{
     position: relative;
-    left: 34%;
+    top: 48px;
+    width: 100%;
+    border: 1px solid var(--gray-3);
+    box-sizing: border-box;
+    border-radius: 16px;
 }
