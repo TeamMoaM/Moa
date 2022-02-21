@@ -23,7 +23,7 @@ const CreatePost = () => {
         
         const storageRef = ref(storage, `/files/${file.name}`);
         await uploadBytes(storageRef, file).then((snapshot) => {
-            console.log('Uploaded a blob or file!');
+            console.log('Uploaded a blob or file createpost!');
         });
         
        
@@ -36,7 +36,8 @@ const CreatePost = () => {
     };
 
     function onEditorChange(value) {
-        setDesc(value)
+        setDesc(value);
+        console.log(value);
     }
     return (
         <div className="createPost">
