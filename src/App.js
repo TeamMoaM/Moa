@@ -41,7 +41,7 @@ function App() {
       <nav>
         <div className='navWrap'>
           <div className="wrapLogoandMenu">
-            <Link to='/'><img className='logoImage' src={Logo}/></Link>
+            <Link to='/' onClick={()=>{setList(1)}}><img className='logoImage' src={Logo}/></Link>
             <list className='menuList'>
               <ul className='listItem item1'><Link onClick={()=>{setList(1)}}to='/'>{list==1?<h2 id='listClicked1' className='subhead100'>Main</h2>:<h2 id='listNotClicked' className='subhead100'>Main</h2>}</Link></ul>
               <ul className='listItem item2'><Link onClick={()=>{setList(2)}}to='/BetaTest/recentOrder'>{list==2?<h2 id="listClicked2" className='subhead100'>β - test</h2>:<h2 id="listNotClicked" className='subhead100'>β - test</h2>}</Link></ul>
@@ -68,7 +68,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main/>}></Route>
         <Route path="/Login" element={<Login setIsAuth={setIsAuth}/>} ></Route>
-        <Route path="/MyPage" element={<MyPage user={user}/>} ></Route>
+        <Route path="/MyPage" element={<MyPage setList={setList}user={user}/>} ></Route>
         <Route path="/MyPage/edit" element={<MyPageEdit user={user} isAuth={isAuth}/>}></Route>
         <Route path="/BetaTest/recentOrder" element={<BetaTest_recent/>}></Route>
         <Route path="/BetaTest/lateOrder" element={<BetaTest_late />}></Route>

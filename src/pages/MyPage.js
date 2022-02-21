@@ -4,11 +4,12 @@ import {db,auth} from '../firebase-config';
 import {Link} from 'react-router-dom';
 import {onAuthStateChanged} from 'firebase/auth';
 import "../style/myPage.css";
-function MyPage({user}){
+function MyPage({setList,user}){
     const [myPage, setMyPage] = useState([]);
     const [users,setUsers] = useState({});
     const [postList,setCareerList]= useState([]);
     const [tier,setTier] = useState();
+    setList(1);
     onAuthStateChanged(auth,(currentUser)=>{
         setUsers(currentUser);
     })
