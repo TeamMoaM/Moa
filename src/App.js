@@ -72,7 +72,7 @@ function App() {
         <Route path="/MyPage/edit" element={<MyPageEdit user={user} isAuth={isAuth}/>}></Route>
         <Route path="/BetaTest/recentOrder" element={<BetaTest_recent/>}></Route>
         <Route path="/BetaTest/lateOrder" element={<BetaTest_late />}></Route>
-        <Route path="/post/:roomId" element={<Post user={user}/>}></Route>
+        <Route path="/post/:roomId" element={<Post isAuth={isAuth}user={user}/>}></Route>
         <Route path="/post/reviewpost/:roomId" element={<ReviewPost />}></Route>
         <Route path="/Community" element={<Community/>}></Route>
         <Route path="/Register" element={<Register setIsAuth={setIsAuth}/>}></Route>

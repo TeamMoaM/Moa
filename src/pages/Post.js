@@ -1,23 +1,34 @@
-import { doc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import React, { useEffect,useState } from 'react';
 import {Link, useParams, useResolvedPath} from 'react-router-dom';
 import {db} from '../firebase-config';
-import {getDoc} from 'firebase/firestore';
+import {getDoc,arrayUnion} from 'firebase/firestore';
 import Bookmark from '../icons/bookmark.svg'
 import "../style/post.css";
 import PostServiceIntro from './PostServiceIntro';
 import PostReview from './PostReview';
-function Post({user}) {
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+function Post({isAuth,user}) {
     const [post, setPost] = useState([]);
     const {roomId} = useParams();
+    if(!isAuth){
+        window.location.href='/login';
+    }
     useEffect(()=>{
         getDoc(doc(db, "posts", roomId)).then(docSnap => {
-            setPost({...docSnap.data()});
+            setPost({...docSnap.data(),id:docSnap.id});
         })
     },false);
     const link = '/post/reviewpost/'+roomId;
-   const styles = {backgroundImage: "url(" + post.imageUrl +")", backgroundSize: '142px',backgroundPosition: 'center',backgroundRepeat: 'no-repeat'};
     const [tabList,setTabList] = useState(1);
+    const scrap = () =>{    
+        if(post.id&&user.uid){
+            setDoc(doc(db,'userInfo',user.uid),{scrap:arrayUnion(post.id)},{merge:true});
+            alert("scrap에 성공하셨습니다!");
+        }
+    }
+
     return (
         <>
         <div className='postWrap'>
@@ -36,7 +47,7 @@ function Post({user}) {
                 </div>
             </div>
             <div className='scrapReview'>
-                <button className='scrap'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>
+                <button onClick={()=>scrap()}className='scrap'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>
                 <Link to={link} className='reviewButton'><h3 className='subhead100'>리뷰 작성하기</h3></Link>
             </div>
           </div>
@@ -53,7 +64,7 @@ function Post({user}) {
             }
             <div className='divider'></div>
         </div>
-        {tabList?<PostServiceIntro/>:<PostReview/>}
+        <div className="postWrap2">{tabList?<PostServiceIntro/>:<PostReview/>}</div>
         </>
     )
         

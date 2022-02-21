@@ -129,6 +129,7 @@
   border-radius: 8px;
   height: 36px;
   border: none;
+  cursor:pointer;
 }
 .scrapFrame{
   display: flex;
@@ -172,4 +173,17 @@
 .tabListItem{
   cursor:pointer;
 }
-
+.postServiceIntro{
+  display:flex;
+  justify-content: center;
+  width:80%;
+  height:200px;
+  border:1px solid blue;
+}
+.postWrap2{
+  display:flex;
+  width:100%;
+  height:500px;
+  justify-content: center;
+  border:1px solid red;
+}
