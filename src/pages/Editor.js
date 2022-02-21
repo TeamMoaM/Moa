@@ -3,12 +3,11 @@ import ReactQuill from 'react-quill';
 import {ref,uploadBytes,getDownloadURL} from 'firebase/storage';
 import {storage} from '../firebase-config';
 import 'react-quill/dist/quill.snow.css';
-const quillRef = useRef(null);
 class EditorComponent extends Component{
     constructor(props){
         super(props);
     }
-
+    quillRef = React.createRef();
     quillImageCallBack = async () => {
       const input = document.createElement('input');
       input.setAttribute('type','file');
@@ -27,7 +26,7 @@ class EditorComponent extends Component{
         });
         let urlResponse = await getDownloadURL(storageRef);
         console.log('url:'+urlResponse);
-        let quill = quillRef.current.getEditor();
+        let quill = this.quillRef.current.getEditor();
         const range = quill.getSelection(true);
         quill.insertEmbed(range.index, 'image', urlResponse);
 
@@ -67,7 +66,7 @@ class EditorComponent extends Component{
         return(
             <div className='editor'>
                 <ReactQuill
-                    ref={quillRef}
+                    ref={this.quillRef}
                     theme="snow" 
                     modules={this.modules} 
                     formats={this.formats}  
