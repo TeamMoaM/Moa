@@ -187,3 +187,38 @@
   justify-content: center;
   border:1px solid red;
 }
+.createPost{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.createPost > .serviceInfo{
+  width: calc(100vmax*2/5);
+  height: 142px;
+  display: flex;
+  margin-top: 32px;
+}
+.createPost .divider{
+  position: relative;
+  top: 206px;
+}
+.submitButton{
+  position: absolute;
+  right: 18%;
+  top: 32px;
+  width: 10%;
+  height: 36px;
+
+  background-color: var(--primary-1);
+  border-radius: 8px;
+  border: none;
+  color: var(--white);
+  
+}
+.fileButton{
+  position: absolute;
+  right: 15%;
+  top: 262px;
+  width: 10%;
+  height: 36px;
+}

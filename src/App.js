@@ -76,7 +76,7 @@ function App() {
         <Route path="/post/reviewpost/:roomId" element={<ReviewPost />}></Route>
         <Route path="/Community" element={<Community/>}></Route>
         <Route path="/Register" element={<Register setIsAuth={setIsAuth}/>}></Route>
-        <Route path="/CreatePost" element={<CreatePost/>}></Route>
+        <Route path="/CreatePost" element={<CreatePost user={user}/>}></Route>
       </Routes>
     </Router>
   )

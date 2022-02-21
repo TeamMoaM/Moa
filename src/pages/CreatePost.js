@@ -4,7 +4,8 @@ import {db,storage} from '../firebase-config';
 import React,{useState} from 'react';
 import 'react-quill/dist/quill.snow.css';
 import Editor from './Editor'
-const CreatePost = () => {
+import '../style/post.css';
+const CreatePost = ({user}) => {
     const [title,setTitle] = useState("");
     const [content,setContent] = useState("");
     const postsCollectionRef = collection(db,"posts");
@@ -31,7 +32,7 @@ const CreatePost = () => {
         let docCount = await data.data().docCount;
         docCount = docCount+1;
         let urlResponse = await getDownloadURL(storageRef);
-        await addDoc(postsCollectionRef, {title:title,content:content,desc:desc,imageURL:urlResponse,time:new Date(),commentCount:0,reviewCount:0,id:docCount});
+        await addDoc(postsCollectionRef, {title:title,content:content,author:{id:user.uid,name:user.displayName},imageURL:urlResponse,time:new Date(),commentCount:0,reviewCount:0,id:docCount});
         await setDoc(doc(db, 'docCount','docCount'),{docCount:docCount});
     };
 
@@ -46,7 +47,7 @@ const CreatePost = () => {
                 <div className="postCon">
                     <input className="postTitle" placeholder="제목을 입력하세요" onChange={(event)=>{setTitle(event.target.value)}}></input>
                     <div className='userInfo'>
-                        <div className='userImg'></div><h4 className='body100'>user name</h4><h2 className='caption100'>Company name</h2>
+                        <div className='userImg'></div><h4 className='body100'>{user.displayName}</h4><h2 className='caption100'>Company name</h2>
                     </div>
                     <input className="postIntro" placeholder="서비스 개요를 입력하세요" onChange={(event)=>{setContent(event.target.value)}}></input>
                 </div>

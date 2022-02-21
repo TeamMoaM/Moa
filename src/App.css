@@ -382,30 +382,7 @@ nav{
   letter-spacing: -0.01em;
   line-height: 150%; font-size: 16px;font-weight: 400;
 }
-.createPost .divider{
-  position: relative;
-  top: 206px;
-}
-.submitButton{
-  position: absolute;
-  right: 15%;
-  top: 32px;
-  width: 10%;
-  height: 36px;
 
-  background-color: var(--primary-1);
-  border-radius: 8px;
-  border: none;
-  color: var(--white);
-  
-}
-.fileButton{
-  position: absolute;
-  right: 15%;
-  top: 262px;
-  width: 10%;
-  height: 36px;
-}
 /*---------Editor.js CSS---------*/
 .editor{
   width: calc(100vmax * 2 / 3);

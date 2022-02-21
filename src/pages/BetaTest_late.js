@@ -19,6 +19,7 @@ function BetaTest_recent({}){
     useEffect(()=>{
         onSnapshot(q, (snapshot)=>
           {
+              console.log(snapshot.docs);
             setPosts(snapshot.docs.map((doc)=>({
                 ...doc.data(), id: doc.id,title: doc.data().title, content: doc.data().content, imageURL:doc.data().imageURL, commentCount: doc.data().commentCount, reviewCount: doc.data().reviewCount
             }))); 
