@@ -4,6 +4,7 @@ import {db,auth} from '../firebase-config';
 import {Link} from 'react-router-dom';
 import {onAuthStateChanged} from 'firebase/auth';
 import "../style/myPage.css";
+import avatarImage from '../icons/avatar.svg';
 function MyPage({setList,user}){
     const [myPage, setMyPage] = useState([]);
     const [users,setUsers] = useState({});
@@ -34,16 +35,30 @@ function MyPage({setList,user}){
     return(
         <div className='myPageWrap'>
             <div className='contentsWrap'>
-                <div className='userCard'><h4 className='title100'>{users&&users.displayName}</h4></div>
-                <div className='infoCard'><Link to='/MyPage/edit'>추가</Link></div>
-                {postList && postList.map((post)=>{
-                    return(
-                        <div>
-                            {post.company.name}
-                            {post.company.time.timeEndYear}
-                            {tier&&tier.tier}
-                        </div>)
-                })}
+                <div className='userCard'>
+                    <img className='userAvatar' src={avatarImage}/>
+                    <h4 className='title100'>{users&&users.displayName}</h4>
+                    <div className='buttonList'>
+                        <button className='gray4Button'><h3 className='subhead100'>정보 수정</h3></button>
+                        <button className='gray4Button'><h3 className='subhead100'>계정 설정</h3></button>
+                    </div>
+                    <h1 className='subhead100'>{tier&&tier.tier}</h1>
+                </div>
+                <div className='leftArea'>
+                    <div className='myPageTab'>Tab Lists</div>
+                    <div className='infoCard'>
+                        <h3 className='body100'>경력</h3>
+                        <Link to='/MyPage/edit'>추가</Link>
+                        {postList && postList.map((post)=>{
+                            return(
+                                <div>
+                                    <h1 className='subhead100'>{post.company.name}</h1>
+                                    <h4 className='body100'>{post.company.time.timeStartYear}년 {post.company.time.timeStartMonth}월 ~ {post.company.time.timeEndYear}년 {post.company.time.timeEndMonth}월</h4>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
             </div>
         </div>
     )
