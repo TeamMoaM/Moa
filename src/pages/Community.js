@@ -3,9 +3,11 @@ import {collection,onSnapshot,doc,deleteDoc,getDoc,setDoc,updateDoc,arrayRemove,
 import {db,auth} from '../firebase-config';
 import {useNavigate,Link} from 'react-router-dom';
 import {onAuthStateChanged} from 'firebase/auth';
-import messenger from '../img/Union.svg';
-import heart from '../img/heart.svg';
-import hearted from '../img/hearted.svg';
+import messenger from '../img/communityImg/Union.svg';
+import heart from '../img/communityImg/heart.svg';
+import hearted from '../img/communityImg/hearted.svg';
+import profileDefaultImg from '../img/communityImg/defaultprofile.svg';
+import tagImg from '../img/communityImg/tag.svg';
 import '../style/community.css';
 function Community({isAuth}){
   const [postLists, setPostList] = useState([]);
@@ -94,15 +96,16 @@ function Community({isAuth}){
   return (
     <div className="homePage">
       <div className="firstPost">
-        <img className="firstPostImage" src=""/>
-        <Link to='/CreateCommunity' className="firstPostButton"><h1 className="caption151">회원님의 이야기를 전달해주세요.</h1></Link>
+        <img className="firstPostImage" src={profileDefaultImg}/>
+        <Link to='/CreateCommunity' className="firstPostButton"><h1 className="caption151">회원님의 이야기를 공유해주세요.</h1></Link>
+        <img className="firstPostImage" src={tagImg}/>
       </div>
       {postLists.map((post) => {
         return (
           <div className="post">
             <div className="postHeader">
-              <img className="pfpimage" src=""/>
-              <h5 id="postAuthorName"className="point100">{post.author.name}</h5>
+              <img className="pfpimage" src={profileDefaultImg}/>
+              <h5 id="postAuthorName"className="point100">{post.author.name}</h5><h5 id="postAuthorName"className="point100">{"회사 이름"}</h5>
             </div>
             <div className="postTitle"><h1 className="point150">{post.title}</h1></div>
             <div className="postTextContainer"> {post.postText} </div>
