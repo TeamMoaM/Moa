@@ -40,18 +40,3 @@
 .leftArea{
     width: 68%;
 }
-.myPageTab{
-    border: 1px solid red;
-    width: 64%;
-    height: 40px;
-    position: relative;
-    top: 32px;
-}
-.infoCard{
-    position: relative;
-    top: 48px;
-    width: 100%;
-    border: 1px solid var(--gray-3);
-    box-sizing: border-box;
-    border-radius: 16px;
-}
