@@ -133,7 +133,7 @@ function Community({isAuth}){
               </div>
             </div>
             
-            {(post.commentCount<=1)?
+            {/* {(post.commentCount<=1)?
               (post.commentCount==0?(<></>):
                (<>
                 <div className="commentAndPeople">
@@ -154,8 +154,34 @@ function Community({isAuth}){
                   <p className="caption150">{post.commentPeople[index]}</p> <div className="postMainComment">{com}</div>
                 </div>
             </div>})}</div>)
-            }
+            } */}
+            {/* 댓글 구현  */}
+
+            {post.comment.map((com,index)=>{
+                return(
+                <div className="comment">
+                    <div className="postHeader">
+                        <div className="postInformation">
+                            <img className="pfpimage" src={profileDefaultImg}/>
+                            <div className="postProfile">
+                                <div className="postProfile1">
+                                    <h5 id="postAuthorName"className="point100">{post.commentPeople[index]}</h5><h5 id="postCompanyName"className="point100">{"회사 이름"}</h5>
+                                </div>
+                                <div className="postProfile1"><h2 className="caption100">{"1시간 전"}</h2></div>
+                            </div>
+                        </div>
+                        <div className="postEdit">
+                            <button onClick={()=>{console.log("edit!")}}><h2 id='edit'className="caption100">수정하기</h2></button>
+                            <h2 className="caption100"id='editdivider'>|</h2>
+                            <button onClick={()=>{console.log("delete!")}}><h2 id='delete'className="caption100">삭제하기</h2></button>
+                        </div>
+                    </div>
+                    <div className="postTextContainer"> {com} </div>
+                </div>
+                )
+            })}
             
+
             <div className="inputAndButton">
             {/* var input = document.getElementById(post.id+'button');input.style.display="none"; */}
               <input  onBlur={(e)=>{var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';}} onFocus={(e)=>{var input = document.getElementById(post.id+'button');input.style.display="block";var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';input1.style.borderTopRightRadius= "0px";input1.style.borderBottomRightRadius="0px";}} id={"commentAddInput"+post.id}onKeyPress={(e)=>{inputPress(e,post.id)}} className="postCommentInput" placeholder="회원님의 생각을 전달해주세요." onChange={(event)=>{setComment(event.target.value);}}/>

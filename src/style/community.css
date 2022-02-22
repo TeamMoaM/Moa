@@ -316,3 +316,18 @@
     align-items: center;
     margin-top: 15px;
   }
+  .comment{
+      display:flex;
+      width:100%;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-top: 10px; /*나중에 수정*/
+  }
+.comment .postHeader{
+    display: flex;
+    width: 95%;
+    justify-content: space-between;
+    text-align: center;
+    align-items:center;
+    height:32px;
+}
