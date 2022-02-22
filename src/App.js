@@ -17,6 +17,7 @@ import ReviewPost from './pages/ReviewPost';
 import MyPage from './pages/MyPage';
 import MyPageEdit from './pages/MyPageEdit';
 import defaultprofileImg from './icons/userdefaultimg.svg';
+import CreateCommunity from './pages/CreateCommunity';
 
 function App() {
   const [isAuth,setIsAuth] = useState(false);
@@ -74,7 +75,8 @@ function App() {
         <Route path="/BetaTest/lateOrder" element={<BetaTest_late />}></Route>
         <Route path="/post/:roomId" element={<Post isAuth={isAuth}user={user}/>}></Route>
         <Route path="/post/reviewpost/:roomId" element={<ReviewPost />}></Route>
-        <Route path="/Community" element={<Community/>}></Route>
+        <Route path="/Community" element={<Community isAuth={isAuth}/>}></Route>
+        <Route path='/CreateCommunity' element={<CreateCommunity user={user}/>}></Route>
         <Route path="/Register" element={<Register setIsAuth={setIsAuth}/>}></Route>
         <Route path="/CreatePost" element={<CreatePost user={user}/>}></Route>
       </Routes>
