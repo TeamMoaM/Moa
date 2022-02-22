@@ -70,7 +70,6 @@ function App() {
         <Route path="/" element={<Main/>}></Route>
         <Route path="/Login" element={<Login setIsAuth={setIsAuth}/>} ></Route>
         <Route path="/MyPage" element={<MyPage setList={setList}user={user}/>} ></Route>
-        <Route path="/MyPage/edit" element={<MyPageEdit user={user} isAuth={isAuth}/>}></Route>
         <Route path="/BetaTest/recentOrder" element={<BetaTest_recent/>}></Route>
         <Route path="/BetaTest/lateOrder" element={<BetaTest_late />}></Route>
         <Route path="/post/:roomId" element={<Post isAuth={isAuth}user={user}/>}></Route>

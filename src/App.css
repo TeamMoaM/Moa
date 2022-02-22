@@ -68,6 +68,9 @@ body, #root{
   height: 100%;
   background-color: var(--white);
 }
+button{
+  cursor: pointer;
+}
 
 .testBorder{
   border: 1px solid red;
