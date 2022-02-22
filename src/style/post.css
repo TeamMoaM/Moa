@@ -174,23 +174,28 @@
   cursor:pointer;
 }
 .postServiceIntro{
+  margin-top: 30px;
   display:flex;
-  justify-content: center;
-  width:80%;
+  flex-direction: column;
+  align-items: center;
+  width:70%;
   height:200px;
-  border:1px solid blue;
+}
+.postServiceIntro > img{
+  width:60%;
+  object-fit: contain;
 }
 .postWrap2{
   display:flex;
   width:100%;
   height:500px;
   justify-content: center;
-  border:1px solid red;
 }
 .createPost{
   display:flex;
   flex-direction: column;
   align-items: center;
+  height:1000px;
 }
 .createPost > .serviceInfo{
   width: calc(100vmax*2/5);
@@ -217,8 +222,67 @@
 }
 .fileButton{
   position: absolute;
-  right: 15%;
-  top: 262px;
+  right: 18%;
+  top: 80px;
   width: 10%;
   height: 36px;
+  display:none;
+}
+.input-file-button{
+  width: 10%;
+  position: absolute;
+  right: 18%;
+  top: 80px;
+  width: 10%;
+  height: 36px;
+  height: 36px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E4E4FF;
+  border-radius: 8px;
+}
+.input-file-button > .subhead100{
+  color: var(--primary-1);
+}
+.postImgWrap{
+  width: 142px;
+  height: 142px;
+  background-color: var(--primary-3);
+  border-radius: 8px;
+  float: left;
+}
+#postImgWrap{
+  width: 142px;
+  height: 142px;
+  /* background-color: var(--primary-3); */
+  border-radius: 8px;
+
+  float: left;
+}
+.postCon{
+  float: left;
+  width: calc( 100% - 152px );
+  margin-top: 6px;
+  margin-left: 2%;
+  margin-bottom: 4px;
+}
+.postTitle{
+  position: relative;
+  width: 100%;
+  /*h4.title100과 같음*/
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+  letter-spacing: -0.01em;
+  font-size: 24px; line-height: 100%;font-weight: 700;
+}
+/*userInfo 부분은 Post.js와 동일*/
+.postIntro{
+  position: relative;
+  top: 36px;
+  color: var(--black);
+  width: 100%;
+  /*h2.body150과 같음*/
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+  letter-spacing: -0.01em;
+  line-height: 150%; font-size: 16px;font-weight: 400;
 }

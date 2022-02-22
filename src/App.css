@@ -349,39 +349,7 @@ nav{
   }
 }
 /*serviceInfo는 post.js 와 동일한 css (className 같다)*/
-.postImgWrap{
-  width: 142px;
-  height: 142px;
-  background-color: var(--primary-3);
-  border-radius: 8px;
-  float: left;
-}
-.postCon{
-  float: left;
-  width: calc( 100% - 152px );
-  margin-top: 6px;
-  margin-left: 2%;
-  margin-bottom: 4px;
-}
-.postTitle{
-  position: relative;
-  width: 100%;
-  /*h4.title100과 같음*/
-  font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
-  letter-spacing: -0.01em;
-  font-size: 24px; line-height: 100%;font-weight: 700;
-}
-/*userInfo 부분은 Post.js와 동일*/
-.postIntro{
-  position: relative;
-  top: 36px;
-  color: var(--black);
-  width: 100%;
-  /*h2.body150과 같음*/
-  font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
-  letter-spacing: -0.01em;
-  line-height: 150%; font-size: 16px;font-weight: 400;
-}
+
 
 /*---------Editor.js CSS---------*/
 .editor{
@@ -400,4 +368,3 @@ nav{
   }
 }
 /*---------Post.js CSS---------*/
-

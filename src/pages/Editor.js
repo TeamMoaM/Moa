@@ -3,19 +3,23 @@ import ReactQuill from 'react-quill';
 import {ref,uploadBytes,getDownloadURL} from 'firebase/storage';
 import {storage} from '../firebase-config';
 import 'react-quill/dist/quill.snow.css';
+import ClipLoader from "react-spinners/ClipLoader";
 class EditorComponent extends Component{
     constructor(props){
         super(props);
+        this.state = {
+          loading:false
+        };
     }
     quillRef = React.createRef();
     quillImageCallBack = async () => {
+      this.setState({loading:true});
       const input = document.createElement('input');
       input.setAttribute('type','file');
       input.setAttribute('accept','.png,.jpg,.jpeg,.svg');
       input.click();
 
       input.onchange = async () =>{
-        console.log("input inserted");
         const file = input.files[0];
         if(!file){
           alert("썸네일 입력해 시키야");
@@ -29,11 +33,8 @@ class EditorComponent extends Component{
         let quill = this.quillRef.current.getEditor();
         const range = quill.getSelection(true);
         quill.insertEmbed(range.index, 'image', urlResponse);
-
-
-
       }
-
+      this.setState({loading:false});
     }
 
     modules = {
@@ -65,6 +66,7 @@ class EditorComponent extends Component{
       const { value, onChange } = this.props;
         return(
             <div className='editor'>
+              <ClipLoader color={'red'} loading={this.state.loading} size={150} />
                 <ReactQuill
                     ref={this.quillRef}
                     theme="snow" 
