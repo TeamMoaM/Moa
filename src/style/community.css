@@ -13,9 +13,13 @@
     width:40px;
     height:40px;
   }
+  .firstPostImage2{
+    width:24px;
+    height:24px;
+  }
   .firstPost{
     margin-top: 32px;
-    width:calc(70% + 24px);
+    width:calc(50% + 24px);
     padding:0 8px 0 16px;
     /* height: auto; */
     background-color:var(--white);
@@ -47,7 +51,7 @@
   }
   
   .homePage .post {
-    width: 70%;
+    width: 50%;
     height: auto;
     background-color: var(--white);
     /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
@@ -62,8 +66,14 @@
     display:flex;
     align-items: center;
     font-family: Spoqa Han Sans Neo;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  #postCompanyName{
+    font-family: Spoqa Han Sans Neo;
     margin-left: 8px;
     font-size: 14px;
+    font-weight: 400;
   }
   .pfpimage{
     height:32px;
@@ -72,10 +82,47 @@
   .post .postHeader {
     display: flex;
     width: 100%;
+    justify-content: space-between;
     text-align: center;
-    align-items: center;
+    align-items:center;
     height:32px;
-  
+  }
+  .postHeader .postProfile{
+      display:flex;
+      flex-direction: column;
+      height:32px;
+      justify-content: space-between;
+      margin-left: 8px;
+  }
+  .postProfile1{
+      display:flex;
+  }
+  .postProfile1{
+      color:var(--gray-1);
+  }
+  .postHeader .postInformation{
+      display:flex;
+      
+
+  }
+  .postHeader .postEdit{
+      display: flex;
+      width:90px;
+      align-items: center;
+      justify-content: space-between;
+  }
+  .postEdit #editdivider{
+      color:var(--gray-1);
+  }
+  .postEdit #edit{
+      width:40px;
+      cursor: pointer;
+      color:var(--gray-1);
+  }
+  .postEdit #delete{
+    width:40px;
+    cursor: pointer;
+    color:var(--danger);
   }
   .post{
     display:flex;
@@ -104,6 +151,9 @@
     align-items: center;
     padding:0;
   }
+  .likeButton .caption100{
+      margin-left: 6px;
+  }
   #wholikeTxt{
     color:var(--black);
     font-weight: 400;
@@ -116,10 +166,6 @@
     background: none;
     font-size: 30px;
     cursor: pointer;
-  }
-  #myimg{
-    width:30vw;
-    height:30vw;
   }
   .post .postTextContainer {
     /* word-wrap: break-word; */
@@ -166,7 +212,13 @@
     width:100%;
     margin-top:8px;
     display:flex;
+    justify-content: space-between;
     align-items: center;
+  }
+  .shareButtons{
+      display:flex;
+      justify-content: space-between;
+      width:96px;
   }
   #commentCountTxt{
     color:white;
@@ -181,7 +233,7 @@
     height:1px;
     border:none;
     margin-top: 16px;
-    background-color: #2A3247;
+    background-color: #F7F7FA;
   }
   .postMainComment{
     font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';

@@ -3,11 +3,13 @@ import {collection,onSnapshot,doc,deleteDoc,getDoc,setDoc,updateDoc,arrayRemove,
 import {db,auth} from '../firebase-config';
 import {useNavigate,Link} from 'react-router-dom';
 import {onAuthStateChanged} from 'firebase/auth';
-import messenger from '../img/communityImg/Union.svg';
-import heart from '../img/communityImg/heart.svg';
+import heart from '../img/communityImg/Group 6.svg';
 import hearted from '../img/communityImg/hearted.svg';
 import profileDefaultImg from '../img/communityImg/defaultprofile.svg';
 import tagImg from '../img/communityImg/tag.svg';
+import message from '../img/communityImg/comment.svg';
+import share from '../img/communityImg/share.svg';
+import scrap from '../img/communityImg/scrap.svg';
 import '../style/community.css';
 function Community({isAuth}){
   const [postLists, setPostList] = useState([]);
@@ -98,26 +100,42 @@ function Community({isAuth}){
       <div className="firstPost">
         <img className="firstPostImage" src={profileDefaultImg}/>
         <Link to='/CreateCommunity' className="firstPostButton"><h1 className="caption151">회원님의 이야기를 공유해주세요.</h1></Link>
-        <img className="firstPostImage" src={tagImg}/>
+        <img className="firstPostImage2" src={tagImg}/>
       </div>
       {postLists.map((post) => {
         return (
           <div className="post">
             <div className="postHeader">
-              <img className="pfpimage" src={profileDefaultImg}/>
-              <h5 id="postAuthorName"className="point100">{post.author.name}</h5><h5 id="postAuthorName"className="point100">{"회사 이름"}</h5>
+                <div className="postInformation">
+                    <img className="pfpimage" src={profileDefaultImg}/>
+                    <div className="postProfile">
+                        <div className="postProfile1">
+                            <h5 id="postAuthorName"className="point100">{post.author.name}</h5><h5 id="postCompanyName"className="point100">{"회사 이름"}</h5>
+                        </div>
+                        <div className="postProfile1"><h2 className="caption100">{"1시간 전"}</h2></div>
+                    </div>
+                </div>
+                <div className="postEdit">
+                    <button onClick={()=>{console.log("edit!")}}><h2 id='edit'className="caption100">수정하기</h2></button>
+                    <h2 className="caption100"id='editdivider'>|</h2>
+                    <button onClick={()=>{console.log("delete!")}}><h2 id='delete'className="caption100">삭제하기</h2></button>
+                </div>
             </div>
-            <div className="postTitle"><h1 className="point150">{post.title}</h1></div>
+            
             <div className="postTextContainer"> {post.postText} </div>
+            <hr className="breakLine"/>
             <div className="likeAndComment">
-              <button className="likeButton" id={post.id} onClick={()=>{if(post.author.id===auth.currentUser.uid){alert("본인 게사물에는 좋아요를 누를 수 없습니다")} else{addLike(post.id);}  }}>{!post.like.includes(user.displayName)?<img src={heart}/>:<img src={hearted}/>}{post.likeCount>=2?<h2 id="wholikeTxt"className="caption100">{post.like[0]}님 외 여러 명이 좋아합니다.</h2>:(post.likeCount==1?<h2 id="wholikeTxt"className="caption100">{post.like[0]}님 외 여러 명이 좋아했으면 좋겠습니다.</h2>:<h2 id="wholikeTxt"className="caption100">여러 명이 좋아했으면 좋겠습니다.</h2>)}</button>
-              <div className="commentCount"><img src={messenger}/><h2 id="commentCountTxt"className="caption100">{post.commentCount}{}</h2></div>
+              <button className="likeButton" id={post.id} onClick={()=>{if(post.author.id===auth.currentUser.uid){alert("본인 게사물에는 좋아요를 누를 수 없습니다")} else{addLike(post.id);}  }}>{!post.like.includes(user.displayName)?<img className="heart"src={heart}/>:<img src={hearted}/>}<h1 className="caption100">공감 {post.likeCount}개</h1></button>
+              <div className="shareButtons">
+                  <img src={message}/>
+                  <img src={share}/>
+                  <img src={scrap}/>
+              </div>
             </div>
             
             {(post.commentCount<=1)?
               (post.commentCount==0?(<></>):
                (<>
-                <hr className="breakLine"/>
                 <div className="commentAndPeople">
                   <h1 className="caption150">{post.commentPeople?post.commentPeople[0]:""}</h1> <p className="postMainComment">{post.comment?post.comment[0]:""}</p>
                 </div>
