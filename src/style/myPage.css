@@ -37,6 +37,18 @@
     width: 95px;
     height: 36px;
 }
-.leftArea{
+.rightArea{
     width: 68%;
+}
+.myPageTab{
+    border: 1px solid red;
+    width: 64%;
+    height: 40px;
+    position: relative;
+    top: 32px;
+}
+.myPageCard{
+    position: relative;
+    top: 48px;
+    width: 100%;
 }

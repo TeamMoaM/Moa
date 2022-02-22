@@ -4,7 +4,6 @@ import {db,auth} from '../firebase-config';
 import {Link} from 'react-router-dom';
 import {onAuthStateChanged} from 'firebase/auth';
 import "../style/myPageInfo.css";
-import avatarImage from '../icons/avatar.svg';
 function MyPageInfo({setList,user}){
     const [myPage, setMyPage] = useState([]);
     const [users,setUsers] = useState({});
