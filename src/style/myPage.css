@@ -28,14 +28,39 @@
     border: 1px solid var(--gray-3);
     box-sizing: border-box;
     border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.userCard .userInfo{
+    position: relative;
+    top: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.userCard .userName{
+    color: var(--black);
+    margin-top: 24px;
+}
+.buttonList{
+    position: absolute;
+    top: 260px;
 }
 .gray4Button{
     background-color: var(--gray-4);
     border-radius: 8px;
 }
+.gray4Button+.gray4Button{
+    margin-left: 8px;
+}
 .userCard button{
     width: 95px;
     height: 36px;
+}
+.tier{
+    position: absolute;
+    top: 360px;
 }
 .rightArea{
     width: 68%;

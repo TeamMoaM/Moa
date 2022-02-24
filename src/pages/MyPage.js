@@ -31,19 +31,19 @@ function MyPage({setList,user}){
     },[users])
 
     let myPageCard;
-    if(myPageList==1){
+    if(myPageList===1){
         myPageCard = <MyPageInfo setList={setList}user={user}/>;
     }
-    else if(myPageList==2){
+    else if(myPageList===2){
         myPageCard = <MyPosts/>;
     }
-    else if(myPageList==3){
+    else if(myPageList===3){
         myPageCard = <MyReviews/>;
     }
-    else if (myPageList==4){
+    else if (myPageList===4){
         myPageCard = <MyCommPosts/>;
     }
-    else if (myPageList==5){
+    else if (myPageList===5){
         myPageCard = <MyCommComments/>;
     }
     
@@ -53,22 +53,26 @@ function MyPage({setList,user}){
         <div className='myPageWrap'>
             <div className='contentsWrap'>
                 <div className='userCard'>
-                    <img className='userAvatar' src={avatarImage}/>
-                    <h4 className='title100'>{users&&users.displayName}</h4>
+                    <div className='userInfo'>
+                        <img className='userAvatar' alt='profile' src={avatarImage}/>
+                        <h4 className='userName title100'>{users&&users.displayName}</h4>
+                    </div>                    
                     <div className='buttonList'>
                         <button className='gray4Button'><h3 className='subhead100'>정보 수정</h3></button>
                         <button className='gray4Button'><h3 className='subhead100'>계정 설정</h3></button>
                     </div>
-                    <h1 className='subhead100'>{tier&&tier.tier}</h1>
+                    <div className='tier'>
+                        <h1 className='subhead100'>{tier&&tier.tier}</h1>
+                    </div>
                 </div>
                 <div className='rightArea'>
                     <div className='myPageTab testBorder'>
                         <list className='tabList testBorder'>
-                            <ul className='tabListItem item1'><button onClick={()=>{setMyPageList(1)}}className={myPageList==1?'serviceIntro1':''}><h3 className='subhead100'>정보</h3></button></ul>
-                            <ul className='tabListItem item2'><button onClick={()=>{setMyPageList(2)}}className={myPageList==2?'serviceIntro1':''}><h3 className='subhead100'>베타테스트 게시글</h3></button></ul>
-                            <ul className='tabListItem item3'><button onClick={()=>{setMyPageList(3)}}className={myPageList==3?'serviceIntro1':''}><h3 className='subhead100'>베타테스트 리뷰</h3></button></ul>
-                            <ul className='tabListItem item4'><button onClick={()=>{setMyPageList(4)}}className={myPageList==4?'serviceIntro1':''}><h3 className='subhead100'>커뮤니티 게시글</h3></button></ul>
-                            <ul className='tabListItem item5'><button onClick={()=>{setMyPageList(5)}}className={myPageList==5?'serviceIntro1':''}><h3 className='subhead100'>커뮤니티 댓글</h3></button></ul>
+                            <ul className='tabListItem item1'><button onClick={()=>{setMyPageList(1)}}className={myPageList===1?'serviceIntro1':''}><h3 className='subhead100'>정보</h3></button></ul>
+                            <ul className='tabListItem item2'><button onClick={()=>{setMyPageList(2)}}className={myPageList===2?'serviceIntro1':''}><h3 className='subhead100'>베타테스트 게시글</h3></button></ul>
+                            <ul className='tabListItem item3'><button onClick={()=>{setMyPageList(3)}}className={myPageList===3?'serviceIntro1':''}><h3 className='subhead100'>베타테스트 리뷰</h3></button></ul>
+                            <ul className='tabListItem item4'><button onClick={()=>{setMyPageList(4)}}className={myPageList===4?'serviceIntro1':''}><h3 className='subhead100'>커뮤니티 게시글</h3></button></ul>
+                            <ul className='tabListItem item5'><button onClick={()=>{setMyPageList(5)}}className={myPageList===5?'serviceIntro1':''}><h3 className='subhead100'>커뮤니티 댓글</h3></button></ul>
                         </list>
                     </div>
                     <div className='myPageCard'>

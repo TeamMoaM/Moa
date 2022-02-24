@@ -85,13 +85,13 @@
   border-radius: 50%;
   background-color: var(--caution);
 }
-.userInfo h4{
+.serviceInfo .userInfo h4{
   position: relative;
   left: 4%;
   line-height: 24px;
   color: var(--gray-1);
 }
-.userInfo h2{
+.serviceInfo .userInfo h2{
   position: relative;
   left: 8%;
   line-height: 24px;
