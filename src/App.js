@@ -13,7 +13,7 @@ import Register from './pages/Register';
 import Logo from './icons/MoaLogo.svg';
 import CreatePost from './pages/CreatePost';
 import Post from './pages/Post';
-import ReviewPost from './pages/ReviewPost';
+import CreateReview from './pages/CreateReview';
 import MyPage from './pages/MyPage';
 import MyPageEdit from './pages/MyPageEdit';
 import defaultprofileImg from './icons/userdefaultimg.svg';
@@ -73,7 +73,7 @@ function App() {
         <Route path="/BetaTest/recentOrder" element={<BetaTest_recent/>}></Route>
         <Route path="/BetaTest/lateOrder" element={<BetaTest_late />}></Route>
         <Route path="/post/:roomId" element={<Post isAuth={isAuth}user={user}/>}></Route>
-        <Route path="/post/reviewpost/:roomId" element={<ReviewPost />}></Route>
+        <Route path="/post/createreview/:roomId" element={<CreateReview user={user}/>}></Route>
         <Route path="/Community" element={<Community isAuth={isAuth}/>}></Route>
         <Route path='/CreateCommunity' element={<CreateCommunity user={user}/>}></Route>
         <Route path="/Register" element={<Register setIsAuth={setIsAuth}/>}></Route>

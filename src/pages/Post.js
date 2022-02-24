@@ -20,7 +20,7 @@ function Post({isAuth,user}) {
             setPost({...docSnap.data(),id:docSnap.id});
         })
     },false);
-    const link = '/post/reviewpost/'+roomId;
+    const link = '/post/createreview/'+roomId;
     const [tabList,setTabList] = useState(1);
     const scrap = () =>{    
         if(post.id&&user.uid){

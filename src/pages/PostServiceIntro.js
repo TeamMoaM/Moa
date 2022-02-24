@@ -18,7 +18,6 @@ function ServiceIntro() {
    
 
     return (
-        // 레퍼런스로 쓰는 법 써놓은거임 참고하셈
         <div className="postServiceIntro" dangerouslySetInnerHTML={{__html: desc}}>
 
         </div>

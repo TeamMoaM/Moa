@@ -53,7 +53,7 @@ const CreatePost = ({user}) => {
     return (
         <div className="createPost">
             <div className="serviceInfo">
-                <div className="postImgWrap"><img id="postImgWrap"src={thumbnailImg}/></div>
+                {thumbnailImg? <div className="postImgWrap"><img id="postImgWrap"src={thumbnailImg}alt="사진을 추가해주세요!"/></div>:<div className="postImgWrap"></div>}
                 <div className="postCon">
                     <input className="postTitle" placeholder="제목을 입력하세요" onChange={(event)=>{setTitle(event.target.value)}}></input>
                     <div className='userInfo'>

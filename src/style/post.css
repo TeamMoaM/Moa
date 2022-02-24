@@ -178,11 +178,10 @@
   display:flex;
   flex-direction: column;
   align-items: center;
-  width:70%;
-  height:200px;
+  width:39%;
 }
-.postServiceIntro > img{
-  width:60%;
+.postServiceIntro img{
+  width:100%;
   object-fit: contain;
 }
 .postWrap2{
@@ -235,6 +234,7 @@
   top: 80px;
   width: 10%;
   height: 36px;
+  cursor: pointer;
   height: 36px;
   display:flex;
   justify-content: center;
@@ -249,15 +249,16 @@
   width: 142px;
   height: 142px;
   background-color: var(--primary-3);
+  border:none;
   border-radius: 8px;
   float: left;
 }
 #postImgWrap{
   width: 142px;
   height: 142px;
+  border:none;
   /* background-color: var(--primary-3); */
-  border-radius: 8px;
-
+  border-radius: 16px;
   float: left;
 }
 .postCon{
