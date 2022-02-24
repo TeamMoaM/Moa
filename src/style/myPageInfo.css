@@ -4,3 +4,17 @@
     box-sizing: border-box;
     border-radius: 16px;
 }
+.infoCard+.infoCard{
+    margin-top: 160px;
+}
+.infoCard .cardTitle{
+    position: relative;
+    top: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.infoCard .contentsList{
+    position: relative;
+    top: 36px;
+}

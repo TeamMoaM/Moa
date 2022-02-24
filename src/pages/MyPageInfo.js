@@ -35,22 +35,29 @@ function MyPageInfo({setList,user}){
     },[users])
 
     return(
+        <>
         <div className='infoCard'>
-            <h3 className='body100'>경력</h3>
-            {!add?
-                <button className='add' onClick={()=>{setAdd(1)}}>추가(경력)</button>
-            :
-                <><button className='add' onClick={()=>{setAdd(0)}}>취소</button>
-                <MyPageEdit/></>
-            }
-            {postList && postList.map((post)=>{
-                return(
-                    <div>
-                        <h1 className='subhead100'>{post.company.name}</h1>
-                        <h4 className='body100'>{post.company.time.timeStartYear}년 {post.company.time.timeStartMonth}월 ~ {post.company.time.timeEndYear}년 {post.company.time.timeEndMonth}월</h4>
-                    </div>
-                )
-            })}
+            <div className='cardTitle'>
+                <h3 className='body100'>경력</h3>
+                {!add?
+                    <button className='add' onClick={()=>{setAdd(1)}}>추가(경력)</button>
+                :
+                    <><button className='add' onClick={()=>{setAdd(0)}}>취소</button>
+                    <MyPageEdit/></>
+                }
+            </div>
+            <div className='contentsList'>
+                {postList && postList.map((post)=>{
+                    return(
+                        <div>
+                            <h1 className='subhead100'>{post.company.name}</h1>
+                            <h4 className='body100'>{post.company.time.timeStartYear}년 {post.company.time.timeStartMonth}월 ~ {post.company.time.timeEndYear}년 {post.company.time.timeEndMonth}월</h4>
+                        </div>
+                    )
+                })}
+            </div>
+        </div>
+        <div className='infoCard'>
             {!eduAdd?
                 <button className='add' onClick={()=>{setEduAdd(1)}}>추가(학력)</button>
             :
@@ -68,6 +75,7 @@ function MyPageInfo({setList,user}){
                 )
             })}
         </div>
+        </>
     )
 }
 export default MyPageInfo;
