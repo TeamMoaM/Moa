@@ -153,6 +153,7 @@
   }
   .likeButton .caption100{
       margin-left: 6px;
+      align-items: center;
   }
   #wholikeTxt{
     color:var(--black);

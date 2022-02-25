@@ -84,8 +84,11 @@ nav{
 }
 .navWrap{
   position: relative;
-  width: calc(100vmax * 2 / 3);
+  max-width: 1280px;
   margin: 0 auto;
+  padding-left: 40px;
+  padding-right:40px;
+  min-width: 800px;/*수정 필요*/
   display:flex;
   align-items: center;
   justify-content: space-between;
@@ -93,8 +96,6 @@ nav{
 .wrapLogoandMenu{
   display:flex;
   justify-content: space-between;
-  width:40%;
-  min-width: 340px;
   align-items: center;
   height:71px;
 }
@@ -102,7 +103,7 @@ nav{
   display:flex;
   align-items: center;
 }
-@media screen and (max-width: 900px) {
+/* @media screen and (max-width: 900px) {
   nav{
     width: 900px;
   }
@@ -112,7 +113,7 @@ nav{
   .divider{
     width: 900px;
   }
-}
+} */
 .divider{
   position: relative;
   height: 1px;
@@ -123,18 +124,32 @@ nav{
 }
 .menuList{
   display: flex;
-  align-items: flex-start;
   justify-content: space-between;
-  padding: 0px;
   align-items: center;
-  position: relative;
-  width: 300px;
-  height: 71px;
-  left: calc(20% - 1px);
+  width: 312px;
+  height: 72px;
+  margin-left:72px;
 }
 .listItem{
   height:64px;
 }
+.listItem:nth-child(1){
+  width:70px;
+  display:flex;
+  justify-content: center;
+}
+.listItem:nth-child(2){
+  width:87px;
+  display:flex;
+  justify-content: center;
+}
+.listItem:nth-child(3){
+  width:123px;
+  display:flex;
+  justify-content: center;
+}
+
+
 .listItem h2{
   /* position: absolute; */
   height: 64px;
@@ -143,26 +158,19 @@ nav{
   align-items: center;
   text-align: center;
   letter-spacing: -0.01em;
-  /* border:1px solid; */
 
   color: var(--black);
 }
 #listClicked1{
-  /* width:24px; */
   color:var(--primary-1);
-  
   box-shadow: 0 8px 0 -4px var(--primary-1);
 }
 #listClicked2{
-  /* width:24px; */
   color:var(--primary-1);
-  
   box-shadow: 0 16px 0 -12px var(--primary-1);
 }
 #listClicked3{
-  /* width:24px; */
   color:var(--primary-1);
-  
   box-shadow: 0 34px 0 -30px var(--primary-1);
 }
 
