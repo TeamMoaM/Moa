@@ -318,7 +318,7 @@
   }
   .comment{
       display:flex;
-      width:100%;
+      width:90%;
       flex-direction: column;
       align-items: flex-end;
       margin-top: 10px; /*나중에 수정*/
