@@ -49,7 +49,6 @@ function Post({isAuth,user}) {
                     </div>
                 </div>
             </div>
-           
           </div>
             {tabList?
                 <list className='tabList'>
@@ -62,7 +61,6 @@ function Post({isAuth,user}) {
                     <ul className='tabListItem'><button onClick={()=>{setTabList(0)}}className='serviceIntro1'><h3 className='subhead100'>리뷰</h3></button></ul>
                 </list>
             }
-            <div className='divider'></div>
         </div>
         <div className="postWrap2">{tabList?<PostServiceIntro/>:<PostReview/>}</div>
         </>

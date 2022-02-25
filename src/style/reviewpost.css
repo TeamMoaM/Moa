@@ -1,8 +1,11 @@
 .editor{
-    margin-top: 0;
-    padding:0;
-    position: absolute;
-    top:400px;
-    width:50%;
-    left:25%;
+    margin:0;
+    width:calc(67% - 61px);
+    max-width: 792px;
+    margin-top:-146px;
+}
+.editorBox{
+    width:100%;
+    display: flex;
+    justify-content: center;
 }

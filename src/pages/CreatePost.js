@@ -51,6 +51,7 @@ const CreatePost = ({user}) => {
         setDesc(value);
     }
     return (
+        <>
         <div className="createPost">
             <div className="serviceInfo">
                 {thumbnailImg? <div className="postImgWrap"><img id="postImgWrap"src={thumbnailImg}alt="사진을 추가해주세요!"/></div>:<div className="postImgWrap"></div>}
@@ -64,15 +65,17 @@ const CreatePost = ({user}) => {
             </div>
             <div className="divider"></div>
             <ClipLoader color={'red'} loading={loading} size={150} />
-            <Editor value={desc} onChange={onEditorChange}></Editor>
-            
             <form onSubmit={formHandeler}>
                 <input ref={thumbnailInput} id="input-file"onChange={thumbnailInputOnchange}className="fileButton" type="file"/>
                 <label className="input-file-button" for="input-file"><h3 className="subhead100">썸네일 올리기</h3></label>
                 <button className="submitButton" onClick={()=>{setLoading(true)}}type="submit"><h3 className="subhead100">글 등록하기</h3></button>
             </form>
-            
         </div>
+        <div className="editorBox">
+            <Editor value={desc} onChange={onEditorChange}></Editor>
+        </div>
+       
+        </>
     );
 };
 

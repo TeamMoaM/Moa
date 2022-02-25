@@ -28,7 +28,6 @@ function CreateReview({user}) {
         <>
             <div className='postWrap'>
                 <div className="postWrapBox">
-                    <div className="postBlank"></div>
                     <div className='serviceInfo'>
                         <img className='serviceImgWrap' src={post&&post.imageURL}></img>
                         <div className='serviceCon'>
