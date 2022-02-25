@@ -32,8 +32,11 @@ function Post({isAuth,user}) {
     return (
         <>
         <div className='postWrap'>
+          <div className='scrapReview'>
+            <button onClick={()=>scrap()}className='scrap'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>
+            <Link to={link} className='reviewButton'><h3 className='subhead100'>리뷰 작성하기</h3></Link>
+          </div>
           <div className="postWrapBox">
-            <div className="postBlank"></div>
             <div className='serviceInfo'>
                 <img className='serviceImgWrap' src={post&&post.imageURL}></img>
                 <div className='serviceCon'>
@@ -46,10 +49,7 @@ function Post({isAuth,user}) {
                     </div>
                 </div>
             </div>
-            <div className='scrapReview'>
-                <button onClick={()=>scrap()}className='scrap'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>
-                <Link to={link} className='reviewButton'><h3 className='subhead100'>리뷰 작성하기</h3></Link>
-            </div>
+           
           </div>
             {tabList?
                 <list className='tabList'>

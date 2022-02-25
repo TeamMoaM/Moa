@@ -9,11 +9,11 @@
 .postWrapBox{
   display:flex;
   justify-content: space-between;
-  width: calc(100vmax * 2 / 3);
+  max-width: 792px;
+  width:calc(67% - 61px);
   height:206px;
 }
 .serviceInfo{
-  width: 60%;
   height: 142px;
   display: flex;
   margin-top: 32px;
@@ -24,8 +24,10 @@
   margin-top: 32px;
 }
 .scrapReview{
-  margin-top: 32px;
-  width: 15%;
+  position:absolute;
+  top:32px;
+  right:40px;
+  width: calc(16.7% - 33px);
   height: 84px;
   display: flex;
   flex-direction: column;
@@ -157,8 +159,9 @@
 }
 .tabList{
   height: 40px;
+  max-width: 792px;
   display: inline-flex;
-  width:calc(100vmax * 2 / 5);
+  width:calc(67% - 61px);
   align-items: center;
 }
 .serviceIntro1{
