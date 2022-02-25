@@ -232,9 +232,10 @@ nav{
   top: 24px;
   width: 100%;
   height: 500px;
-
   background: var(--white);
-
+  display:flex;
+  align-items: center;
+  justify-content:flex-end;
   border: 1px solid var(--gray-3);
   box-sizing: border-box;
   border-radius: 16px;
@@ -260,10 +261,6 @@ nav{
 }
 .cardImage{
   width: 563px;
-  position: absolute;
-  left: 500px;
-  top: 30%;
-
 }
 @media screen and (max-width: 1300px) {
   .cardImage{
@@ -271,88 +268,7 @@ nav{
   } 
 }
 /*---------BetaTest.js CSS---------*/
-.BetaTest{
-  display:flex;
-  flex-direction: column;
-  width:100%;
-  align-items: center;
-}
-@media screen and (max-width: 900px) {
-  .BetaTest{
-    width: 900px;
-  }
-  .functions{
-    width: 600px;
-  }
-}
 
-.BetaTestPosts{
-  display:flex;
-  width:calc(100vmax * 2 / 3);
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-@media screen and (max-width: 900px) {
-  .BetaTestPosts{
-    width: 600px;
-  }
-}
-.post{
-  display:flex;
-  flex-direction: column;
-  border-radius: 8px;
-  width:282px;
-  height:310px;
-  justify-content: space-evenly;
-}
-#myimg{
-  width:282px;
-  height:176px;
-  object-fit: contain;
-  border: 1px solid var(--gray-3);
-  border-radius: 8px;
-}
-.post_title{
-  font-family: Noto Sans KR;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 150%;
-  width:282px;
-  display:-webkit-box;
-  -webkit-line-clamp:1;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-.post_content{
-  color:var(--black);
-  font-family: Noto Sans KR;
-  font-size: 14px;
-  letter-spacing: -0.01em;
-  line-height: 1.6;
-  width:282px;
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  height:48px;
-}
-.post_commentAndreview{
-  display:flex;
-  width:282px;
-  justify-content: space-between;
-  font-family: Noto Sans KR;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 160%;
-  margin-top: 1vw;
-  color: var(--gray-1);
-}
-.first_page{
-  color:var(--danger);
-}
 /*---------Create.js CSS---------*/
 .createPost{
   width: 100%;
