@@ -136,7 +136,7 @@ function Community({isAuth}){
             <div className="postTextContainer"> {post.postText} </div>
             <hr className="breakLine"/>
             <div className="likeAndComment">
-              <button className="likeButton" id={post.id} onClick={()=>{if(post.author.id===auth.currentUser.uid){alert("본인 게사물에는 좋아요를 누를 수 없습니다")} else{addLike(post.id);}  }}>{!post.like.includes(user.displayName)?<img className="heart"src={heart}/>:<img src={hearted}/>}<h1 className="caption100">공감 {post.likeCount}개</h1></button>
+              <button className="likeButton" id={post.id} onClick={()=>{addLike(post.id);}}>{!post.like.includes(user.displayName)?<img className="heart"src={heart}/>:<img src={hearted}/>}<h1 className="caption100">공감 {post.likeCount}개</h1></button>
               <div className="shareButtons">
                   <img src={message}/>
                   <img src={share}/>
