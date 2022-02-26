@@ -18,7 +18,7 @@
   }
   .firstPost{
     margin-top: 32px;
-    width:calc(50% - 52px);
+    width:calc(50% - 28px);
     min-width: 588px;
     padding:0 8px 0 16px;
     /* height: auto; */
@@ -52,7 +52,7 @@
   
   .homePage .post {
     width:calc(50% - 76px);
-    min-width: 588px;
+    min-width: 540px;
     height: auto;
     background-color: var(--white);
     /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
@@ -332,4 +332,50 @@
     text-align: center;
     align-items:center;
     height:32px;
+}
+/*popup*/
+.modalHeader{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalSecondHeader{
+  display:flex;
+  border:1px solid;
+  align-items: center;
+}
+.modalSecondHeader > img{
+  color:var(--primary-1);
+  margin-right:8px;
+}
+.modalClickedButton{
+  border-radius: 8px;
+  margin-right:4px;
+  color:white;
+  width: 42px;
+  height: 19px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-1);
+}
+.modalClickedButton > .caption100{
+  text-align: center;
+  border:1px solid;
+}
+.modalUnclickedButton{
+  border-radius: 8px;
+  margin-right: 4px;
+  width: 42px;
+  height: 19px; 
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  color:white;
+  background-color: var(--gray-2);
+}
+.modalUnclickedButton > .caption100{
+  text-align: center;
+  border:1px solid;
 }

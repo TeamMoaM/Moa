@@ -37,6 +37,7 @@ function App() {
       setIsAuth(true);
     }
   })
+  
   return(
     <Router>
       <nav>

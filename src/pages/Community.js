@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useRef} from 'react';
 import {collection,onSnapshot,doc,deleteDoc,getDoc,setDoc,updateDoc,arrayRemove,arrayUnion} from 'firebase/firestore';
 import {db,auth} from '../firebase-config';
 import {useNavigate,Link} from 'react-router-dom';
@@ -6,12 +6,22 @@ import {onAuthStateChanged} from 'firebase/auth';
 import heart from '../img/communityImg/heart.svg';
 import hearted from '../img/communityImg/hearted.svg';
 import profileDefaultImg from '../img/communityImg/defaultprofile.svg';
-import tagImg from '../img/communityImg/tag.svg';
 import message from '../img/communityImg/comment.svg';
 import share from '../img/communityImg/share.svg';
 import scrap from '../img/communityImg/scrap.svg';
+import Popup from 'reactjs-popup';
+import styled from "styled-components";
+import xIcon from '../img/communityImg/x_icon.svg';
+import tag from '../img/communityImg/tag.svg';
+import 'reactjs-popup/dist/index.css';
 import '../style/community.css';
-import ReplyComment from '../components/ReplyComment';
+styled(Popup)`
+  border:1px solid red;
+  color:red;
+  width:100px;
+`;
+
+
 function Community({isAuth}){
   const [postLists, setPostList] = useState([]);
   const [comment, setComment] = useState([]);
@@ -30,13 +40,6 @@ function Community({isAuth}){
       setPostList(snapshot.docs.map((doc)=>({
         ...doc.data(),id:doc.id
       })))
-      snapshot.docs.map((doc)=>{
-        doc.data().comments.map((comment)=>{
-          comment.replyComments.map((com)=>{
-            console.log(com.commentPeople);
-          })
-        })
-      })
     }
     )
     
@@ -95,24 +98,49 @@ function Community({isAuth}){
       window.location.href='/login';
     }
   }
+  const [open, setOpen] = useState(false);
+  const closeModal = () => setOpen(false);
   const inputPress = async(e,id) => {
     if(e.key=='Enter'){
       var input = document.getElementById("commentAddInput"+id);input.value='';
       await addComment(id);
     }
   }
+  // const post = useRef(null);
   const commentButtonStyle={
     postion:"absolute",
     bottom:"0",
     right:"0"
   }
+//   const StyledPopup = styled(Popup)`
+//   &-content[role=tooltip] {
+//     width: 250px;
+//   }
+// `;
   return (
     <div className="homePage">
-      <div className="firstPost">
+      <button onClick={() => setOpen(o => !o)} className="firstPost">
         <img className="firstPostImage" src={profileDefaultImg}/>
-        <Link to='/CreateCommunity' className="firstPostButton"><h1 className="caption151">회원님의 이야기를 공유해주세요.</h1></Link>
-        <img className="firstPostImage2" src={tagImg}/>
-      </div>
+        <div className="firstPostButton"><h1 className="caption151">회원님의 이야기를 공유해주세요.</h1></div>
+      </button>
+      <Popup contentStyle={{padding:"24px",width: "500px", height:"438px", borderRadius:"8px",boxShadow:"0px 4px 24px rgba(0, 1, 3, 0.1)"}}open={open} closeOnDocumentClick onClose={closeModal}>
+        <div className="modal">
+          <div className="modalHeader">
+            <h4 className="title100">새로운 게시물</h4>
+            <img className="close" onClick={()=>{closeModal();}}src={xIcon}/>
+          </div>
+          <div className="modalSecondHeader">
+            <img src={tag}/>
+            
+            <button className="modalClickedButton"><h2 className="caption100">디자인</h2></button>
+            <button className="modalUnclickedButton"><h2 className="caption100">개발</h2></button>
+            <button className="modalUnclickedButton"><h2 className="caption100">기획</h2></button>
+            <button className="modalUnclickedButton"><h2 className="caption100">사업</h2></button>
+            <button className="modalUnclickedButton"><h2 className="caption100">기술</h2></button>
+            
+          </div>
+        </div>
+      </Popup>
       {postLists.map((post) => {
         return (
           <div className="post">
@@ -219,6 +247,8 @@ function Community({isAuth}){
       })}
     </div>
   );
+
+  
     
 }
 export default Community;
