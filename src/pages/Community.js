@@ -30,6 +30,7 @@ function Community({setList,isAuth}){
   const [user,setCurrentUser] = useState({});
   const [postText,setPostText] = useState("");
   const [commentList,setCommentList] = useState([]);
+  const [tagSelect,setTagSelect] = useState(1);
   const postsCollectionRef = collection(db, 'community');
   var navigate = useNavigate();
   setList(3);
@@ -68,21 +69,7 @@ function Community({setList,isAuth}){
         await updateDoc(doc(db,"community",id),{commentCount:commentCount});
       }
   };
-  const addReplyComment = async (id,index) =>{
-    if(isAuth){
-      //댓글 개수 제한?
-      console.log(index);
-      index = index + 1;
-      index = String(index);
-      const docRef = doc(db,"community",id,"comments",index);
-      await updateDoc(docRef,{
-        replyComments:arrayUnion({
-          content:comment,
-          commentPeople:user.displayName
-        })
-      });
-    }
-  }
+
   // const commentToggles = async (id) =>{
   //   setCommentToggle(id);
   // }
@@ -116,7 +103,7 @@ function Community({setList,isAuth}){
     }
   }
   const createPost = async () => {
-    await addDoc(collection(db,'community'),{postText:postText,commentCount:0,author:{name:user.displayName,id:user.uid},like:[],likeCount:0});
+    await addDoc(collection(db,'community'),{postText:postText,commentCount:0,author:{name:user.displayName,id:user.uid},like:[],likeCount:0,tag:tagSelect});
   }
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
@@ -132,7 +119,7 @@ function Community({setList,isAuth}){
     bottom:"0",
     right:"0"
   }
-  const [tagSelect,setTagSelect] = useState(1);
+  
   return (
     <div className="homePage">
       <button onClick={() => setOpen(o => !o)} className="firstPost">
@@ -179,6 +166,13 @@ function Community({setList,isAuth}){
                       <h2 className="caption100"id='editdivider'>|</h2>
                     <button id="delete"onClick={()=>{console.log("delete!")}}><h2 id="deleteH"className="caption100">삭제하기</h2></button>
                 </div>
+            </div>
+            <div className="postTagWrap">
+            {post.tag==1?<div className="postTag"><div className="modalClickedButton"><h2 className="caption100">디자인</h2></div></div>:<></>}
+            {post.tag==2?<div className="postTag"><div className="modalClickedButton"><h2 className="caption100">개발</h2></div></div>:<></>}
+            {post.tag==3?<div className="postTag"><div className="modalClickedButton"><h2 className="caption100">기획</h2></div></div>:<></>}
+            {post.tag==4?<div className="postTag"><div className="modalClickedButton"><h2 className="caption100">사업</h2></div></div>:<></>}
+            {post.tag==5?<div className="postTag"><div className="modalClickedButton"><h2 className="caption100">기술</h2></div></div>:<></>}
             </div>
             
             <div className="postTextContainer"> {post.postText} </div>

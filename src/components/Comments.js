@@ -96,7 +96,7 @@ function Comments({id,user}) {
                 
                 <div className="commentInputAndButton">
                   <input  onBlur={(e)=>{var input1 = document.getElementById('commentAddInput'+comment.id);input1.value='';}} onFocus={(e)=>{var input = document.getElementById(comment.id+'button');input.style.display="block";var input1 = document.getElementById('commentAddInput'+comment.id);input1.value='';input1.style.borderTopRightRadius= "0px";input1.style.borderBottomRightRadius="0px";}} id={"commentAddInput"+comment.id}onKeyPress={(e)=>{inputPress(e,comment.id)}} className="replyPostCommentInput" placeholder="회원님의 의견을 공유해주세요." onChange={(event)=>{setComment(event.target.value);}}/>
-                  <button id={comment.id+'button'} style={commentButtonStyle} className="commentSendButton" onClick={()=>{addReplyComment(comment.id)}}><h3 className="subhead100">replyCOmment 등록</h3></button> 
+                  <button id={comment.id+'button'} style={commentButtonStyle} className="commentSendButton" onClick={()=>{addReplyComment(comment.id)}}><h3 className="subhead100">등록</h3></button> 
                 </div>
             </div>
             )

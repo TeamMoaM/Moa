@@ -174,7 +174,7 @@
     font-weight: normal;
     font-size: 15px;
     line-height: 200%;
-    margin-top:6px;
+    margin-top:16px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -338,11 +338,11 @@
     background-position: 16px 50%;
     background-repeat: no-repeat; 
     background-size: 28px 28px;
-    background-color: var(--danger);
-    width: calc(100% - 64px);
+    background-color: var(--white);
+    width: calc(100% - 44px);
     height: 42px;
     border:none;
-    padding-left:100px;
+    padding-left:64px;
     border: 1px solid #E8E8EE;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
@@ -369,8 +369,8 @@
     margin-bottom:16px;
   }
   .commentInputAndButton{
-    width: calc(100% - 32px);
-    padding-left: 32px;
+    width: calc(100% - 64px);
+    padding-left: 64px;
     display:flex;
     align-items: center;
     margin-top: 16px;
@@ -391,7 +391,6 @@
 }
 .commentBox{
   width:100%;
-  border:1px solid;
   display:flex;
   margin-top: 16px;
   flex-direction: column;
@@ -498,4 +497,10 @@
   display:flex;
   flex-direction: column;
   align-items: center;
+}
+.postTagWrap{
+  display:flex;
+  width:100%;
+  margin-top:16px;
+  justify-content: left;
 }

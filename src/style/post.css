@@ -287,3 +287,14 @@
   letter-spacing: -0.01em;
   line-height: 150%; font-size: 16px;font-weight: 400;
 }
+
+.popHeader{
+  position:absolute;
+  /* top:72px; */
+  display:flex;
+  width:500px;
+  height:500px;
+  background-color: blue;
+  z-index: -10;
+  border:1px solid red;
+}

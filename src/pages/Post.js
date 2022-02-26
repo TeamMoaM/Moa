@@ -1,5 +1,5 @@
 import { doc, setDoc } from 'firebase/firestore';
-import React, { useEffect,useState } from 'react';
+import React, { useEffect,useState ,useRef} from 'react';
 import {Link, useParams, useResolvedPath} from 'react-router-dom';
 import {db} from '../firebase-config';
 import {getDoc,arrayUnion} from 'firebase/firestore';
@@ -12,6 +12,26 @@ import 'reactjs-popup/dist/index.css';
 function Post({isAuth,user}) {
     const [post, setPost] = useState([]);
     const {roomId} = useParams();
+    const [position,setPosition] = useState(0);
+    const popHeader = useRef(null);
+    function onScroll(){
+        setPosition(window.scrollY);
+    }
+    useEffect(()=>{
+        window.addEventListener("scroll",onScroll);
+        return () => {
+            window.removeEventListener("scroll",onScroll);
+        }
+    })
+    useEffect(()=>{
+        console.log(position);
+        if(position>=214){
+            // popHeader.current.style.top="500px";
+        }
+        else{
+            // popHeader.current.style.top="72px";
+        }
+    },[position])
     if(!isAuth){
         window.location.href='/login';
     }
@@ -31,6 +51,9 @@ function Post({isAuth,user}) {
 
     return (
         <>
+        <div className="popHeader">
+          
+        </div>
         <div className='postWrap'>
           <div className='scrapReview'>
             <button onClick={()=>scrap()}className='scrap'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>
