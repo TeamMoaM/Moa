@@ -1,5 +1,5 @@
 import React,{useState,useEffect,useRef} from 'react';
-import {collection,onSnapshot,doc,deleteDoc,getDoc,setDoc,updateDoc,arrayRemove,arrayUnion} from 'firebase/firestore';
+import {collection,onSnapshot,addDoc,doc,deleteDoc,getDoc,setDoc,updateDoc,arrayRemove,arrayUnion} from 'firebase/firestore';
 import {db,auth} from '../firebase-config';
 import {useNavigate,Link} from 'react-router-dom';
 import {onAuthStateChanged} from 'firebase/auth';
@@ -27,6 +27,7 @@ function Community({isAuth}){
   const [comment, setComment] = useState([]);
   const [commentToggle,setCommentToggle] =useState('asd');
   const [user,setCurrentUser] = useState({});
+  const [postText,setPostText] = useState("");
   const postsCollectionRef = collection(db, 'community');
   var navigate = useNavigate();
   if(isAuth==false){
@@ -42,8 +43,6 @@ function Community({isAuth}){
       })))
     }
     )
-    
-
   },false)
   const deletePost = async (id) => {//해당 id의 post 삭제하는 함수(currentUser의 게시물인지 확인 필요)
     const postDoc = doc(db, 'community', id);
@@ -98,6 +97,9 @@ function Community({isAuth}){
       window.location.href='/login';
     }
   }
+  const createPost = async () => {
+    await addDoc(collection(db,'community'), {postText:postText,comment:[],author:{name:user.displayName,id:user.uid},like:[]});
+  }
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
   const inputPress = async(e,id) => {
@@ -112,11 +114,7 @@ function Community({isAuth}){
     bottom:"0",
     right:"0"
   }
-//   const StyledPopup = styled(Popup)`
-//   &-content[role=tooltip] {
-//     width: 250px;
-//   }
-// `;
+  const [tagSelect,setTagSelect] = useState(1);
   return (
     <div className="homePage">
       <button onClick={() => setOpen(o => !o)} className="firstPost">
@@ -131,13 +129,17 @@ function Community({isAuth}){
           </div>
           <div className="modalSecondHeader">
             <img src={tag}/>
-            
-            <button className="modalClickedButton"><h2 className="caption100">디자인</h2></button>
-            <button className="modalUnclickedButton"><h2 className="caption100">개발</h2></button>
-            <button className="modalUnclickedButton"><h2 className="caption100">기획</h2></button>
-            <button className="modalUnclickedButton"><h2 className="caption100">사업</h2></button>
-            <button className="modalUnclickedButton"><h2 className="caption100">기술</h2></button>
-            
+            {tagSelect==1?<button onClick={()=>{setTagSelect(1);}} className="modalClickedButton"><h2 className="caption100">디자인</h2></button>:<button onClick={()=>{setTagSelect(1);}} className="modalUnclickedButton"><h2 className="caption100">디자인</h2></button>}
+            {tagSelect==2?<button onClick={()=>{setTagSelect(2);}} className="modalClickedButton"><h2 className="caption100">개발</h2></button>:<button onClick={()=>{setTagSelect(2);}} className="modalUnclickedButton"><h2 className="caption100">개발</h2></button>}
+            {tagSelect==3?<button onClick={()=>{setTagSelect(3);}} className="modalClickedButton"><h2 className="caption100">기획</h2></button>:<button onClick={()=>{setTagSelect(3);}} className="modalUnclickedButton"><h2 className="caption100">기획</h2></button>}
+            {tagSelect==4?<button onClick={()=>{setTagSelect(4);}} className="modalClickedButton"><h2 className="caption100">사업</h2></button>:<button onClick={()=>{setTagSelect(4);}} className="modalUnclickedButton"><h2 className="caption100">사업</h2></button>}
+            {tagSelect==5?<button onClick={()=>{setTagSelect(5);}} className="modalClickedButton"><h2 className="caption100">기술</h2></button>:<button onClick={()=>{setTagSelect(5);}} className="modalUnclickedButton"><h2 className="caption100">기술</h2></button>}
+          </div>
+          <div className="modalWriteBox">
+            <div className="modalContentWrite">
+              <textarea onChange={(event)=>{setPostText(event.target.value);}}className="modalContentWriteTextarea" placeholder="회원님의 이야기를 공유해주세요."></textarea>
+            </div>
+            <button onClick={()=>{createPost();}}className="modalpostButton"><h3 className="subhead100">게시물 올리기</h3></button>
           </div>
         </div>
       </Popup>

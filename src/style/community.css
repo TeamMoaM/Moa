@@ -334,6 +334,11 @@
     height:32px;
 }
 /*popup*/
+.modal{
+  width:100%;
+  display:flex;
+  flex-direction: column;
+}
 .modalHeader{
   display:flex;
   justify-content: space-between;
@@ -342,8 +347,9 @@
 
 .modalSecondHeader{
   display:flex;
-  border:1px solid;
+  height: 24px;
   align-items: center;
+  margin-top: 20px;
 }
 .modalSecondHeader > img{
   color:var(--primary-1);
@@ -362,7 +368,6 @@
 }
 .modalClickedButton > .caption100{
   text-align: center;
-  border:1px solid;
 }
 .modalUnclickedButton{
   border-radius: 8px;
@@ -377,5 +382,33 @@
 }
 .modalUnclickedButton > .caption100{
   text-align: center;
-  border:1px solid;
+}
+.modalContentWrite{
+  margin-top: 16px;
+}
+.modalContentWriteTextarea{
+  width: 500px;
+  height:202px;
+  border:none;
+  resize: none;
+  border-bottom: 1px solid #E7E8EE;
+}
+.modalContentWriteTextarea:focus{
+  border:none;
+  outline:none;
+  border-bottom: 1px solid #E7E8EE;
+}
+.modalpostButton{
+  margin-top:16px;
+  background: #2727AD;
+  border-radius: 8px;
+  width: 500px;
+  color:white;
+  height: 52px;
+}
+.modalWriteBox{
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
