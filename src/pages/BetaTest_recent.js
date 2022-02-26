@@ -6,14 +6,14 @@ import {useNavigate} from 'react-router-dom';
 import Post from './Post';
 import '../style/BetaTest.css';
 import ReactPaginate from 'react-paginate';
-function BetaTest_recent({}){
+function BetaTest_recent({setList}){
     const postsCollectionRef = collection(db, "posts");
     const [posts,setPosts] = useState([]);
     const navigate = useNavigate();
     const [totalPage, setTotalPage] = useState(0);
     const [pageNumber,setPageNumber] = useState(0);
     const onepageNumber = 16;
-
+    setList(2);
     const q = query(postsCollectionRef, orderBy("id"),startAt((pageNumber)*onepageNumber+1),limit(onepageNumber));
     console.log(pageNumber);
     useEffect(()=>{

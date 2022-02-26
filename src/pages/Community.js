@@ -2,7 +2,7 @@ import React,{useState,useEffect,useRef} from 'react';
 import {collection,onSnapshot,addDoc,doc,deleteDoc,getDoc,setDoc,updateDoc,arrayRemove,arrayUnion} from 'firebase/firestore';
 import {db,auth} from '../firebase-config';
 import {useNavigate,Link} from 'react-router-dom';
-import {onAuthStateChanged} from 'firebase/auth';
+import {onAuthStateChanged,setPersistence,browserSessionPersistence} from 'firebase/auth';
 import heart from '../img/communityImg/heart.svg';
 import hearted from '../img/communityImg/hearted.svg';
 import profileDefaultImg from '../img/communityImg/defaultprofile.svg';
@@ -13,26 +13,28 @@ import Popup from 'reactjs-popup';
 import styled from "styled-components";
 import xIcon from '../img/communityImg/x_icon.svg';
 import tag from '../img/communityImg/tag.svg';
+import Comments from '../components/Comments';
 import 'reactjs-popup/dist/index.css';
 import '../style/community.css';
-styled(Popup)`
-  border:1px solid red;
-  color:red;
-  width:100px;
-`;
+// styled(Popup)`
+//   border:1px solid red;
+//   color:red;
+//   width:100px;
+// `;
 
 
-function Community({isAuth}){
+function Community({setList,isAuth}){
   const [postLists, setPostList] = useState([]);
   const [comment, setComment] = useState([]);
   const [commentToggle,setCommentToggle] =useState('asd');
   const [user,setCurrentUser] = useState({});
   const [postText,setPostText] = useState("");
+  const [commentList,setCommentList] = useState([]);
   const postsCollectionRef = collection(db, 'community');
   var navigate = useNavigate();
-  if(isAuth==false){
-    navigate("/login");
-  }
+  setList(3);
+  
+  setPersistence(auth, browserSessionPersistence).then(()=>{console.log("browser session success")});
   onAuthStateChanged(auth,(User)=>{
     setCurrentUser(User);
   })
@@ -41,33 +43,49 @@ function Community({isAuth}){
       setPostList(snapshot.docs.map((doc)=>({
         ...doc.data(),id:doc.id
       })))
-    }
-    )
+    })
   },false)
+  
   const deletePost = async (id) => {//해당 id의 post 삭제하는 함수(currentUser의 게시물인지 확인 필요)
     const postDoc = doc(db, 'community', id);
-    await deleteDoc(postDoc);
+    // await deleteDoc(postDoc);
   };
   const addComment = async (id) =>{//comment 추가했을때 comment 내용이랑 comment commentPoeple추가하는 함수(post id 필요)
      if(isAuth){
-        const postDoc = doc(db, 'community', id);
-        const docSnap = await getDoc(postDoc);
-        let commentCount = docSnap.data().commentCount;
-        if(commentCount>=16){//댓글이 무한정 많아지는 거 방지하는 용
-            alert("한 게시물에 댓글은 15개까지만 다실 수 있습니다.");
-            return 0;
-        }
-        commentCount =  commentCount +1;
-        var comments = docSnap.data().comment;
-        comments.push(comment);
-        var commentPeoples = docSnap.data().commentPeople;
-        commentPeoples.push(user.displayName);
-        await setDoc(doc(db,'community',id),{...docSnap.data(),comment:comments,commentPeople:commentPeoples,commentCount:commentCount});
-     }
+        //댓글 개수 제한?
+        const docSnap = await getDoc(doc(db,'community',id));
+        var commentCount = docSnap.data().commentCount;
+        commentCount = commentCount + 1;
+        console.log("count:"+commentCount);
+        commentCount = String(commentCount);
+        const docRef = doc(db,"community",id,"comments",commentCount);
+        setDoc(docRef,{
+          content:comment,
+          commentPeople:user.displayName,
+          replyComments:[]
+        })
+        commentCount = Number(commentCount);
+        await updateDoc(doc(db,"community",id),{commentCount:commentCount});
+      }
   };
-  const commentToggles = async (id) =>{
-    setCommentToggle(id);
+  const addReplyComment = async (id,index) =>{
+    if(isAuth){
+      //댓글 개수 제한?
+      console.log(index);
+      index = index + 1;
+      index = String(index);
+      const docRef = doc(db,"community",id,"comments",index);
+      await updateDoc(docRef,{
+        replyComments:arrayUnion({
+          content:comment,
+          commentPeople:user.displayName
+        })
+      });
+    }
   }
+  // const commentToggles = async (id) =>{
+  //   setCommentToggle(id);
+  // }
   const addLike = async (id) =>{
     if(isAuth){
       const postDoc = doc(db, 'community', id);
@@ -98,7 +116,7 @@ function Community({isAuth}){
     }
   }
   const createPost = async () => {
-    await addDoc(collection(db,'community'), {postText:postText,comment:[],author:{name:user.displayName,id:user.uid},like:[]});
+    await addDoc(collection(db,'community'),{postText:postText,commentCount:0,author:{name:user.displayName,id:user.uid},like:[],likeCount:0});
   }
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
@@ -146,7 +164,7 @@ function Community({isAuth}){
       {postLists.map((post) => {
         return (
           <div className="post">
-            <div className="postHeader">
+            <div className="firstPostHeader">
                 <div className="postInformation">
                     <img className="pfpimage" src={profileDefaultImg}/>
                     <div className="postProfile">
@@ -157,9 +175,9 @@ function Community({isAuth}){
                     </div>
                 </div>
                 <div className="postEdit">
-                    <button onClick={()=>{console.log("edit!")}}><h2 id='edit'className="caption100">수정하기</h2></button>
-                    <h2 className="caption100"id='editdivider'>|</h2>
-                    <button onClick={()=>{deletePost(post.id);console.log("delete!")}}><h2 id='delete'className="caption100">삭제하기</h2></button>
+                    <button id="edit"onClick={()=>{console.log("edit!")}}><h2 id="editH"className="caption100">수정하기</h2></button>
+                      <h2 className="caption100"id='editdivider'>|</h2>
+                    <button id="delete"onClick={()=>{console.log("delete!")}}><h2 id="deleteH"className="caption100">삭제하기</h2></button>
                 </div>
             </div>
             
@@ -174,73 +192,13 @@ function Community({isAuth}){
               </div>
             </div>
             
-          {/* {post.comments[0].replyComments.map((replyComment)=>{
-            <>
-            <div>{replyComment.content}</div>
-            <div>{replyComment.commentPeople}</div>
-            </>
-          })} */}
+
 
             {/* 댓글 구현  */}
-
-            {post.comments&&post.comments.map((comment)=>{
-                return(
-                <div className="comment">
-                    <div className="postHeader">
-                        <div className="postInformation">
-                            <img className="pfpimage" src={profileDefaultImg}/>
-                            <div className="postProfile">
-                                <div className="postProfile1">
-                                    <h5 id="postAuthorName"className="point100">{comment.commentPeople}</h5><h5 id="postCompanyName"className="point100">{"회사 이름"}</h5>
-                                </div>
-                                <div className="postProfile1"><h2 className="caption100">{"1시간 전"}</h2></div>
-                            </div>
-                        </div>
-                        <div className="postEdit">
-                            <button onClick={()=>{console.log("edit!")}}><h2 id='edit'className="caption100">수정하기</h2></button>
-                            <h2 className="caption100"id='editdivider'>|</h2>
-                            <button onClick={()=>{console.log("delete!")}}><h2 id='delete'className="caption100">삭제하기</h2></button>
-                        </div>
-                    </div>
-                    <div className="postTextContainer"> {comment.content} </div>
-                    
-                    {comment.replyComments.map((com)=>{return(
-                       <div className="comment">
-                        <div className="postHeader">
-                            <div className="postInformation">
-                                <img className="pfpimage" src={profileDefaultImg}/>
-                                <div className="postProfile">
-                                    <div className="postProfile1">
-                                        <h5 id="postAuthorName"className="point100">{com.commentPeople}</h5><h5 id="postCompanyName"className="point100">{"회사 이름"}</h5>
-                                    </div>
-                                    <div className="postProfile1"><h2 className="caption100">{"1시간 전"}</h2></div>
-                                </div>
-                            </div>
-                            <div className="postEdit">
-                                <button onClick={()=>{console.log("edit!")}}><h2 id='edit'className="caption100">수정하기</h2></button>
-                                <h2 className="caption100"id='editdivider'>|</h2>
-                                <button onClick={()=>{console.log("delete!")}}><h2 id='delete'className="caption100">삭제하기</h2></button>
-                            </div>
-                        </div>
-                        <div className="postTextContainer"> {com.content} </div>
-                       </div>
-
-                    )})}
-                    
-                    
-                    <div className="inputAndButton">
-                    {/* var input = document.getElementById(post.id+'button');input.style.display="none"; */}
-                      <input  onBlur={(e)=>{var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';}} onFocus={(e)=>{var input = document.getElementById(post.id+'button');input.style.display="block";var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';input1.style.borderTopRightRadius= "0px";input1.style.borderBottomRightRadius="0px";}} id={"commentAddInput"+post.id}onKeyPress={(e)=>{inputPress(e,post.id)}} className="postCommentInput" placeholder="회원님의 생각을 전달해주세요." onChange={(event)=>{setComment(event.target.value);}}/>
-                      <button id={post.id+'button'} style={commentButtonStyle} className="commentSendButton" onClick={()=>{addComment(post.id)}}><h3 className="subhead100">등록</h3></button> 
-                    </div>
-                </div>
-                )
-            })}
-            
-
+            <Comments id={post.id} user={user}/>
+      
             <div className="inputAndButton">
-            {/* var input = document.getElementById(post.id+'button');input.style.display="none"; */}
-              <input  onBlur={(e)=>{var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';}} onFocus={(e)=>{var input = document.getElementById(post.id+'button');input.style.display="block";var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';input1.style.borderTopRightRadius= "0px";input1.style.borderBottomRightRadius="0px";}} id={"commentAddInput"+post.id}onKeyPress={(e)=>{inputPress(e,post.id)}} className="postCommentInput" placeholder="회원님의 생각을 전달해주세요." onChange={(event)=>{setComment(event.target.value);}}/>
+              <input  onBlur={(e)=>{var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';}} onFocus={(e)=>{var input = document.getElementById(post.id+'button');input.style.display="block";var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';input1.style.borderTopRightRadius= "0px";input1.style.borderBottomRightRadius="0px";}} id={"commentAddInput"+post.id}onKeyPress={(e)=>{inputPress(e,post.id)}} className="postCommentInput" placeholder="회원님의 의견을 공유해주세요." onChange={(event)=>{setComment(event.target.value);}}/>
               <button id={post.id+'button'} style={commentButtonStyle} className="commentSendButton" onClick={()=>{addComment(post.id)}}><h3 className="subhead100">등록</h3></button> 
             </div>
           </div>
