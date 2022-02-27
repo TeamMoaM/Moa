@@ -1,12 +1,12 @@
 import React,{useState,useEffect} from 'react';
 import {db} from '../firebase-config';
 import {Link} from 'react-router-dom';
-import {orderBy,collection,onSnapshot,query, startAt, limit,doc, getDoc} from "firebase/firestore";
+import {orderBy,collection,onSnapshot,query, startAt, limit,doc, getDoc, startAfter} from "firebase/firestore";
 import {useNavigate} from 'react-router-dom';
 import Post from './Post';
 import '../style/BetaTest.css';
 import ReactPaginate from 'react-paginate';
-function BetaTest_recent({}){
+function BetaTest_late({}){
     const postsCollectionRef = collection(db, "posts");
     const [posts,setPosts] = useState([]);
     const navigate = useNavigate();
@@ -14,12 +14,14 @@ function BetaTest_recent({}){
     const [pageNumber,setPageNumber] = useState(0);
     const onepageNumber = 16;
 
-    const q = query(postsCollectionRef, orderBy("id",'desc'),startAt((pageNumber)*onepageNumber+1),limit(onepageNumber));
+    const q = query(postsCollectionRef, orderBy("id",'desc'),startAfter((pageNumber)*onepageNumber+1),limit(onepageNumber));
     console.log(pageNumber);
     useEffect(()=>{
         onSnapshot(q, (snapshot)=>
           {
-              console.log(snapshot.docs);
+            snapshot.docs.map((doc)=>{
+                console.log("doc"+doc.data().content);
+            })
             setPosts(snapshot.docs.map((doc)=>({
                 ...doc.data(), id: doc.id,title: doc.data().title, content: doc.data().content, imageURL:doc.data().imageURL, commentCount: doc.data().commentCount, reviewCount: doc.data().reviewCount
             }))); 
@@ -85,4 +87,4 @@ function BetaTest_recent({}){
         </div>
     )
 }
-export default BetaTest_recent;
+export default BetaTest_late;
