@@ -8,6 +8,7 @@ import "../style/post.css";
 import PostServiceIntro from './PostServiceIntro';
 import PostReview from './PostReview';
 import Popup from 'reactjs-popup';
+import defaultprofileImg from '../img/communityImg/defaultprofile.svg';
 import 'reactjs-popup/dist/index.css';
 function Post({isAuth,user}) {
     const [post, setPost] = useState([]);
@@ -61,11 +62,11 @@ function Post({isAuth,user}) {
             <div className='serviceInfo'>
                 <img className='serviceImgWrap' src={post&&post.imageURL}></img>
                 <div className='postCon'>
-                    <div className="postTitle"><h4 className='title100'>{post&&post.title}</h4></div>
+                    <div className="postTitle2"><h4 className='title100'>{post&&post.title}</h4></div>
                     <div className='userInfo'>
-                        <div className='userImg'></div><h4 className='body100'>{post.author&&post.author.name}</h4><h2 className='caption100'>company namy</h2>{/* 회사 이름은 회원가입 페이지 이후 작업 시작 */}
+                       <img className="userImg"src={defaultprofileImg}/><h4 className='body100'>{post.author&&post.author.name}</h4><h2 className='caption100'>company namy</h2>{/* 회사 이름은 회원가입 페이지 이후 작업 시작 */}
                     </div>
-                    <div className='postIntro'>
+                    <div className='postIntro2'>
                         <h2 className='body150'>{post&&post.content}</h2>
                     </div>
                 </div>
