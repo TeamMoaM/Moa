@@ -270,29 +270,24 @@
 .postTitle{
   width: calc(100% - 6px);
   margin:0;
-  font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
-  letter-spacing: -0.01em;
-  font-size: 24px; line-height: 100%;font-weight: 700;
-}
-.postTitle2{
-  width: calc(100% - 6px);
-  margin:0;
   margin-bottom: 12px;
   font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
   letter-spacing: -0.01em;
   font-size: 24px; line-height: 100%;font-weight: 700;
 }
+
 /*userInfo 부분은 Post.js와 동일*/
 .postIntro{
   color: var(--black);
   width: calc(100% - 6px);
   resize: none;
   border:none;
+  margin-top:24px;
   font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
   letter-spacing: -0.01em;
   line-height: 150%; font-size: 16px;font-weight: 400;
 }
-.postIntro2{
+.postIntro{
   color: var(--black);
   width: calc(100% - 6px);
   resize: none;
