@@ -26,10 +26,10 @@ function Post({isAuth,user}) {
     useEffect(()=>{
         console.log(position);
         if(position>=214){
-            // popHeader.current.style.top="500px";
+            popHeader.current.style.top="0px";
         }
         else{
-            // popHeader.current.style.top="72px";
+            popHeader.current.style.top="-248px";
         }
     },[position])
     if(!isAuth){
@@ -51,9 +51,7 @@ function Post({isAuth,user}) {
 
     return (
         <>
-        <div className="popHeader">
-          
-        </div>
+        
         <div className='postWrap'>
           <div className='scrapReview'>
             <button onClick={()=>scrap()}className='scrap'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>
@@ -84,6 +82,39 @@ function Post({isAuth,user}) {
                     <ul className='tabListItem'><button onClick={()=>{setTabList(0)}}className='serviceIntro1'><h3 className='subhead100'>리뷰</h3></button></ul>
                 </list>
             }
+            <div ref={popHeader}className="popHeader">
+                <div className='postWrap'>
+                    <div className='scrapReview2'>
+                        <button onClick={()=>scrap()}className='scrap'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>
+                        <Link to={link} className='reviewButton'><h3 className='subhead100'>리뷰 작성하기</h3></Link>
+                    </div>
+                    <div className="postWrapBox">
+                        <div className='serviceInfo'>
+                            <img className='serviceImgWrap' src={post&&post.imageURL}></img>
+                            <div className='serviceCon'>
+                                <h4 className='title100'>{post&&post.title}</h4>
+                                <div className='userInfo'>
+                                    <div className='userImg'></div><h4 className='body100'>{post.author&&post.author.name}</h4><h2 className='caption100'>company namy</h2>{/* 회사 이름은 회원가입 페이지 이후 작업 시작 */}
+                                </div>
+                                <div className='serviceEx'>
+                                    <h2 className='body150'>{post&&post.content}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {tabList?
+                        <list className='tabList'>
+                            <ul className='tabListItem'><button onClick={()=>{setTabList(1)}}className='serviceIntro1'><h3 className='subhead100'>서비스 소개</h3></button></ul>
+                            <ul className='tabListItem'><button onClick={()=>{setTabList(0)}}className='serviceIntro0'><h3 className='body100'>리뷰</h3></button></ul>
+                        </list>
+                    :
+                        <list className='tabList'>
+                            <ul className='tabListItem'><button onClick={()=>{setTabList(1)}}className='serviceIntro0'><h3 className='body100'>서비스 소개</h3></button></ul>
+                            <ul className='tabListItem'><button onClick={()=>{setTabList(0)}}className='serviceIntro1'><h3 className='subhead100'>리뷰</h3></button></ul>
+                        </list>
+                    }
+                </div>
+            </div>
         </div>
         <div className="postWrap2">{tabList?<PostServiceIntro/>:<PostReview/>}</div>
         </>

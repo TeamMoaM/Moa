@@ -289,12 +289,20 @@
 }
 
 .popHeader{
-  position:absolute;
+  position:fixed;
   /* top:72px; */
-  display:flex;
-  width:500px;
-  height:500px;
-  background-color: blue;
-  z-index: -10;
-  border:1px solid red;
+  top:0px;
+  width:calc(67% - 61px);
+  height:116px;
+}
+.scrapReview2{
+  position:absolute;
+  top:32px;
+  right:40px;
+  width: calc(16.7% - 33px);
+  max-width: 180px;
+  min-width:120px;
+  height: 84px;
+  display: flex;
+  flex-direction: column;
 }
