@@ -286,7 +286,8 @@ nav{
 .editor{
   width: calc(100vmax * 2 / 3);
   margin: 0 auto;
-
+  position: relative;
+  top:177px;
 }
 .ql-editor{
   min-height: 400px;
