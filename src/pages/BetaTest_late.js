@@ -1,32 +1,55 @@
 import React,{useState,useEffect} from 'react';
 import {db} from '../firebase-config';
 import {Link} from 'react-router-dom';
-import {orderBy,collection,onSnapshot,query, startAt, limit,doc, getDoc, startAfter} from "firebase/firestore";
+import {orderBy,collection,onSnapshot,query, startAt, limit,doc, getDoc, startAfter, getDocs} from "firebase/firestore";
 import {useNavigate} from 'react-router-dom';
 import Post from './Post';
 import '../style/BetaTest.css';
 import ReactPaginate from 'react-paginate';
-function BetaTest_late({}){
+function BetaTest_late({setList}){
+    setList(2);
     const postsCollectionRef = collection(db, "posts");
     const [posts,setPosts] = useState([]);
     const navigate = useNavigate();
     const [totalPage, setTotalPage] = useState(0);
-    const [pageNumber,setPageNumber] = useState(0);
+    const [pageNumber,setPageNumber] = useState(1);
+    const [lastPage,setLastPage] = useState({});
+    const [firstPage,setFirstPage] = useState();
     const onepageNumber = 16;
-
-    const q = query(postsCollectionRef, orderBy("id",'desc'),startAfter((pageNumber)*onepageNumber+1),limit(onepageNumber));
-    console.log(pageNumber);
+    
+    // const q = query(postsCollectionRef, orderBy("time",'desc'),startAfter((pageNumber)*onepageNumber+1),limit(onepageNumber));
     useEffect(()=>{
-        onSnapshot(q, (snapshot)=>
-          {
-            snapshot.docs.map((doc)=>{
-                console.log("doc"+doc.data().content);
-            })
-            setPosts(snapshot.docs.map((doc)=>({
-                ...doc.data(), id: doc.id,title: doc.data().title, content: doc.data().content, imageURL:doc.data().imageURL, commentCount: doc.data().commentCount, reviewCount: doc.data().reviewCount
-            }))); 
-          }
-        )
+        console.log("pagenumber:"+pageNumber);
+        if(pageNumber==1){
+            var q = query(postsCollectionRef, orderBy("time",'desc'),limit(onepageNumber));
+            if(typeof firstPage!="undefined"){
+                q = query(postsCollectionRef,orderBy("time",'desc'),startAt(firstPage),limit(onepageNumber));
+            }
+           
+            onSnapshot(q, (snapshot)=>
+            {
+                setLastPage(snapshot.docs[15]);
+                setFirstPage(snapshot.docs[0]);
+                console.log("firstPage:",snapshot.docs[0].data().content);
+                setPosts(snapshot.docs.map((doc)=>({
+                    ...doc.data(), id: doc.id,title: doc.data().title, content: doc.data().content, imageURL:doc.data().imageURL, commentCount: doc.data().commentCount, reviewCount: doc.data().reviewCount
+                }))); 
+            }
+            )
+        }
+        else{
+            const q = query(postsCollectionRef, orderBy("time",'desc'),startAfter(lastPage),limit(onepageNumber));
+            onSnapshot(q, (snapshot)=>
+            {
+                setLastPage(snapshot.docs[15]);
+                setPosts(snapshot.docs.map((doc)=>({
+                    ...doc.data(), id: doc.id,title: doc.data().title, content: doc.data().content, imageURL:doc.data().imageURL, commentCount: doc.data().commentCount, reviewCount: doc.data().reviewCount
+                }))); 
+            }
+            )
+        }
+        
+        
         getDoc(doc(db,'docCount','docCount')).then((docSnap)=>{
             if(docSnap.exists()){
                 setTotalPage(Math.ceil(docSnap.data().docCount/onepageNumber));
@@ -37,7 +60,8 @@ function BetaTest_late({}){
         navigate(`/post/${id}`);
     }
     const changePage = ({selected}) => {
-        setPageNumber(selected);
+        console.log("selected:",selected);
+        setPageNumber(selected+1);
     }
     
 
