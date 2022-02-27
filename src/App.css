@@ -287,15 +287,9 @@ nav{
   width: calc(100vmax * 2 / 3);
   margin: 0 auto;
 
-  position: relative;
-  top: 206px;
 }
 .ql-editor{
   min-height: 400px;
 }
-@media screen and (max-width: 900px) {
-  .editor{
-    width: 600px;
-  }
-}
+
 

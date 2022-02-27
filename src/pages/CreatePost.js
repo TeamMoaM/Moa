@@ -60,7 +60,7 @@ const CreatePost = ({user}) => {
                     <div className='userInfo'>
                         <div className='userImg'></div><h4 className='body100'>{user.displayName}</h4><h2 className='caption100'>Company name</h2>
                     </div>
-                    <input className="postIntro" placeholder="서비스 개요를 입력하세요" onChange={(event)=>{setContent(event.target.value)}}></input>
+                    <textarea className="postIntro" placeholder="서비스 개요를 입력하세요" onChange={(event)=>{setContent(event.target.value)}}></textarea>
                 </div>
             </div>
             <div className="divider"></div>

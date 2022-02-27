@@ -16,6 +16,7 @@
 .serviceInfo{
   height: 142px;
   display: flex;
+  align-items:center;
   margin-top: 32px;
 }
 .postBlank{
@@ -68,10 +69,7 @@
   position: relative;
 }
 .serviceInfo .userInfo{
-  position: relative;
-  /* width: 45%; */
   height: 24px;
-  top:14px;
   display: flex;
   justify-content: flex-start;
 }
@@ -82,14 +80,12 @@
   background-color: var(--caution);
 }
 .serviceInfo .userInfo h4{
-  position: relative;
-  left: 4%;
+  margin-left:8px;
   line-height: 24px;
   color: var(--gray-1);
 }
 .serviceInfo .userInfo h2{
-  position: relative;
-  left: 8%;
+  margin-left:8px;
   line-height: 24px;
   color: var(--gray-2);
 }
@@ -262,27 +258,29 @@
   float: left;
 }
 .postCon{
-  float: left;
   width: calc( 100% - 152px );
   margin-top: 6px;
-  margin-left: 2%;
+  margin-left: 24px;
+  display:flex;
+  height:132px;
+  flex-direction: column;
+  justify-content: space-between;
   margin-bottom: 4px;
 }
 .postTitle{
-  position: relative;
-  width: 100%;
+  width: calc(100% - 6px);
   /*h4.title100과 같음*/
+  margin:0;
   font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
   letter-spacing: -0.01em;
   font-size: 24px; line-height: 100%;font-weight: 700;
 }
 /*userInfo 부분은 Post.js와 동일*/
 .postIntro{
-  position: relative;
-  top: 36px;
   color: var(--black);
-  width: 100%;
-  /*h2.body150과 같음*/
+  width: calc(100% - 6px);
+  resize: none;
+  border:none;
   font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
   letter-spacing: -0.01em;
   line-height: 150%; font-size: 16px;font-weight: 400;
