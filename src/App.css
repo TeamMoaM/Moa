@@ -118,6 +118,9 @@ nav{
 .postWrap > .divider{
   top:1px;
 }
+.createPost > .divider{
+  top:32px;
+}
 @media screen and (min-width: 1280px) {
   nav{
     width:100%;
