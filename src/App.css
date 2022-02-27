@@ -51,13 +51,13 @@ h1.headline150{font-size: 60px; line-height: 150%;font-weight: 700;} h2.headline
 h1.title150{font-size: 40px;line-height: 150%;font-weight: 700;} h2.title150{font-size: 36px; line-height: 150%;font-weight: 700;} h3.title150{font-size: 32px; line-height: 150%;font-weight: 700;} h4.title150{font-size: 24px; line-height: 150%;font-weight: 700;}
 h1.subhead150{font-size: 18px; line-height: 150%;font-weight: 700;} h2.subhead150{font-size: 16px; line-height: 150%;font-weight: 700;} h3.subhead150{font-size: 14px; line-height: 150%;font-weight: 700;} h4.subhead150{font-size: 12px; line-height: 150%;font-weight: 700;}
 h1.body150{line-height: 150%; font-size: 18px;font-weight: 400;} h2.body150{line-height: 150%; font-size: 16px;font-weight: 400;} h3.body150{line-height: 150%; font-size: 14px;font-weight: 400;} h4.body150{line-height: 150%; font-size: 12px;font-weight: 400;}
-h1.paragraph150{line-height: 150%; font-size: 16px;font-weight: 400;} h2.paragraph150{line-height: 150%; font-size: 14px;font-weight: 400;} h3.paragraph150{line-height: 150%; font-size: 12px;font-weight: 400;}
+
 h1.caption150{line-height: 150%; font-size: 12px;font-weight: 400;} h2.caption150{line-height: 150%; font-size: 10px;font-weight: 400;}
 h1.headline100{font-size: 60px; line-height: 100%;font-weight: 700;} h2.headline100{font-size: 52px;line-height: 100%;font-weight: 700;}
 h1.title100{font-size: 40px;line-height: 100%;font-weight: 700;} h2.title100{font-size: 36px; line-height: 100%;font-weight: 700;} h3.title100{font-size: 32px; line-height: 100%;font-weight: 700;} h4.title100{font-size: 24px; line-height: 100%;font-weight: 700;}
 h1.subhead100{font-size: 18px; line-height: 100%;font-weight: 700;} h2.subhead100{font-size: 16px; line-height: 100%;font-weight: 700;} h3.subhead100{font-size: 14px; line-height: 100%;font-weight: 700;} h4.subhead100{font-size: 12px; line-height: 100%;font-weight: 700;}
 h1.body100{line-height: 100%; font-size: 18px;font-weight: 400;} h2.body100{line-height: 100%; font-size: 16px;font-weight: 400;} h3.body100{line-height: 100%; font-size: 14px;font-weight: 400;} h4.body100{line-height: 100%; font-size: 12px;font-weight: 400;}
-h1.paragraph100{line-height: 100%; font-size: 16px;font-weight: 400;} h2.paragraph100{line-height: 100%; font-size: 14px;font-weight: 400;} h3.paragraph100{line-height: 100%; font-size: 12px;font-weight: 400;}
+h1.paragraph200{line-height: 200%; font-size: 16px;font-weight: 400;} h2.paragraph200{line-height: 200%; font-size: 14px;font-weight: 400;} h3.paragraph200{line-height: 200%; font-size: 12px;font-weight: 400;}
 h1.caption100{line-height: 100%; font-size: 12px;font-weight: 400;} h2.caption100{line-height: 100%; font-size: 10px;font-weight: 400;}
 
 
@@ -78,14 +78,16 @@ button{
 
 /*---------Nav CSS---------*/
 nav{
-  width: 100%;
+  width: 1280px;
   height: 72px;
   background-color: var(--white);
 }
+
 .navWrap{
   position: relative;
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
+  width:1200px;
   padding-left: 40px;
   padding-right:40px;
   min-width: 800px;/*수정 필요*/
@@ -103,24 +105,26 @@ nav{
   display:flex;
   align-items: center;
 }
-/* @media screen and (max-width: 900px) {
-  nav{
-    width: 900px;
-  }
-  .navWrap{
-    width: 600px;
-  }
-  .divider{
-    width: 900px;
-  }
-} */
 .divider{
   position: relative;
   height: 1px;
+  width:1280px;
   left: 0px;
   right: 0px;
   bottom: 0px;
+  top:0px;
   background-color: var(--gray-3);
+}
+.postWrap > .divider{
+  top:1px;
+}
+@media screen and (min-width: 1280px) {
+  nav{
+    width:100%;
+  }
+  .divider{
+    width:100vw;
+  }
 }
 .menuList{
   display: flex;
@@ -269,26 +273,17 @@ nav{
 }
 /*---------BetaTest.js CSS---------*/
 
-/*---------Create.js CSS---------*/
-.createPost{
-  width: 100%;
-  position: relative;
-}
-@media screen and (max-width: 900px) {
-  .createPost{
-    width: 900px;
-  }
-}
-/*serviceInfo는 post.js 와 동일한 css (className 같다)*/
+
 
 
 /*---------Editor.js CSS---------*/
 .editor{
-  width: calc(100vmax * 2 / 3);
+  width: 792px;
   margin: 0 auto;
   position: relative;
   top:177px;
 }
+
 .ql-editor{
   min-height: 400px;
 }

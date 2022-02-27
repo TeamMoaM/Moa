@@ -2,8 +2,9 @@ import { doc, setDoc } from 'firebase/firestore';
 import React, { useEffect,useState ,useRef} from 'react';
 import {Link, useParams, useResolvedPath} from 'react-router-dom';
 import {db} from '../firebase-config';
-import {getDoc,arrayUnion} from 'firebase/firestore';
-import Bookmark from '../icons/bookmark.svg'
+import {getDoc,updateDoc,arrayUnion,arrayRemove} from 'firebase/firestore';
+import Bookmark from '../icons/bookmark.svg';
+import BookmarkClicked from '../icons/bookmarkClicked.svg';
 import "../style/post.css";
 import PostServiceIntro from './PostServiceIntro';
 import PostReview from './PostReview';
@@ -15,6 +16,14 @@ function Post({isAuth,user}) {
     const {roomId} = useParams();
     const [position,setPosition] = useState(0);
     const popHeader = useRef(null);
+    const [scrapBool,setScrapBool] = useState(0);
+    
+    useEffect(()=>{
+        getDoc(doc(db, "posts", roomId)).then(docSnap => {
+            console.log("time:"+docSnap.data().time);
+            setPost({...docSnap.data(),id:docSnap.id});
+        })
+    },false);
     function onScroll(){
         setPosition(window.scrollY);
     }
@@ -25,7 +34,6 @@ function Post({isAuth,user}) {
         }
     })
     useEffect(()=>{
-        console.log(position);
         if(position>=214){
             popHeader.current.style.top="0px";
         }
@@ -36,27 +44,43 @@ function Post({isAuth,user}) {
     if(!isAuth){
         window.location.href='/login';
     }
-    useEffect(()=>{
-        getDoc(doc(db, "posts", roomId)).then(docSnap => {
-            console.log("time:"+docSnap.data().time);
-            setPost({...docSnap.data(),id:docSnap.id});
-        })
-    },false);
+    
     const link = '/post/createreview/'+roomId;
     const [tabList,setTabList] = useState(1);
+    useEffect(()=>{
+        if(user.uid&&post.id){
+            getDoc(doc(db,'userInfo',user.uid)).then(docSnap => {
+                if(docSnap.exists()){
+                    const scrap = docSnap.data().scrap;
+                    console.log("success:",scrap);
+                    if(scrap.includes(post.id)){
+                        console.log("include true!");
+                        setScrapBool(true);
+                    }
+                }
+            })
+        }
+        
+    },[scrapBool,post])
     const scrap = () =>{    
         if(post.id&&user.uid){
+            setScrapBool(true);
             setDoc(doc(db,'userInfo',user.uid),{scrap:arrayUnion(post.id)},{merge:true});
-            alert("scrap에 성공하셨습니다!");
+        }
+    }
+    const unscrap = () =>{    
+        if(post.id&&user.uid){
+            setScrapBool(false);
+            updateDoc(doc(db,'userInfo',user.uid),{scrap:arrayRemove(post.id)});
         }
     }
 
     return (
-        <>
+        <div className="wrap">
         
         <div className='postWrap'>
           <div className='scrapReview'>
-            <button onClick={()=>scrap()}className='scrap'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>
+            {scrapBool?<button style={{backgroundColor:"#E4E4FF"}}onClick={()=>unscrap()}className='scrap'><div className="scrapFrame"><img className='bookmarkImage' src={BookmarkClicked}/><h3 className='subhead100'>스크랩 완료</h3></div></button>:<button onClick={()=>scrap()}className='scrap'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>}
             <Link to={link} className='reviewButton'><h3 className='subhead100'>리뷰 작성하기</h3></Link>
           </div>
           <div className="postWrapBox">
@@ -117,9 +141,10 @@ function Post({isAuth,user}) {
                     }
                 </div>
             </div>
+            <div className='divider'></div>
         </div>
         <div className="postWrap2">{tabList?<PostServiceIntro/>:<PostReview/>}</div>
-        </>
+        </div>
     )
         
 }

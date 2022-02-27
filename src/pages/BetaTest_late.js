@@ -25,7 +25,6 @@ function BetaTest_late({setList}){
             if(typeof firstPage!="undefined"){
                 q = query(postsCollectionRef,orderBy("time",'desc'),startAt(firstPage),limit(onepageNumber));
             }
-           
             onSnapshot(q, (snapshot)=>
             {
                 setLastPage(snapshot.docs[15]);
@@ -48,7 +47,6 @@ function BetaTest_late({setList}){
             }
             )
         }
-        
         
         getDoc(doc(db,'docCount','docCount')).then((docSnap)=>{
             if(docSnap.exists()){

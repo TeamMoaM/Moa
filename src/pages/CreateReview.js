@@ -1,47 +1,71 @@
 import React,{useState,useEffect} from 'react';
 import {useParams,Link} from 'react-router-dom';
-import {getDoc,doc,setDoc,arrayUnion} from 'firebase/firestore';
+import {getDoc,doc,setDoc,updateDoc,arrayRemove,arrayUnion} from 'firebase/firestore';
 import {db} from '../firebase-config';
+import BookmarkClicked from '../icons/bookmarkClicked.svg';
 import Bookmark from '../icons/bookmark.svg';
+import defaultprofileImg from '../img/communityImg/defaultprofile.svg';
 import '../style/reviewpost.css';
 import Editor from './Editor'
 function CreateReview({user}) {
     const {roomId} = useParams();
     const [post, setPost] = useState([]);
     const [desc, setDesc] = useState('');
+    const [scrapBool,setScrapBool] = useState(0);
     useEffect(()=>{
         getDoc(doc(db, "posts", roomId)).then(docSnap => {
             setPost({...docSnap.data()})
         })
     },false);
-    const scrap = () =>{   
-        if(post.id&&user.uid){
-            setDoc(doc(db,'userInfo',user.uid),{scrap:arrayUnion(post.id)},{merge:true});
-            alert("scrap에 성공하셨습니다!");
-        }
-    }
     function onEditorChange(value) {
         setDesc(value);
     }
+    useEffect(()=>{
+        if(user.uid&&post.id){
+            getDoc(doc(db,'userInfo',user.uid)).then(docSnap => {
+                if(docSnap.exists()){
+                    const scrap = docSnap.data().scrap;
+                    console.log("success:",scrap);
+                    if(scrap.includes(post.id)){
+                        console.log("include true!");
+                        setScrapBool(true);
+                    }
+                }
+            })
+        }
+        
+    },[scrapBool,post])
+    const scrap = () =>{    
+        if(post.id&&user.uid){
+            setScrapBool(true);
+            setDoc(doc(db,'userInfo',user.uid),{scrap:arrayUnion(post.id)},{merge:true});
+        }
+    }
+    const unscrap = () =>{    
+        if(post.id&&user.uid){
+            setScrapBool(false);
+            updateDoc(doc(db,'userInfo',user.uid),{scrap:arrayRemove(post.id)});
+        }
+    }
 
     return (
-        <>
+        <div className="wrap">
             <div className='postWrap'>
                 <div className="postWrapBox">
                     <div className='serviceInfo'>
                         <img className='serviceImgWrap' src={post&&post.imageURL}></img>
-                        <div className='serviceCon'>
-                            <h4 className='title100'>{post&&post.title}</h4>
+                        <div className='postCon'>
+                            <div className="postTitle"><h4 className='title100'>{post&&post.title}</h4></div>
                             <div className='userInfo'>
-                                <div className='userImg'></div><h4 className='body100'>{post.author&&post.author.name}</h4><h2 className='caption100'>company namy</h2>{/* 회사 이름은 회원가입 페이지 이후 작업 시작 */}
+                            <img className="userImg"src={defaultprofileImg}/><h4 className='body100'>{post.author&&post.author.name}</h4><h2 className='caption100'>company namy</h2>{/* 회사 이름은 회원가입 페이지 이후 작업 시작 */}
                             </div>
-                            <div className='serviceEx'>
+                            <div className='postIntro'>
                                 <h2 className='body150'>{post&&post.content}</h2>
                             </div>
                         </div>
                     </div>
                     <div className='scrapReview'>
-                        <button onClick={()=>scrap()}className='scrap'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>
+                        {scrapBool?<button style={{backgroundColor:"#E4E4FF"}}onClick={()=>unscrap()}className='scrap'><div className="scrapFrame"><img className='bookmarkImage' src={BookmarkClicked}/><h3 className='subhead100'>스크랩 완료</h3></div></button>:<button onClick={()=>scrap()}className='scrap'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>}
                         <button onClick={()=>{console.log("review작성완료!");}} className="reviewButton"><h3 className='subhead100'>리뷰 등록하기</h3></button>
                     </div>
                 </div>
@@ -52,7 +76,7 @@ function CreateReview({user}) {
                 <div className='divider'></div>
             </div>
             <Editor value={desc} onChange={onEditorChange}></Editor>
-        </>
+        </div>
     );
 }
 

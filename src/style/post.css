@@ -1,16 +1,28 @@
 .postWrap{
-  width: 100%;
+  width: 1280px;
   position: relative;
   display:flex;
   flex-direction: column;
   align-items:center;
-  border-bottom: 1px solid #E8E8EE;
+}
+.wrap{
+  width:1280px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media screen and (min-width: 1280px) {
+  .wrap{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .postWrapBox{
   display:flex;
   justify-content: space-between;
-  max-width: 792px;
-  width:calc(67% - 61px);
+  width: 792px;
   height:206px;
 }
 .serviceInfo{
@@ -18,19 +30,18 @@
   display: flex;
   align-items:center;
   margin-top: 32px;
+  width:792px;
 }
-.postBlank{
+/* .postBlank{
   width:15%;
   height: 84px;
   margin-top: 32px;
-}
+} */
 .scrapReview{
   position:absolute;
   top:32px;
   right:40px;
-  width: calc(16.7% - 33px);
-  max-width: 180px;
-  min-width:120px;
+  width:180px;
   height: 84px;
   display: flex;
   flex-direction: column;
@@ -46,7 +57,6 @@
   align-items: center;
   justify-content: center;
 }
-
 .serviceImgWrap{
   width: 142px;
   height: 142px;
@@ -54,15 +64,9 @@
   border-radius: 8px;
   float: left;
 }
-.serviceImg{
-  width: 100%;
-  height: 100%;
-}
 .serviceCon{
-  float: left;
-  width: calc( 100% - 152px );
   margin-top: 6px;
-  margin-left: 2%;
+  margin-left: 24px;
   margin-bottom: 4px;
 }
 .serviceInfo .title100{
@@ -107,11 +111,16 @@
 }
 .scrap{
   position: relative;
+  right:0px;
+  top:0;
   background-color: var(--gray-4);
   border-radius: 8px;
   height: 36px;
   border: none;
   cursor:pointer;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 .scrapFrame{
   display: flex;
@@ -119,15 +128,8 @@
   justify-content: center;
   align-items: center;
   padding: 0px;
-
-  position: absolute;
   width: 87px;
   height: 16px;
-  left: calc(50% - 87px/2 - 0.5px);
-  top: calc(50% - 16px/2);
-}
-.scrapFrame h3{
-  margin-left: 4px;
 }
 .serviceIntro1{
     color: var(--primary-1);
@@ -139,9 +141,8 @@
 }
 .tabList{
   height: 40px;
-  max-width: 792px;
   display: inline-flex;
-  width:calc(67% - 61px);
+  width:792px;
   align-items: center;
 }
 .serviceIntro1{
@@ -161,8 +162,7 @@
   display:flex;
   flex-direction: column;
   align-items: center;
-  max-width: 792px;
-  width:calc(67% - 61px);
+  width:793px;
   font-family: Spoqa Han Sans Neo;
   font-style: normal;
   font-weight: normal;
@@ -177,36 +177,57 @@
 }
 .postWrap2{
   display:flex;
-  width:100%;
+  width:793px;
   height:500px;
   justify-content: center;
 }
 .createPost{
+  position:relative;
   display:flex;
   flex-direction: column;
   align-items: center;
-  width:100%;
+  width:1280px;
   height:206px;
-  border-bottom: 1px solid #E8E8EE;
 }
+.createPostWrap{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  width:1280px;
+}
+
+.editorBox{
+  display:flex;
+  width:1280px;
+  justify-content: center;
+}
+@media screen and (min-width: 1280px) {
+  .createPostWrap{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+  }
+  .editorBox{
+    display:flex;
+    width:100%;
+    justify-content: center;
+  }
+}
+  
+
 .createPost > .serviceInfo{
-  width:calc(67% - 61px);
-  max-width: 792px;
+  width: 792px;
   height: 142px;
   display: flex;
   margin-top: 32px;
 }
-.createPost .divider{
-  position: relative;
-  top: 206px;
-}
+
 .submitButton{
   position: absolute;
   right: 40px;
   top: 32px;
-  width: calc(16.7% - 33px);
-  max-width: 180px;
-  min-width:120px;
+  width:180px;
   height: 36px;
   background-color: var(--primary-1);
   border-radius: 8px;
@@ -214,21 +235,13 @@
   color: var(--white);
 }
 .fileButton{
-  position: absolute;
-  right: 40px;
-  top: 80px;
-  width: 10%;
-  height: 36px;
   display:none;
 }
 .input-file-button{
-  width: 10%;
+  width: 180px;
   position: absolute;
   right: 40px;
   top: 80px;
-  width: calc(16.7% - 33px);
-  max-width: 180px;
-  min-width:120px;
   height: 36px;
   cursor: pointer;
   height: 36px;
@@ -258,7 +271,7 @@
   float: left;
 }
 .postCon{
-  width: calc( 100% - 152px );
+  width: 626px;
   margin-top: 6px;
   margin-left: 24px;
   display:flex;
@@ -268,7 +281,7 @@
   margin-bottom: 4px;
 }
 .postTitle{
-  width: calc(100% - 6px);
+  width: 626px;
   margin:0;
   margin-bottom: 12px;
   font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
@@ -279,20 +292,10 @@
 /*userInfo 부분은 Post.js와 동일*/
 .postIntro{
   color: var(--black);
-  width: calc(100% - 6px);
+  width: 626px;
   resize: none;
   border:none;
   margin-top:24px;
-  font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
-  letter-spacing: -0.01em;
-  line-height: 150%; font-size: 16px;font-weight: 400;
-}
-.postIntro{
-  color: var(--black);
-  width: calc(100% - 6px);
-  resize: none;
-  margin-top:24px;
-  border:none;
   font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
   letter-spacing: -0.01em;
   line-height: 150%; font-size: 16px;font-weight: 400;
@@ -302,7 +305,7 @@
   position:fixed;
   /* top:72px; */
   top:0px;
-  width:calc(67% - 61px);
+  width:1280px;
   height:116px;
 }
 .scrapReview2{
@@ -316,3 +319,4 @@
   display: flex;
   flex-direction: column;
 }
+

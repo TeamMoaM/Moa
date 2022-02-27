@@ -51,7 +51,7 @@ const CreatePost = ({user}) => {
         setDesc(value);
     }
     return (
-        <>
+        <div className="createPostWrap">
         <div className="createPost">
             <div className="serviceInfo">
                 {thumbnailImg? <div className="postImgWrap"><img id="postImgWrap"src={thumbnailImg}alt="사진을 추가해주세요!"/></div>:<div className="postImgWrap"></div>}
@@ -75,7 +75,7 @@ const CreatePost = ({user}) => {
             <Editor value={desc} onChange={onEditorChange}></Editor>
         </div>
        
-        </>
+        </div>
     );
 };
 
