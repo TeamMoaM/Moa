@@ -167,11 +167,11 @@ nav{
 }
 #listClicked2{
   color:var(--primary-1);
-  box-shadow: 0 16px 0 -12px var(--primary-1);
+  box-shadow: 0 8px 0 -4px var(--primary-1);
 }
 #listClicked3{
   color:var(--primary-1);
-  box-shadow: 0 34px 0 -30px var(--primary-1);
+  box-shadow: 0 8px 0 -4px var(--primary-1);
 }
 
 
