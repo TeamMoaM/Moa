@@ -2,7 +2,7 @@ import React, { Component, useRef } from 'react';
 import ReactQuill from 'react-quill';
 import {ref,uploadBytes,getDownloadURL} from 'firebase/storage';
 import {storage} from '../firebase-config';
-import 'react-quill/dist/quill.bubble.css';
+import 'react-quill/dist/quill.snow.css';
 import ClipLoader from "react-spinners/ClipLoader";
 class EditorComponent extends Component{
     constructor(props){
@@ -69,7 +69,7 @@ class EditorComponent extends Component{
               <ClipLoader color={'red'} loading={this.state.loading} size={150} />
                 <ReactQuill
                     ref={this.quillRef}
-                    theme="bubble" 
+                    theme="snow" 
                     modules={this.modules} 
                     formats={this.formats}  
                     onChange={(content, delta, source, editor) => onChange(editor.getHTML())} />

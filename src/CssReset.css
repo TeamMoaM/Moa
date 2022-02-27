@@ -53,6 +53,9 @@ input{
 input:focus{
 	outline:none;
 }
-textarea:focus{
+textarea:focus{/*input 박스 클릭시 박스 포커스 되는 거 없애기*/
 	outline:none;
+}
+html::-webkit-scrollbar { /*스크롤 너비 없애도록 하는 코드*/
+    display: none; /* Chrome, Safari, Opera*/
 }
