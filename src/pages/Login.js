@@ -1,21 +1,66 @@
-import React from "react";
-import {signInWithPopup} from "firebase/auth";
+import React,{useState} from "react";
+import {signInWithPopup,signInWithEmailAndPassword} from "firebase/auth";
 import {auth,provider} from '../firebase-config';
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
+import logoImg from '../img/login/MOA.svg';
+import '../style/login.css';
 function Login({setIsAuth}){
     let navigate = useNavigate();
+    const [loginEmail, setLoginEmail] = useState("");
+    const [loginPassword, setLoginPassword] = useState("");
+    const [loginSuccess,setLoginSuccess] = useState(true);
+    const login = async () => {
+        try {
+            const user = await signInWithEmailAndPassword(
+            auth,
+            loginEmail,
+            loginPassword
+            );
+            setIsAuth(true);
+            navigate("/emotiontotal");
+            
+        } catch (error) {
+            setLoginSuccess(false);
+        }   
+    }
+
     const signInWithGoogle = () => {
         signInWithPopup(auth, provider).then((result) => {
             localStorage.setItem("isAuth",true);
             setIsAuth(true);
             navigate("/");
         })
-        
     }
     return(
-        <button className="login-with-google-btn" onClick={signInWithGoogle}>
-            Sign in with Google
-        </button>
+        <div className="login">
+            <div className="loginTexts">
+                <img src={logoImg}/>
+                <div className="loginText"><h2 className="subhead100">당신을 위한 베타테스트 플랫폼</h2></div>
+            </div>
+            <div className="loginButtons">
+                <div className="idText"><h3 className="subhead100">이메일</h3></div>
+                <input className="loginID" placeholder="예:moa@naver.com" onChange={(event) => {setLoginEmail(event.target.value);}}></input>
+                <div className="idText"><h3 className="subhead100">비밀번호</h3></div>
+                <input className="loginPW" type="password" placeholder="" onChange={(event) => {setLoginPassword(event.target.value);}}></input>
+                {loginSuccess?(<></>):(<div className="registerPasswordFalse">등록되지 않은 이메일이거나, 비밀번호가 일치하지 않아요.</div>)}
+            </div>
+            <div>
+                <div className="loginFindandSignup">
+                    <Link to='' className="loginFindandSignupText">회원가입</Link>
+                    <div className="loginBreakLine">|</div>
+                    <Link to='' className="loginFindandSignupText">아이디 찾기</Link>
+                    <div className="loginBreakLine" >|</div>
+                    <Link to=''className="loginFindandSignupText">비밀번호 찾기</Link>
+                </div>
+            </div>
+            <button onClick={()=>{login()}}className="loginButton"><h3 className="subhead100">로그인 하고 시작하기</h3></button>
+            <button className="login-with-google-btn" onClick={signInWithGoogle}>
+                <img className="googleImage" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4="/>
+                구글 로그인
+                <img className="googleImage" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4="/>
+            </button>
+            {/* <img className="loginBoxVector" src={image}></img> */}
+        </div>
     )
 }
 export default Login;
