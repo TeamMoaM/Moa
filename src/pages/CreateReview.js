@@ -47,11 +47,14 @@ function CreateReview({user}) {
         }
     }
     const uploadReview = async () => {
-        const reviewRef = doc(db,'posts',roomId);
-        let data = await getDoc(reviewRef);
+        const reviewCountRef = doc(db,'posts',roomId);
+        let data = await getDoc(reviewCountRef);
         let reviewCount = await data.data().reviewCount;
         reviewCount = reviewCount+1;
-        await updateDoc(reviewRef,{reviewDesc:arrayUnion(desc),reviewCount:reviewCount});
+        await updateDoc(reviewCountRef,{reviewCount:reviewCount});
+        reviewCount = String(reviewCount);
+        const reviewRef = doc(db,"posts",roomId,"review",reviewCount);
+        await setDoc(reviewRef,{reviewPeople:user.displayName,reviewContent:desc});
         window.location.href=`/post/${roomId}`;
     };
 
