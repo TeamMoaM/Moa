@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import {useParams,Link} from 'react-router-dom';
-import {getDoc,doc,setDoc,updateDoc,arrayRemove,arrayUnion} from 'firebase/firestore';
+import {getDoc,doc,addDoc,setDoc,updateDoc,arrayRemove,arrayUnion} from 'firebase/firestore';
 import {db} from '../firebase-config';
 import BookmarkClicked from '../icons/bookmarkClicked.svg';
 import Bookmark from '../icons/bookmark.svg';
@@ -33,7 +33,6 @@ function CreateReview({user}) {
                 }
             })
         }
-        
     },[scrapBool,post])
     const scrap = () =>{    
         if(post.id&&user.uid){
@@ -47,6 +46,14 @@ function CreateReview({user}) {
             updateDoc(doc(db,'userInfo',user.uid),{scrap:arrayRemove(post.id)});
         }
     }
+    const uploadReview = async () => {
+        const reviewRef = doc(db,'posts',roomId);
+        let data = await getDoc(reviewRef);
+        let reviewCount = await data.data().reviewCount;
+        reviewCount = reviewCount+1;
+        await updateDoc(reviewRef,{reviewDesc:arrayUnion(desc),reviewCount:reviewCount});
+        window.location.href=`/post/${roomId}`;
+    };
 
     return (
         <div className="wrap">
@@ -66,7 +73,7 @@ function CreateReview({user}) {
                     </div>
                     <div className='scrapReview'>
                         {scrapBool?<button style={{backgroundColor:"#E4E4FF"}}onClick={()=>unscrap()}className='scrap'><div className="scrapFrame"><img className='bookmarkImage' src={BookmarkClicked}/><h3 className='subhead100'>스크랩 완료</h3></div></button>:<button onClick={()=>scrap()}className='scrap'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>}
-                        <button onClick={()=>{console.log("review작성완료!");}} className="reviewButton"><h3 className='subhead100'>리뷰 등록하기</h3></button>
+                        <button onClick={()=>{uploadReview();}} className="reviewButton"><h3 className='subhead100'>리뷰 등록하기</h3></button>
                     </div>
                 </div>
                 <list className='tabList'>

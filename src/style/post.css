@@ -5,22 +5,14 @@
   flex-direction: column;
   align-items:center;
 }
-.postWrap2{
-  width: 1280px;
-  height:124px;
-  position:absolute;
-  display:flex;
-  background-color: white;
-  flex-direction: column;
-  align-items:center;
-}
+
 .wrap{
   width:1280px;
   display:flex;
   flex-direction: column;
   align-items: center;
 }
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1281px) {
   .wrap{
     width:100%;
     display:flex;
@@ -48,11 +40,7 @@
   width:792px;
   margin-top:32px;
 }
-/* .postBlank{
-  width:15%;
-  height: 84px;
-  margin-top: 32px;
-} */
+
 .scrapReview{
   position:absolute;
   top:32px;
@@ -216,7 +204,27 @@
   width:1280px;
   justify-content: center;
 }
-@media screen and (min-width: 1280px) {
+.popHeader{
+  position:fixed;
+  top:0px;
+  display:flex;
+  justify-content: center;
+  width:1280px;
+  transition:top 0.4s;
+  background-color: white;
+  height:116px;
+  z-index: 10;
+}
+.postWrap2{
+  width: 1280px;
+  height:124px;
+  position:absolute;
+  display:flex;
+  background-color: white;
+  flex-direction: column;
+  align-items:center;
+}
+@media screen and (min-width: 1281px) {
   .createPostWrap{
     display:flex;
     flex-direction: column;
@@ -227,6 +235,17 @@
     display:flex;
     width:100%;
     justify-content: center;
+  }
+  .popHeader{
+    position:fixed;
+    top:0px;
+    display:flex;
+    justify-content: center;
+    width:100%;
+    transition:top 0.4s;
+    background-color: white;
+    height:116px;
+    z-index: 10;
   }
 }
   
@@ -316,14 +335,7 @@
   line-height: 150%; font-size: 16px;font-weight: 400;
 }
 /*popHeader element*/
-.popHeader{
-  position:fixed;
-  top:0px;
-  width:1280px;
-  transition:top 0.4s;
-  background-color: white;
-  height:116px;
-}
+
 .serviceImgWrap2{
   width: 36px;
   height: 36px;

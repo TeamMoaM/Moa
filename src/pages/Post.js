@@ -1,7 +1,8 @@
 import { doc, setDoc } from 'firebase/firestore';
 import React, { useEffect,useState ,useRef} from 'react';
-import {Link, useParams, useResolvedPath} from 'react-router-dom';
-import {db} from '../firebase-config';
+import {Link, useParams} from 'react-router-dom';
+import {setPersistence,browserSessionPersistence,onAuthStateChanged} from 'firebase/auth';
+import {db,auth} from '../firebase-config';
 import {getDoc,updateDoc,arrayUnion,arrayRemove} from 'firebase/firestore';
 import Bookmark from '../icons/bookmark.svg';
 import BookmarkClicked from '../icons/bookmarkClicked.svg';
@@ -17,7 +18,10 @@ function Post({isAuth,user}) {
     const [position,setPosition] = useState(0);
     const popHeader = useRef(null);
     const [scrapBool,setScrapBool] = useState(0);
-    
+    setPersistence(auth, browserSessionPersistence).then(()=>{console.log("browser session success")});
+    onAuthStateChanged(auth,(currentUser)=>{
+      console.log("state good");
+    })
     useEffect(()=>{
         getDoc(doc(db, "posts", roomId)).then(docSnap => {
             console.log("time:"+docSnap.data().time);
@@ -77,7 +81,33 @@ function Post({isAuth,user}) {
 
     return (
         <div className="wrap">
-        
+        <div ref={popHeader}className="popHeader">
+            <div className='postWrap2'>
+                <div className='scrapReview2'>
+                    {scrapBool?<button style={{backgroundColor:"#E4E4FF"}}onClick={()=>unscrap()}className='scrap2'><div className="scrapFrame"><img className='bookmarkImage' src={BookmarkClicked}/><h3 className='subhead100'>스크랩 완료</h3></div></button>:<button onClick={()=>scrap()}className='scrap2'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>}   
+                    <Link to={link} className='reviewButton2'><h3 className='subhead100'>리뷰 작성하기</h3></Link>
+                </div>
+                <div className="postWrapBox">
+                    <div className='serviceInfo2'>
+                        <img className='serviceImgWrap2' src={post&&post.imageURL}></img>
+                        <div className='serviceCon'>
+                            <h4 className='title100'>{post&&post.title}</h4>
+                        </div>
+                    </div>
+                </div>
+                {tabList?
+                    <list className='tabList'>
+                        <ul className='tabListItem'><button onClick={()=>{setTabList(1)}}className='serviceIntro1'><h3 className='subhead100'>서비스 소개</h3></button></ul>
+                        <ul className='tabListItem'><button onClick={()=>{setTabList(0)}}className='serviceIntro0'><h3 className='body100'>리뷰</h3></button></ul>
+                    </list>
+                :
+                    <list className='tabList'>
+                        <ul className='tabListItem'><button onClick={()=>{setTabList(1)}}className='serviceIntro0'><h3 className='body100'>서비스 소개</h3></button></ul>
+                        <ul className='tabListItem'><button onClick={()=>{setTabList(0)}}className='serviceIntro1'><h3 className='subhead100'>리뷰</h3></button></ul>
+                    </list>
+                }
+            </div>
+        </div>
         <div className='postWrap'>
           <div className='scrapReview'>
             {scrapBool?<button style={{backgroundColor:"#E4E4FF"}}onClick={()=>unscrap()}className='scrap'><div className="scrapFrame"><img className='bookmarkImage' src={BookmarkClicked}/><h3 className='subhead100'>스크랩 완료</h3></div></button>:<button onClick={()=>scrap()}className='scrap'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>}
@@ -108,33 +138,7 @@ function Post({isAuth,user}) {
                     <ul className='tabListItem'><button onClick={()=>{setTabList(0)}}className='serviceIntro1'><h3 className='subhead100'>리뷰</h3></button></ul>
                 </list>
             }
-            <div ref={popHeader}className="popHeader">
-                <div className='postWrap2'>
-                    <div className='scrapReview2'>
-                        <button onClick={()=>scrap()}className='scrap2'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>
-                        <Link to={link} className='reviewButton2'><h3 className='subhead100'>리뷰 작성하기</h3></Link>
-                    </div>
-                    <div className="postWrapBox">
-                        <div className='serviceInfo2'>
-                            <img className='serviceImgWrap2' src={post&&post.imageURL}></img>
-                            <div className='serviceCon'>
-                                <h4 className='title100'>{post&&post.title}</h4>
-                            </div>
-                        </div>
-                    </div>
-                    {tabList?
-                        <list className='tabList'>
-                            <ul className='tabListItem'><button onClick={()=>{setTabList(1)}}className='serviceIntro1'><h3 className='subhead100'>서비스 소개</h3></button></ul>
-                            <ul className='tabListItem'><button onClick={()=>{setTabList(0)}}className='serviceIntro0'><h3 className='body100'>리뷰</h3></button></ul>
-                        </list>
-                    :
-                        <list className='tabList'>
-                            <ul className='tabListItem'><button onClick={()=>{setTabList(1)}}className='serviceIntro0'><h3 className='body100'>서비스 소개</h3></button></ul>
-                            <ul className='tabListItem'><button onClick={()=>{setTabList(0)}}className='serviceIntro1'><h3 className='subhead100'>리뷰</h3></button></ul>
-                        </list>
-                    }
-                </div>
-            </div>
+     
             <div className='divider'></div>
         </div>
         <div className="postWrap3">{tabList?<PostServiceIntro/>:<PostReview/>}</div>

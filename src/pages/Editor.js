@@ -18,7 +18,6 @@ class EditorComponent extends Component{
       input.setAttribute('type','file');
       input.setAttribute('accept','.png,.jpg,.jpeg,.svg');
       input.click();
-
       input.onchange = async () =>{
         const file = input.files[0];
         if(!file){
