@@ -113,6 +113,7 @@ nav{
   right: 0px;
   bottom: 0px;
   top:0px;
+  z-index: -10;
   background-color: var(--gray-3);
 }
 .postWrap > .divider{

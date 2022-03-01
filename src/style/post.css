@@ -5,6 +5,15 @@
   flex-direction: column;
   align-items:center;
 }
+.postWrap2{
+  width: 1280px;
+  height:124px;
+  position:absolute;
+  display:flex;
+  background-color: white;
+  flex-direction: column;
+  align-items:center;
+}
 .wrap{
   width:1280px;
   display:flex;
@@ -26,11 +35,18 @@
   height:206px;
 }
 .serviceInfo{
-  height: 142px;
+  height: 136px;
   display: flex;
   align-items:center;
-  margin-top: 32px;
   width:792px;
+  margin-top:32px;
+}
+.serviceInfo2{
+  height: 36px;
+  display: flex;
+  align-items:center;
+  width:792px;
+  margin-top:32px;
 }
 /* .postBlank{
   width:15%;
@@ -62,7 +78,6 @@
   height: 142px;
   background-color: var(--primary-3);
   border-radius: 8px;
-  float: left;
 }
 .serviceCon{
   margin-top: 6px;
@@ -175,7 +190,7 @@
   width:100%;
   object-fit: contain;
 }
-.postWrap2{
+.postWrap3{
   display:flex;
   width:793px;
   height:500px;
@@ -300,21 +315,53 @@
   letter-spacing: -0.01em;
   line-height: 150%; font-size: 16px;font-weight: 400;
 }
-
+/*popHeader element*/
 .popHeader{
   position:fixed;
-  /* top:72px; */
   top:0px;
   width:1280px;
+  transition:top 0.4s;
+  background-color: white;
   height:116px;
+}
+.serviceImgWrap2{
+  width: 36px;
+  height: 36px;
+  background-color: var(--primary-3);
+  border-radius: 8px;
+}
+.scrap2{
+  position: relative;
+  top:0;
+  background-color: var(--gray-4);
+  border-radius: 8px;
+  height: 36px;
+  width:180px;
+  border:none;
+  cursor:pointer;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.reviewButton2{
+  position:absolute;
+  right:0;
+  top:0;
+  background-color: var(--primary-1);
+  height: 36px;
+  width:180px;
+  color: var(--white);
+  border-radius: 8px;
+  border: none;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
 .scrapReview2{
   position:absolute;
   top:32px;
   right:40px;
-  width: calc(16.7% - 33px);
-  max-width: 180px;
-  min-width:120px;
+  width:372px;
   height: 84px;
   display: flex;
   flex-direction: column;
