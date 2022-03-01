@@ -17,7 +17,7 @@ function Login({setIsAuth}){
             loginPassword
             );
             setIsAuth(true);
-            navigate("/emotiontotal");
+            navigate("/");
             
         } catch (error) {
             setLoginSuccess(false);

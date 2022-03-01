@@ -1,0 +1,33 @@
+.signUp{
+    display:flex;
+    flex-direction: column;
+    width:384px;
+    height:490px;
+    align-items:center;
+    justify-content: space-between;
+}
+.signUpBox{
+    margin-top: 56px;
+    width:1280px;
+    display:flex;
+    justify-content: center;
+}
+@media screen and (min-width: 1280px) {
+    .signUpBox{
+        width:100%;
+    }
+}
+.signupTexts{
+    display:flex;
+    width:384px;
+    height:112px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.signupInputs{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:384px;
+    height:262px;
+}

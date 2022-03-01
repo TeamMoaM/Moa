@@ -215,7 +215,9 @@ nav{
   color:var(--black);
   margin-left: 12px;
 }
-
+.appLogin > a:visited{
+  color:black;
+}
 /*---------Mainpage CSS---------*/
 .mainWrap{
   width: 100%;

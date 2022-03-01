@@ -9,7 +9,6 @@ import Login from './pages/Login';
 import Community from './pages/Community';
 import BetaTest_recent from './pages/BetaTest_recent';
 import BetaTest_late from './pages/BetaTest_late';
-import Register from './pages/Register';
 import Logo from './icons/MoaLogo.svg';
 import CreatePost from './pages/CreatePost';
 import Post from './pages/Post';
@@ -31,10 +30,11 @@ function App() {
         window.location.pathname = "/";
     });
   }
-  setPersistence(auth, browserSessionPersistence).then(()=>{console.log("browser session success")});
+  setPersistence(auth, browserSessionPersistence).then(()=>{});
   onAuthStateChanged(auth,(currentUser)=>{
     setUser(currentUser);
     if(currentUser.displayName){
+      console.log("displayName",currentUser.displayName);
       setIsAuth(true);
     }
   })
@@ -56,10 +56,10 @@ function App() {
           {!isAuth?
           <div className="registerAndLogin">
             <div className='appLogin'><Link to='/Login'><h3 className='body100'>로그인</h3></Link></div>
-            <div className='appregister'><Link to='/Register'><h3 className='subhead100'>회원가입</h3></Link></div>
+            <div className='appregister'><Link to='/Signup'><h3 className='subhead100'>회원가입</h3></Link></div>
           </div>
           :<div className="registerAndLogins">
-            <div className='appregister'><Link className="registerLink"to='/MyPage'><img src={defaultprofileImg}/><h3 id="logineddisplayName"className='subhead100'>{user.displayName}</h3></Link></div>
+            <div className='appregister'><Link className="registerLink"to='/MyPage'><img src={defaultprofileImg}/><h3 id="logineddisplayName"className='subhead100'>{user&&user.displayName}</h3></Link></div>
             <div className='applogin'><Link onClick={()=>{signUserOut()}}to='/Login'><h3 className='body100'>로그아웃</h3></Link></div>
           </div>
           }
@@ -80,7 +80,6 @@ function App() {
         <Route path="/post/createreview/:roomId" element={<CreateReview user={user}/>}></Route>
         <Route path="/Community" element={<Community setList={setList} isAuth={isAuth}/>}></Route>
         <Route path='/CreateCommunity' element={<CreateCommunity user={user}/>}></Route>
-        <Route path="/Register" element={<Register setIsAuth={setIsAuth}/>}></Route>
         <Route path="/CreatePost" element={<CreatePost user={user}/>}></Route>
       </Routes>
     </Router>
