@@ -15,6 +15,7 @@ import CreatePost from './pages/CreatePost';
 import Post from './pages/Post';
 import CreateReview from './pages/CreateReview';
 import MyPage from './pages/MyPage';
+import Signup from './pages/Signup';
 import MyPageEdit from './pages/MyPageEdit';
 import defaultprofileImg from './icons/userdefaultimg.svg';
 import CreateCommunity from './pages/CreateCommunity';
@@ -54,12 +55,12 @@ function App() {
           
           {!isAuth?
           <div className="registerAndLogin">
-            <div className='login'><Link to='/Login'><h3 className='body100'>로그인</h3></Link></div>
-            <div className='register'><Link to='/Register'><h3 className='subhead100'>회원가입</h3></Link></div>
+            <div className='appLogin'><Link to='/Login'><h3 className='body100'>로그인</h3></Link></div>
+            <div className='appregister'><Link to='/Register'><h3 className='subhead100'>회원가입</h3></Link></div>
           </div>
           :<div className="registerAndLogins">
-            <div className='register'><Link className="registerLink"to='/MyPage'><img src={defaultprofileImg}/><h3 id="logineddisplayName"className='subhead100'>{user.displayName}</h3></Link></div>
-            <div className='login'><Link onClick={()=>{signUserOut()}}to='/Login'><h3 className='body100'>로그아웃</h3></Link></div>
+            <div className='appregister'><Link className="registerLink"to='/MyPage'><img src={defaultprofileImg}/><h3 id="logineddisplayName"className='subhead100'>{user.displayName}</h3></Link></div>
+            <div className='applogin'><Link onClick={()=>{signUserOut()}}to='/Login'><h3 className='body100'>로그아웃</h3></Link></div>
           </div>
           }
          
@@ -71,6 +72,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main/>}></Route>
         <Route path="/Login" element={<Login setIsAuth={setIsAuth}/>} ></Route>
+        <Route path="/Signup" element={<Signup setIsAuth={setIsAuth}/>} ></Route>
         <Route path="/MyPage" element={<MyPage setList={setList}user={user}/>} ></Route>
         <Route path="/BetaTest/recentOrder" element={<BetaTest_recent setList={setList}/>}></Route>
         <Route path="/BetaTest/lateOrder" element={<BetaTest_late setList={setList} />}></Route>
