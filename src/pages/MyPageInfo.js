@@ -49,31 +49,41 @@ function MyPageInfo({setList,user}){
             <div className='contentsList'>
                 {postList && postList.map((post)=>{
                     return(
-                        <div>
+                        <>
+                        <div className='contentsListItems'>
                             <h1 className='subhead100'>{post.company.name}</h1>
                             <h4 className='body100'>{post.company.time.timeStartYear}년 {post.company.time.timeStartMonth}월 ~ {post.company.time.timeEndYear}년 {post.company.time.timeEndMonth}월</h4>
                         </div>
+                        <div className='divider'></div>
+                        </>
                     )
                 })}
             </div>
         </div>
         <div className='infoCard'>
-            {!eduAdd?
-                <button className='add' onClick={()=>{setEduAdd(1)}}>추가(학력)</button>
-            :
-                <><button className='add' onClick={()=>{setEduAdd(0)}}>취소</button>
-                <MyPageEduEdit/></>
-            }
-            <h3 className='body100'>학력</h3>
-            {eduList && eduList.map((post)=>{
-                return(
-                    <div>
-                        <h1 className='subhead100'>{post.school.name}</h1>
-                        <h2 className='body100'>{post.school.major}</h2>
-                        <h4 className='body100'>{post.school.time.timeStartYear}년 {post.school.time.timeStartMonth}월 ~ {post.school.time.timeEndYear}년 {post.school.time.timeEndMonth}월</h4>
-                    </div>
-                )
-            })}
+            <div className='cardTitle'>
+                <h3 className='body100'>학력</h3>
+                {!eduAdd?
+                    <button className='add' onClick={()=>{setEduAdd(1)}}>추가(학력)</button>
+                :
+                    <><button className='add' onClick={()=>{setEduAdd(0)}}>취소</button>
+                    <MyPageEduEdit/></>
+                }
+            </div>
+            <div className='contentsList'>
+                {eduList && eduList.map((post)=>{
+                    return(
+                        <>
+                        <div className='contentsListItems'>
+                            <h1 className='subhead100'>{post.school.name}</h1>
+                            <h2 className='body100'>{post.school.major}</h2>
+                            <h4 className='body100'>{post.school.time.timeStartYear}년 {post.school.time.timeStartMonth}월 ~ {post.school.time.timeEndYear}년 {post.school.time.timeEndMonth}월</h4>
+                        </div>
+                        <div className='divider'></div>
+                        </>
+                    )
+                })}
+            </div>
         </div>
         </>
     )

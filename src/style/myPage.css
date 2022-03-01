@@ -20,11 +20,11 @@
     .myPageWrap{
         width: 1280px;
     }
-  }
+}
 .userCard{
     position: relative;
     top: 32px;
-    width: 30%;
+    width: 384px;
     height: 441px;
     border: 1px solid var(--gray-3);
     box-sizing: border-box;
@@ -67,7 +67,7 @@
     width: 792px;
 }
 .myPageTab{
-    width: 64%;
+    width: 510px;
     height: 40px;
     position: relative;
     top: 32px;
@@ -77,3 +77,4 @@
     top: 48px;
     width: 100%;
 }
+/* tabListItem과 tabList class css는 post.css에 있음 */

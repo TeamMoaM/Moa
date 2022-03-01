@@ -3,18 +3,28 @@
     border: 1px solid var(--gray-3);
     box-sizing: border-box;
     border-radius: 16px;
+    padding-left: 32px;
+    padding-top: 28px;
+    padding-right: 32px;
+    padding-bottom: 28px;
 }
 .infoCard+.infoCard{
-    margin-top: 160px;
+    margin-top: 16px;
 }
 .infoCard .cardTitle{
-    position: relative;
-    top: 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 8px;
 }
-.infoCard .contentsList{
-    position: relative;
-    top: 36px;
+.infoCard .contentsList .body100{
+    margin-top: 8px;
+}
+.contentsList .divider{
+    margin-top: 16px;
+    margin-bottom: 16px;
+    width: 100%;
+}
+.contentsList .divider:last-child{
+    display: none;
 }
