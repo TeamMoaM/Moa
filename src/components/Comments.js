@@ -95,7 +95,7 @@ function Comments({id,user,isAuth}) {
                             <div className="postProfile1">
                                 <h5 id="postAuthorName"className="point100">{comment.commentPeople}</h5><h5 id="postCompanyName"className="point100">{"회사 이름"}</h5>
                             </div>
-                            <div className="postProfile1"><TimeCal time={comment.time}/></div>
+                            <div className="postProfile1"><TimeCal time={comment.time.seconds}/></div>
                         </div>
                     </div>
                     <div className="postEdit">
@@ -124,7 +124,7 @@ function Comments({id,user,isAuth}) {
                                 <div className="postProfile1">
                                     <h5 id="postAuthorName"className="point100">{com.commentPeople}</h5><h5 id="postCompanyName"className="point100">{"회사 이름"}</h5>
                                 </div>
-                                <div className="postProfile1"><TimeCal time={com.time}/></div>
+                                <div className="postProfile1"><TimeCal time={com.time.seconds}/></div>
                             </div>
                         </div>
                         <div className="postEdit">

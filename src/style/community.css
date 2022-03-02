@@ -22,7 +22,8 @@
   .firstPost{
     margin-top: 32px;
     width: 588px;
-    cursor: pointer;
+    z-index: 20;
+    position:relative;
     padding:0 8px 0 16px;
     background-color:var(--white);
     align-items: center;
@@ -32,6 +33,7 @@
     box-sizing: border-box;
     height:88px;
     border: 1px solid #E8E8EE;
+    cursor: pointer;
   }
   .firstPostButton{
     width:100%;
@@ -59,13 +61,12 @@
     padding: 24px;
     border: 1px solid #E8E8EE;
     border-radius: 8px;
+    z-index: 1;
     box-sizing: border-box;
     height:auto;
     display:flex;
     flex-direction: column;
     align-items: center;
-  
-    
   }
   .pfpimage{
     height:32px;
@@ -515,25 +516,27 @@
   width:100%;
   justify-content: left;
 }
-.communityTagsWrap{
-  display:flex;
-  justify-content: center;
-  width:100%;
-}
 
-.communityTagsBox{
-  position:absolute;
+.communityTagsAndSearch{
+  position:fixed;
   top:104px;
   width:1200px;
   display:flex;
-  flex-direction: column;
+  z-index: 1;
   justify-content: space-between;
   height:362px;
+}
+.communityTagsBox{
+  display:flex;
+  flex-direction: column;
+  height:362px;
+  justify-content: space-between;
 }
 .communityTags{
   display:flex;
   flex-direction: column;
   height:328px;
+  z-index: 1;
   width:283px;
   justify-content: space-between;
 }
@@ -561,4 +564,29 @@
 }
 .communityTag > h2{
   margin-left: 12px;
+}
+.communitySearch{
+  height:362px;
+  display:flex;
+  align-items: flex-start;
+  justify-content:center;
+}
+.communitySearchInput{
+  width:282px;
+  height:40px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #E8E8EE;
+  background-image: url("../img/communityImg/search.svg");
+  background-repeat: no-repeat;
+  background-position: 12px 50%;
+  padding-left: 44px;
+}
+.communitySearchInput::placeholder{
+  font-family: Spoqa Han Sans Neo;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  color:var(--gray-2);
+  line-height: 150%;
 }

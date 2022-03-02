@@ -28,6 +28,7 @@ function Community({setList,isAuth,setIsAuth}){
   const [postText,setPostText] = useState("");
   const [commentList,setCommentList] = useState([]);
   const [tagSelect,setTagSelect] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
   const [communityTagClicked,setCommunityTagClicked] = useState(0);
   var postsCollectionRef = query(collection(db, 'community'),where("tag","==",communityTagClicked));
   const [scrapBool,setScrapBool] = useState(0);
@@ -142,7 +143,7 @@ function Community({setList,isAuth,setIsAuth}){
 
   return (
     <div className="homePage">
-      <div className="communityTagsWrap">
+      <div className="communityTagsAndSearch">
         <div className="communityTagsBox">
           <h1 className="subhead100">태그</h1>
           <div className="communityTags">
@@ -154,11 +155,11 @@ function Community({setList,isAuth,setIsAuth}){
             {communityTagClicked==5?<div className="communityTagClicked">&#128241;<h2 className="subhead100">기술</h2></div>:<div onClick={()=>{setCommunityTagClicked(5)}}className="communityTagUnClicked">&#128241;<h2 className="subhead100">기술</h2></div>}
           </div>
         </div>
+        <div className="communitySearch">
+          <input className="communitySearchInput" placeholder="Community 검색" onChange={(event)=>{setSearchTerm(event.target.value)}}/>
+        </div>
+        
       </div>
-      <button onClick={() => setOpen(o => !o)} className="firstPost">
-        <img className="firstPostImage" src={profileDefaultImg}/>
-        <div className="firstPostButton"><h1 className="caption151">회원님의 이야기를 공유해주세요.</h1></div>
-      </button>
       <Popup contentStyle={{padding:"24px",width: "500px", height:"390px", borderRadius:"8px",boxShadow:"0px 4px 24px rgba(0, 1, 3, 0.1)"}}open={open} closeOnDocumentClick onClose={closeModal}>
         <div className="modal">
           <div className="modalHeader">
@@ -177,7 +178,18 @@ function Community({setList,isAuth,setIsAuth}){
           <button onClick={()=>{createPost();}}className="modalpostButton"><h3 className="subhead100">게시물 올리기</h3></button>
         </div>
       </Popup>
-      {postLists.map((post) => {
+      <div className="postWrap">
+        <button onClick={() => setOpen(o => !o)} className="firstPost">
+          <img className="firstPostImage" src={profileDefaultImg}/>
+          <div className="firstPostButton"><h1 className="caption151">회원님의 이야기를 공유해주세요.</h1></div>
+        </button>
+      {postLists.filter((post)=>{
+        if(searchTerm==""){
+          return post
+        }else if(post.postText.includes(searchTerm)){
+          return post
+        }
+      }).map((post) => {
         return (
           <div className="post">
             <div className="firstPostHeader">
@@ -225,6 +237,7 @@ function Community({setList,isAuth,setIsAuth}){
           
         );
       })}
+      </div>
     </div>
   );
 
