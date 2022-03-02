@@ -16,6 +16,7 @@ import tag from '../img/communityImg/tag.svg';
 import Comments from '../components/Comments';
 import TimeCal from '../components/TimeCal';
 import PostText from '../components/PostText';
+import pageUpImg from '../img/communityImg/pageup_btn.svg';
 import 'reactjs-popup/dist/index.css';
 import '../style/community.css';
 
@@ -157,6 +158,9 @@ function Community({setList,isAuth,setIsAuth}){
         </div>
         <div className="communitySearch">
           <input className="communitySearchInput" placeholder="Community 검색" onChange={(event)=>{setSearchTerm(event.target.value)}}/>
+          <div onClick={()=>{window.scrollTo(0,0);}}className="pageUpButton">
+            <img className="pageUpButtonImg" src={pageUpImg}/>
+          </div>
         </div>
         
       </div>

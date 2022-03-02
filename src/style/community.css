@@ -568,8 +568,9 @@
 .communitySearch{
   height:362px;
   display:flex;
+  flex-direction: column;
   align-items: flex-start;
-  justify-content:center;
+  justify-content:flex-start;
 }
 .communitySearchInput{
   width:282px;
@@ -589,4 +590,14 @@
   font-size: 12px;
   color:var(--gray-2);
   line-height: 150%;
+}
+.pageUpButton{
+  width:40px;
+  height:40px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  position:fixed;
+  bottom:80px;
+  cursor: pointer;
 }
