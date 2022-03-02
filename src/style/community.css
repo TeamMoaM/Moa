@@ -1,13 +1,15 @@
 
-.homePage {
-    /* width: 100vw; */
-    /* min-height: calc(100vh - 80px); */
-    height: auto;
+  .homePage {
+    width:1280px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  
+  @media screen and (min-width: 1280px) {
+    .homePage{
+      width:100%;
+    }
+  }
   .firstPostImage{
     width:40px;
     height:40px;
@@ -18,18 +20,16 @@
   }
   .firstPost{
     margin-top: 32px;
-    width:calc(50% - 28px);
-    min-width: 588px;
+    width: 588px;
     padding:0 8px 0 16px;
-    /* height: auto; */
     background-color:var(--white);
-    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
     align-items: center;
-    border: 1px solid #E8E8EE;
     border-radius: 8px;
     margin-bottom:12px;
     display:flex;
+    box-sizing: border-box;
     height:88px;
+    border: 1px solid #E8E8EE;
   }
   .firstPostButton{
     width:100%;
@@ -51,17 +51,30 @@
   }
   
   .homePage .post {
-    width:calc(50% - 76px);
-    min-width: 540px;
-    height: auto;
+    width:588px;
     background-color: var(--white);
-    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
     margin-bottom: 12px;
     padding: 24px;
     border: 1px solid #E8E8EE;
     border-radius: 8px;
+    box-sizing: border-box;
+    height:auto;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
   
+    
   }
+  .pfpimage{
+    height:32px;
+  }
+  .postProfile{
+    display:flex;
+    flex-direction: column;
+    height:32px;
+    justify-content: space-between;
+    margin-left: 8px;
+}
   #postAuthorName{
     color:var(--black);
     display:flex;
@@ -76,24 +89,13 @@
     font-size: 14px;
     font-weight: 400;
   }
-  .pfpimage{
-    height:32px;
-  }
-
- .postProfile{
-      display:flex;
-      flex-direction: column;
-      height:32px;
-      justify-content: space-between;
-      margin-left: 8px;
-  }
   .postProfile1{
       display:flex;
   }
   .postProfile1{
       color:var(--gray-1);
   }
-.postInformation{
+  .postInformation{
       display:flex;
   }
 .postEdit{
@@ -117,37 +119,7 @@
     padding:0;
     cursor: pointer;
   }
-  .post{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-.title {
-    flex: 50%;
-  }
-  .title{
-    width:100vw;
-    text-align: left;
-  }
- .deletePost {
-    flex: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-  .likeButton{
-    border:none;
-    background-color: var(--white);
-    display:flex;
-    margin-right: 10px;
-    align-items: center;
-    padding:0;
-  }
-  .likeButton .caption100{
-      margin-left: 6px;
-      align-items: center;
-  }
+
   #wholikeTxt{
     color:var(--black);
     font-weight: 400;
@@ -163,30 +135,34 @@
   }
   .post .postTextContainer {
     /* word-wrap: break-word; */
-    height: auto;
-    /* max-height: 400px; */
     width: 100%;
-    overflow: hidden;
-    overflow-y: auto;
     color:var(--black);
+    overflow-y: auto;
+    height:auto;
     font-family: Spoqa Han Sans Neo;
     font-style: normal;
     font-weight: normal;
     font-size: 15px;
     line-height: 200%;
     margin-top:16px;
-    overflow: hidden;
+    /* overflow: hidden; */
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
+  }
+  .postTextContainerMoreBtn{
+    display:flex;
+    margin-top: 16px;
+    width:100%;
+    justify-content: flex-end;
   }
   .commentPostTextContainer{
     height: auto;
     /* max-height: 400px; */
     width: calc(100% - 32px);
     padding-left: 32px;
-    overflow: hidden;
+    overflow-y: auto;
     overflow-y: auto;
     color:var(--black);
     font-family: Spoqa Han Sans Neo;
@@ -242,23 +218,30 @@
     
   }
   .likeAndComment{
-    width:100%;
+    width:419px;
     margin-top:8px;
     display:flex;
     justify-content: space-between;
     align-items: center;
   }
-  .shareButtons{
-      display:flex;
-      justify-content: space-between;
-      width:96px;
-  }
-  #commentCountTxt{
-    color:white;
-    padding-left: 6px;
-  }
-  .commentCount{
+  .messageBox{
+    width:71px;
     display:flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .bookMark{
+    width:61px;
+    cursor: pointer;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .likeButton{
+    width:71px;
+    cursor: pointer;
+    display:flex;
+    justify-content: space-between;
     align-items: center;
   }
   .breakLine{
@@ -324,10 +307,14 @@
     background-size: 28px 28px;
     background-color: var(--white);
     width: 100%;
+    box-sizing: border-box;
     height: 42px;
     border:none;
     padding-left:56px;
-    border: 1px solid #E8E8EE;
+    border-top: 1px solid #E8E8EE;
+    border-bottom: 1px solid #E8E8EE;
+    border-left: 1px solid #E8E8EE;
+    border-right:1px solid #E8E8EE;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -353,20 +340,21 @@
   .commentSendButton{
     display:none;
     /* display:block; */
-    background-color: #2A3247;
+    color:var(--primary-1);
     width:50px;
-    height:44px;
+    box-sizing: border-box;
+    height:42px;
     border:none;
+    border-top: 1px solid #E8E8EE;
+    border-bottom: 1px solid #E8E8EE;
+    border-right: 1px solid #E8E8EE;
     border-top-right-radius:8px;
     border-bottom-right-radius:8px;
   }
   .inputAndButton{
-    width: calc(100% - 32px);
-    padding-left:32px; 
+    width: 540px;
     display:flex;
     align-items: center;
-    margin-top: 16px;
-    margin-bottom:16px;
   }
   .commentInputAndButton{
     width: calc(100% - 64px);
@@ -378,7 +366,7 @@
   }
 .comment{
   display:flex;
-  width:95%;
+  width:100%;
   flex-direction: column;
   align-items: center;
 }
@@ -405,8 +393,7 @@
 }
 .postHeader{
   display: flex;
-  width: calc(100% - 32px);
-  padding-left:32px;
+  width: 540px;
   justify-content: space-between;
   align-items:center;
   height:32px;
@@ -423,19 +410,22 @@
 .modal{
   width:100%;
   display:flex;
+  height:390px;
   flex-direction: column;
+  justify-content: space-between;
 }
 .modalHeader{
   display:flex;
   justify-content: space-between;
   align-items: center;
 }
-
+.close{
+  cursor: pointer;
+}
 .modalSecondHeader{
   display:flex;
   height: 24px;
   align-items: center;
-  margin-top: 20px;
 }
 .modalSecondHeader > img{
   color:var(--primary-1);
@@ -469,38 +459,26 @@
 .modalUnclickedButton > .caption100{
   text-align: center;
 }
-.modalContentWrite{
-  margin-top: 16px;
-}
 .modalContentWriteTextarea{
   width: 500px;
   height:202px;
   border:none;
   resize: none;
-  border-bottom: 1px solid #E7E8EE;
 }
 .modalContentWriteTextarea:focus{
   border:none;
   outline:none;
-  border-bottom: 1px solid #E7E8EE;
 }
 .modalpostButton{
-  margin-top:16px;
   background: #2727AD;
   border-radius: 8px;
   width: 500px;
   color:white;
   height: 52px;
 }
-.modalWriteBox{
-  width:100%;
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-}
 .postTagWrap{
+  margin-top: 16px;
   display:flex;
   width:100%;
-  margin-top:16px;
   justify-content: left;
 }

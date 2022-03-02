@@ -7,13 +7,15 @@ import heart from '../img/communityImg/heart.svg';
 import hearted from '../img/communityImg/hearted.svg';
 import profileDefaultImg from '../img/communityImg/defaultprofile.svg';
 import message from '../img/communityImg/comment.svg';
-import share from '../img/communityImg/share.svg';
-import scrap from '../img/communityImg/scrap.svg';
+import scrap from '../img/communityImg/bookmark.svg';
+import scrapped from '../img/communityImg/bookmarked.svg';
 import Popup from 'reactjs-popup';
 import styled from "styled-components";
 import xIcon from '../img/communityImg/x_icon.svg';
 import tag from '../img/communityImg/tag.svg';
 import Comments from '../components/Comments';
+import TimeCal from '../components/TimeCal';
+import PostText from '../components/PostText';
 import 'reactjs-popup/dist/index.css';
 import '../style/community.css';
 // styled(Popup)`
@@ -32,6 +34,7 @@ function Community({setList,isAuth}){
   const [commentList,setCommentList] = useState([]);
   const [tagSelect,setTagSelect] = useState(1);
   const postsCollectionRef = collection(db, 'community');
+  const [scrapBool,setScrapBool] = useState(0);
   var navigate = useNavigate();
   setList(3);
   
@@ -103,7 +106,8 @@ function Community({setList,isAuth}){
     }
   }
   const createPost = async () => {
-    await addDoc(collection(db,'community'),{postText:postText,commentCount:0,author:{name:user.displayName,id:user.uid},like:[],likeCount:0,tag:tagSelect});
+    await addDoc(collection(db,'community'),{postText:postText,time:new Date().getTime()/1000,commentCount:0,author:{name:user.displayName,id:user.uid},like:[],likeCount:0,tag:tagSelect});
+    navigate('/Community');
   }
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
@@ -119,14 +123,25 @@ function Community({setList,isAuth}){
     bottom:"0",
     right:"0"
   }
-  
+  const communityScrap = (id) =>{    
+    if(id&&user.uid){
+        setScrapBool(1);
+        setDoc(doc(db,'userInfo',user.uid),{scrapCommunity:arrayUnion(id)},{merge:true});
+    }
+  }
+  const communityUnscrap = (id) =>{    
+      if(id&&user.uid){
+          setScrapBool(0);
+          updateDoc(doc(db,'userInfo',user.uid),{scrapCommunity:arrayRemove(id)});
+      }
+  }
   return (
     <div className="homePage">
       <button onClick={() => setOpen(o => !o)} className="firstPost">
         <img className="firstPostImage" src={profileDefaultImg}/>
         <div className="firstPostButton"><h1 className="caption151">회원님의 이야기를 공유해주세요.</h1></div>
       </button>
-      <Popup contentStyle={{padding:"24px",width: "500px", height:"438px", borderRadius:"8px",boxShadow:"0px 4px 24px rgba(0, 1, 3, 0.1)"}}open={open} closeOnDocumentClick onClose={closeModal}>
+      <Popup contentStyle={{padding:"24px",width: "500px", height:"390px", borderRadius:"8px",boxShadow:"0px 4px 24px rgba(0, 1, 3, 0.1)"}}open={open} closeOnDocumentClick onClose={closeModal}>
         <div className="modal">
           <div className="modalHeader">
             <h4 className="title100">새로운 게시물</h4>
@@ -140,12 +155,8 @@ function Community({setList,isAuth}){
             {tagSelect==4?<button onClick={()=>{setTagSelect(4);}} className="modalClickedButton"><h2 className="caption100">사업</h2></button>:<button onClick={()=>{setTagSelect(4);}} className="modalUnclickedButton"><h2 className="caption100">사업</h2></button>}
             {tagSelect==5?<button onClick={()=>{setTagSelect(5);}} className="modalClickedButton"><h2 className="caption100">기술</h2></button>:<button onClick={()=>{setTagSelect(5);}} className="modalUnclickedButton"><h2 className="caption100">기술</h2></button>}
           </div>
-          <div className="modalWriteBox">
-            <div className="modalContentWrite">
-              <textarea onChange={(event)=>{setPostText(event.target.value);}}className="modalContentWriteTextarea" placeholder="회원님의 이야기를 공유해주세요."></textarea>
-            </div>
-            <button onClick={()=>{createPost();}}className="modalpostButton"><h3 className="subhead100">게시물 올리기</h3></button>
-          </div>
+          <textarea onChange={(event)=>{setPostText(event.target.value);}}className="modalContentWriteTextarea" placeholder="회원님의 이야기를 공유해주세요."></textarea>
+          <button onClick={()=>{createPost();}}className="modalpostButton"><h3 className="subhead100">게시물 올리기</h3></button>
         </div>
       </Popup>
       {postLists.map((post) => {
@@ -158,14 +169,18 @@ function Community({setList,isAuth}){
                         <div className="postProfile1">
                             <h5 id="postAuthorName"className="point100">{post.author.name}</h5><h5 id="postCompanyName"className="point100">{"회사 이름"}</h5>
                         </div>
-                        <div className="postProfile1"><h2 className="caption100">{"1시간 전"}</h2></div>
+                        <div className="postProfile1"><TimeCal time={post.time}/></div>
                     </div>
                 </div>
-                <div className="postEdit">
-                    <button id="edit"onClick={()=>{console.log("edit!")}}><h2 id="editH"className="caption100">수정하기</h2></button>
-                      <h2 className="caption100"id='editdivider'>|</h2>
-                    <button id="delete"onClick={()=>{console.log("delete!")}}><h2 id="deleteH"className="caption100">삭제하기</h2></button>
-                </div>
+                {user.uid == post.author.id?
+                  <div className="postEdit">
+                      <button id="edit"onClick={()=>{console.log("edit!")}}><h2 id="editH"className="caption100">수정하기</h2></button>
+                        <h2 className="caption100"id='editdivider'>|</h2>
+                      <button id="delete"onClick={()=>{console.log("delete!")}}><h2 id="deleteH"className="caption100">삭제하기</h2></button>
+                  </div>
+                  :
+                  <></>
+                }
             </div>
             <div className="postTagWrap">
             {post.tag==1?<div className="postTag"><div className="modalClickedButton"><h2 className="caption100">디자인</h2></div></div>:<></>}
@@ -174,25 +189,18 @@ function Community({setList,isAuth}){
             {post.tag==4?<div className="postTag"><div className="modalClickedButton"><h2 className="caption100">사업</h2></div></div>:<></>}
             {post.tag==5?<div className="postTag"><div className="modalClickedButton"><h2 className="caption100">기술</h2></div></div>:<></>}
             </div>
-            
-            <div className="postTextContainer"> {post.postText} </div>
+            <PostText id={post.id} content={post.postText}/>
             <hr className="breakLine"/>
             <div className="likeAndComment">
-              <button className="likeButton" id={post.id} onClick={()=>{addLike(post.id);}}>{!post.like.includes(user.displayName)?<img className="heart"src={heart}/>:<img src={hearted}/>}<h1 className="caption100">공감 {post.likeCount}개</h1></button>
-              <div className="shareButtons">
-                  <img src={message}/>
-                  <img src={share}/>
-                  <img src={scrap}/>
-              </div>
+                <div className="likeButton" id={post.id} onClick={()=>{addLike(post.id);}}>{!post.like.includes(user.displayName)?<img className="heart"src={heart}/>:<img src={hearted}/>}<h1 className="caption100">공감 {post.likeCount}개</h1></div>
+                <div className="messageBox"><img src={message}/><h1 className="caption100">댓글 {post.commentCount}개</h1></div>
+                {scrapBool?<div className="bookMark" onClick={()=>{communityUnscrap(post.id)}}><img src={scrapped}/><h1 className="caption100">북마크</h1></div>:<div className="bookMark" onClick={()=>{communityScrap(post.id)}}><img src={scrap}/><h1 className="caption100">북마크</h1></div>}
             </div>
-            
-
-
             {/* 댓글 구현  */}
             <Comments id={post.id} user={user}/>
       
             <div className="inputAndButton">
-              <input  onBlur={(e)=>{var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';}} onFocus={(e)=>{var input = document.getElementById(post.id+'button');input.style.display="block";var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';input1.style.borderTopRightRadius= "0px";input1.style.borderBottomRightRadius="0px";}} id={"commentAddInput"+post.id}onKeyPress={(e)=>{inputPress(e,post.id)}} className="postCommentInput" placeholder="회원님의 의견을 공유해주세요." onChange={(event)=>{setComment(event.target.value);}}/>
+              <input  onBlur={(e)=>{var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';}} onFocus={(e)=>{var input = document.getElementById(post.id+'button');input.style.display="block";var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';input1.style.borderRight="none";input1.style.borderTopRightRadius= "0px";input1.style.borderBottomRightRadius="0px";}} id={"commentAddInput"+post.id}onKeyPress={(e)=>{inputPress(e,post.id)}} className="postCommentInput" placeholder="회원님의 의견을 공유해주세요." onChange={(event)=>{setComment(event.target.value);}}/>
               <button id={post.id+'button'} style={commentButtonStyle} className="commentSendButton" onClick={()=>{addComment(post.id)}}><h3 className="subhead100">등록</h3></button> 
             </div>
           </div>

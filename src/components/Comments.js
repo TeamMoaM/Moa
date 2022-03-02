@@ -3,6 +3,7 @@ import React,{useEffect,useState} from 'react';
 import {query,collection,doc,onSnapshot, updateDoc,arrayUnion,getDoc,setDoc} from 'firebase/firestore';
 import {db} from '../firebase-config';
 import profileDefaultImg from '../img/communityImg/defaultprofile.svg';
+import PostText from './PostText';
 
 
 
@@ -68,8 +69,7 @@ function Comments({id,user}) {
                         <button id="delete"onClick={()=>{console.log("delete!")}}><h2 id="deleteH"className="caption100">삭제하기</h2></button>
                     </div>
                 </div>
-                <div className="commentPostTextContainer"> {comment.content} </div>
-                
+                <PostText id={comment.id} content={comment.content}/>
                 {comment.replyComments.map((com)=>{return(
                    <div className="replyComment">
                     <div className="replyPostHeader">
