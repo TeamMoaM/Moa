@@ -31,6 +31,7 @@ function App() {
   setPersistence(auth, browserSessionPersistence).then(()=>{});
   onAuthStateChanged(auth,(currentUser)=>{
     setUser(currentUser);
+    console.log(currentUser.displayName);
     if(currentUser.displayName){
       console.log("displayName",currentUser.displayName);
       setIsAuth(true);

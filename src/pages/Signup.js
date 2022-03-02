@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import {auth,provider,db} from '../firebase-config';
 import {updateProfile,createUserWithEmailAndPassword,onAuthStateChanged,signInWithCredential,signInWithPopup} from "firebase/auth";
 import {useNavigate} from 'react-router-dom';
-import { setDoc,doc, getDoc, updateDoc, arrayUnion } from 'firebase/firestore';
+import { setDoc,doc, getDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
 import '../style/signup.css';
 function Signup({setIsAuth}) {
     const [registerEmail, setRegisterEmail] = useState("");
@@ -14,13 +14,6 @@ function Signup({setIsAuth}) {
     const [nicknameCheckBool,setNicknameCheckBool] = useState(true);
     const [emailCheckBool,setEmailCheckBool] = useState(true);
     let navigate = useNavigate();
-    const signInWithGoogle = () => {
-        signInWithPopup(auth, provider).then((result) => {
-            localStorage.setItem("isAuth",true);
-            setIsAuth(true);
-            navigate("/");
-        })
-    }
     const register = async () => {
         try {
           const docSnap = await getDoc(doc(db,'userInfo','nicknames'));
@@ -51,6 +44,7 @@ function Signup({setIsAuth}) {
         console.log(error.message);
           if(error.message=='Firebase: Error (auth/invalid-email).'){
               setEmailCheckBool(false);
+              await updateDoc(doc(db,'userInfo','nicknames'),{nicknames:arrayRemove(registerNickname)});
           }
         }
         
@@ -58,7 +52,6 @@ function Signup({setIsAuth}) {
     useEffect(()=>{
         setNicknameCheckBool(true);
     },[registerNickname])
-
     return (
         <div className="signUpBox">
             <div className="signUp">
@@ -66,7 +59,6 @@ function Signup({setIsAuth}) {
                     <div className="signupBigTitle"><h2 className="title150">반갑습니다!</h2></div>
                     <div className="signupSmallTitle"><h3 className="body150">MOA에서 당신의 서비스를 테스트하고<br/> 사람들과 함께 의견을 공유해보세요.</h3></div>
                 </div>
-
                 <div className="signupInputs">
                     <div className="emailIDBox">
                         <div className="idText"><h3 className="subhead100">이메일</h3></div>
@@ -83,10 +75,6 @@ function Signup({setIsAuth}) {
                         <input className="loginPW" type="password" placeholder="영문,숫자,특수문자 조합 6자 이상" onChange={(event) => {setRegisterPassword(event.target.value);}}></input>
                     </div>
                 </div>
-
-                
-                
-                
                 <button onClick={()=>{register()}}className="loginloginButton"><h3 className="subhead100">회원가입하고 시작하기</h3></button>
             </div>
         </div>
