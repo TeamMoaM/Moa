@@ -76,7 +76,7 @@ function App() {
         <Route path="/BetaTest/lateOrder" element={<BetaTest_late setList={setList} />}></Route>
         <Route path="/post/:roomId" element={<Post isAuth={isAuth}user={user}/>}></Route>
         <Route path="/post/createreview/:roomId" element={<CreateReview user={user}/>}></Route>
-        <Route path="/Community" element={<Community setList={setList} isAuth={isAuth}/>}></Route>
+        <Route path="/Community" element={<Community setList={setList} isAuth={isAuth} setIsAuth={setIsAuth}/>}></Route>
         <Route path="/CreatePost" element={<CreatePost user={user}/>}></Route>
       </Routes>
     </Router>

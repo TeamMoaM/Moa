@@ -145,7 +145,7 @@
     font-size: 15px;
     line-height: 200%;
     margin-top:16px;
-    /* overflow: hidden; */
+    overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 5;
@@ -160,9 +160,8 @@
   .commentPostTextContainer{
     height: auto;
     /* max-height: 400px; */
-    width: calc(100% - 32px);
-    padding-left: 32px;
-    overflow-y: auto;
+    box-sizing: border-box;
+    width: 540px;
     overflow-y: auto;
     color:var(--black);
     font-family: Spoqa Han Sans Neo;
@@ -171,16 +170,41 @@
     font-size: 15px;
     line-height: 200%;
     margin-top:8px;
-    overflow: hidden;
+    /* overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
+    -webkit-box-orient: vertical; */
+  }
+  .commentLikeAndReplyCommentBox{
+    width:100%;
+    margin-top: 8px;
+    display:flex;
+    justify-content: flex-start;
+  }
+  .commentLikeAndReplyComment{
+    width:126px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    color:var(--gray-1);
+  }
+  .commentLikeButton{
+    width:56px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .replyCommentToggleButton{
+    width:59px;
+    align-items: center;
+    display:flex;
+    justify-content: space-between;
   }
   .replyCommentPostTextContainer{
     height: auto;
-    width: calc(100% - 64px);
-    padding-left: 64px;
+    width: 540px;
+    padding-left: 32px;
     overflow: hidden;
     overflow-y: auto;
     color:var(--black);
@@ -355,18 +379,19 @@
     width: 540px;
     display:flex;
     align-items: center;
+    margin-top:16px;
   }
   .commentInputAndButton{
-    width: calc(100% - 64px);
-    padding-left: 64px;
+    width: 540px;
+    box-sizing: border-box;
     display:flex;
+    padding-left: 32px;
     align-items: center;
-    margin-top: 16px;
-    margin-bottom:16px;
   }
 .comment{
   display:flex;
   width:100%;
+  margin-top: 16px;
   flex-direction: column;
   align-items: center;
 }
@@ -398,10 +423,16 @@
   align-items:center;
   height:32px;
 }
+.replyArrowBox{
+  width:32px;
+  height:32px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
 .replyPostHeader{
   display: flex;
-  width: calc(100% - 64px);
-  padding-left:64px;
+  width:100%;
   justify-content: space-between;
   align-items:center;
   height:32px;

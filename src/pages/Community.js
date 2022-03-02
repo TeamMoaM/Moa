@@ -18,14 +18,9 @@ import TimeCal from '../components/TimeCal';
 import PostText from '../components/PostText';
 import 'reactjs-popup/dist/index.css';
 import '../style/community.css';
-// styled(Popup)`
-//   border:1px solid red;
-//   color:red;
-//   width:100px;
-// `;
 
 
-function Community({setList,isAuth}){
+function Community({setList,isAuth,setIsAuth}){
   const [postLists, setPostList] = useState([]);
   const [comment, setComment] = useState([]);
   const [commentToggle,setCommentToggle] =useState('asd');
@@ -41,6 +36,7 @@ function Community({setList,isAuth}){
   setPersistence(auth, browserSessionPersistence).then(()=>{console.log("browser session success")});
   onAuthStateChanged(auth,(User)=>{
     setCurrentUser(User);
+    setIsAuth(true);
   })
   useEffect(()=>{//밑에서 return 할때 한번에 map으로 가져오기 위해 useState로 post 내용들 받아오는 코드
     onSnapshot(postsCollectionRef, (snapshot)=>{
@@ -49,6 +45,8 @@ function Community({setList,isAuth}){
       })))
     })
   },false)
+  // useEffect(()=>{
+  // },[isAuth])
   
   const deletePost = async (id) => {//해당 id의 post 삭제하는 함수(currentUser의 게시물인지 확인 필요)
     const postDoc = doc(db, 'community', id);
@@ -66,7 +64,10 @@ function Community({setList,isAuth}){
         setDoc(docRef,{
           content:comment,
           commentPeople:user.displayName,
-          replyComments:[]
+          time:new Date(),
+          replyComments:[],
+          like:[],
+          likeCount:0
         })
         commentCount = Number(commentCount);
         await updateDoc(doc(db,"community",id),{commentCount:commentCount});
@@ -197,7 +198,7 @@ function Community({setList,isAuth}){
                 {scrapBool?<div className="bookMark" onClick={()=>{communityUnscrap(post.id)}}><img src={scrapped}/><h1 className="caption100">북마크</h1></div>:<div className="bookMark" onClick={()=>{communityScrap(post.id)}}><img src={scrap}/><h1 className="caption100">북마크</h1></div>}
             </div>
             {/* 댓글 구현  */}
-            <Comments id={post.id} user={user}/>
+            <Comments id={post.id} user={user} isAuth={isAuth}/>
       
             <div className="inputAndButton">
               <input  onBlur={(e)=>{var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';}} onFocus={(e)=>{var input = document.getElementById(post.id+'button');input.style.display="block";var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';input1.style.borderRight="none";input1.style.borderTopRightRadius= "0px";input1.style.borderBottomRightRadius="0px";}} id={"commentAddInput"+post.id}onKeyPress={(e)=>{inputPress(e,post.id)}} className="postCommentInput" placeholder="회원님의 의견을 공유해주세요." onChange={(event)=>{setComment(event.target.value);}}/>
