@@ -47,7 +47,8 @@ function MyPageInfo({setList,user}){
                 }
             </div>
             <div className='contentsList'>
-                {postList && postList.map((post)=>{
+                {postList.length!=0?
+                postList && postList.map((post)=>{
                     return(
                         <>
                         <div className='contentsListItems'>
@@ -58,7 +59,11 @@ function MyPageInfo({setList,user}){
                         <div className='divider'></div>
                         </>
                     )
-                })}
+                })
+                :
+                <div className='contentNull'><h1 className='body100'>등록된 정보가 없습니다.</h1></div>
+                }
+
             </div>
         </div>
         <div className='infoCard'>
@@ -72,7 +77,8 @@ function MyPageInfo({setList,user}){
                 }
             </div>
             <div className='contentsList'>
-                {eduList && eduList.map((post)=>{
+                {eduList.length!=0?
+                eduList && eduList.map((post)=>{
                     return(
                         <>
                         <div className='contentsListItems'>
@@ -83,7 +89,10 @@ function MyPageInfo({setList,user}){
                         <div className='divider'></div>
                         </>
                     )
-                })}
+                })
+                :
+                <div className='contentNull'><h1 className='body100'>등록된 정보가 없습니다.</h1></div>
+                }
             </div>
         </div>
         </>

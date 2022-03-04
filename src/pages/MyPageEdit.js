@@ -72,13 +72,13 @@ function MyPageEdit({user}){
             <input className='timeStartYear' name='timeStartYear' placeholder='입사 연도' type='number' min='1900' max='2100' onChange={updateTimeData} ></input>
             <input className='timeEndYear' name='timeEndYear' placeholder='퇴사 연도' type='number' min='1900' max='2100' onChange={updateTimeData} ></input>
             <button onClick = {addData} >Button Post</button>
-            {careerList && careerList.map((post)=>{
+            {/* {careerList && careerList.map((post)=>{
                 return(
                 <div>
                     {post.company.name}
                     {post.company.time.timeEndYear}
                 </div>)
-            })}
+            })} */}
 
         </>
     )

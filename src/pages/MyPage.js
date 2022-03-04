@@ -42,11 +42,7 @@ function MyPage({setList,user}){
     }
     else if (myPageList===4){
         myPageCard = <MyCommPosts/>;
-    }
-    else if (myPageList===5){
-        myPageCard = <MyCommComments/>;
-    }
-    
+    }    
     
 
     return(
@@ -72,7 +68,6 @@ function MyPage({setList,user}){
                             <ul className='tabListItem item2'><button onClick={()=>{setMyPageList(2)}}className={myPageList===2?'serviceIntro1':''}><h3 className='subhead100'>베타테스트 게시글</h3></button></ul>
                             <ul className='tabListItem item3'><button onClick={()=>{setMyPageList(3)}}className={myPageList===3?'serviceIntro1':''}><h3 className='subhead100'>베타테스트 리뷰</h3></button></ul>
                             <ul className='tabListItem item4'><button onClick={()=>{setMyPageList(4)}}className={myPageList===4?'serviceIntro1':''}><h3 className='subhead100'>커뮤니티 게시글</h3></button></ul>
-                            <ul className='tabListItem item5'><button onClick={()=>{setMyPageList(5)}}className={myPageList===5?'serviceIntro1':''}><h3 className='subhead100'>커뮤니티 댓글</h3></button></ul>
                         </list>
                     </div>
                     <div className='myPageCard'>

@@ -31,3 +31,6 @@
 .contentsListItems h4.body100{
     color: var(--gray-1);
 }
+.contentNull h1.body100{
+    color: var(--gray-2);
+}
