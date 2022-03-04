@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { collection, doc, addDoc,onSnapshot,setDoc,query} from "firebase/firestore";
+import { collection, doc, addDoc,onSnapshot,query} from "firebase/firestore";
 import {db,auth} from '../firebase-config';
 import {onAuthStateChanged} from 'firebase/auth';
 function MyPageEdit({user}){
-    const [company,setCompany] = useState("");
-    const [tier,setTier] = useState("");
+    const [company,setCompany] = useState({companyName:"",companyRole:""});
     const [time,setTime] = useState({
         timeStartYear:0,
         timeStartMonth:0,
@@ -24,11 +23,11 @@ function MyPageEdit({user}){
                 const careerCollectionRef = collection(userDocRef,'career');
                 await addDoc(careerCollectionRef,{
                     company:{
-                        name:company,
+                        name: company.companyName,
+                        role: company.companyRole,
                         time:time
                     }
                 })
-                await setDoc(doc(db,'userInfo',users.uid),{tier:tier});
                 console.log("userinfo에 career 정보 올리기 성공!");
             }
         } catch (e) {
@@ -41,6 +40,13 @@ function MyPageEdit({user}){
             [e.target.name]: +e.target.value
         })
         console.log(time);
+    }
+    const updateCompanyData = e => {
+        setCompany({
+            ...company,
+            [e.target.name]: e.target.value
+        })
+        console.log(company);
     }
     useEffect(()=>{
         if(users.displayName){
@@ -61,12 +67,10 @@ function MyPageEdit({user}){
     return(
         <>
             {user&&<div><h1>{user.displayName}</h1></div>}
-            <input className="event" placeholder="회사 이름을 입력하세요" onChange={(event)=>{setCompany(event.target.value)}}></input>
-            <input className='timeStartYear' name='timeStartYear' placeholder='시작한 연도' type='number' min='1900' max='2100' onChange={updateTimeData} ></input>
-            <input className='timeStartMonth' name='timeStartMonth' placeholder='시작한 달' type='number' min='1' max='12' onChange={updateTimeData} ></input>
-            <input className='timeEndYear' name='timeEndYear' placeholder='끝난 연도' type='number' min='1900' max='2100' onChange={updateTimeData} ></input>
-            <input className='timeEndMonth' name='timeEndMonth' placeholder='끝난 달' type='number' min='1' max='12' onChange={updateTimeData} ></input>
-            <input placeholder="티어" onChange={(event)=>{setTier(event.target.value)}}/>
+            <input className="event" name="companyName" placeholder="예 : HB Company" onChange={updateCompanyData}></input>
+            <input className="event" name="companyRole" placeholder="예 : 그래픽 디자이너, 프론트엔드 개발자" onChange={updateCompanyData}></input>
+            <input className='timeStartYear' name='timeStartYear' placeholder='입사 연도' type='number' min='1900' max='2100' onChange={updateTimeData} ></input>
+            <input className='timeEndYear' name='timeEndYear' placeholder='퇴사 연도' type='number' min='1900' max='2100' onChange={updateTimeData} ></input>
             <button onClick = {addData} >Button Post</button>
             {careerList && careerList.map((post)=>{
                 return(

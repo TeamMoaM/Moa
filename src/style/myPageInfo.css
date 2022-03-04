@@ -28,3 +28,6 @@
 .contentsList .divider:last-child{
     display: none;
 }
+.contentsListItems h4.body100{
+    color: var(--gray-1);
+}

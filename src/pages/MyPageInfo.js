@@ -52,7 +52,8 @@ function MyPageInfo({setList,user}){
                         <>
                         <div className='contentsListItems'>
                             <h1 className='subhead100'>{post.company.name}</h1>
-                            <h4 className='body100'>{post.company.time.timeStartYear}년 {post.company.time.timeStartMonth}월 ~ {post.company.time.timeEndYear}년 {post.company.time.timeEndMonth}월</h4>
+                            <h2 className='body100'>{post.company.role}</h2>
+                            <h4 className='body100'>{post.company.time.timeStartYear}년 ~ {post.company.time.timeEndYear}년</h4>
                         </div>
                         <div className='divider'></div>
                         </>
