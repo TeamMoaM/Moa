@@ -10,6 +10,7 @@ import "../style/post.css";
 import PostServiceIntro from './PostServiceIntro';
 import PostReview from './PostReview';
 import Popup from 'reactjs-popup';
+import UserInfo from '../components/UserInfo';
 import defaultprofileImg from '../img/communityImg/defaultprofile.svg';
 import 'reactjs-popup/dist/index.css';
 function Post({isAuth,user}) {
@@ -20,7 +21,7 @@ function Post({isAuth,user}) {
     const [scrapBool,setScrapBool] = useState(0);
     setPersistence(auth, browserSessionPersistence).then(()=>{console.log("browser session success")});
     onAuthStateChanged(auth,(currentUser)=>{
-      console.log("state good");
+
     })
     useEffect(()=>{
         getDoc(doc(db, "posts", roomId)).then(docSnap => {
@@ -45,9 +46,9 @@ function Post({isAuth,user}) {
             popHeader.current.style.top="-248px";
         }
     },[position])
-    if(!isAuth){
-        window.location.href='/login';
-    }
+    // if(!isAuth){
+    //     window.location.href='/login';
+    // }
     
     const link = '/post/createreview/'+roomId;
     const [tabList,setTabList] = useState(1);
@@ -106,6 +107,7 @@ function Post({isAuth,user}) {
                         <ul className='tabListItem'><button onClick={()=>{setTabList(0)}}className='serviceIntro1'><h3 className='subhead100'>리뷰</h3></button></ul>
                     </list>
                 }
+                <div className="divider"></div>
             </div>
         </div>
         <div className='postWrap'>
@@ -118,9 +120,7 @@ function Post({isAuth,user}) {
                 <img className='serviceImgWrap' src={post&&post.imageURL}></img>
                 <div className='postCon'>
                     <div className="postTitle"><h4 className='title100'>{post&&post.title}</h4></div>
-                    <div className='userInfo'>
-                       <img className="userImg"src={defaultprofileImg}/><h4 className='body100'>{post.author&&post.author.name}</h4><h2 className='caption100'>company namy</h2>{/* 회사 이름은 회원가입 페이지 이후 작업 시작 */}
-                    </div>
+                    {post.author&&<UserInfo uid={post.author.id}/>}
                     <div className='postIntro'>
                         <h2 className='body150'>{post&&post.content}</h2>
                     </div>

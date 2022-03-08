@@ -4,6 +4,7 @@ import {ref,uploadBytes,getDownloadURL} from 'firebase/storage';
 import {storage} from '../firebase-config';
 import 'react-quill/dist/quill.bubble.css';
 import ClipLoader from "react-spinners/ClipLoader";
+import '../style/Editor.css';
 class EditorComponent extends Component{
     constructor(props){
         super(props);
@@ -65,12 +66,13 @@ class EditorComponent extends Component{
       const { value, onChange } = this.props;
         return(
             <div className='editor'>
-              <ClipLoader color={'red'} loading={this.state.loading} size={150} />
                 <ReactQuill
                     ref={this.quillRef}
                     theme="bubble" 
                     modules={this.modules} 
                     formats={this.formats}  
+                    placeholder="이곳에 글을 작성하세요.
+                    글자를 작성하고 드래그하면 양식을 편집하고 사진을 넣을 수 있습니다."
                     onChange={(content, delta, source, editor) => onChange(editor.getHTML())} />
             </div>
         )

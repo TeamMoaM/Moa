@@ -1,11 +1,103 @@
-.editor{
-    margin:0;
-    width:calc(67% - 61px);
-    max-width: 792px;
-    margin-top:-146px;
-}
+
 .editorBox{
     width:100%;
     display: flex;
     justify-content: center;
+}
+.createReviewTitleInput{
+    width:792px;
+    height:48px;
+    display:flex;  
+    font-weight: bold;
+    font-family: Spoqa Han Sans Neo;
+    font-size: 32px;
+    align-items: center;
+}
+.createReviewTitleInput::placeholder{
+    font-family: Spoqa Han Sans Neo;
+    font-style: normal;
+    font-weight: bold;
+    width:792px;
+    height:48px;
+    line-height: 150%;
+    font-size: 32px;
+    display:flex;
+    color:var(--gray-1);
+    align-items: center;
+}
+.createReviewTitleBox{
+    display:flex;
+    margin-top: 56px;
+    flex-direction: column;
+    justify-content: space-between;
+    width:792px;
+    height:88px;
+}
+.postReviewBox{
+    display:flex;
+    width:710px;
+    flex-direction: column;
+    height:134px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.postReviewContent{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    
+}
+.postReviewContent > h3{
+    color:var(--gray-1);
+    /* background-color: #FFF !important; */
+}
+.postReviewTitle{
+    width:710px;
+}
+.postReviewTitle > h1{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.postReviewTimeAndLike{
+    display:flex;
+    width:107px;
+    align-items: center;
+    justify-content: space-between;
+}
+.postReviewTimeAndLike > h2{
+    font-family: Spoqa Han Sans Neo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 100%;
+    /* identical to box height, or 14px */
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.01em;
+    color:var(--gray-1);
+}
+.postReviewTimeAndLike >h3{
+    color:var(--gray-3);
+}
+#postReviewLike{
+    color:var(--primary-1);
+}
+.postReviewWrap{
+    width:792px;
+    height:182px;
+    border: 1px solid #E8E8EE;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding:23px;
+    cursor:pointer;
+    display:flex;
+    justify-content: space-between;
+}
+.postReviewDetailButton{
+    display:flex;
+    color:var(--gray-2);
+    align-items: center;
 }

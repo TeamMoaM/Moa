@@ -29,17 +29,15 @@ function Signup({setIsAuth}) {
             registerEmail,
             registerPassword,
           );
-          onAuthStateChanged(auth,(currentUser)=>{
-            setDoc(doc(db,'userInfo',currentUser.uid),{name:registerNickname,email:currentUser.email,introduction:"저에 대한 한 줄 소개입니다.",link:"default.instagram.com/lorem"});
-            updateProfile(auth.currentUser,{
-                displayName: registerNickname
-                }).then(function() {
-                console.log(registerNickname);
-                }).catch((error)=>{console.log(error);})
-          });
+          
+        await setDoc(doc(db,'userInfo',auth.currentUser.uid),{name:registerNickname,tier:"bronze",email:auth.currentUser.email,introduction:"저에 대한 한 줄 소개입니다.",link:"default.instagram.com/lorem"});
+        await updateProfile(auth.currentUser,{
+            displayName: registerNickname
+            }).then(function() {
+            console.log(registerNickname);
+            }).catch((error)=>{console.log(error);})
           setIsAuth(true);
           navigate("/");
-          window.location.reload();
         } catch (error) {
         console.log(error.message);
           if(error.message=='Firebase: Error (auth/invalid-email).'){

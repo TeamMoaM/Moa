@@ -64,6 +64,7 @@
 .serviceImgWrap{
   width: 142px;
   height: 142px;
+  object-fit: cover;
   background-color: var(--primary-3);
   border-radius: 8px;
 }
@@ -153,6 +154,9 @@
   color:var(--primary-1);
   box-shadow: 0 8px 0 -4px var(--primary-1);
 }
+.serviceIntro1 > h3{
+  font-weight: bold;
+}
   
 .tabListItem + .tabListItem{
   margin-left: 24px;
@@ -223,6 +227,9 @@
   background-color: white;
   flex-direction: column;
   align-items:center;
+}
+.postWrap2 > .divider{
+  margin-top: 4px;
 }
 @media screen and (min-width: 1281px) {
   .createPostWrap{
@@ -332,7 +339,12 @@
   margin-top:24px;
   font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
   letter-spacing: -0.01em;
-  line-height: 150%; font-size: 16px;font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 150%; font-size: 13px;font-weight: 400;
 }
 /*popHeader element*/
 

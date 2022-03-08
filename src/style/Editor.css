@@ -1,0 +1,29 @@
+.quill > .ql-container > .ql-editor.ql-blank::before{
+    font-family: Spoqa Han Sans Neo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 200%;
+    letter-spacing: 0.01em;
+    color:var(--gray-2);
+    margin: 0;
+    margin-left: -10px;
+}
+.editor{
+    margin:0;
+    width:792px;
+    margin-top:-138px;
+    padding:0;
+}
+.quill > .ql-container > .ql-editor{
+    font-family: Spoqa Han Sans Neo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 200%;
+    /* or 32px */
+    letter-spacing: 0.01em;
+    color:var(--black);
+    padding:0;
+    padding-left: 3px;
+}

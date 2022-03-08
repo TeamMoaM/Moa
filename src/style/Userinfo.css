@@ -1,0 +1,23 @@
+
+.userInformation{
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.userInformation > img{
+    width:24px;
+    height:24px;
+}
+.userInformation > h4{
+    color:var(--gray-1);
+    display:flex;
+    align-items: center;
+    margin-left: 8px;
+}
+.userInformation >h4 >img{
+    margin-right: 4px;
+}
+.userInformation > h2{
+    color:var(--gray-2);
+    margin-left: 8px;
+}

@@ -7,11 +7,13 @@ import Bookmark from '../icons/bookmark.svg';
 import defaultprofileImg from '../img/communityImg/defaultprofile.svg';
 import '../style/reviewpost.css';
 import Editor from './Editor'
+import UserInfo from '../components/UserInfo';
 function CreateReview({user}) {
     const {roomId} = useParams();
     const [post, setPost] = useState([]);
     const [desc, setDesc] = useState('');
     const [scrapBool,setScrapBool] = useState(0);
+    const [title,setTitle] = useState("");
     useEffect(()=>{
         getDoc(doc(db, "posts", roomId)).then(docSnap => {
             setPost({...docSnap.data()})
@@ -21,12 +23,12 @@ function CreateReview({user}) {
         setDesc(value);
     }
     useEffect(()=>{
-        if(user.uid&&post.id){
+        if(user.uid){
             getDoc(doc(db,'userInfo',user.uid)).then(docSnap => {
                 if(docSnap.exists()){
                     const scrap = docSnap.data().scrap;
                     console.log("success:",scrap);
-                    if(scrap.includes(post.id)){
+                    if(scrap.includes(roomId)){
                         console.log("include true!");
                         setScrapBool(true);
                     }
@@ -35,18 +37,26 @@ function CreateReview({user}) {
         }
     },[scrapBool,post])
     const scrap = () =>{    
-        if(post.id&&user.uid){
+        if(user.uid){
             setScrapBool(true);
-            setDoc(doc(db,'userInfo',user.uid),{scrap:arrayUnion(post.id)},{merge:true});
+            setDoc(doc(db,'userInfo',user.uid),{scrap:arrayUnion(roomId)},{merge:true});
         }
     }
     const unscrap = () =>{    
-        if(post.id&&user.uid){
+        if(user.uid){
             setScrapBool(false);
-            updateDoc(doc(db,'userInfo',user.uid),{scrap:arrayRemove(post.id)});
+            updateDoc(doc(db,'userInfo',user.uid),{scrap:arrayRemove(roomId)});
         }
     }
     const uploadReview = async () => {
+        if(title.length==0){
+            alert("제목을 입력해주세요!");
+            return 0
+        }
+        else if(desc.length==0){
+            alert("내용을 입력해주세요!");
+            return 0
+        }
         const reviewCountRef = doc(db,'posts',roomId);
         let data = await getDoc(reviewCountRef);
         let reviewCount = await data.data().reviewCount;
@@ -54,7 +64,7 @@ function CreateReview({user}) {
         await updateDoc(reviewCountRef,{reviewCount:reviewCount});
         reviewCount = String(reviewCount);
         const reviewRef = doc(db,"posts",roomId,"review",reviewCount);
-        await setDoc(reviewRef,{reviewPeople:user.displayName,reviewContent:desc});
+        await setDoc(reviewRef,{reviewPeople:user.uid,reviewTitle:title,reviewContent:desc,time:new Date().getTime()/1000,like:[],likeCount:0});
         window.location.href=`/post/${roomId}`;
     };
 
@@ -66,9 +76,7 @@ function CreateReview({user}) {
                         <img className='serviceImgWrap' src={post&&post.imageURL}></img>
                         <div className='postCon'>
                             <div className="postTitle"><h4 className='title100'>{post&&post.title}</h4></div>
-                            <div className='userInfo'>
-                            <img className="userImg"src={defaultprofileImg}/><h4 className='body100'>{post.author&&post.author.name}</h4><h2 className='caption100'>company namy</h2>{/* 회사 이름은 회원가입 페이지 이후 작업 시작 */}
-                            </div>
+                            {post.author&&<UserInfo uid={post.author.id}/>}
                             <div className='postIntro'>
                                 <h2 className='body150'>{post&&post.content}</h2>
                             </div>
@@ -85,7 +93,15 @@ function CreateReview({user}) {
                 </list>
                 <div className='divider'></div>
             </div>
+            <div className="createReviewTitleBox">
+                <input className="createReviewTitleInput" placeholder="리뷰 제목을 입력하세요." onChange={(event)=>{setTitle(event.target.value)}}/>
+                {user&&<UserInfo uid={user.uid}/>}
+            </div>
+            
             <Editor value={desc} onChange={onEditorChange}></Editor>
+                
+
+            
         </div>
     );
 }

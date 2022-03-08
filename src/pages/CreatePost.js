@@ -34,7 +34,7 @@ const CreatePost = ({user}) => {
         let docCount = await data.data().docCount;
         docCount = docCount+1;
         let urlResponse = await getDownloadURL(storageRef);
-        await addDoc(postsCollectionRef, {title:title,content:content,author:{id:user.uid,name:user.displayName},desc:desc,imageURL:urlResponse,time:new Date(),commentCount:0,reviewCount:0,id:docCount});
+        await addDoc(postsCollectionRef, {title:title,content:content,author:{id:user.uid,name:user.displayName},desc:desc,imageURL:urlResponse,time:new Date().getTime/1000,commentCount:0,reviewCount:0,id:docCount});
         await setDoc(doc(db, 'docCount','docCount'),{docCount:docCount});
         setLoading(false);
         window.location.href='Betatest/recentOrder';
@@ -56,15 +56,15 @@ const CreatePost = ({user}) => {
             <div className="serviceInfo">
                 {thumbnailImg? <div className="postImgWrap"><img id="postImgWrap"src={thumbnailImg}alt="사진을 추가해주세요!"/></div>:<div className="postImgWrap"></div>}
                 <div className="postCon">
-                    <input className="postTitle" placeholder="제목을 입력하세요" onChange={(event)=>{setTitle(event.target.value)}}></input>
+                    <input maxlength="30" className="postTitle" placeholder="제목을 입력하세요" onChange={(event)=>{setTitle(event.target.value)}}></input>
                     <div className='userInfo'>
                         <div className='userImg'></div><h4 className='body100'>{user.displayName}</h4><h2 className='caption100'>Company name</h2>
                     </div>
-                    <textarea className="postIntro" placeholder="서비스 개요를 입력하세요" onChange={(event)=>{setContent(event.target.value)}}></textarea>
+                    <textarea maxlength="133" className="postIntro" placeholder="서비스 개요를 입력하세요" onChange={(event)=>setContent(event.target.value)}></textarea>
                 </div>
             </div>
             <div className="divider"></div>
-            <ClipLoader color={'red'} loading={loading} size={150} />
+            {/* <ClipLoader color={'red'} loading={loading} size={150} /> */}
             <form onSubmit={formHandeler}>
                 <input ref={thumbnailInput} id="input-file"onChange={thumbnailInputOnchange}className="fileButton" type="file"/>
                 <label className="input-file-button" for="input-file"><h3 className="subhead100">썸네일 올리기</h3></label>
