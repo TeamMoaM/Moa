@@ -61,6 +61,10 @@
   align-items: center;
   justify-content: center;
 }
+.reviewButton:disabled{
+  background-color: var(--gray-3);
+  cursor:auto;
+}
 .serviceImgWrap{
   width: 142px;
   height: 142px;
@@ -263,6 +267,9 @@
   border-radius: 8px;
   border: none;
   color: var(--white);
+}
+.submitButton:disabled{
+   background-color: var(--gray-3);
 }
 .fileButton{
   display:none;

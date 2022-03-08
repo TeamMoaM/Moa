@@ -51,7 +51,9 @@
 }
 .postReviewContent > h3{
     color:var(--gray-1);
-    /* background-color: #FFF !important; */
+}
+.postReviewContent > h3 img{
+    display:none;
 }
 .postReviewTitle{
     width:710px;

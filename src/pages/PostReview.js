@@ -27,7 +27,7 @@ function PostReview(props) {
             {showReviewNumber==0?
                 <>{review&&review.map((reviewPost)=>{
                     return(
-                        <div onClick={()=>{setShowReviewNumber(reviewPost.id)}} className="postReviewWrap">
+                        <div onClick={()=>{setShowReviewNumber(reviewPost.id);navigate('');}} className="postReviewWrap">
                             <div className="postReviewBox">
                                 <div className="postReviewTitle">
                                     <h1 className="subhead100">{reviewPost.reviewTitle}</h1>
@@ -48,7 +48,7 @@ function PostReview(props) {
                         </div>
                     )
                 })}</>
-            :<ReviewDetail id={showReviewNumber}/>
+            :<ReviewDetail id={showReviewNumber} setShowReviewNumber={setShowReviewNumber}/>
             }
         </div>
     );

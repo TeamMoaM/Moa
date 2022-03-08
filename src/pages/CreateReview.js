@@ -50,14 +50,6 @@ function CreateReview({user,setList}) {
         }
     }
     const uploadReview = async () => {
-        if(title.length==0){
-            alert("제목을 입력해주세요!");
-            return 0
-        }
-        else if(desc.length==0){
-            alert("내용을 입력해주세요!");
-            return 0
-        }
         const reviewCountRef = doc(db,'posts',roomId);
         let data = await getDoc(reviewCountRef);
         let reviewCount = await data.data().reviewCount;
@@ -68,6 +60,15 @@ function CreateReview({user,setList}) {
         await setDoc(reviewRef,{reviewPeople:user.uid,reviewTitle:title,reviewContent:desc,time:new Date().getTime()/1000,like:[],likeCount:0});
         window.location.href=`/post/${roomId}`;
     };
+    useEffect(()=>{
+        const button = document.getElementById('reviewCreateButton');
+        if(title.length<3 || desc.length<12){
+            button.disabled=true
+        }
+        else{button.disabled=false;}
+    //     console.log("desc:"+desc.length-11);
+    // console.log("title:"+title.length)}
+    },[title,desc])
 
     return (
         <div className="wrap">
@@ -85,7 +86,7 @@ function CreateReview({user,setList}) {
                     </div>
                     <div className='scrapReview'>
                         {scrapBool?<button style={{backgroundColor:"#E4E4FF"}}onClick={()=>unscrap()}className='scrap'><div className="scrapFrame"><img className='bookmarkImage' src={BookmarkClicked}/><h3 className='subhead100'>스크랩 완료</h3></div></button>:<button onClick={()=>scrap()}className='scrap'><div className='scrapFrame'><img className='bookmarkImage' src={Bookmark}/><h3 className='subhead100'>스크랩 하기</h3></div></button>}
-                        <button onClick={()=>{uploadReview();}} className="reviewButton"><h3 className='subhead100'>리뷰 등록하기</h3></button>
+                        <button id="reviewCreateButton" onClick={()=>{uploadReview();}} className="reviewButton" disabled><h3 className='subhead100'>리뷰 등록하기</h3></button>
                     </div>
                 </div>
                 <list className='tabList'>

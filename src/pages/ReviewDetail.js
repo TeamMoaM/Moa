@@ -1,15 +1,17 @@
 import React ,{useEffect,useState} from 'react';
 import UserInfo from '../components/UserInfo';
 import {query,doc,collection, getDoc} from 'firebase/firestore';
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import {db} from '../firebase-config';
 import '../style/reviewdetail.css';
-function ReviewDetail({id}) {
+function ReviewDetail({id,setShowReviewNumber}) {
     const {roomId} = useParams();
     const [title,setTitle] = useState("");
     const [author,setAuthor] = useState("");
     const [desc,setDesc] = useState("");
+    // navigate = useNavigate();
     useEffect(()=>{
+
         getDoc(doc(collection(doc(collection(db,'posts'),roomId),'review'),id)).then(docSnap=>{
             setTitle(docSnap.data().reviewTitle);
             setAuthor(docSnap.data().reviewPeople);
@@ -17,6 +19,20 @@ function ReviewDetail({id}) {
         });
         
     },)
+    useEffect(() => {
+        const preventGoBack = () => {
+          // change start
+          window.history.pushState(null, '', window.location.href);
+          // change end
+          setShowReviewNumber(0);
+        };
+        
+        window.history.pushState(null, '', window.location.href);
+        window.addEventListener('popstate', preventGoBack);
+        
+        return () => window.removeEventListener('popstate', preventGoBack);
+      }, []); 
+
     return (
         <div className="reviewDetail">
             <div className="reviewDetailTitleAndInfo">

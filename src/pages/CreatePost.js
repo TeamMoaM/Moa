@@ -1,7 +1,7 @@
 import { collection, addDoc, doc,getDoc, setDoc} from "firebase/firestore";
 import {ref,uploadBytes,getDownloadURL} from 'firebase/storage';
 import {db,storage} from '../firebase-config';
-import React,{useState,useRef} from 'react';
+import React,{useState,useRef, useEffect} from 'react';
 import 'react-quill/dist/quill.snow.css';
 import Editor from './Editor'
 import '../style/post.css';
@@ -48,6 +48,15 @@ const CreatePost = ({user,setList}) => {
     function onEditorChange(value) {
         setDesc(value);
     }
+    useEffect(()=>{
+        const button = document.getElementById('postSubmitButton');
+        if(title.length<3 || content.length<3 || desc.length<12 ||thumbnailImg.length==0){
+            button.disabled=true;
+        }
+        else{
+            button.disabled=false;
+        }
+    },[title,content,desc,thumbnailImg])
     return (
         <div className="createPostWrap">
         <div className="createPost">
@@ -65,7 +74,7 @@ const CreatePost = ({user,setList}) => {
             <div className="divider"></div>
             {/* <ClipLoader color={'red'} loading={loading} size={150} /> */}
             <form onSubmit={formHandeler}>
-                <button className="submitButton" onClick={()=>{setLoading(true)}}type="submit"><h3 className="subhead100">글 등록하기</h3></button>
+                <button id="postSubmitButton" className="submitButton" onClick={()=>{setLoading(true)}}type="submit" disabled><h3 className="subhead100">글 등록하기</h3></button>
             </form>
         </div>
   

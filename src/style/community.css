@@ -550,6 +550,7 @@
   padding-left: 16px;
   border: 1px solid #2727AD;
   align-items: center;
+  color: var(--primary-1);
 }
 .communityTagUnClicked{
   display:flex;
@@ -562,14 +563,17 @@
   border: 1px solid #E8E8EE;
   align-items: center;
 }
-.communityTag > h2{
+.communityTagUnClicked > h2{
+  font-weight: 400;
+}
+.communityTags h2{
   margin-left: 12px;
 }
 .communitySearch{
   height:362px;
   display:flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content:flex-start;
 }
 .communitySearchInput{

@@ -148,12 +148,12 @@ function Community({setList,isAuth,setIsAuth}){
         <div className="communityTagsBox">
           <h1 className="subhead100">태그</h1>
           <div className="communityTags">
-            {communityTagClicked==0?<div className="communityTagClicked">&#128196;<h2 className="subhead100">모든 태그</h2></div>:<div onClick={()=>{setCommunityTagClicked(0)}}className="communityTagUnClicked">&#128196;<h2 className="subhead100">모든 태그</h2></div>}
-            {communityTagClicked==1?<div className="communityTagClicked">&#128188;<h2 className="subhead100">사업</h2></div>:<div onClick={()=>{setCommunityTagClicked(1)}}className="communityTagUnClicked">&#128188;<h2 className="subhead100">사업</h2></div>}
-            {communityTagClicked==2?<div className="communityTagClicked">&#128187;<h2 className="subhead100">개발</h2></div>:<div onClick={()=>{setCommunityTagClicked(2)}}className="communityTagUnClicked">&#128187;<h2 className="subhead100">개발</h2></div>}
-            {communityTagClicked==3?<div className="communityTagClicked">&#128196;<h2 className="subhead100">기획</h2></div>:<div onClick={()=>{setCommunityTagClicked(3)}}className="communityTagUnClicked">&#128196;<h2 className="subhead100">기획</h2></div>}
-            {communityTagClicked==4?<div className="communityTagClicked">&#127912;<h2 className="subhead100">디자인</h2></div>:<div onClick={()=>{setCommunityTagClicked(4)}}className="communityTagUnClicked">&#127912;<h2 className="subhead100">디자인</h2></div>}
-            {communityTagClicked==5?<div className="communityTagClicked">&#128241;<h2 className="subhead100">기술</h2></div>:<div onClick={()=>{setCommunityTagClicked(5)}}className="communityTagUnClicked">&#128241;<h2 className="subhead100">기술</h2></div>}
+            {communityTagClicked==0?<div className="communityTagClicked"><h4 className="title100">&#128196;</h4><h2 className="subhead100">모든 태그</h2></div>:<div onClick={()=>{setCommunityTagClicked(0)}}className="communityTagUnClicked"><h4 className="title100">&#128196;</h4><h2 className="subhead100">모든 태그</h2></div>}
+            {communityTagClicked==1?<div className="communityTagClicked"><h4 className="title100">&#128188;</h4><h2 className="subhead100">사업</h2></div>:<div onClick={()=>{setCommunityTagClicked(1)}}className="communityTagUnClicked"><h4 className="title100">&#128188;</h4><h2 className="subhead100">사업</h2></div>}
+            {communityTagClicked==2?<div className="communityTagClicked"><h4 className="title100">&#128187;</h4><h2 className="subhead100">개발</h2></div>:<div onClick={()=>{setCommunityTagClicked(2)}}className="communityTagUnClicked"><h4 className="title100">&#128187;</h4><h2 className="subhead100">개발</h2></div>}
+            {communityTagClicked==3?<div className="communityTagClicked"><h4 className="title100">&#128196;</h4><h2 className="subhead100">기획</h2></div>:<div onClick={()=>{setCommunityTagClicked(3)}}className="communityTagUnClicked"><h4 className="title100">&#128196;</h4><h2 className="subhead100">기획</h2></div>}
+            {communityTagClicked==4?<div className="communityTagClicked"><h4 className="title100">&#127912;</h4><h2 className="subhead100">디자인</h2></div>:<div onClick={()=>{setCommunityTagClicked(4)}}className="communityTagUnClicked"><h4 className="title100">&#127912;</h4><h2 className="subhead100">디자인</h2></div>}
+            {communityTagClicked==5?<div className="communityTagClicked"><h4 className="title100">&#128241;</h4><h2 className="subhead100">기술</h2></div>:<div onClick={()=>{setCommunityTagClicked(5)}}className="communityTagUnClicked"><h4 className="title100">&#128241;</h4><h2 className="subhead100">기술</h2></div>}
           </div>
         </div>
         <div className="communitySearch">
