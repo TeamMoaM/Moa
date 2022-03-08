@@ -298,5 +298,8 @@ nav{
 .ql-editor{
   min-height: 400px;
 }
-
+.footer{
+  height:288px;
+  margin-top:80px;
+}
 

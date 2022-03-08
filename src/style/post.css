@@ -165,7 +165,7 @@
   cursor:pointer;
 }
 .postServiceIntro{
-  margin-top: 56px;
+  margin-top: 40px;
   display:flex;
   flex-direction: column;
   align-items: center;
@@ -202,12 +202,6 @@
   align-items: center;
   width:1280px;
 }
-
-.editorBox{
-  display:flex;
-  width:1280px;
-  justify-content: center;
-}
 .popHeader{
   position:fixed;
   top:0px;
@@ -237,11 +231,6 @@
     flex-direction: column;
     align-items: center;
     width:100%;
-  }
-  .editorBox{
-    display:flex;
-    width:100%;
-    justify-content: center;
   }
   .popHeader{
     position:fixed;
@@ -279,21 +268,25 @@
   display:none;
 }
 .input-file-button{
-  width: 180px;
+  width: 142px;
+  height:142px;
   position: absolute;
-  right: 40px;
-  top: 80px;
-  height: 36px;
+  left: 244px;
+  top: 32px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
   cursor: pointer;
-  height: 36px;
   display:flex;
   justify-content: center;
   align-items: center;
-  background-color: #E4E4FF;
   border-radius: 8px;
 }
+.input-file-button > .cameraImg{ 
+  margin-bottom: 9px;
+}
 .input-file-button > .subhead100{
-  color: var(--primary-1);
+  color: var(--gray-2);
 }
 .postImgWrap{
   width: 142px;
@@ -301,7 +294,13 @@
   background-color: var(--primary-3);
   border:none;
   border-radius: 8px;
-  float: left;
+}
+.postImgWrap2{
+  width: 142px;
+  height: 142px;
+  border:none;
+  border-radius: 8px;
+  border:1px solid #BEBECA;
 }
 #postImgWrap{
   width: 142px;

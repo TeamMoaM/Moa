@@ -10,10 +10,14 @@ function UserInfo({uid}) {
     const [tier,setTier] = useState("bronze");
     const [name,setName] = useState("");
     useEffect(()=>{
-        getDoc(doc(db,'userInfo',uid)).then((docSnap)=>{
-            setTier(docSnap.data().tier);
-            setName(docSnap.data().name);
-        })
+        const get = async () =>{
+            await getDoc(doc(db,'userInfo',uid)).then((docSnap)=>{
+                setTier(docSnap.data().tier);
+                setName(docSnap.data().name);
+            })
+        }
+        get();
+       
     },)
     return (
         <div className="userInformation">

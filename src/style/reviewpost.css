@@ -27,7 +27,7 @@
 }
 .createReviewTitleBox{
     display:flex;
-    margin-top: 56px;
+    margin-top: 40px;
     flex-direction: column;
     justify-content: space-between;
     width:792px;
@@ -94,6 +94,7 @@
     padding:23px;
     cursor:pointer;
     display:flex;
+    margin-bottom:16px;
     justify-content: space-between;
 }
 .postReviewDetailButton{

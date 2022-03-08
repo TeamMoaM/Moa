@@ -13,12 +13,13 @@ import Popup from 'reactjs-popup';
 import UserInfo from '../components/UserInfo';
 import defaultprofileImg from '../img/communityImg/defaultprofile.svg';
 import 'reactjs-popup/dist/index.css';
-function Post({isAuth,user}) {
+function Post({isAuth,user,setList}) {
     const [post, setPost] = useState([]);
     const {roomId} = useParams();
     const [position,setPosition] = useState(0);
     const popHeader = useRef(null);
     const [scrapBool,setScrapBool] = useState(0);
+    setList(2);
     setPersistence(auth, browserSessionPersistence).then(()=>{console.log("browser session success")});
     onAuthStateChanged(auth,(currentUser)=>{
 

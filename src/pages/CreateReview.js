@@ -8,12 +8,13 @@ import defaultprofileImg from '../img/communityImg/defaultprofile.svg';
 import '../style/reviewpost.css';
 import Editor from './Editor'
 import UserInfo from '../components/UserInfo';
-function CreateReview({user}) {
+function CreateReview({user,setList}) {
     const {roomId} = useParams();
     const [post, setPost] = useState([]);
     const [desc, setDesc] = useState('');
     const [scrapBool,setScrapBool] = useState(0);
     const [title,setTitle] = useState("");
+    setList(2);
     useEffect(()=>{
         getDoc(doc(db, "posts", roomId)).then(docSnap => {
             setPost({...docSnap.data()})

@@ -1,0 +1,17 @@
+.reviewDetail{
+    width:792px;   
+}
+.reviewDetailTitleAndInfo{
+    width:792px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.reviewDetailTitleAndInfo > .info{
+    margin-top:16px;
+}
+.reviewDetailDesc{
+    margin-top:40px;
+}

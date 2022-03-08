@@ -32,7 +32,7 @@ function PostReview(props) {
                                 <div className="postReviewTitle">
                                     <h1 className="subhead100">{reviewPost.reviewTitle}</h1>
                                 </div>
-                                <UserInfo uid={reviewPost.reviewPeople}/>
+                                {reviewPost&&<UserInfo uid={reviewPost.reviewPeople}/>}
                                 <div className="postReviewContent">
                                     <h3 className="body150" dangerouslySetInnerHTML={{__html: reviewPost.reviewContent}}></h3>
                                 </div>

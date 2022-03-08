@@ -5,8 +5,9 @@ import React,{useState,useRef} from 'react';
 import 'react-quill/dist/quill.snow.css';
 import Editor from './Editor'
 import '../style/post.css';
+import camera from '../img/post/camera.svg';
 import ClipLoader from "react-spinners/ClipLoader";
-const CreatePost = ({user}) => {
+const CreatePost = ({user,setList}) => {
     const [title,setTitle] = useState("");
     const [loading,setLoading] = useState(false);
     const [content,setContent] = useState("");
@@ -14,7 +15,7 @@ const CreatePost = ({user}) => {
     const [desc, setDesc] = useState('');
     const [thumbnailImg,setThumbnailImg] = useState('');
     const thumbnailInput = useRef(null);
-
+    setList(2);
     const formHandeler = (e) => {
         setLoading(true);
         e.preventDefault();
@@ -40,12 +41,9 @@ const CreatePost = ({user}) => {
         window.location.href='Betatest/recentOrder';
     };
     function thumbnailInputOnchange(e){
-        // event.preventDefault();
-        // const file = thumbnailInput.current.files[0];
         const file = thumbnailInput.current.files[0];
         const url = URL.createObjectURL(file);  
         setThumbnailImg(url);
-        // console.log("file:"+file);
     }
     function onEditorChange(value) {
         setDesc(value);
@@ -54,7 +52,8 @@ const CreatePost = ({user}) => {
         <div className="createPostWrap">
         <div className="createPost">
             <div className="serviceInfo">
-                {thumbnailImg? <div className="postImgWrap"><img id="postImgWrap"src={thumbnailImg}alt="사진을 추가해주세요!"/></div>:<div className="postImgWrap"></div>}
+                {thumbnailImg? <div className="postImgWrap"><img id="postImgWrap"src={thumbnailImg}alt="사진을 추가해주세요!"/></div>:<div className="postImgWrap2"><input ref={thumbnailInput} id="input-file"onChange={thumbnailInputOnchange}className="fileButton" type="file"/>
+                <label className="input-file-button" for="input-file"><img className="cameraImg" src={camera}/><h4 className="subhead100">썸네일 등록하기</h4></label></div>}
                 <div className="postCon">
                     <input maxlength="30" className="postTitle" placeholder="제목을 입력하세요" onChange={(event)=>{setTitle(event.target.value)}}></input>
                     <div className='userInfo'>
@@ -66,14 +65,12 @@ const CreatePost = ({user}) => {
             <div className="divider"></div>
             {/* <ClipLoader color={'red'} loading={loading} size={150} /> */}
             <form onSubmit={formHandeler}>
-                <input ref={thumbnailInput} id="input-file"onChange={thumbnailInputOnchange}className="fileButton" type="file"/>
-                <label className="input-file-button" for="input-file"><h3 className="subhead100">썸네일 올리기</h3></label>
                 <button className="submitButton" onClick={()=>{setLoading(true)}}type="submit"><h3 className="subhead100">글 등록하기</h3></button>
             </form>
         </div>
-        <div className="editorBox">
-            <Editor value={desc} onChange={onEditorChange}></Editor>
-        </div>
+  
+        <Editor value={desc} onChange={onEditorChange}></Editor>
+
        
         </div>
     );

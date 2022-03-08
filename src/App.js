@@ -77,11 +77,12 @@ function App() {
         <Route path="/MyPage" element={<MyPage setList={setList}user={user}/>} ></Route>
         <Route path="/BetaTest/recentOrder" element={<BetaTest_recent setList={setList}/>}></Route>
         <Route path="/BetaTest/lateOrder" element={<BetaTest_late setList={setList} />}></Route>
-        <Route path="/post/:roomId" element={<Post isAuth={isAuth}user={user}/>}></Route>
-        <Route path="/post/createreview/:roomId" element={<CreateReview user={user}/>}></Route>
+        <Route path="/post/:roomId" element={<Post isAuth={isAuth}user={user} setList={setList}/>}></Route>
+        <Route path="/post/createreview/:roomId" element={<CreateReview user={user} setList={setList}/>}></Route>
         <Route path="/Community" element={<Community setList={setList} isAuth={isAuth} setIsAuth={setIsAuth}/>}></Route>
-        <Route path="/CreatePost" element={<CreatePost user={user}/>}></Route>
+        <Route path="/CreatePost" element={<CreatePost user={user} setList={setList}/>}></Route>
       </Routes>
+      <div className="footer"></div>
     </Router>
   )
 }
