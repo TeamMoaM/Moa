@@ -109,8 +109,8 @@ function Comments({id,user,isAuth}) {
                 <PostText id={comment.id} content={comment.content}/>
                 <div className="commentLikeAndReplyCommentBox">
                     <div className="commentLikeAndReplyComment">
-                        <div onClick={()=>{addCommentLike(comment.id)}}className="commentLikeButton">{!comment.like.includes(user.displayName)?<img src={smallHeart}/>:<img src={smallHearted}/>}<h2 className="caption100">공감 {comment.likeCount}개</h2></div>
-                        <div className="replyCommentToggleButton" onClick={()=>{if(commentInputToggleBool){setCommentInputToggleList(comment.id);setCommentInputToggleBool(0);}else{setCommentInputToggleBool(1);}}}><img src={smallComment}/><h2 className="caption100">답글 달기</h2></div>
+                        <div onClick={()=>{addCommentLike(comment.id)}}className="commentLikeButton">{isAuth&&(!comment.like.includes(user.displayName)?<img src={smallHeart}/>:<img src={smallHearted}/>)}<h2 className="caption100">공감 {comment.likeCount}개</h2></div>
+                        {isAuth&&<div className="replyCommentToggleButton" onClick={()=>{if(commentInputToggleBool){setCommentInputToggleList(comment.id);setCommentInputToggleBool(0);}else{setCommentInputToggleBool(1);}}}><img src={smallComment}/><h2 className="caption100">답글 달기</h2></div>}
                     </div>
                 </div>
                 

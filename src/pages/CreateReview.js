@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import {useParams,Link} from 'react-router-dom';
+import {useParams,Link, Navigate, useNavigate} from 'react-router-dom';
 import {getDoc,doc,addDoc,setDoc,updateDoc,arrayRemove,arrayUnion} from 'firebase/firestore';
 import {db} from '../firebase-config';
 import BookmarkClicked from '../icons/bookmarkClicked.svg';
@@ -8,17 +8,23 @@ import defaultprofileImg from '../img/communityImg/defaultprofile.svg';
 import '../style/reviewpost.css';
 import Editor from './Editor'
 import UserInfo from '../components/UserInfo';
-function CreateReview({user,setList}) {
+function CreateReview({isAuth,user,setList}) {
     const {roomId} = useParams();
     const [post, setPost] = useState([]);
     const [desc, setDesc] = useState('');
     const [scrapBool,setScrapBool] = useState(0);
     const [title,setTitle] = useState("");
     setList(2);
+    var navigate = useNavigate();
     useEffect(()=>{
-        getDoc(doc(db, "posts", roomId)).then(docSnap => {
-            setPost({...docSnap.data()})
-        })
+        if(isAuth){
+            getDoc(doc(db, "posts", roomId)).then(docSnap => {
+                setPost({...docSnap.data()})
+            })
+        }
+        else{
+            navigate('/login');
+        }
     },false);
     function onEditorChange(value) {
         setDesc(value);

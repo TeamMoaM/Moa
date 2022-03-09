@@ -7,7 +7,8 @@ import Editor from './Editor'
 import '../style/post.css';
 import camera from '../img/post/camera.svg';
 import ClipLoader from "react-spinners/ClipLoader";
-const CreatePost = ({user,setList}) => {
+import { useNavigate } from "react-router-dom";
+const CreatePost = ({isAuth,user,setList}) => {
     const [title,setTitle] = useState("");
     const [loading,setLoading] = useState(false);
     const [content,setContent] = useState("");
@@ -16,6 +17,7 @@ const CreatePost = ({user,setList}) => {
     const [thumbnailImg,setThumbnailImg] = useState('');
     const thumbnailInput = useRef(null);
     setList(2);
+    var navigate = useNavigate();
     const formHandeler = (e) => {
         setLoading(true);
         e.preventDefault();
@@ -50,12 +52,18 @@ const CreatePost = ({user,setList}) => {
     }
     useEffect(()=>{
         const button = document.getElementById('postSubmitButton');
-        if(title.length<3 || content.length<3 || desc.length<12 ||thumbnailImg.length==0){
-            button.disabled=true;
+        if(isAuth){
+            if(title.length<3 || content.length<3 || desc.length<12 ||thumbnailImg.length==0){
+                button.disabled=true;
+            }
+            else{
+                button.disabled=false;
+            }
         }
         else{
-            button.disabled=false;
+            navigate('/login');
         }
+        
     },[title,content,desc,thumbnailImg])
     return (
         <div className="createPostWrap">

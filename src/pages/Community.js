@@ -45,7 +45,10 @@ function Community({setList,isAuth,setIsAuth}){
   setPersistence(auth, browserSessionPersistence).then(()=>{});
   onAuthStateChanged(auth,(User)=>{
     setCurrentUser(User);
-    setIsAuth(true);
+    if(User){
+      setIsAuth(true);
+    }
+    
   })
   useEffect(()=>{//밑에서 return 할때 한번에 map으로 가져오기 위해 useState로 post 내용들 받아오는 코드
     if(communityTagClicked==0){
@@ -58,23 +61,16 @@ function Community({setList,isAuth,setIsAuth}){
       })))
     })
   },[communityTagClicked])
-  //   if(user.uid){
-  //   getDoc(doc(db,'userInfo',user.uid)).then((docsnap)=>{
-  //     setScrapBool(docsnap.data().scrapCommunity);
-  //     console.log(docsnap.data().scrapCommunity);
-  //     // console.log(scrapBool);
-  //   })
-  // }
 
-  // useEffect(()=>{
-  //   if(scrapBool)
-  // },[scrapBool])
   useEffect(()=>{
-    if(user.uid){
-      getDoc(doc(db,'userInfo',user.uid)).then((docsnap)=>{
-        const scr = docsnap.data().scrapCommunity;
-        setScrapBool(scr);
-      })
+    if(isAuth){
+      console.log(isAuth);
+      if(user.uid){
+        getDoc(doc(db,'userInfo',user.uid)).then((docsnap)=>{
+          const scr = docsnap.data().scrapCommunity;
+          setScrapBool(scr);
+        })
+      }
     }
   },[user])
   
@@ -157,13 +153,19 @@ function Community({setList,isAuth,setIsAuth}){
     bottom:"0",
     right:"0"
   }
-  const communityScrap = (id) =>{    
-    if(id&&user.uid){
+  const communityScrap = (id) =>{  
+    if(isAuth){
+      if(id&&user.uid){
         setDoc(doc(db,'userInfo',user.uid),{scrapCommunity:arrayUnion(id)},{merge:true});
         getDoc(doc(db,'userInfo',user.uid)).then((docsnap)=>{
           setScrapBool(docsnap.data().scrapCommunity);
         })
+      }
+    }  
+    else{
+      navigate('/login');
     }
+    
   }
   const communityUnscrap = (id) =>{    
     if(id&&user.uid){
@@ -237,7 +239,7 @@ function Community({setList,isAuth,setIsAuth}){
         </div>
       </Popup>
       <div className="postWrap">
-        <button onClick={() => setOpen(o => !o)} className="firstPost">
+        <button onClick={() => {if(isAuth){setOpen(o => !o);}else{navigate('/login')}}} className="firstPost">
           <img className="firstPostImage" src={profileDefaultImg}/>
           <div className="firstPostButton"><h1 className="caption151">회원님의 이야기를 공유해주세요.</h1></div>
         </button>
@@ -260,7 +262,7 @@ function Community({setList,isAuth,setIsAuth}){
                         <div className="postProfile1"><TimeCal time={post.time}/></div>
                     </div>
                 </div>
-                {user.uid == post.author.id?
+                {isAuth&&(user.uid == post.author.id)?
                   <div className="postEdit">
                       <button id="edit"onClick={()=>{console.log("edit!")}}><h2 id="editH"className="caption100">수정하기</h2></button>
                         <h2 className="caption100"id='editdivider'>|</h2>
@@ -280,7 +282,7 @@ function Community({setList,isAuth,setIsAuth}){
             <PostText id={post.id} content={post.postText}/>
             <hr className="breakLine"/>
             <div className="likeAndComment">
-                <div className="likeButton" id={post.id} onClick={()=>{addLike(post.id);}}>{!post.like.includes(user.displayName)?<img src={heart}/>:<img src={hearted}/>}<h1 className="caption100">공감 {post.likeCount}개</h1></div>
+                <div className="likeButton" id={post.id} onClick={()=>{addLike(post.id);}}>{(isAuth&&post.like.includes(user.displayName)?<img src={hearted}/>:<img src={heart}/>)}<h1 className="caption100">공감 {post.likeCount}개</h1></div>
                 <div className="messageBox"><img src={message}/><h1 className="caption100">댓글 {post.commentCount}개</h1></div>
                 {scrapBool.includes(post.id)?<div className="bookMark" onClick={()=>{communityUnscrap(post.id)}}><img src={scrapped}/><h1 className="caption100">북마크</h1></div>:<div className="bookMark" onClick={()=>{communityScrap(post.id)}}><img src={scrap}/><h1 className="caption100">북마크</h1></div>}
             </div>

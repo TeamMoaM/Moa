@@ -1,6 +1,6 @@
 import { doc, setDoc } from 'firebase/firestore';
 import React, { useEffect,useState ,useRef} from 'react';
-import {Link, useParams} from 'react-router-dom';
+import {Link, useNavigate, useParams} from 'react-router-dom';
 import {setPersistence,browserSessionPersistence,onAuthStateChanged} from 'firebase/auth';
 import {db,auth} from '../firebase-config';
 import {getDoc,updateDoc,arrayUnion,arrayRemove} from 'firebase/firestore';
@@ -19,6 +19,7 @@ function Post({isAuth,user,setList}) {
     const [position,setPosition] = useState(0);
     const popHeader = useRef(null);
     const [scrapBool,setScrapBool] = useState(0);
+    var navigate = useNavigate();
     setList(2);
     setPersistence(auth, browserSessionPersistence).then(()=>{console.log("browser session success")});
     onAuthStateChanged(auth,(currentUser)=>{
@@ -67,11 +68,17 @@ function Post({isAuth,user,setList}) {
         }
         
     },[scrapBool,post])
-    const scrap = () =>{    
-        if(post.id&&user.uid){
-            setScrapBool(true);
-            setDoc(doc(db,'userInfo',user.uid),{scrap:arrayUnion(post.id)},{merge:true});
+    const scrap = () =>{
+        if(isAuth){
+            if(post.id&&user.uid){
+                setScrapBool(true);
+                setDoc(doc(db,'userInfo',user.uid),{scrap:arrayUnion(post.id)},{merge:true});
+            }
+        }    
+        else{
+            navigate('/login');
         }
+        
     }
     const unscrap = () =>{    
         if(post.id&&user.uid){
