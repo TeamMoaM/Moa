@@ -189,10 +189,16 @@
     -webkit-box-orient: vertical;
   }
   .comment > .postTextContainer{
-    height:18px;
     font-size: 12px;
     line-height: 150%;
     margin-top: 8px;
+  }
+  .replyComment > .postTextContainer{
+    font-size: 12px;
+    line-height: 150%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 32px;
   }
   .postTextContainerMoreBtn{
     display:flex;

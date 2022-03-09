@@ -17,7 +17,6 @@ function Comments({id,user,isAuth}) {
     const [commentList,setCommentList] = useState([]);
     const [comment, setComment] = useState([]);
     const [commentInputToggleList,setCommentInputToggleList] = useState([]);
-    // var commentInputToggleList = [];
     const [commentInputToggleBool,setCommentInputToggleBool] = useState(1);
     useEffect(()=>{
         const get = async () => {
@@ -125,18 +124,18 @@ function Comments({id,user,isAuth}) {
                             <img className="pfpimage" src={profileDefaultImg}/>
                             <div className="postProfile">
                                 <div className="postProfile1">
-                                    <h5 id="postAuthorName"className="point100">{com.commentPeople}</h5><h5 id="postCompanyName"className="point100">{"회사 이름"}</h5>
+                                    <img className="postProfile1Img" src={bronzeMedal}/><h4 id="postAuthorName"className="subhead100">{comment.commentPeople}</h4><h4 id="postCompanyName"className="body100">{"회사 이름"}</h4>
                                 </div>
                                 <div className="postProfile1"><TimeCal time={com.time.seconds}/></div>
                             </div>
                         </div>
-                        <div className="postEdit">
+                        {/* <div className="postEdit">
                             <button id="edit"onClick={()=>{alert("열심히 준비중이니 조금만 기다려주세요!")}}><h2 id="editH"className="caption100">수정하기</h2></button>
                             <h2 className="caption100"id='editdivider'>|</h2>
                             <button id="delete"onClick={()=>{console.log("delete!")}}><h2 id="deleteH"className="caption100">삭제하기</h2></button>
-                        </div>
+                        </div> */}
                     </div>
-                    <div className="replyCommentPostTextContainer"> {com.content} </div>
+                    <PostText id={com.time} content={com.content}/>
                    </div>
 
                 )})}
