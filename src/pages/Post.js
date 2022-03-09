@@ -26,7 +26,6 @@ function Post({isAuth,user,setList}) {
     })
     useEffect(()=>{
         getDoc(doc(db, "posts", roomId)).then(docSnap => {
-            console.log("time:"+docSnap.data().time);
             setPost({...docSnap.data(),id:docSnap.id});
         })
     },false);

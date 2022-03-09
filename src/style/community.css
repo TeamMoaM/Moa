@@ -148,6 +148,7 @@
     font-size: 15px;
     line-height: 200%;
     margin-top:16px;
+    white-space: pre-wrap;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -466,24 +467,47 @@
   margin-right:8px;
 }
 .modalClickedButton{
-  border-radius: 8px;
+  border-radius: 16px;
   margin-right:4px;
   color:white;
-  width: 42px;
-  height: 19px;
+  width: 46px;
+  height: 24px;
   display:flex;
   align-items: center;
   justify-content: center;
   background-color: var(--primary-1);
 }
+.modalClickedButtonLong{
+  border-radius: 16px;
+  margin-right:4px;
+  color:white;
+  width: 59px;
+  height: 24px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-1);
+}
+
 .modalClickedButton > .caption100{
   text-align: center;
 }
 .modalUnclickedButton{
-  border-radius: 8px;
+  border-radius: 16px;
   margin-right: 4px;
-  width: 42px;
-  height: 19px; 
+  width: 46px;
+  height: 24px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  color:white;
+  background-color: var(--gray-2);
+}
+.modalUnclickedButtonLong{
+  border-radius: 16px;
+  margin-right: 4px;
+  width: 59px;
+  height: 24px;
   display:flex;
   align-items: center;
   justify-content: center;
@@ -498,6 +522,22 @@
   height:202px;
   border:none;
   resize: none;
+  font-family: Spoqa Han Sans Neo;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+color:var(--black);
+}
+.modalContentWriteTextarea::placeholder{
+  font-family: Spoqa Han Sans Neo;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  color:var(--gray-2);
 }
 .modalContentWriteTextarea:focus{
   border:none;
@@ -522,6 +562,7 @@
   top:104px;
   width:1200px;
   display:flex;
+  transition:top 0.4s;
   z-index: 1;
   justify-content: space-between;
   height:362px;

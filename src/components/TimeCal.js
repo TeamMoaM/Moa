@@ -5,7 +5,6 @@ function TimeCal({time}) {
     const timeGap = currentTime - time;
     var displayTime = "방금";
     if(timeGap<60){
-        console.log("timeGap",timeGap);
         displayTime = "방금";
     }
     else if(60<=timeGap && timeGap<3600){

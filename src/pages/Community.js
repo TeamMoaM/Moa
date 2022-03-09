@@ -1,5 +1,5 @@
 import React,{useState,useEffect,useRef} from 'react';
-import {collection,onSnapshot,addDoc,doc,deleteDoc,query,where,getDoc,setDoc,updateDoc,arrayRemove,arrayUnion} from 'firebase/firestore';
+import {collection,onSnapshot,addDoc,doc,deleteDoc,query,where,limit,getDoc,setDoc,updateDoc,arrayRemove,arrayUnion,orderBy} from 'firebase/firestore';
 import {db,auth} from '../firebase-config';
 import {useNavigate,Link} from 'react-router-dom';
 import {onAuthStateChanged,setPersistence,browserSessionPersistence} from 'firebase/auth';
@@ -30,20 +30,22 @@ function Community({setList,isAuth,setIsAuth}){
   const [commentList,setCommentList] = useState([]);
   const [tagSelect,setTagSelect] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [position,setPosition] = useState(0);
   const [communityTagClicked,setCommunityTagClicked] = useState(0);
-  var postsCollectionRef = query(collection(db, 'community'),where("tag","==",communityTagClicked));
+  var postsCollectionRef = query(collection(db, 'community'),where("tag","==",communityTagClicked),orderBy("time",'desc'));
   const [scrapBool,setScrapBool] = useState(0);
+  const communityTagsAndSearch = useRef(null);
   var navigate = useNavigate();
   setList(3);
   
-  setPersistence(auth, browserSessionPersistence).then(()=>{console.log("browser session success")});
+  setPersistence(auth, browserSessionPersistence).then(()=>{});
   onAuthStateChanged(auth,(User)=>{
     setCurrentUser(User);
     setIsAuth(true);
   })
   useEffect(()=>{//밑에서 return 할때 한번에 map으로 가져오기 위해 useState로 post 내용들 받아오는 코드
     if(communityTagClicked==0){
-      postsCollectionRef=collection(db,"community");
+      postsCollectionRef=query(collection(db,"community"),orderBy("time","desc"));
     }
 
     onSnapshot(postsCollectionRef, (snapshot)=>{
@@ -112,8 +114,11 @@ function Community({setList,isAuth,setIsAuth}){
     }
   }
   const createPost = async () => {
+    console.log("postText");
+
     await addDoc(collection(db,'community'),{postText:postText,time:new Date().getTime()/1000,commentCount:0,author:{name:user.displayName,id:user.uid},like:[],likeCount:0,tag:tagSelect});
     navigate('/Community');
+    window.location.reload();
   }
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
@@ -141,10 +146,29 @@ function Community({setList,isAuth,setIsAuth}){
           updateDoc(doc(db,'userInfo',user.uid),{scrapCommunity:arrayRemove(id)});
       }
   }
-
+  function onScroll(){
+    setPosition(window.scrollY);
+}
+  useEffect(()=>{
+      window.addEventListener("scroll",onScroll);
+      return () => {
+          window.removeEventListener("scroll",onScroll);
+      }
+  })
+  useEffect(()=>{//scroll up 기능
+    if(position>=104){
+        communityTagsAndSearch.current.style.top="2px";
+    }
+    else{
+        communityTagsAndSearch.current.style.top="104px";
+    }
+  },[position])
+  useEffect(()=>{
+    setTagSelect(communityTagClicked);
+  },[communityTagClicked])
   return (
     <div className="homePage">
-      <div className="communityTagsAndSearch">
+      <div ref={communityTagsAndSearch} className="communityTagsAndSearch">
         <div className="communityTagsBox">
           <h1 className="subhead100">태그</h1>
           <div className="communityTags">
@@ -158,7 +182,7 @@ function Community({setList,isAuth,setIsAuth}){
         </div>
         <div className="communitySearch">
           <input className="communitySearchInput" placeholder="Community 검색" onChange={(event)=>{setSearchTerm(event.target.value)}}/>
-          <div onClick={()=>{window.scrollTo(0,0);}}className="pageUpButton">
+          <div onClick={()=>{window.scrollTo({top:0,left:0, behavior:"smooth"});}}className="pageUpButton">
             <img className="pageUpButtonImg" src={pageUpImg}/>
           </div>
         </div>
@@ -172,13 +196,13 @@ function Community({setList,isAuth,setIsAuth}){
           </div>
           <div className="modalSecondHeader">
             <img src={tag}/>
-            {tagSelect==1?<button onClick={()=>{setTagSelect(1);}} className="modalClickedButton"><h2 className="caption100">사업</h2></button>:<button onClick={()=>{setTagSelect(1);}} className="modalUnclickedButton"><h2 className="caption100">사업</h2></button>}
-            {tagSelect==2?<button onClick={()=>{setTagSelect(2);}} className="modalClickedButton"><h2 className="caption100">개발</h2></button>:<button onClick={()=>{setTagSelect(2);}} className="modalUnclickedButton"><h2 className="caption100">개발</h2></button>}
-            {tagSelect==3?<button onClick={()=>{setTagSelect(3);}} className="modalClickedButton"><h2 className="caption100">기획</h2></button>:<button onClick={()=>{setTagSelect(3);}} className="modalUnclickedButton"><h2 className="caption100">기획</h2></button>}
-            {tagSelect==4?<button onClick={()=>{setTagSelect(4);}} className="modalClickedButton"><h2 className="caption100">디자인</h2></button>:<button onClick={()=>{setTagSelect(4);}} className="modalUnclickedButton"><h2 className="caption100">디자인</h2></button>}
-            {tagSelect==5?<button onClick={()=>{setTagSelect(5);}} className="modalClickedButton"><h2 className="caption100">기술</h2></button>:<button onClick={()=>{setTagSelect(5);}} className="modalUnclickedButton"><h2 className="caption100">기술</h2></button>}
+            {tagSelect==1?<button onClick={()=>{setTagSelect(1);}} className="modalClickedButton"><h3 className="body100">사업</h3></button>:<button onClick={()=>{setTagSelect(1);}} className="modalUnclickedButton"><h3 className="body100">사업</h3></button>}
+            {tagSelect==2?<button onClick={()=>{setTagSelect(2);}} className="modalClickedButton"><h3 className="body100">개발</h3></button>:<button onClick={()=>{setTagSelect(2);}} className="modalUnclickedButton"><h3 className="body100">개발</h3></button>}
+            {tagSelect==3?<button onClick={()=>{setTagSelect(3);}} className="modalClickedButton"><h3 className="body100">기획</h3></button>:<button onClick={()=>{setTagSelect(3);}} className="modalUnclickedButton"><h3 className="body100">기획</h3></button>}
+            {tagSelect==4?<button onClick={()=>{setTagSelect(4);}} className="modalClickedButtonLong"><h3 className="body100">디자인</h3></button>:<button onClick={()=>{setTagSelect(4);}} className="modalUnclickedButtonLong"><h3 className="body100">디자인</h3></button>}
+            {tagSelect==5?<button onClick={()=>{setTagSelect(5);}} className="modalClickedButton"><h3 className="body100">기술</h3></button>:<button onClick={()=>{setTagSelect(5);}} className="modalUnclickedButton"><h3 className="body100">기술</h3></button>}
           </div>
-          <textarea onChange={(event)=>{setPostText(event.target.value);}}className="modalContentWriteTextarea" placeholder="회원님의 이야기를 공유해주세요."></textarea>
+          <textarea id="popupTextarea" onChange={(event)=>{console.log(event.target.value);setPostText(event.target.value);}}className="modalContentWriteTextarea" placeholder="회원님의 이야기를 공유해주세요."></textarea>
           <button onClick={()=>{createPost();}}className="modalpostButton"><h3 className="subhead100">게시물 올리기</h3></button>
         </div>
       </Popup>
@@ -217,11 +241,11 @@ function Community({setList,isAuth,setIsAuth}){
                 }
             </div>
             <div className="postTagWrap">
-            {post.tag==1?<div className="postTag"><div className="modalClickedButton"><h2 className="caption100">사업</h2></div></div>:<></>}
-            {post.tag==2?<div className="postTag"><div className="modalClickedButton"><h2 className="caption100">개발</h2></div></div>:<></>}
-            {post.tag==3?<div className="postTag"><div className="modalClickedButton"><h2 className="caption100">기획</h2></div></div>:<></>}
-            {post.tag==4?<div className="postTag"><div className="modalClickedButton"><h2 className="caption100">디자인</h2></div></div>:<></>}
-            {post.tag==5?<div className="postTag"><div className="modalClickedButton"><h2 className="caption100">기술</h2></div></div>:<></>}
+            {post.tag==1?<div className="postTag"><div className="modalClickedButton"><h3 className="body100">사업</h3></div></div>:<></>}
+            {post.tag==2?<div className="postTag"><div className="modalClickedButton"><h3 className="body100">개발</h3></div></div>:<></>}
+            {post.tag==3?<div className="postTag"><div className="modalClickedButton"><h3 className="body100">기획</h3></div></div>:<></>}
+            {post.tag==4?<div className="postTag"><div className="modalClickedButtonLong"><h3 className="body100">디자인</h3></div></div>:<></>}
+            {post.tag==5?<div className="postTag"><div className="modalClickedButton"><h3 className="body100">기술</h3></div></div>:<></>}
             </div>
             <PostText id={post.id} content={post.postText}/>
             <hr className="breakLine"/>

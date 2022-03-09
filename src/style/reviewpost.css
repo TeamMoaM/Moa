@@ -65,15 +65,14 @@
 }
 .postReviewTimeAndLike{
     display:flex;
-    width:107px;
     align-items: center;
-    justify-content: space-between;
 }
 .postReviewTimeAndLike > h2{
     font-family: Spoqa Han Sans Neo;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
+    margin-right: 8px;
     line-height: 100%;
     /* identical to box height, or 14px */
     display: flex;
@@ -83,6 +82,7 @@
 }
 .postReviewTimeAndLike >h3{
     color:var(--gray-3);
+    margin-right: 8px;
 }
 #postReviewLike{
     color:var(--primary-1);
