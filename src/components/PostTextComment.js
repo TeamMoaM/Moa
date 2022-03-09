@@ -8,7 +8,6 @@ function PostTextComment({id,content}) {
         if(div.scrollHeight<=90){
             setMoreButton(0);
         }
-        
     })
     return (
         <>
