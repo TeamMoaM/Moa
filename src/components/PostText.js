@@ -2,10 +2,15 @@ import React ,{useState,useEffect}from 'react';
 
 function PostText({id,content}) {
     const [moreButton,setMoreButton] = useState(1);
+    function isEllipsisActive(e) {
+        return (e.offsetHeight < e.scrollHeight);
+   }
     useEffect(()=>{
-        if(moreButton==1&&content.length<=244){
+        const div = document.getElementById('postTextContainer'+id);
+        if(div.scrollHeight<=150){
             setMoreButton(0);
         }
+        
     })
     return (
         <>

@@ -58,7 +58,7 @@
     width:588px;
     background-color: var(--white);
     margin-bottom: 12px;
-    padding: 24px;
+    padding: 23px;
     border: 1px solid #E8E8EE;
     border-radius: 8px;
     z-index: 1;
@@ -157,7 +157,7 @@
   }
   .postTextContainerMoreBtn{
     display:flex;
-    margin-top: 16px;
+    margin-top: 15px;
     width:100%;
     justify-content: flex-end;
   }
@@ -383,7 +383,6 @@
     width: 540px;
     display:flex;
     align-items: center;
-    margin-top:16px;
   }
   .commentInputAndButton{
     width: 540px;
@@ -409,7 +408,7 @@
 .commentBox{
   width:100%;
   display:flex;
-  margin-top: 16px;
+  margin-bottom: 16px;
   flex-direction: column;
   align-items: center;
 }
@@ -445,9 +444,8 @@
 .modal{
   width:100%;
   display:flex;
-  height:390px;
+  box-sizing: border-box;
   flex-direction: column;
-  justify-content: space-between;
 }
 .modalHeader{
   display:flex;
@@ -461,6 +459,7 @@
   display:flex;
   height: 24px;
   align-items: center;
+  margin-top: 16px;
 }
 .modalSecondHeader > img{
   color:var(--primary-1);
@@ -518,8 +517,9 @@
   text-align: center;
 }
 .modalContentWriteTextarea{
-  width: 500px;
-  height:202px;
+  margin-top: 16px;
+  width: 448px;
+  height:218px;
   border:none;
   resize: none;
   font-family: Spoqa Han Sans Neo;
@@ -528,7 +528,7 @@
   font-size: 16px;
   line-height: 150%;
   letter-spacing: -0.01em;
-color:var(--black);
+  color:var(--black);
 }
 .modalContentWriteTextarea::placeholder{
   font-family: Spoqa Han Sans Neo;
@@ -546,9 +546,14 @@ color:var(--black);
 .modalpostButton{
   background: #2727AD;
   border-radius: 8px;
-  width: 500px;
+  width: 452px;
   color:white;
   height: 52px;
+  margin-top: 16px;
+}
+.modal > .divider{
+  margin-top: 15px;
+  width:452px;
 }
 .postTagWrap{
   margin-top: 16px;

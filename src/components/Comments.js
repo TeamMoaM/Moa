@@ -6,8 +6,8 @@ import profileDefaultImg from '../img/communityImg/defaultprofile.svg';
 import PostText from './PostText';
 import ReplyArrow from '../img/communityImg/_relply.svg';
 import smallComment from '../img/communityImg/smallComment.svg';
-import smallHeart from '../img/communityImg/smallHeart.svg';
-import smallHearted from '../img/communityImg/smallHearted.svg';
+import smallHeart from '../img/communityImg/smallheart.svg';
+import smallHearted from '../img/communityImg/smallhearted.svg';
 import TimeCal from './TimeCal';
 
 function Comments({id,user,isAuth}) {

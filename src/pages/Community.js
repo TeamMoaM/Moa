@@ -3,8 +3,8 @@ import {collection,onSnapshot,addDoc,doc,deleteDoc,query,where,limit,getDoc,setD
 import {db,auth} from '../firebase-config';
 import {useNavigate,Link} from 'react-router-dom';
 import {onAuthStateChanged,setPersistence,browserSessionPersistence} from 'firebase/auth';
-import heart from '../img/communityImg/heart.svg';
-import hearted from '../img/communityImg/hearted.svg';
+import heart from '../img/communityImg/bigheart.svg';
+import hearted from '../img/communityImg/bighearted.svg';
 import profileDefaultImg from '../img/communityImg/defaultprofile.svg';
 import message from '../img/communityImg/comment.svg';
 import scrap from '../img/communityImg/bookmark.svg';
@@ -33,8 +33,9 @@ function Community({setList,isAuth,setIsAuth}){
   const [position,setPosition] = useState(0);
   const [communityTagClicked,setCommunityTagClicked] = useState(0);
   var postsCollectionRef = query(collection(db, 'community'),where("tag","==",communityTagClicked),orderBy("time",'desc'));
-  const [scrapBool,setScrapBool] = useState(0);
+  const [scrapBool,setScrapBool] = useState([]);
   const communityTagsAndSearch = useRef(null);
+  
   var navigate = useNavigate();
   setList(3);
   
@@ -50,10 +51,29 @@ function Community({setList,isAuth,setIsAuth}){
 
     onSnapshot(postsCollectionRef, (snapshot)=>{
       setPostList(snapshot.docs.map((doc)=>({
-        ...doc.data(),id:doc.id
+        ...doc.data(),id:doc.id 
       })))
     })
   },[communityTagClicked])
+  //   if(user.uid){
+  //   getDoc(doc(db,'userInfo',user.uid)).then((docsnap)=>{
+  //     setScrapBool(docsnap.data().scrapCommunity);
+  //     console.log(docsnap.data().scrapCommunity);
+  //     // console.log(scrapBool);
+  //   })
+  // }
+
+  // useEffect(()=>{
+  //   if(scrapBool)
+  // },[scrapBool])
+  useEffect(()=>{
+    if(user.uid){
+      getDoc(doc(db,'userInfo',user.uid)).then((docsnap)=>{
+        const scr = docsnap.data().scrapCommunity;
+        setScrapBool(scr);
+      })
+    }
+  },[user])
   
   const deletePost = async (id) => {//해당 id의 post 삭제하는 함수(currentUser의 게시물인지 확인 필요)
     const postDoc = doc(db, 'community', id);
@@ -136,19 +156,25 @@ function Community({setList,isAuth,setIsAuth}){
   }
   const communityScrap = (id) =>{    
     if(id&&user.uid){
-        setScrapBool(1);
         setDoc(doc(db,'userInfo',user.uid),{scrapCommunity:arrayUnion(id)},{merge:true});
+        getDoc(doc(db,'userInfo',user.uid)).then((docsnap)=>{
+          setScrapBool(docsnap.data().scrapCommunity);
+        })
     }
   }
   const communityUnscrap = (id) =>{    
-      if(id&&user.uid){
-          setScrapBool(0);
-          updateDoc(doc(db,'userInfo',user.uid),{scrapCommunity:arrayRemove(id)});
-      }
+    if(id&&user.uid){
+        updateDoc(doc(db,'userInfo',user.uid),{scrapCommunity:arrayRemove(id)});
+        getDoc(doc(db,'userInfo',user.uid)).then((docsnap)=>{
+          setScrapBool(docsnap.data().scrapCommunity);
+        })
+    }
   }
+
   function onScroll(){
     setPosition(window.scrollY);
-}
+  }
+
   useEffect(()=>{
       window.addEventListener("scroll",onScroll);
       return () => {
@@ -157,7 +183,7 @@ function Community({setList,isAuth,setIsAuth}){
   })
   useEffect(()=>{//scroll up 기능
     if(position>=104){
-        communityTagsAndSearch.current.style.top="2px";
+        communityTagsAndSearch.current.style.top="0px";
     }
     else{
         communityTagsAndSearch.current.style.top="104px";
@@ -188,7 +214,7 @@ function Community({setList,isAuth,setIsAuth}){
         </div>
         
       </div>
-      <Popup contentStyle={{padding:"24px",width: "500px", height:"390px", borderRadius:"8px",boxShadow:"0px 4px 24px rgba(0, 1, 3, 0.1)"}}open={open} closeOnDocumentClick onClose={closeModal}>
+      <Popup contentStyle={{padding:"23px",width: "500px", boxSizing:"border-box",height:"443px", borderRadius:"8px",boxShadow:"0px 4px 24px rgba(0, 1, 3, 0.1)"}}open={open} closeOnDocumentClick onClose={closeModal}>
         <div className="modal">
           <div className="modalHeader">
             <h4 className="title100">새로운 게시물</h4>
@@ -203,6 +229,7 @@ function Community({setList,isAuth,setIsAuth}){
             {tagSelect==5?<button onClick={()=>{setTagSelect(5);}} className="modalClickedButton"><h3 className="body100">기술</h3></button>:<button onClick={()=>{setTagSelect(5);}} className="modalUnclickedButton"><h3 className="body100">기술</h3></button>}
           </div>
           <textarea id="popupTextarea" onChange={(event)=>{console.log(event.target.value);setPostText(event.target.value);}}className="modalContentWriteTextarea" placeholder="회원님의 이야기를 공유해주세요."></textarea>
+          <div className="divider"></div>
           <button onClick={()=>{createPost();}}className="modalpostButton"><h3 className="subhead100">게시물 올리기</h3></button>
         </div>
       </Popup>
@@ -250,15 +277,15 @@ function Community({setList,isAuth,setIsAuth}){
             <PostText id={post.id} content={post.postText}/>
             <hr className="breakLine"/>
             <div className="likeAndComment">
-                <div className="likeButton" id={post.id} onClick={()=>{addLike(post.id);}}>{!post.like.includes(user.displayName)?<img className="heart"src={heart}/>:<img src={hearted}/>}<h1 className="caption100">공감 {post.likeCount}개</h1></div>
+                <div className="likeButton" id={post.id} onClick={()=>{addLike(post.id);}}>{!post.like.includes(user.displayName)?<img src={heart}/>:<img src={hearted}/>}<h1 className="caption100">공감 {post.likeCount}개</h1></div>
                 <div className="messageBox"><img src={message}/><h1 className="caption100">댓글 {post.commentCount}개</h1></div>
-                {scrapBool?<div className="bookMark" onClick={()=>{communityUnscrap(post.id)}}><img src={scrapped}/><h1 className="caption100">북마크</h1></div>:<div className="bookMark" onClick={()=>{communityScrap(post.id)}}><img src={scrap}/><h1 className="caption100">북마크</h1></div>}
+                {scrapBool.includes(post.id)?<div className="bookMark" onClick={()=>{communityUnscrap(post.id)}}><img src={scrapped}/><h1 className="caption100">북마크</h1></div>:<div className="bookMark" onClick={()=>{communityScrap(post.id)}}><img src={scrap}/><h1 className="caption100">북마크</h1></div>}
             </div>
             {/* 댓글 구현  */}
             <Comments id={post.id} user={user} isAuth={isAuth}/>
       
             <div className="inputAndButton">
-              <input  onBlur={(e)=>{var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';}} onFocus={(e)=>{var input = document.getElementById(post.id+'button');input.style.display="block";var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';input1.style.borderRight="none";input1.style.borderTopRightRadius= "0px";input1.style.borderBottomRightRadius="0px";}} id={"commentAddInput"+post.id}onKeyPress={(e)=>{inputPress(e,post.id)}} className="postCommentInput" placeholder="회원님의 의견을 공유해주세요." onChange={(event)=>{setComment(event.target.value);}}/>
+              <input  onBlur={(e)=>{var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';}} onFocus={(e)=>{var input = document.getElementById(post.id+'button');input.style.boxSizing="border-box"; input.style.display="block";var input1 = document.getElementById('commentAddInput'+post.id);input1.value='';input1.style.borderRight="none";input1.style.borderTopRightRadius= "0px";input1.style.borderBottomRightRadius="0px";}} id={"commentAddInput"+post.id}onKeyPress={(e)=>{inputPress(e,post.id)}} className="postCommentInput" placeholder="회원님의 의견을 공유해주세요." onChange={(event)=>{setComment(event.target.value);}}/>
               <button id={post.id+'button'} style={commentButtonStyle} className="commentSendButton" onClick={()=>{addComment(post.id)}}><h3 className="subhead100">등록</h3></button> 
             </div>
           </div>
@@ -268,8 +295,5 @@ function Community({setList,isAuth,setIsAuth}){
       </div>
     </div>
   );
-
-  
-    
 }
 export default Community;
