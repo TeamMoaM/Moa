@@ -3,7 +3,6 @@ import React,{useEffect,useState} from 'react';
 import {query,collection,doc,onSnapshot,arrayRemove, updateDoc,arrayUnion,getDoc,setDoc} from 'firebase/firestore';
 import {db} from '../firebase-config';
 import profileDefaultImg from '../img/communityImg/defaultprofile.svg';
-import PostText from '../components/PostText';
 import ReplyArrow from '../img/communityImg/_relply.svg';
 import smallComment from '../img/communityImg/smallComment.svg';
 import smallHeart from '../img/communityImg/smallHeart.svg';
@@ -12,6 +11,7 @@ import TimeCal from './TimeCal';
 import bronzeMedal from '../img/medals/bronzeMedal.svg';
 import silverMedal from '../img/medals/silverMedal.svg';
 import goldMedal from '../img/medals/goldMedal.svg';
+import PostTextComment from './PostTextComment';
 
 function Comments({id,user,isAuth}) {
     const [commentList,setCommentList] = useState([]);
@@ -106,7 +106,7 @@ function Comments({id,user,isAuth}) {
                         <button id="delete"onClick={()=>{console.log("delete!")}}><h2 id="deleteH"className="caption100">삭제하기</h2></button>
                     </div> */}
                 </div>
-                <PostText id={comment.id} content={comment.content}/>
+                <PostTextComment id={comment.time.seconds} content={comment.content}/>
                 <div className="commentLikeAndReplyCommentBox">
                     <div className="commentLikeAndReplyComment">
                         <div onClick={()=>{addCommentLike(comment.id)}}className="commentLikeButton">{isAuth&&(!comment.like.includes(user.displayName)?<img src={smallHeart}/>:<img src={smallHearted}/>)}<h2 className="caption100">공감 {comment.likeCount}개</h2></div>
@@ -135,7 +135,7 @@ function Comments({id,user,isAuth}) {
                             <button id="delete"onClick={()=>{console.log("delete!")}}><h2 id="deleteH"className="caption100">삭제하기</h2></button>
                         </div> */}
                     </div>
-                    <PostText id={com.time} content={com.content}/>
+                    <PostTextComment id={com.time.seconds} content={com.content}/>
                    </div>
 
                 )})}

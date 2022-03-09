@@ -4,11 +4,12 @@ import {auth,provider} from '../firebase-config';
 import { useNavigate,Link } from "react-router-dom";
 import logoImg from '../img/login/MOA.svg';
 import '../style/login.css';
-function Login({setIsAuth}){
+function Login({setIsAuth,setList}){
     let navigate = useNavigate();
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const [loginSuccess,setLoginSuccess] = useState(true);
+    setList(1);
     const login = async () => {
         try {
             const user = await signInWithEmailAndPassword(

@@ -4,7 +4,7 @@ import {updateProfile,createUserWithEmailAndPassword,onAuthStateChanged,signInWi
 import {useNavigate} from 'react-router-dom';
 import { setDoc,doc, getDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
 import '../style/signup.css';
-function Signup({setIsAuth}) {
+function Signup({setIsAuth,setList}) {
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
     const [registerCheckPassword, setRegisterCheckPassword] = useState("");
@@ -14,6 +14,7 @@ function Signup({setIsAuth}) {
     const [nicknameCheckBool,setNicknameCheckBool] = useState(true);
     const [emailCheckBool,setEmailCheckBool] = useState(true);
     let navigate = useNavigate();
+    setList(1);
     const register = async () => {
         try {
           const docSnap = await getDoc(doc(db,'userInfo','nicknames'));

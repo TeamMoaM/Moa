@@ -1,10 +1,11 @@
 import React ,{useState,useEffect}from 'react';
 
-function PostText({id,content}) {
+function PostTextComment({id,content}) {
     const [moreButton,setMoreButton] = useState(1);
     useEffect(()=>{
         const div = document.getElementById('postTextContainer'+id);
-        if(div.scrollHeight<=150){
+        // console.log(div.scrollHeight,content);
+        if(div.scrollHeight<=90){
             setMoreButton(0);
         }
         
@@ -21,4 +22,4 @@ function PostText({id,content}) {
     );
 }
 
-export default PostText;
+export default PostTextComment;
