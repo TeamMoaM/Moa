@@ -17,6 +17,9 @@ import Comments from '../components/Comments';
 import TimeCal from '../components/TimeCal';
 import PostText from '../components/PostText';
 import pageUpImg from '../img/communityImg/pageup_btn.svg';
+import bronzeMedal from '../img/medals/bronzeMedal.svg';
+import silverMedal from '../img/medals/silverMedal.svg';
+import goldMedal from '../img/medals/goldMedal.svg';
 import 'reactjs-popup/dist/index.css';
 import '../style/community.css';
 
@@ -183,7 +186,7 @@ function Community({setList,isAuth,setIsAuth}){
   })
   useEffect(()=>{//scroll up 기능
     if(position>=104){
-        communityTagsAndSearch.current.style.top="0px";
+        communityTagsAndSearch.current.style.top="32px";
     }
     else{
         communityTagsAndSearch.current.style.top="104px";
@@ -252,7 +255,7 @@ function Community({setList,isAuth,setIsAuth}){
                     <img className="pfpimage" src={profileDefaultImg}/>
                     <div className="postProfile">
                         <div className="postProfile1">
-                            <h5 id="postAuthorName"className="point100">{post.author.name}</h5><h5 id="postCompanyName"className="point100">{"회사 이름"}</h5>
+                            <img src={bronzeMedal}/><h3 id="postAuthorName"className="subhead100">{post.author.name}</h3><h3 id="postCompanyName"className="body100">{"회사 이름"}</h3>
                         </div>
                         <div className="postProfile1"><TimeCal time={post.time}/></div>
                     </div>

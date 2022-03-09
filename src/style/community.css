@@ -69,37 +69,71 @@
     align-items: center;
   }
   .pfpimage{
-    height:32px;
+    width:32px;
   }
+  .comment .pfpimage{
+    width:28px;
+    height:28px;
+  }
+
   .postProfile{
     display:flex;
     flex-direction: column;
-    height:32px;
+    height:31px;
     justify-content: space-between;
     margin-left: 8px;
+}
+.comment .postProfile{
+  height:26px;
 }
   #postAuthorName{
     color:var(--black);
     display:flex;
     align-items: center;
-    font-family: Spoqa Han Sans Neo;
-    font-size: 14px;
     font-weight: 700;
+    margin-left: 4px;
+    font-size: 14px;
   }
   #postCompanyName{
-    font-family: Spoqa Han Sans Neo;
-    margin-left: 8px;
+    color:var(--gray-1);
+    margin-left: 4px;
+    display:flex;
+    align-items: center;
+    margin-left: 4px;
+    font-weight: 400;
     font-size: 14px;
+  }
+  .comment #postAuthorName{
+    color:var(--black);
+    display:flex;
+    align-items: center;
+    font-weight: 700;
+    line-height: 12px;
+    font-size: 12px;
+  }
+  .comment #postCompanyName{
+    color:var(--gray-1);
+    margin-left: 4px;
+    display:flex;
+    font-weight: 400;
+    align-items: center;
+    line-height: 12px;
+    font-size: 12px;
+  }
+  .postProfile1{
+    display:flex;
+    color:var(--gray-1);
     font-weight: 400;
   }
-  .postProfile1{
+  .comment .postProfile1{
       display:flex;
-  }
-  .postProfile1{
+      flex-direction: row;
       color:var(--gray-1);
+      font-weight: 400;
   }
   .postInformation{
       display:flex;
+      align-items: center;
   }
 .postEdit{
     display: flex;
@@ -137,7 +171,6 @@
     cursor: pointer;
   }
   .post .postTextContainer {
-    /* word-wrap: break-word; */
     width: 100%;
     color:var(--black);
     overflow-y: auto;
@@ -155,6 +188,12 @@
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
   }
+  .comment > .postTextContainer{
+    height:18px;
+    font-size: 12px;
+    line-height: 150%;
+    margin-top: 8px;
+  }
   .postTextContainerMoreBtn{
     display:flex;
     margin-top: 15px;
@@ -163,7 +202,6 @@
   }
   .commentPostTextContainer{
     height: auto;
-    /* max-height: 400px; */
     box-sizing: border-box;
     width: 540px;
     overflow-y: auto;

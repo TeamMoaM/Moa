@@ -3,12 +3,15 @@ import React,{useEffect,useState} from 'react';
 import {query,collection,doc,onSnapshot,arrayRemove, updateDoc,arrayUnion,getDoc,setDoc} from 'firebase/firestore';
 import {db} from '../firebase-config';
 import profileDefaultImg from '../img/communityImg/defaultprofile.svg';
-import PostText from './PostText';
+import PostText from '../components/PostText';
 import ReplyArrow from '../img/communityImg/_relply.svg';
 import smallComment from '../img/communityImg/smallComment.svg';
 import smallHeart from '../img/communityImg/smallheart.svg';
 import smallHearted from '../img/communityImg/smallhearted.svg';
 import TimeCal from './TimeCal';
+import bronzeMedal from '../img/medals/bronzeMedal.svg';
+import silverMedal from '../img/medals/silverMedal.svg';
+import goldMedal from '../img/medals/goldMedal.svg';
 
 function Comments({id,user,isAuth}) {
     const [commentList,setCommentList] = useState([]);
@@ -93,18 +96,18 @@ function Comments({id,user,isAuth}) {
                         <img className="pfpimage" src={profileDefaultImg}/>
                         <div className="postProfile">
                             <div className="postProfile1">
-                                <h5 id="postAuthorName"className="point100">{comment.commentPeople}</h5><h5 id="postCompanyName"className="point100">{"회사 이름"}</h5>
+                                <img className="postProfile1Img" src={bronzeMedal}/><h4 id="postAuthorName"className="subhead100">{comment.commentPeople}</h4><h4 id="postCompanyName"className="body100">{"회사 이름"}</h4>
                             </div>
                             <div className="postProfile1"><TimeCal time={comment.time.seconds}/></div>
                         </div>
                     </div>
-                    <div className="postEdit">
+                    {/* <div className="postEdit">
                         <button id="edit"onClick={()=>{console.log("edit!")}}><h2 id="editH"className="caption100">수정하기</h2></button>
                         <h2 className="caption100"id='editdivider'>|</h2>
                         <button id="delete"onClick={()=>{console.log("delete!")}}><h2 id="deleteH"className="caption100">삭제하기</h2></button>
-                    </div>
+                    </div> */}
                 </div>
-                <div className="commentPostTextContainer"> {comment.content} </div>
+                <PostText id={comment.id} content={comment.content}/>
                 <div className="commentLikeAndReplyCommentBox">
                     <div className="commentLikeAndReplyComment">
                         <div onClick={()=>{addCommentLike(comment.id)}}className="commentLikeButton">{!comment.like.includes(user.displayName)?<img src={smallHeart}/>:<img src={smallHearted}/>}<h2 className="caption100">공감 {comment.likeCount}개</h2></div>
