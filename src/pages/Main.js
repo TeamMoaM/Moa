@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {onAuthStateChanged} from 'firebase/auth';
+import { auth } from '../firebase-config';
 import cardImage from '../icons/card.svg';
-function Main(){
+function Main({setUser}){
     return(
         <div className='mainWrap'>
             <div className='mainPage'>

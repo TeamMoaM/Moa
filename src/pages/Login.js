@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import {signInWithPopup,signInWithEmailAndPassword} from "firebase/auth";
-import {auth,provider} from '../firebase-config';
+import {auth,provider,db} from '../firebase-config';
+import {setDoc,doc} from 'firebase/firestore';
 import { useNavigate,Link } from "react-router-dom";
 import logoImg from '../img/login/MOA.svg';
 import '../style/login.css';
@@ -25,9 +26,10 @@ function Login({setIsAuth,setList}){
         }   
     }
 
-    const signInWithGoogle = () => {
+    const signInWithGoogle = async () => {
         signInWithPopup(auth, provider).then((result) => {
             localStorage.setItem("isAuth",true);
+            setDoc(doc(db,'userInfo',auth.currentUser.uid),{name:auth.currentUser.displayName,tier:"bronze",email:auth.currentUser.email,introduction:"저에 대한 한 줄 소개입니다.",link:"default.instagram.com/lore",scrapCommunity:[]});
             setIsAuth(true);
             navigate("/");
         })

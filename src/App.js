@@ -1,9 +1,9 @@
 import './CssReset.css'
 import './App.css';
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import {onAuthStateChanged,signOut,setPersistence,browserSessionPersistence} from 'firebase/auth';
-import {auth} from './firebase-config';
+import {auth,db} from './firebase-config';
 import Main from './pages/Main'; 
 import Login from './pages/Login';
 import Community from './pages/Community';
@@ -16,11 +16,13 @@ import CreateReview from './pages/CreateReview';
 import MyPage from './pages/MyPage';
 import Signup from './pages/Signup';
 import defaultprofileImg from './icons/userdefaultimg.svg';
+import { doc, getDoc } from 'firebase/firestore';
 
 function App() {
   const [isAuth,setIsAuth] = useState(false);
   const [user, setUser] = useState({});
   const [list,setList] = useState(1);
+  const [displayName,setDisplayName] = useState("");
   const signUserOut = () => {
     signOut(auth).then(()=>{
         localStorage.clear();
@@ -30,9 +32,15 @@ function App() {
   }
   console.log(isAuth);
   setPersistence(auth, browserSessionPersistence).then(()=>{});
+
   onAuthStateChanged(auth,(currentUser)=>{
     if(currentUser){
       setUser(currentUser);
+      console.log(currentUser.uid);
+      getDoc(doc(db,'userInfo',user.uid)).then((docsnap)=>{
+        setDisplayName(docsnap.data().name);
+        console.log(docsnap.data().name);
+      })
       console.log("displayName",currentUser.displayName);
       setIsAuth(true);
     }
@@ -40,6 +48,9 @@ function App() {
       setIsAuth(false);
     }
   })
+
+ 
+
   
 
   return(
@@ -54,14 +65,13 @@ function App() {
               <ul className='listItem item3'><Link onClick={()=>{setList(3)}}to='/Community'>{list==3?<h2 id="listClicked3" className='subhead100'>Community</h2>:<h2 id="listNotClicked" className='subhead100'>Community</h2>}</Link></ul>
             </list>
           </div>
-          
           {!isAuth?
           <div className="registerAndLogin">
             <div className='appLogin'><Link to='/Login'><h3 className='body100'>로그인</h3></Link></div>
             <div className='appregister'><Link to='/Signup'><h3 className='subhead100'>회원가입</h3></Link></div>
           </div>
           :<div className="registerAndLogins">
-            <div className='appregister'><Link className="registerLink"to='/MyPage'><img src={defaultprofileImg}/><h3 id="logineddisplayName"className='subhead100'>{user&&user.displayName}</h3></Link></div>
+            {displayName&&<div className='appregister'><Link className="registerLink"to='/MyPage'><img src={defaultprofileImg}/><h3 id="logineddisplayName"className='subhead100'>{displayName}</h3></Link></div>}
             <div className='applogin'><Link onClick={()=>{signUserOut()}}to='/Login'><h3 className='body100'>로그아웃</h3></Link></div>
           </div>
           }
@@ -72,7 +82,7 @@ function App() {
       <div className='divider'></div>
       
       <Routes>
-        <Route path="/" element={<Main/>}></Route>
+        <Route path="/" element={<Main setUser={setUser}/>}></Route>
         <Route path="/Login" element={<Login setIsAuth={setIsAuth} setList={setList}/>} ></Route>
         <Route path="/Signup" element={<Signup setIsAuth={setIsAuth} setList={setList}/>} ></Route>
         <Route path="/MyPage" element={<MyPage setList={setList}user={user}/>} ></Route>

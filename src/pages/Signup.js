@@ -35,11 +35,9 @@ function Signup({setIsAuth,setList}) {
         await updateProfile(auth.currentUser,{
             displayName: registerNickname
             }).then(function() {
-            console.log(registerNickname);
             }).catch((error)=>{console.log(error);})
           setIsAuth(true);
           navigate("/");
-          window.loaction.reload();
         } catch (error) {
         console.log(error.message);
           if(error.message=='Firebase: Error (auth/invalid-email).'){
