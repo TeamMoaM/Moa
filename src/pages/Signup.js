@@ -31,7 +31,7 @@ function Signup({setIsAuth,setList}) {
             registerPassword,
           );
           
-        await setDoc(doc(db,'userInfo',auth.currentUser.uid),{name:registerNickname,tier:"bronze",email:auth.currentUser.email,introduction:"저에 대한 한 줄 소개입니다.",link:"default.instagram.com/lorem"});
+        await setDoc(doc(db,'userInfo',auth.currentUser.uid),{name:registerNickname,tier:"bronze",email:auth.currentUser.email,introduction:"저에 대한 한 줄 소개입니다.",link:"default.instagram.com/lorem",scrapCommunity:[]});
         await updateProfile(auth.currentUser,{
             displayName: registerNickname
             }).then(function() {
@@ -39,6 +39,7 @@ function Signup({setIsAuth,setList}) {
             }).catch((error)=>{console.log(error);})
           setIsAuth(true);
           navigate("/");
+          window.loaction.reload();
         } catch (error) {
         console.log(error.message);
           if(error.message=='Firebase: Error (auth/invalid-email).'){

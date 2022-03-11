@@ -16,10 +16,10 @@ const CreatePost = ({isAuth,user,setList}) => {
     const [desc, setDesc] = useState('');
     const [thumbnailImg,setThumbnailImg] = useState('');
     const thumbnailInput = useRef(null);
+    const [disabled,setDisabled] = useState(true);
     setList(2);
     var navigate = useNavigate();
     const formHandeler = (e) => {
-        setLoading(true);
         e.preventDefault();
         const file = e.target[0].files[0];
         uploadFiles(file);
@@ -54,10 +54,10 @@ const CreatePost = ({isAuth,user,setList}) => {
         const button = document.getElementById('postSubmitButton');
         if(isAuth){
             if(title.length<3 || content.length<3 || desc.length<12 ||thumbnailImg.length==0){
-                button.disabled=true;
+                setDisabled(true);
             }
             else{
-                button.disabled=false;
+                setDisabled(false);
             }
         }
         else{
@@ -69,7 +69,7 @@ const CreatePost = ({isAuth,user,setList}) => {
         <div className="createPostWrap">
         <div className="createPost">
             <div className="serviceInfo">
-                {thumbnailImg? <div className="postImgWrap"><img id="postImgWrap"src={thumbnailImg}alt="사진을 추가해주세요!"/></div>:<div className="postImgWrap2"><input ref={thumbnailInput} id="input-file"onChange={thumbnailInputOnchange}className="fileButton" type="file"/>
+                {thumbnailImg? <div className="postImgWrap"><img id="postImgWrap"src={thumbnailImg}alt="사진을 추가해주세요!"/></div>:<div className="postImgWrap2">
                 <label className="input-file-button" for="input-file"><img className="cameraImg" src={camera}/><h4 className="subhead100">썸네일 등록하기</h4></label></div>}
                 <div className="postCon">
                     <input maxlength="30" className="postTitle" placeholder="제목을 입력하세요" onChange={(event)=>{setTitle(event.target.value)}}></input>
@@ -82,7 +82,8 @@ const CreatePost = ({isAuth,user,setList}) => {
             <div className="divider"></div>
             {/* <ClipLoader color={'red'} loading={loading} size={150} /> */}
             <form onSubmit={formHandeler}>
-                <button id="postSubmitButton" className="submitButton" onClick={()=>{setLoading(true)}}type="submit" disabled><h3 className="subhead100">글 등록하기</h3></button>
+                <input ref={thumbnailInput} id="input-file"onChange={thumbnailInputOnchange}className="fileButton" type="file"/>
+                <button id="postSubmitButton" className="submitButton" onClick={()=>{setLoading(true)}}type="submit" disabled={disabled}><h3 className="subhead100">글 등록하기</h3></button>
             </form>
         </div>
   
