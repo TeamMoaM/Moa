@@ -6,12 +6,18 @@ import {onAuthStateChanged} from 'firebase/auth';
 import "../style/myPageInfo.css";
 import MyPageEdit from './MyPageEdit';
 import MyPageEduEdit from './myPageEduEdit';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+
 function MyPageInfo({setList,user}){
-    const [add, setAdd] = useState(0);
-    const [eduAdd, setEduAdd] = useState(0);
+    const [add, setAdd] = useState(false);
+    const [eduAdd, setEduAdd] = useState(false);
     const [users,setUsers] = useState({});
     const [postList,setCareerList]= useState([]);
     const [eduList,setEduList]= useState([]);
+    const closeCarModal = () => setAdd(false);
+    const closeEduModal = () => setEduAdd(false);
+
     setList(1);
     onAuthStateChanged(auth,(currentUser)=>{
         setUsers(currentUser);
@@ -33,18 +39,24 @@ function MyPageInfo({setList,user}){
             })
         }
     },[users])
-
     return(
         <>
         <div className='infoCard'>
             <div className='cardTitle'>
                 <h3 className='body100'>경력</h3>
-                {!add?
+                <button className='add' onClick={() => setAdd(o => !o)}>추가(학력)</button>
+                <Popup contentStyle={{padding:"23px",width: "500px", boxSizing:"border-box",height:"443px", borderRadius:"8px",boxShadow:"0px 4px 24px rgba(0, 1, 3, 0.1)"}} open={add} closeOnDocumentClick onClose={closeCarModal} >
+                    <button className='add' onClick={()=>{closeCarModal();}}>취소</button>
+                        <div className="modalHeader">
+                        </div>
+                        <MyPageEdit/>
+                </Popup>
+                {/* {!add?
                     <button className='add' onClick={()=>{setAdd(1)}}>추가(경력)</button>
                 :
                     <><button className='add' onClick={()=>{setAdd(0)}}>취소</button>
                     <MyPageEdit/></>
-                }
+                } */}
             </div>
             <div className='contentsList'>
                 {postList.length!=0?
@@ -69,12 +81,13 @@ function MyPageInfo({setList,user}){
         <div className='infoCard'>
             <div className='cardTitle'>
                 <h3 className='body100'>학력</h3>
-                {!eduAdd?
-                    <button className='add' onClick={()=>{setEduAdd(1)}}>추가(학력)</button>
-                :
-                    <><button className='add' onClick={()=>{setEduAdd(0)}}>취소</button>
-                    <MyPageEduEdit/></>
-                }
+                    <button className='add' onClick={() => setEduAdd(o => !o)}>추가(학력)</button>
+                    <Popup contentStyle={{padding:"23px",width: "500px", boxSizing:"border-box",height:"443px", borderRadius:"8px",boxShadow:"0px 4px 24px rgba(0, 1, 3, 0.1)"}} open={eduAdd} closeOnDocumentClick onClose={closeEduModal} >
+                        <button className='add' onClick={()=>{closeEduModal();}}>취소</button>
+                            <div className="modalHeader">
+                            </div>
+                            <MyPageEduEdit/>
+                    </Popup>
             </div>
             <div className='contentsList'>
                 {eduList.length!=0?
@@ -84,7 +97,7 @@ function MyPageInfo({setList,user}){
                         <div className='contentsListItems'>
                             <h1 className='subhead100'>{post.school.name}</h1>
                             <h2 className='body100'>{post.school.major}</h2>
-                            <h4 className='body100'>{post.school.time.timeStartYear}년 {post.school.time.timeStartMonth}월 ~ {post.school.time.timeEndYear}년 {post.school.time.timeEndMonth}월</h4>
+                            <h4 className='body100'>{post.school.time.timeStartYear}년 ~ {post.school.time.timeEndYear}년</h4>
                         </div>
                         <div className='divider'></div>
                         </>

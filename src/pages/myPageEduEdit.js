@@ -59,18 +59,16 @@ function MyPageEduEdit({user}){
             <input className="event" placeholder="학교 이름" onChange={(event)=>{setSchool(event.target.value)}}></input>
             <input className='major' name='major' placeholder='전공' onChange={(e)=>setMajor(e.target.value)} ></input>
             <input className='timeStartYear' name='timeStartYear' placeholder='시작한 연도' type='number' min='1900' max='2100' onChange={updateTimeData} ></input>
-            <input className='timeStartMonth' name='timeStartMonth' placeholder='시작한 달' type='number' min='1' max='12' onChange={updateTimeData} ></input>
             <input className='timeEndYear' name='timeEndYear' placeholder='끝난 연도' type='number' min='1900' max='2100' onChange={updateTimeData} ></input>
-            <input className='timeEndMonth' name='timeEndMonth' placeholder='끝난 달' type='number' min='1' max='12' onChange={updateTimeData} ></input>
             <button onClick = {addData} >Button Post</button>
-            {eduList && eduList.map((post)=>{
+            {/* {eduList && eduList.map((post)=>{
                 return(
                 <div>
                     {post.school.name}
                     {post.school.major}
                     {post.school.time.timeEndYear}
                 </div>)
-            })}
+            })} */}
 
         </>
     )
