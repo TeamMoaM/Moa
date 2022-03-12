@@ -15,7 +15,10 @@ import Post from './pages/Post';
 import CreateReview from './pages/CreateReview';
 import MyPage from './pages/MyPage';
 import Signup from './pages/Signup';
-import defaultprofileImg from './icons/userdefaultimg.svg';
+import defaultprofileImg from './img/communityImg/defaultprofile.svg';
+import bronzeMedal from './img/medals/bronzeMedal.svg';
+import silverMedal from './img/medals/silverMedal.svg';
+import goldMedal from './img/medals/goldMedal.svg';
 import { doc, getDoc } from 'firebase/firestore';
 
 function App() {
@@ -72,7 +75,7 @@ function App() {
             <div className='appregister'><Link to='/Signup'><h3 className='subhead100'>회원가입</h3></Link></div>
           </div>
           :<div className="registerAndLogins">
-            {displayName&&<div className='appregister'><Link className="registerLink"to='/MyPage'><img src={defaultprofileImg}/><h3 id="logineddisplayName"className='subhead100'>{displayName}</h3></Link></div>}
+            {displayName&&<div className='appregister'><Link className="registerLink"to='/MyPage'><img src={defaultprofileImg}/><h3 id="logineddisplayName"className='subhead100'><img src={bronzeMedal}/>{displayName}</h3></Link></div>}
             <div className='applogin'><Link onClick={()=>{signUserOut()}}to='/Login'><h3 className='body100'>로그아웃</h3></Link></div>
           </div>
           }

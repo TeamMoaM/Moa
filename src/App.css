@@ -191,6 +191,12 @@ nav{
   color: var(--black);
   font-weight: 400;
 }
+.registerAndLogin > .appregister{
+  margin-left:34px;
+}
+.registerAndLogins .applogin{
+  margin-left:16px;
+}
 .appregister h3{
   color: var(--primary-1);
   font-weight: 700;
@@ -200,20 +206,22 @@ nav{
   align-items: center;
 }
 .registerAndLogin{
-  width:135px;
+  border:1px solid;
   display:flex;
   align-items: center;
-  justify-content: space-between;
 }
 .registerAndLogins{
-  width:180px;
   display:flex;
   align-items: center;
-  justify-content: space-between;
 }
 #logineddisplayName{
   color:var(--black);
-  margin-left: 12px;
+  margin-left: 8px;
+  display:flex;
+  align-items: center;
+}
+#logineddisplayName > img{
+  margin-right:4px;
 }
 .appLogin > a:visited{
   color:black;
