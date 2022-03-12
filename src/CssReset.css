@@ -60,7 +60,28 @@ textarea:focus{/*input 박스 클릭시 박스 포커스 되는 거 없애기*/
 html::-webkit-scrollbar { /*스크롤 너비 없애도록 하는 코드*/
     display: none; /* Chrome, Safari, Opera*/
 }
-div{
+button{
+	-ms-user-select: none; 
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+a{
+	-ms-user-select: none; 
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.communityTags{
+	-ms-user-select: none; 
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.communitySearch{
 	-ms-user-select: none; 
   -moz-user-select: -moz-none;
   -khtml-user-select: none;

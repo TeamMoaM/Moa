@@ -4,7 +4,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: var(--gray-4);
   }
+
   @media screen and (min-width: 1280px) {
     .homePage{
       width:100%;
@@ -655,12 +657,14 @@
   border: 1px solid #2727AD;
   align-items: center;
   color: var(--primary-1);
+  background-color: var(--white);
 }
 .communityTagUnClicked{
   display:flex;
   width:283px;
   cursor: pointer;
   height:48px;
+  background-color: var(--white);
   box-sizing: border-box;
   border-radius: 8px;
   padding-left: 16px;
@@ -708,4 +712,9 @@
   position:fixed;
   bottom:80px;
   cursor: pointer;
+}
+.communityFooter{
+  width:100%;
+  height:364px;
+  background-color: var(--gray-4);
 }

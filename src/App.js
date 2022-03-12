@@ -23,6 +23,7 @@ function App() {
   const [user, setUser] = useState({});
   const [list,setList] = useState(1);
   const [displayName,setDisplayName] = useState("");
+  const [communityBool,setCommunityBool] = useState(false);
   const signUserOut = () => {
     signOut(auth).then(()=>{
         localStorage.clear();
@@ -37,7 +38,7 @@ function App() {
     if(currentUser){
       setUser(currentUser);
       console.log(currentUser.uid);
-      getDoc(doc(db,'userInfo',user.uid)).then((docsnap)=>{
+      getDoc(doc(db,'userInfo',currentUser.uid)).then((docsnap)=>{
         setDisplayName(docsnap.data().name);
         console.log(docsnap.data().name);
       })
@@ -90,10 +91,14 @@ function App() {
         <Route path="/BetaTest/lateOrder" element={<BetaTest_late setList={setList} />}></Route>
         <Route path="/post/:roomId" element={<Post isAuth={isAuth}user={user} setList={setList}/>}></Route>
         <Route path="/post/createreview/:roomId" element={<CreateReview isAuth={isAuth} user={user} setList={setList}/>}></Route>
-        <Route path="/Community" element={<Community setList={setList} isAuth={isAuth} setIsAuth={setIsAuth}/>}></Route>
+        <Route path="/Community" element={<Community setCommunityBool={setCommunityBool} setList={setList} isAuth={isAuth} setIsAuth={setIsAuth}/>}></Route>
         <Route path="/CreatePost" element={<CreatePost isAuth={isAuth} user={user} setList={setList}/>}></Route>
       </Routes>
+      {communityBool?<></>
+      :
       <div className="footer"></div>
+      }
+      
     </Router>
   )
 }

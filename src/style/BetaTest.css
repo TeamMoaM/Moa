@@ -82,7 +82,7 @@
     color:var(--danger);
   }
   .linkRecentOrderLate{
-    color:var(--black);
+    color:var(--gray-2);
   }
   .linkLateOrderLate{
     color:var(--primary-1);
@@ -100,7 +100,7 @@
     color:var(--primary-1);
   }
   .linkLateOrderRecent{
-    color:var(--black);
+    color:var(--gray-2);
   }
   .linkRecentOrderRecent > .subhead3{
     width:44px;
@@ -115,6 +115,7 @@
     font-family: Noto Sans KR;
     font-weight: 700;
     font-size: 12px;
+    color:var(--gray-3);
   }
 
   .functions{

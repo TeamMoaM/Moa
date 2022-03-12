@@ -24,7 +24,7 @@ import 'reactjs-popup/dist/index.css';
 import '../style/community.css';
 
 
-function Community({setList,isAuth,setIsAuth}){
+function Community({setCommunityBool,setList,isAuth,setIsAuth}){
   const [postLists, setPostList] = useState([]);
   const [comment, setComment] = useState([]);
   // const [commentToggle,setCommentToggle] =useState('asd');
@@ -39,6 +39,7 @@ function Community({setList,isAuth,setIsAuth}){
   const [scrapBool,setScrapBool] = useState([]);
   const communityTagsAndSearch = useRef(null);
   
+  setCommunityBool(true);
   var navigate = useNavigate();
   setList(3);
   
@@ -203,12 +204,12 @@ function Community({setList,isAuth,setIsAuth}){
         <div className="communityTagsBox">
           <h1 className="subhead100">태그</h1>
           <div className="communityTags">
-            {communityTagClicked==0?<div className="communityTagClicked"><h4 className="title100">&#128196;</h4><h2 className="subhead100">모든 태그</h2></div>:<div onClick={()=>{setCommunityTagClicked(0)}}className="communityTagUnClicked"><h4 className="title100">&#128196;</h4><h2 className="subhead100">모든 태그</h2></div>}
-            {communityTagClicked==1?<div className="communityTagClicked"><h4 className="title100">&#128188;</h4><h2 className="subhead100">사업</h2></div>:<div onClick={()=>{setCommunityTagClicked(1)}}className="communityTagUnClicked"><h4 className="title100">&#128188;</h4><h2 className="subhead100">사업</h2></div>}
-            {communityTagClicked==2?<div className="communityTagClicked"><h4 className="title100">&#128187;</h4><h2 className="subhead100">개발</h2></div>:<div onClick={()=>{setCommunityTagClicked(2)}}className="communityTagUnClicked"><h4 className="title100">&#128187;</h4><h2 className="subhead100">개발</h2></div>}
-            {communityTagClicked==3?<div className="communityTagClicked"><h4 className="title100">&#128196;</h4><h2 className="subhead100">기획</h2></div>:<div onClick={()=>{setCommunityTagClicked(3)}}className="communityTagUnClicked"><h4 className="title100">&#128196;</h4><h2 className="subhead100">기획</h2></div>}
-            {communityTagClicked==4?<div className="communityTagClicked"><h4 className="title100">&#127912;</h4><h2 className="subhead100">디자인</h2></div>:<div onClick={()=>{setCommunityTagClicked(4)}}className="communityTagUnClicked"><h4 className="title100">&#127912;</h4><h2 className="subhead100">디자인</h2></div>}
-            {communityTagClicked==5?<div className="communityTagClicked"><h4 className="title100">&#128241;</h4><h2 className="subhead100">기술</h2></div>:<div onClick={()=>{setCommunityTagClicked(5)}}className="communityTagUnClicked"><h4 className="title100">&#128241;</h4><h2 className="subhead100">기술</h2></div>}
+            {communityTagClicked==0?<div onClick={()=>{window.scrollTo({top:0,left:0, behavior:"smooth"});}}className="communityTagClicked"><h4 className="title100">&#128196;</h4><h2 className="subhead100">모든 태그</h2></div>:<div onClick={()=>{setCommunityTagClicked(0);window.scrollTo({top:0,left:0, behavior:"smooth"});}}className="communityTagUnClicked"><h4 className="title100">&#128196;</h4><h2 className="subhead100">모든 태그</h2></div>}
+            {communityTagClicked==1?<div onClick={()=>{window.scrollTo({top:0,left:0, behavior:"smooth"});}}className="communityTagClicked"><h4 className="title100">&#128188;</h4><h2 className="subhead100">사업</h2></div>:<div onClick={()=>{setCommunityTagClicked(1);window.scrollTo({top:0,left:0, behavior:"smooth"});}}className="communityTagUnClicked"><h4 className="title100">&#128188;</h4><h2 className="subhead100">사업</h2></div>}
+            {communityTagClicked==2?<div onClick={()=>{window.scrollTo({top:0,left:0, behavior:"smooth"});}}className="communityTagClicked"><h4 className="title100">&#128187;</h4><h2 className="subhead100">개발</h2></div>:<div onClick={()=>{setCommunityTagClicked(2);window.scrollTo({top:0,left:0, behavior:"smooth"});}}className="communityTagUnClicked"><h4 className="title100">&#128187;</h4><h2 className="subhead100">개발</h2></div>}
+            {communityTagClicked==3?<div onClick={()=>{window.scrollTo({top:0,left:0, behavior:"smooth"});}}className="communityTagClicked"><h4 className="title100">&#128196;</h4><h2 className="subhead100">기획</h2></div>:<div onClick={()=>{setCommunityTagClicked(3);window.scrollTo({top:0,left:0, behavior:"smooth"});}}className="communityTagUnClicked"><h4 className="title100">&#128196;</h4><h2 className="subhead100">기획</h2></div>}
+            {communityTagClicked==4?<div onClick={()=>{window.scrollTo({top:0,left:0, behavior:"smooth"});}}className="communityTagClicked"><h4 className="title100">&#127912;</h4><h2 className="subhead100">디자인</h2></div>:<div onClick={()=>{setCommunityTagClicked(4);window.scrollTo({top:0,left:0, behavior:"smooth"});}}className="communityTagUnClicked"><h4 className="title100">&#127912;</h4><h2 className="subhead100">디자인</h2></div>}
+            {communityTagClicked==5?<div onClick={()=>{window.scrollTo({top:0,left:0, behavior:"smooth"});}}className="communityTagClicked"><h4 className="title100">&#128241;</h4><h2 className="subhead100">기술</h2></div>:<div onClick={()=>{setCommunityTagClicked(5);window.scrollTo({top:0,left:0, behavior:"smooth"});}}className="communityTagUnClicked"><h4 className="title100">&#128241;</h4><h2 className="subhead100">기술</h2></div>}
           </div>
         </div>
         <div className="communitySearch">
@@ -297,6 +298,9 @@ function Community({setList,isAuth,setIsAuth}){
           
         );
       })}
+      </div>
+      <div className="communityFooter">
+        
       </div>
     </div>
   );
