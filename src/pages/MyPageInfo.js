@@ -8,6 +8,8 @@ import MyPageEdit from './MyPageEdit';
 import MyPageEduEdit from './myPageEduEdit';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import xIcon from '../img/communityImg/x_icon.svg';
+import plusIcon from '../icons/plus.svg'
 
 function MyPageInfo({setList,user}){
     const [add, setAdd] = useState(false);
@@ -44,12 +46,13 @@ function MyPageInfo({setList,user}){
         <div className='infoCard'>
             <div className='cardTitle'>
                 <h3 className='body100'>경력</h3>
-                <button className='add' onClick={() => setAdd(o => !o)}>추가(학력)</button>
-                <Popup contentStyle={{padding:"23px",width: "500px", boxSizing:"border-box",height:"443px", borderRadius:"8px",boxShadow:"0px 4px 24px rgba(0, 1, 3, 0.1)"}} open={add} closeOnDocumentClick onClose={closeCarModal} >
-                    <button className='add' onClick={()=>{closeCarModal();}}>취소</button>
-                        <div className="modalHeader">
-                        </div>
-                        <MyPageEdit/>
+                <button className='add' onClick={() => setAdd(o => !o)}><img className='plusIcon' src={plusIcon}></img><h2 className='caption100'>추가</h2></button>
+                <Popup contentStyle={{padding:"24px",width: "500px", boxSizing:"border-box",height:"446px", borderRadius:"8px",boxShadow:"0px 4px 24px rgba(0, 1, 3, 0.1)"}} open={add} closeOnDocumentClick onClose={closeCarModal} >
+                    <div className='popupTitle'>
+                            <h4 className='title100'>학력추가</h4>
+                            <img className="close" onClick={()=>{closeCarModal();}}src={xIcon}/>
+                    </div>
+                    <MyPageEdit/>
                 </Popup>
                 {/* {!add?
                     <button className='add' onClick={()=>{setAdd(1)}}>추가(경력)</button>
@@ -81,12 +84,13 @@ function MyPageInfo({setList,user}){
         <div className='infoCard'>
             <div className='cardTitle'>
                 <h3 className='body100'>학력</h3>
-                    <button className='add' onClick={() => setEduAdd(o => !o)}>추가(학력)</button>
-                    <Popup contentStyle={{padding:"23px",width: "500px", boxSizing:"border-box",height:"443px", borderRadius:"8px",boxShadow:"0px 4px 24px rgba(0, 1, 3, 0.1)"}} open={eduAdd} closeOnDocumentClick onClose={closeEduModal} >
-                        <button className='add' onClick={()=>{closeEduModal();}}>취소</button>
-                            <div className="modalHeader">
-                            </div>
-                            <MyPageEduEdit/>
+                    <button className='add' onClick={() => setEduAdd(o => !o)}><img className='plusIcon' src={plusIcon}></img><h2 className='caption100'>추가</h2></button>
+                    <Popup contentStyle={{padding:"24px",width: "500px", boxSizing:"border-box",height:"446px", borderRadius:"8px",boxShadow:"0px 4px 24px rgba(0, 1, 3, 0.1)"}} open={eduAdd} closeOnDocumentClick onClose={closeEduModal} >
+                        <div className='popupTitle'>
+                            <h4 className='title100'>학력추가</h4>
+                            <img className="close" onClick={()=>{closeEduModal();}}src={xIcon}/>
+                        </div>
+                        <MyPageEduEdit/>
                     </Popup>
             </div>
             <div className='contentsList'>

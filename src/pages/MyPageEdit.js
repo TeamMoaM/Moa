@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { collection, doc, addDoc,onSnapshot,query} from "firebase/firestore";
 import {db,auth} from '../firebase-config';
 import {onAuthStateChanged} from 'firebase/auth';
+import "../style/myPageEdit.css";
 function MyPageEdit({user}){
     const [company,setCompany] = useState({companyName:"",companyRole:""});
     const [time,setTime] = useState({
@@ -66,20 +67,21 @@ function MyPageEdit({user}){
     //console.log(careerList);
     return(
         <>
-            {user&&<div><h1>{user.displayName}</h1></div>}
-            <input className="event" name="companyName" placeholder="예 : HB Company" onChange={updateCompanyData}></input>
-            <input className="event" name="companyRole" placeholder="예 : 그래픽 디자이너, 프론트엔드 개발자" onChange={updateCompanyData}></input>
-            <input className='timeStartYear' name='timeStartYear' placeholder='입사 연도' type='number' min='1900' max='2100' onChange={updateTimeData} ></input>
-            <input className='timeEndYear' name='timeEndYear' placeholder='퇴사 연도' type='number' min='1900' max='2100' onChange={updateTimeData} ></input>
-            <button onClick = {addData} >Button Post</button>
-            {/* {careerList && careerList.map((post)=>{
-                return(
-                <div>
-                    {post.company.name}
-                    {post.company.time.timeEndYear}
-                </div>)
-            })} */}
-
+            <div className='popupInputField'>
+                <h3 className='subhead100'>회사명</h3>
+                <input className="event" name="companyName" placeholder="예 : HB Company" onChange={updateCompanyData}></input>
+            </div>
+            <div className='popupInputField'>
+                <h3 className='subhead100'>역할</h3>
+                <input className="event" name="companyRole" placeholder="예 : 그래픽 디자이너, 프론트엔드 개발자" onChange={updateCompanyData}></input>
+            </div>
+            <div className='popupInputField'>
+                <h3 className='subhead100'>기간</h3>
+                <input className='time' name='timeStartYear' placeholder='입사 연도' type='number' min='1900' max='2100' onChange={updateTimeData} ></input>
+                <h2 className='body100'>~</h2>
+                <input className='time' name='timeEndYear' placeholder='퇴사 연도' type='number' min='1900' max='2100' onChange={updateTimeData} ></input>
+            </div>
+            <button className='addButton' onClick = {addData} ><h3 className='subhead100'>경력 추가하기</h3></button>
         </>
     )
 }
