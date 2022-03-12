@@ -29,7 +29,7 @@ function Login({setIsAuth,setList}){
     const signInWithGoogle = async () => {
         signInWithPopup(auth, provider).then((result) => {
             localStorage.setItem("isAuth",true);
-            setDoc(doc(db,'userInfo',auth.currentUser.uid),{name:auth.currentUser.displayName,tier:"bronze",email:auth.currentUser.email,introduction:"저에 대한 한 줄 소개입니다.",link:"default.instagram.com/lore",scrapCommunity:[]});
+            setDoc(doc(db,'userInfo',auth.currentUser.uid),{name:auth.currentUser.displayName,tier:"bronze",email:auth.currentUser.email,introduction:"저에 대한 한 줄 소개입니다.",link:"default.instagram.com/lore",scrapPost:[],scrapCommunity:[]});
             setIsAuth(true);
             navigate("/");
         })

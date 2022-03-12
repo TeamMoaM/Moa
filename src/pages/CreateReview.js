@@ -34,7 +34,7 @@ function CreateReview({isAuth,user,setList}) {
         if(user.uid){
             getDoc(doc(db,'userInfo',user.uid)).then(docSnap => {
                 if(docSnap.exists()){
-                    const scrap = docSnap.data().scrap;
+                    const scrap = docSnap.data().scrapPost;
                     console.log("success:",scrap);
                     if(scrap.includes(roomId)){
                         console.log("include true!");
@@ -47,13 +47,13 @@ function CreateReview({isAuth,user,setList}) {
     const scrap = () =>{    
         if(user.uid){
             setScrapBool(true);
-            setDoc(doc(db,'userInfo',user.uid),{scrap:arrayUnion(roomId)},{merge:true});
+            setDoc(doc(db,'userInfo',user.uid),{scrapPost:arrayUnion(roomId)},{merge:true});
         }
     }
     const unscrap = () =>{    
         if(user.uid){
             setScrapBool(false);
-            updateDoc(doc(db,'userInfo',user.uid),{scrap:arrayRemove(roomId)});
+            updateDoc(doc(db,'userInfo',user.uid),{scrapPost:arrayRemove(roomId)});
         }
     }
     const uploadReview = async () => {

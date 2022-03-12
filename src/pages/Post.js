@@ -57,7 +57,7 @@ function Post({isAuth,user,setList}) {
         if(user.uid&&post.id){
             getDoc(doc(db,'userInfo',user.uid)).then(docSnap => {
                 if(docSnap.exists()){
-                    const scrap = docSnap.data().scrap;
+                    const scrap = docSnap.data().scrapPost;
                     console.log("success:",scrap);
                     if(scrap.includes(post.id)){
                         console.log("include true!");
