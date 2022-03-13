@@ -26,11 +26,6 @@
     --secondary-pressed: #646469;
     --secondary-disabled: #F6F6F6;
 }
-button{
-  border:none;
-  text-decoration: none;
-  background-color: white;
-}
 h1{
   font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
   letter-spacing: -0.01em;
