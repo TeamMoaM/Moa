@@ -34,18 +34,14 @@ function App() {
         window.location.pathname = "/";
     });
   }
-  console.log(isAuth);
   setPersistence(auth, browserSessionPersistence).then(()=>{});
 
   onAuthStateChanged(auth,(currentUser)=>{
     if(currentUser){
       setUser(currentUser);
-      console.log(currentUser.uid);
       getDoc(doc(db,'userInfo',currentUser.uid)).then((docsnap)=>{
         setDisplayName(docsnap.data().name);
-        console.log(docsnap.data().name);
       })
-      console.log("displayName",currentUser.displayName);
       setIsAuth(true);
     }
     else{
@@ -63,11 +59,11 @@ function App() {
         <div className='navWrap'>
           <div className="wrapLogoandMenu">
             <Link to='/' onClick={()=>{setList(1)}}><img className='logoImage' src={Logo}/></Link>
-            <list className='menuList'>
+            <div className='menuList'>
               <ul className='listItem item1'><Link onClick={()=>{setList(1)}}to='/'>{list==1?<h2 id='listClicked1' className='subhead100'>Main</h2>:<h2 id='listNotClicked' className='subhead100'>Main</h2>}</Link></ul>
               <ul className='listItem item2'><Link onClick={()=>{setList(2)}}to='/BetaTest/recentOrder'>{list==2?<h2 id="listClicked2" className='subhead100'>β - test</h2>:<h2 id="listNotClicked" className='subhead100'>β - test</h2>}</Link></ul>
               <ul className='listItem item3'><Link onClick={()=>{setList(3)}}to='/Community'>{list==3?<h2 id="listClicked3" className='subhead100'>Community</h2>:<h2 id="listNotClicked" className='subhead100'>Community</h2>}</Link></ul>
-            </list>
+            </div>
           </div>
           {!isAuth?
           <div className="registerAndLogin">

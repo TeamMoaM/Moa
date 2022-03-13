@@ -15,7 +15,6 @@ function BetaTest_recent({setList}){
     const onepageNumber = 16;
     setList(2);
     const q = query(postsCollectionRef, orderBy("id"),startAt((pageNumber)*onepageNumber+1),limit(onepageNumber));
-    console.log(pageNumber);
     useEffect(()=>{
         onSnapshot(q, (snapshot)=>
           {

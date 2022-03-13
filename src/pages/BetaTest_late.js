@@ -19,7 +19,6 @@ function BetaTest_late({setList}){
     
     // const q = query(postsCollectionRef, orderBy("time",'desc'),startAfter((pageNumber)*onepageNumber+1),limit(onepageNumber));
     useEffect(()=>{
-        console.log("pagenumber:"+pageNumber);
         if(pageNumber==1){
             var q = query(postsCollectionRef, orderBy("time",'desc'),limit(onepageNumber));
             if(typeof firstPage!="undefined"){
@@ -29,7 +28,6 @@ function BetaTest_late({setList}){
             {
                 setLastPage(snapshot.docs[15]);
                 setFirstPage(snapshot.docs[0]);
-                console.log("firstPage:",snapshot.docs[0].data().content);
                 setPosts(snapshot.docs.map((doc)=>({
                     ...doc.data(), id: doc.id,title: doc.data().title, content: doc.data().content, imageURL:doc.data().imageURL, commentCount: doc.data().commentCount, reviewCount: doc.data().reviewCount
                 }))); 
@@ -58,7 +56,6 @@ function BetaTest_late({setList}){
         navigate(`/post/${id}`);
     }
     const changePage = ({selected}) => {
-        console.log("selected:",selected);
         setPageNumber(selected+1);
     }
     

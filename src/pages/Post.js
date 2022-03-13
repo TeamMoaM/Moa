@@ -21,7 +21,7 @@ function Post({isAuth,user,setList}) {
     const [scrapBool,setScrapBool] = useState(0);
     var navigate = useNavigate();
     setList(2);
-    setPersistence(auth, browserSessionPersistence).then(()=>{console.log("browser session success")});
+    setPersistence(auth, browserSessionPersistence).then(()=>{});
     onAuthStateChanged(auth,(currentUser)=>{
 
     })
@@ -104,15 +104,15 @@ function Post({isAuth,user,setList}) {
                     </div>
                 </div>
                 {tabList?
-                    <list className='tabList'>
+                    <div className='tabList'>
                         <ul className='tabListItem'><button onClick={()=>{setTabList(1)}}className='serviceIntro1'><h3 className='subhead100'>서비스 소개</h3></button></ul>
                         <ul className='tabListItem'><button onClick={()=>{setTabList(0)}}className='serviceIntro0'><h3 className='body100'>리뷰</h3></button></ul>
-                    </list>
+                    </div>
                 :
-                    <list className='tabList'>
+                    <div className='tabList'>
                         <ul className='tabListItem'><button onClick={()=>{setTabList(1)}}className='serviceIntro0'><h3 className='body100'>서비스 소개</h3></button></ul>
                         <ul className='tabListItem'><button onClick={()=>{setTabList(0)}}className='serviceIntro1'><h3 className='subhead100'>리뷰</h3></button></ul>
-                    </list>
+                    </div>
                 }
                 <div className="divider"></div>
             </div>
@@ -135,15 +135,15 @@ function Post({isAuth,user,setList}) {
             </div>
           </div>
             {tabList?
-                <list className='tabList'>
+                <div className='tabList'>
                     <ul className='tabListItem'><button onClick={()=>{setTabList(1)}}className='serviceIntro1'><h3 className='subhead100'>서비스 소개</h3></button></ul>
                     <ul className='tabListItem'><button onClick={()=>{setTabList(0)}}className='serviceIntro0'><h3 className='body100'>리뷰</h3></button></ul>
-                </list>
+                </div>
             :
-                 <list className='tabList'>
+                 <div className='tabList'>
                     <ul className='tabListItem'><button onClick={()=>{setTabList(1)}}className='serviceIntro0'><h3 className='body100'>서비스 소개</h3></button></ul>
                     <ul className='tabListItem'><button onClick={()=>{setTabList(0)}}className='serviceIntro1'><h3 className='subhead100'>리뷰</h3></button></ul>
-                </list>
+                </div>
             }
      
             <div className='divider'></div>
