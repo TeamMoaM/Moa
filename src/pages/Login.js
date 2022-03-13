@@ -43,11 +43,11 @@ function Login({setIsAuth,setList}){
             <div className="loginInputs">
                 <div className="emailIDBox">
                     <div className="idText"><h3 className="subhead100">이메일</h3></div>
-                    <input className="loginID" placeholder="예:moa@naver.com" onChange={(event) => {setLoginEmail(event.target.value);}}></input>
+                    <input className="loginID" type="search" placeholder="예:moa@naver.com" onChange={(event) => {setLoginEmail(event.target.value);}}></input>
                 </div>
                 <div className="passwordBox">
                     <div className="idText"><h3 className="subhead100">비밀번호</h3></div>
-                    <input className="loginPW" type="password" placeholder="" onChange={(event) => {setLoginPassword(event.target.value);}}></input>
+                    <input className="loginPW"  placeholder="" type="password" onChange={(event) => {setLoginPassword(event.target.value);}}></input>
                 </div>
                 {loginSuccess?(<></>):(<div className="registerPasswordFalse">등록되지 않은 이메일이거나, 비밀번호가 일치하지 않아요.</div>)}
             </div>

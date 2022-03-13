@@ -54,11 +54,12 @@ h1.subhead100{font-size: 18px; line-height: 100%;font-weight: 700;} h2.subhead10
 h1.body100{line-height: 100%; font-size: 18px;font-weight: 400;} h2.body100{line-height: 100%; font-size: 16px;font-weight: 400;} h3.body100{line-height: 100%; font-size: 14px;font-weight: 400;} h4.body100{line-height: 100%; font-size: 12px;font-weight: 400;}
 h1.paragraph200{line-height: 200%; font-size: 16px;font-weight: 400;} h2.paragraph200{line-height: 200%; font-size: 14px;font-weight: 400;} h3.paragraph200{line-height: 200%; font-size: 12px;font-weight: 400;}
 h1.caption100{line-height: 100%; font-size: 12px;font-weight: 400;} h2.caption100{line-height: 100%; font-size: 10px;font-weight: 400;}
-
+/*button component*/
 button{
 	border:none;
 	text-decoration: none;
 	background-color: white;
+  cursor:pointer;
 }
 button.primary{
 	height:36px;
@@ -80,15 +81,54 @@ button.disabled{
 	background-color: var(--gray-3);
 	color:var(--white);
 }
+/*input*/
+input{
+  height:48px;
+  border: 1px solid #E8E8EE;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding:16px;
+  font-family: 'Spoqa Han Sans Neo';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 100%;
+/* identical to box height, or 16px */
+display: flex;
+align-items: center;
+letter-spacing: -0.01em;
+color: var(--black);
+}
+input::placeholder{
+  font-family: 'Spoqa Han Sans Neo';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 100%;
+/* identical to box height, or 16px */
+display: flex;
+align-items: center;
+letter-spacing: -0.01em;
+color:var(--gray-2);
+}
+/* input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration{
+} */
+input:focus{
+  border:1px solid var(--primary-1);
+}
+input:disabled{
+  background-color: var(--gray-4);
+  border:1px solid var(--gray-3);
 
+}
 html,
 body, #root{
   width: 100%;
   height: 100%;
   background-color: var(--white);
-}
-button{
-  cursor: pointer;
 }
 
 .testBorder{
