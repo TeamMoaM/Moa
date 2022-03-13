@@ -83,46 +83,39 @@ button.disabled{
 }
 /*input*/
 input{
-  height:48px;
   border: 1px solid #E8E8EE;
   box-sizing: border-box;
   border-radius: 8px;
   padding:16px;
   font-family: 'Spoqa Han Sans Neo';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 100%;
-/* identical to box height, or 16px */
-display: flex;
-align-items: center;
-letter-spacing: -0.01em;
-color: var(--black);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  /* identical to box height, or 16px */
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.01em;
+  color: var(--black);
 }
 input::placeholder{
   font-family: 'Spoqa Han Sans Neo';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 100%;
-/* identical to box height, or 16px */
-display: flex;
-align-items: center;
-letter-spacing: -0.01em;
-color:var(--gray-2);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  /* identical to box height, or 16px */
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.01em;
+  color:var(--gray-2);
 }
-/* input::-webkit-search-decoration,
-input::-webkit-search-cancel-button,
-input::-webkit-search-results-button,
-input::-webkit-search-results-decoration{
-} */
 input:focus{
   border:1px solid var(--primary-1);
 }
 input:disabled{
   background-color: var(--gray-4);
   border:1px solid var(--gray-3);
-
 }
 html,
 body, #root{
@@ -130,7 +123,6 @@ body, #root{
   height: 100%;
   background-color: var(--white);
 }
-
 .testBorder{
   border: 1px solid red;
 }

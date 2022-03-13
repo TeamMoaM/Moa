@@ -333,7 +333,25 @@
   margin-bottom: 12px;
   font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
   letter-spacing: -0.01em;
+  padding:0;
+  border-radius: 0;
+  border: none;
   font-size: 24px; line-height: 100%;font-weight: 700;
+}
+.postTitle::placeholder{
+  font-family: 'Spoqa Han Sans Neo';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 100%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: -0.01em;
+color: var(--gray-2);
+}
+.postTitle:focus{
+  border:none;
 }
 
 /*userInfo 부분은 Post.js와 동일*/
@@ -351,6 +369,18 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   line-height: 150%; font-size: 13px;font-weight: 400;
+}
+.postInro::placeholder{
+  font-family: 'Spoqa Han Sans Neo';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 150%;
+/* or 24px */
+letter-spacing: -0.01em;
+
+/* Grayscale/Gray 2 */
+color: var(--gray-2);
 }
 /*popHeader element*/
 

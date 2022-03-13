@@ -12,6 +12,11 @@
     font-family: Spoqa Han Sans Neo;
     font-size: 32px;
     align-items: center;
+    border:none;
+    padding:0;
+}
+.createReviewTitleInput:focus{
+    border:none;
 }
 .createReviewTitleInput::placeholder{
     font-family: Spoqa Han Sans Neo;

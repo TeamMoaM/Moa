@@ -408,6 +408,19 @@
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
   }
+  .postCommentInput::placeholder{
+    font-family: 'Spoqa Han Sans Neo';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 200%;
+/* identical to box height, or 28px */
+display: flex;
+align-items: center;
+
+/* Grayscale/Gray 1 */
+color: var(--gray-1);
+  }
   .replyPostCommentInput{
     background-image: url('../img/communityImg/defaultprofile.svg');
     background-position: 16px 50%;
@@ -599,6 +612,7 @@
   letter-spacing: -0.01em;
   color:var(--gray-2);
 }
+
 .modalContentWriteTextarea:focus{
   border:none;
   outline:none;
