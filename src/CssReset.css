@@ -88,28 +88,3 @@ a{
   -webkit-user-select: none;
   user-select: none;
 }
-button{
-	border:none;
-	text-decoration: none;
-	background-color: white;
-}
-button.primary{
-	height:36px;
-	background-color: var(--primary-1);
-	color:var(--white);
-}
-button.secondary{
-	height:36px;
-	background-color: var(--primary-4);
-	color:var(--primary-1);
-}
-button.teritary{
-	height:36px;
-	background-color: var(--gray-4);
-	color:var(--black);
-}
-button.disabled{
-	height:36px;
-	background-color: var(--gray-3);
-	color:var(--white);
-}
