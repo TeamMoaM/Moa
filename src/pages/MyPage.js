@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { query, getDoc, collection, deleteDoc, doc, addDoc,onSnapshot} from "firebase/firestore";
 import {db,auth} from '../firebase-config';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {onAuthStateChanged} from 'firebase/auth';
 import "../style/myPage.css";
 import avatarImage from '../icons/avatar.svg';
@@ -15,6 +15,7 @@ function MyPage({setList,user}){
     const [users,setUsers] = useState({});
     const [tier,setTier] = useState();
     setList(1);
+    var navigate = useNavigate();
     onAuthStateChanged(auth,(currentUser)=>{
         setUsers(currentUser);
     })
@@ -54,8 +55,8 @@ function MyPage({setList,user}){
                         <h4 className='userName title100'>{users&&users.displayName}</h4>
                     </div>                    
                     <div className='buttonList'>
-                        <button className='gray4Button'><h3 className='subhead100'>정보 수정</h3></button>
-                        <button className='gray4Button'><h3 className='subhead100'>계정 설정</h3></button>
+                        <button onClick={()=>navigate('/mypageInfoEdit')} className='gray4Button'><h3 className='subhead100'>정보 수정</h3></button>
+                        <button onClick={()=>navigate('/accountSetting')} className='gray4Button'><h3 className='subhead100'>계정 설정</h3></button>
                     </div>
                     <div className='tier'>
                         <h1 className='subhead100'>{tier&&tier.tier}</h1>

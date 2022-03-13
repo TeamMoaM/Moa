@@ -15,6 +15,8 @@ import Post from './pages/Post';
 import CreateReview from './pages/CreateReview';
 import MyPage from './pages/MyPage';
 import Signup from './pages/Signup';
+import MyPageInfoEdit from './pages/MyPageInfoEdit';
+import AccountSetting from './pages/AccountSetting';
 import defaultprofileImg from './img/communityImg/defaultprofile.svg';
 import bronzeMedal from './img/medals/bronzeMedal.svg';
 import silverMedal from './img/medals/silverMedal.svg';
@@ -85,13 +87,15 @@ function App() {
         <Route path="/" element={<Main setUser={setUser}/>}></Route>
         <Route path="/Login" element={<Login setIsAuth={setIsAuth} setList={setList}/>} ></Route>
         <Route path="/Signup" element={<Signup setIsAuth={setIsAuth} setList={setList}/>} ></Route>
-        <Route path="/MyPage" element={<MyPage setList={setList}user={user}/>} ></Route>
+        <Route path="/MyPage" element={<MyPage setList={setList} user={user}/>} ></Route>
         <Route path="/BetaTest/recentOrder" element={<BetaTest_recent setList={setList}/>}></Route>
         <Route path="/BetaTest/lateOrder" element={<BetaTest_late setList={setList} />}></Route>
         <Route path="/post/:roomId" element={<Post isAuth={isAuth}user={user} setList={setList}/>}></Route>
         <Route path="/post/createreview/:roomId" element={<CreateReview isAuth={isAuth} user={user} setList={setList}/>}></Route>
         <Route path="/Community" element={<Community setCommunityBool={setCommunityBool} setList={setList} isAuth={isAuth} setIsAuth={setIsAuth}/>}></Route>
         <Route path="/CreatePost" element={<CreatePost isAuth={isAuth} user={user} setList={setList}/>}></Route>
+        <Route path="/mypageInfoEdit" element={<MyPageInfoEdit />}></Route>
+        <Route path="/accountSetting" element={<AccountSetting />}></Route>
       </Routes>
       {communityBool?<></>
       :

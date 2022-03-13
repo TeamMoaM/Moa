@@ -49,7 +49,7 @@ function MyPageInfo({setList,user}){
                 <button className='add' onClick={() => setAdd(o => !o)}><img className='plusIcon' src={plusIcon}></img><h2 className='caption100'>추가</h2></button>
                 <Popup contentStyle={{padding:"24px",width: "500px", boxSizing:"border-box",height:"446px", borderRadius:"8px",boxShadow:"0px 4px 24px rgba(0, 1, 3, 0.1)"}} open={add} closeOnDocumentClick onClose={closeCarModal} >
                     <div className='popupTitle'>
-                            <h4 className='title100'>학력추가</h4>
+                            <h4 className='title100'>경력추가</h4>
                             <img className="close" onClick={()=>{closeCarModal();}}src={xIcon}/>
                     </div>
                     <MyPageEdit/>
