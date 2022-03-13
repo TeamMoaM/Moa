@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { collection, doc, addDoc,onSnapshot,setDoc,query} from "firebase/firestore";
 import {db,auth} from '../firebase-config';
 import {onAuthStateChanged} from 'firebase/auth';
+import {useNavigate} from 'react-router-dom';
 
 function MyPageEduEdit({user}){
+    var navigate = useNavigate();
     const [school,setSchool] = useState("");
     const [major,setMajor] = useState("");
     const [time,setTime] = useState({
@@ -31,6 +33,7 @@ function MyPageEduEdit({user}){
                     }
                 })
                 console.log("userinfo에 education 정보 올리기 성공!");
+                window.location.reload();
             }
         } catch (e) {
             console.log(e);

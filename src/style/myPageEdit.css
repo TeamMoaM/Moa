@@ -7,6 +7,9 @@
     margin-left: 4px;
     margin-right: 4px;
 }
+.popupInputField input{
+    display: inline;
+}
 .event{
     margin-top: 4px;
     background: var(--white);

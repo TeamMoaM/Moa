@@ -30,6 +30,7 @@ function MyPageEdit({user}){
                     }
                 })
                 console.log("userinfo에 career 정보 올리기 성공!");
+                window.location.reload();
             }
         } catch (e) {
             console.log(e);
