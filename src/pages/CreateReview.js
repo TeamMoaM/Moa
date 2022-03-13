@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import {useParams,Link, Navigate, useNavigate} from 'react-router-dom';
-import {getDoc,doc,addDoc,setDoc,updateDoc,arrayRemove,arrayUnion} from 'firebase/firestore';
+import {getDoc,doc,addDoc,setDoc,updateDoc,arrayRemove,arrayUnion, collection} from 'firebase/firestore';
 import {db} from '../firebase-config';
 import BookmarkClicked from '../icons/bookmarkClicked.svg';
 import Bookmark from '../icons/bookmark.svg';
@@ -66,6 +66,7 @@ function CreateReview({isAuth,user,setList}) {
         reviewCount = String(reviewCount);
         const reviewRef = doc(db,"posts",roomId,"review",reviewCount);
         await setDoc(reviewRef,{reviewPeople:user.uid,reviewTitle:title,reviewContent:desc,time:new Date().getTime()/1000,like:[],likeCount:0});
+        await addDoc(collection(db,'reviews'),{reviewPeople:user.uid,reviewTitle:title,reviewContent:desc,time:new Date().getTime()/1000,like:[],likeCount:0})
         window.location.href=`/post/${roomId}`;
     };
     useEffect(()=>{
