@@ -76,6 +76,7 @@ function CreateReview({isAuth,user,setList}) {
         else{
             setDisabled(false);
         }
+        console.log("time:",new Date.getTime()/1000)
     //     console.log("desc:"+desc.length-11);
     // console.log("title:"+title.length)}
     },[title,desc])

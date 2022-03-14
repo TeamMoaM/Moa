@@ -37,7 +37,7 @@ const CreatePost = ({isAuth,user,setList}) => {
         let docCount = await data.data().docCount;
         docCount = docCount+1;
         let urlResponse = await getDownloadURL(storageRef);
-        await addDoc(postsCollectionRef, {title:title,content:content,author:{id:user.uid,name:user.displayName},desc:desc,imageURL:urlResponse,time:new Date().getTime/1000,commentCount:0,reviewCount:0,id:docCount});
+        await addDoc(postsCollectionRef, {title:title,content:content,author:{id:user.uid,name:user.displayName},desc:desc,imageURL:urlResponse,time:new Date().getTime()/1000,commentCount:0,reviewCount:0,id:docCount});
         await setDoc(doc(db, 'docCount','docCount'),{docCount:docCount});
         setLoading(false);
         window.location.href='Betatest/recentOrder';
@@ -63,7 +63,7 @@ const CreatePost = ({isAuth,user,setList}) => {
         else{
             navigate('/login');
         }
-        
+        console.log(new Date().getTime()/1000);
     },[title,content,desc,thumbnailImg])
     return (
         <div className="createPostWrap">
