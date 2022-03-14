@@ -12,7 +12,7 @@ function MyPosts(){
         onSnapshot(q, (snapshot)=>
             {
                 setPosts(snapshot.docs.map((doc)=>({
-                    ...doc.data()
+                    ...doc.data(),id:doc.id
                 }))); 
             }
         )

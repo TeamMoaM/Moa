@@ -1,10 +1,11 @@
-import { collection, doc, getDocs, onSnapshot,query, where } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, onSnapshot,query, where } from 'firebase/firestore';
 import React, { useState, useEffect } from 'react';
 import { auth ,db} from '../firebase-config';
 import UserInfo from '../components/UserInfo';
 import TimeCal from '../components/TimeCal';
 import ReviewDetail from '../pages/ReviewDetail';
 import {useNavigate} from 'react-router-dom';
+import MypageReviewDetail from '../pages/MypageReviewDetail';
 
 function MyReviews(){
     const [showReviewNumber,setShowReviewNumber] = useState(0);
@@ -15,7 +16,7 @@ function MyReviews(){
         onSnapshot(q, (snapshot)=>
         {
             setReviews(snapshot.docs.map((doc)=>({
-                ...doc.data()
+                ...doc.data(),id:doc.id
             }))); 
         }
     )
@@ -23,7 +24,8 @@ function MyReviews(){
     return(
         <div>
             <h1 className='body100'>MyReviews</h1>
-            {reviews&&reviews.map((review)=>{
+            {showReviewNumber==0?
+            <>{reviews&&reviews.map((review)=>{
                 return(
                     <div>
                         <div onClick={()=>{setShowReviewNumber(review.id);navigate('');}} className="postReviewWrap">
@@ -48,7 +50,9 @@ function MyReviews(){
                     </div>
                     // 자세한 레포는 reviews collection 참조 부탁드립니다.
                 )
-            })}
+            })}</>
+            :<MypageReviewDetail id={showReviewNumber} setShowReviewNumber={setShowReviewNumber}/>
+            }
         </div>
     )
 }
