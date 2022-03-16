@@ -134,6 +134,13 @@ input:disabled{
   margin-right: 8px;
 }
 
+/* border radius */
+.border8px{
+  border: 1px solid var(--gray-3);
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
 html,
 body, #root{
   width: 100%;

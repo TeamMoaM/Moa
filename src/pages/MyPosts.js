@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { auth,db } from '../firebase-config';
 import {collection,query,orderBy,onSnapshot} from 'firebase/firestore';
 import {useNavigate} from 'react-router-dom';
+import '../style/myPosts.css';
+
 function MyPosts(){
     const [posts,setPosts] = useState([]);
     const navigate = useNavigate();
@@ -22,13 +24,13 @@ function MyPosts(){
     }
     
     return(
-        <div>
-            <h1 className='body100'>MyPosts</h1>
+        <div className='myPosts'>
+        <div className='BetaTestPosts'>
             {posts&&posts.map((post)=>{
                 return(
                 <> 
                     <div onClick={()=>{postClick(post.id)}} className="post">
-                        <img id="myimg" src={post.imageURL}></img>
+                        <img id="myimg" className='border8px' src={post.imageURL}></img>
                         <div className="post_title">{post.title}</div>
                         <div className="post_content">{post.content}</div>
                         <div className="post_commentAndreview">
@@ -38,6 +40,7 @@ function MyPosts(){
                 </>   
                 )
             })}
+        </div>
         </div>
     )
 }
