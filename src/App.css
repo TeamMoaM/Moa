@@ -81,6 +81,7 @@ button.disabled{
 	background-color: var(--gray-3);
 	color:var(--white);
 }
+
 /*input*/
 input{
   border: 1px solid #E8E8EE;
@@ -117,6 +118,29 @@ input:disabled{
   background-color: var(--gray-4);
   border:1px solid var(--gray-3);
 }
+
+/* tab indicator */
+.selectedTab{ /*button에 className으로 적용, 레퍼런스 MyPage 참고*/
+  height: 40px; 
+  color: var(--primary-1);
+  margin-left: 8px;
+  margin-right: 8px;
+  padding: 0px;
+  box-shadow:  inset 0 -4px 0 0px var(--primary-1);
+}
+.notSelectedTab{
+  padding: 0;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+/* border radius */
+.border8px{
+  border: 1px solid var(--gray-3);
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
 html,
 body, #root{
   width: 100%;

@@ -65,10 +65,10 @@ function MyPage({setList,user}){
                 <div className='rightArea'>
                     <div className='myPageTab'>
                         <list className='tabList'>
-                            <ul className='tabListItem item1'><button onClick={()=>{setMyPageList(1)}}className={myPageList===1?'selectedTab':''}><h3 className={myPageList===1?'subhead100':'body100'}>정보</h3></button></ul>
-                            <ul className='tabListItem item2'><button onClick={()=>{setMyPageList(2)}}className={myPageList===2?'selectedTab':''}><h3 className={myPageList===2?'subhead100':'body100'}>베타테스트 게시글</h3></button></ul>
-                            <ul className='tabListItem item3'><button onClick={()=>{setMyPageList(3)}}className={myPageList===3?'selectedTab':''}><h3 className={myPageList===3?'subhead100':'body100'}>베타테스트 리뷰</h3></button></ul>
-                            <ul className='tabListItem item4'><button onClick={()=>{setMyPageList(4)}}className={myPageList===4?'selectedTab':''}><h3 className={myPageList===4?'subhead100':'body100'}>커뮤니티 게시글</h3></button></ul>
+                            <ul className='tabListItem item1'><button onClick={()=>{setMyPageList(1)}}className={myPageList===1?'selectedTab':'notSelectedTab'}><h3 className={myPageList===1?'subhead100':'body100'}>정보</h3></button></ul>
+                            <ul className='tabListItem item2'><button onClick={()=>{setMyPageList(2)}}className={myPageList===2?'selectedTab':'notSelectedTab'}><h3 className={myPageList===2?'subhead100':'body100'}>베타테스트 게시글</h3></button></ul>
+                            <ul className='tabListItem item3'><button onClick={()=>{setMyPageList(3)}}className={myPageList===3?'selectedTab':'notSelectedTab'}><h3 className={myPageList===3?'subhead100':'body100'}>베타테스트 리뷰</h3></button></ul>
+                            <ul className='tabListItem item4'><button onClick={()=>{setMyPageList(4)}}className={myPageList===4?'selectedTab':'notSelectedTab'}><h3 className={myPageList===4?'subhead100':'body100'}>커뮤니티 게시글</h3></button></ul>
                         </list>
                     </div>
                     <div className='divider'></div>

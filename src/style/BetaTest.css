@@ -88,14 +88,13 @@
     color:var(--primary-1);
   }
   .linkRecentOrderLate > .subhead3{
-    width:44px;
+    width:60px;
     font-weight: 400;
   }
   .linkLateOrderLate > .subhead3{
-    width:60px;
+    width:44px;
     font-weight: 700;
   }
-
   .linkRecentOrderRecent{
     color:var(--primary-1);
   }
@@ -103,11 +102,11 @@
     color:var(--gray-2);
   }
   .linkRecentOrderRecent > .subhead3{
-    width:44px;
+    width:60px;
     font-weight: 700;
   }
   .linkLateOrderRecent > .subhead3{
-    width:60px;
+    width:44px;
     font-weight: 400;
   }
   

@@ -7,8 +7,8 @@ import {auth,db} from './firebase-config';
 import Main from './pages/Main'; 
 import Login from './pages/Login';
 import Community from './pages/Community';
-import BetaTest_recent from './pages/BetaTest_recent';
-import BetaTest_late from './pages/BetaTest_late';
+import BetaTest_old from './pages/BetaTest_old';
+import BetaTest_new from './pages/BetaTest_new';
 import Logo from './icons/MoaLogo.svg';
 import CreatePost from './pages/CreatePost';
 import Post from './pages/Post';
@@ -88,8 +88,8 @@ function App() {
         <Route path="/Login" element={<Login setIsAuth={setIsAuth} setList={setList}/>} ></Route>
         <Route path="/Signup" element={<Signup setIsAuth={setIsAuth} setList={setList}/>} ></Route>
         <Route path="/MyPage" element={<MyPage setList={setList} user={user}/>} ></Route>
-        <Route path="/BetaTest/recentOrder" element={<BetaTest_recent setList={setList}/>}></Route>
-        <Route path="/BetaTest/lateOrder" element={<BetaTest_late setList={setList} />}></Route>
+        <Route path="/BetaTest/recentOrder" element={<BetaTest_new setList={setList}/>}></Route>
+        <Route path="/BetaTest/lateOrder" element={<BetaTest_old setList={setList} />}></Route>
         <Route path="/post/:roomId" element={<Post isAuth={isAuth}user={user} setList={setList}/>}></Route>
         <Route path="/post/createreview/:roomId" element={<CreateReview isAuth={isAuth} user={user} setList={setList}/>}></Route>
         <Route path="/Community" element={<Community setCommunityBool={setCommunityBool} setList={setList} isAuth={isAuth} setIsAuth={setIsAuth}/>}></Route>
