@@ -385,3 +385,59 @@ nav{
   margin-top:80px;
 }
 
+
+/*------------ mobile ------------*/
+
+/* mobile header */
+
+.mobile-header{
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid var(--gray-3);
+}
+
+.mobile-header-title{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color:var(--primary-1);
+  top: 20px;
+}
+
+.mobile-logo{
+  width: 60px;
+  height: 20px;
+}
+
+.mobile-wrap{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mobile-main-title{
+  margin-top: 28px;
+  text-align: center;
+}
+
+.mobile-main-subtitle{
+  margin-top: 20px;
+  color:var(--gray-1);
+  text-align: center;
+}
+
+.mobile-card{
+  position: relative; 
+  height: 300px;
+}
+
+.mobile-card img{
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  transform: translate(50, 50); 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  margin-top: 15px;
+}
