@@ -1,14 +1,11 @@
 .myPosts .BetaTestPosts{
     display:grid;
     width: 588px;
+    margin: 0px 102px;
     grid-gap:48px 24px;
     grid-template-columns: repeat(2,1fr);
 }
-.myPosts  .post{
-    display:flex;
-    flex-direction: column;
-    border-radius: 8px;
-    justify-content: space-between;
+.myPosts  .postBox{
     width:282px;
     height:310px;
 }
@@ -16,15 +13,11 @@
     width:282px;
     height:176px;
     object-fit: contain;
-    border: 1px solid var(--gray-3);
-    border-radius: 8px;
 }
 .myPosts .post_title{
-    font-family: Noto Sans KR;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 150%;
+    color:var(--black);
     width:282px;
+    margin-top: 20px;
     display:-webkit-box;
     -webkit-line-clamp:1;
     -webkit-box-orient:vertical;
@@ -33,27 +26,19 @@
 }
 .myPosts .post_content{
     color:var(--black);
-    font-family: Noto Sans KR;
-    font-size: 14px;
-    letter-spacing: -0.01em;
-    line-height: 1.6;
     width:282px;
+    margin-top: 12px;
     display:-webkit-box;
     -webkit-line-clamp:2;
     -webkit-box-orient:vertical;
     overflow:hidden;
     text-overflow:ellipsis;
-    height:48px;
+    height:42px;
 }
 .myPosts .post_commentAndreview{
     display:flex;
     width:282px;
+    margin-top: 30px;
     justify-content: space-between;
-    font-family: Noto Sans KR;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 160%;
-    margin-top: 1vw;
     color: var(--gray-1);
 }

@@ -29,12 +29,12 @@ function MyPosts(){
             {posts&&posts.map((post)=>{
                 return(
                 <> 
-                    <div onClick={()=>{postClick(post.id)}} className="post">
+                    <div onClick={()=>{postClick(post.id)}} className="postBox">
                         <img id="myimg" className='border8px' src={post.imageURL}></img>
-                        <div className="post_title">{post.title}</div>
-                        <div className="post_content">{post.content}</div>
+                        <div className="post_title"><h2 className='subhead100'>{post.title}</h2></div>
+                        <div className="post_content"><h3 className='body150'>{post.content}</h3></div>
                         <div className="post_commentAndreview">
-                            댓글 {post.commentCount? post.commentCount: 0}개 | 리뷰 {post.reviewCount? post.reviewCount: 0}개
+                            <h3 className='body100'>댓글 {post.commentCount? post.commentCount: 0}개 | 리뷰 {post.reviewCount? post.reviewCount: 0}개</h3>
                         </div>
                     </div>
                 </>   
