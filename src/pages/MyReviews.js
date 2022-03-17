@@ -23,7 +23,6 @@ function MyReviews(){
     })
     return(
         <div>
-            <h1 className='body100'>MyReviews</h1>
             {showReviewNumber==0?
             <>{reviews&&reviews.map((review)=>{
                 return(

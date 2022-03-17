@@ -1,0 +1,44 @@
+.myPosts .BetaTestPosts{
+    display:grid;
+    width: 588px;
+    margin: 0px 102px;
+    grid-gap:48px 24px;
+    grid-template-columns: repeat(2,1fr);
+}
+.myPosts  .postBox{
+    width:282px;
+    height:310px;
+}
+.myPosts #myimg{
+    width:282px;
+    height:176px;
+    object-fit: contain;
+}
+.myPosts .post_title{
+    color:var(--black);
+    width:282px;
+    margin-top: 20px;
+    display:-webkit-box;
+    -webkit-line-clamp:1;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.myPosts .post_content{
+    color:var(--black);
+    width:282px;
+    margin-top: 12px;
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    height:42px;
+}
+.myPosts .post_commentAndreview{
+    display:flex;
+    width:282px;
+    margin-top: 30px;
+    justify-content: space-between;
+    color: var(--gray-1);
+}

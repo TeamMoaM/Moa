@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { auth,db } from '../firebase-config';
 import {collection,query,orderBy,onSnapshot} from 'firebase/firestore';
 import {useNavigate} from 'react-router-dom';
+import '../style/myPosts.css';
+
 function MyPosts(){
     const [posts,setPosts] = useState([]);
     const navigate = useNavigate();
@@ -22,22 +24,23 @@ function MyPosts(){
     }
     
     return(
-        <div>
-            <h1 className='body100'>MyPosts</h1>
+        <div className='myPosts'>
+        <div className='BetaTestPosts'>
             {posts&&posts.map((post)=>{
                 return(
                 <> 
-                    <div onClick={()=>{postClick(post.id)}} className="post">
-                        <img id="myimg" src={post.imageURL}></img>
-                        <div className="post_title">{post.title}</div>
-                        <div className="post_content">{post.content}</div>
+                    <div onClick={()=>{postClick(post.id)}} className="postBox">
+                        <img id="myimg" className='border8px' src={post.imageURL}></img>
+                        <div className="post_title"><h2 className='subhead100'>{post.title}</h2></div>
+                        <div className="post_content"><h3 className='body150'>{post.content}</h3></div>
                         <div className="post_commentAndreview">
-                            댓글 {post.commentCount? post.commentCount: 0}개 | 리뷰 {post.reviewCount? post.reviewCount: 0}개
+                            <h3 className='body100'>댓글 {post.commentCount? post.commentCount: 0}개 | 리뷰 {post.reviewCount? post.reviewCount: 0}개</h3>
                         </div>
                     </div>
                 </>   
                 )
             })}
+        </div>
         </div>
     )
 }
