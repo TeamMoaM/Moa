@@ -124,7 +124,7 @@ function Comments({id,user,isAuth}) {
                             <img className="pfpimage" src={profileDefaultImg}/>
                             <div className="postProfile">
                                 <div className="postProfile1">
-                                    <img className="postProfile1Img" src={bronzeMedal}/><h4 id="postAuthorName"className="subhead100">{comment.commentPeople}</h4><h4 id="postCompanyName"className="body100">{"회사 이름"}</h4>
+                                    <img className="postProfile1Img" src={bronzeMedal}/><h4 id="postAuthorName"className="subhead100">{com.commentPeople}</h4><h4 id="postCompanyName"className="body100">{"회사 이름"}</h4>
                                 </div>
                                 <div className="postProfile1"><TimeCal time={com.time.seconds}/></div>
                             </div>
