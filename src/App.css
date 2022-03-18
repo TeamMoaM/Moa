@@ -192,7 +192,7 @@ nav{
   width:1200px;
   padding-left: 40px;
   padding-right:40px;
-  min-width: 800px;/*수정 필요*/
+  min-width: 800px;/* TODO: 수정 필요 */
   display:flex;
   align-items: center;
   justify-content: space-between;
