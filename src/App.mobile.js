@@ -28,6 +28,7 @@ import silverMedal from "./img/medals/silverMedal.svg";
 import goldMedal from "./img/medals/goldMedal.svg";
 import { doc, getDoc } from "firebase/firestore";
 import Header from "./pages/Header.mobile";
+import Footer from "./pages/Footer.mobile";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -59,116 +60,6 @@ function App() {
   return (
     <Router>
       <Header />
-      {/* <nav>
-        <div className="navWrap">
-          <div className="wrapLogoandMenu">
-            <Link
-              to="/app"
-              onClick={() => {
-                setList(1);
-              }}
-            >
-              <img className="logoImage" src={Logo} />
-            </Link>
-            <div className="menuList">
-              <ul className="listItem item1">
-                <Link
-                  onClick={() => {
-                    setList(1);
-                  }}
-                  to="/app"
-                >
-                  {list == 1 ? (
-                    <h2 id="listClicked1" className="subhead100">
-                      Main
-                    </h2>
-                  ) : (
-                    <h2 id="listNotClicked" className="subhead100">
-                      Main
-                    </h2>
-                  )}
-                </Link>
-              </ul>
-              <ul className="listItem item2">
-                <Link
-                  onClick={() => {
-                    setList(2);
-                  }}
-                  to="/BetaTest/recentOrder"
-                >
-                  {list == 2 ? (
-                    <h2 id="listClicked2" className="subhead100">
-                      β - test
-                    </h2>
-                  ) : (
-                    <h2 id="listNotClicked" className="subhead100">
-                      β - test
-                    </h2>
-                  )}
-                </Link>
-              </ul>
-              <ul className="listItem item3">
-                <Link
-                  onClick={() => {
-                    setList(3);
-                  }}
-                  to="/Community"
-                >
-                  {list == 3 ? (
-                    <h2 id="listClicked3" className="subhead100">
-                      Community
-                    </h2>
-                  ) : (
-                    <h2 id="listNotClicked" className="subhead100">
-                      Community
-                    </h2>
-                  )}
-                </Link>
-              </ul>
-            </div>
-          </div>
-          {!isAuth ? (
-            <div className="registerAndLogin">
-              <div className="appLogin">
-                <Link to="/Login">
-                  <h3 className="body100">로그인</h3>
-                </Link>
-              </div>
-              <div className="appregister">
-                <Link to="/Signup">
-                  <h3 className="subhead100">회원가입</h3>
-                </Link>
-              </div>
-            </div>
-          ) : (
-            <div className="registerAndLogins">
-              {displayName && (
-                <div className="appregister">
-                  <Link className="registerLink" to="/MyPage">
-                    <img src={defaultprofileImg} />
-                    <h3 id="logineddisplayName" className="subhead100">
-                      <img src={bronzeMedal} />
-                      {displayName}
-                    </h3>
-                  </Link>
-                </div>
-              )}
-              <div className="applogin">
-                <Link
-                  onClick={() => {
-                    signUserOut();
-                  }}
-                  to="/Login"
-                >
-                  <h3 className="body100">로그아웃</h3>
-                </Link>
-              </div>
-            </div>
-          )}
-        </div>
-      </nav> */}
-
-      {/* <div className="divider"></div> */}
       <Routes>
         <Route path="/app" element={<Main setUser={setUser} />} />
       </Routes>
@@ -223,6 +114,7 @@ function App() {
         <Route path="/accountSetting" element={<AccountSetting />}></Route>
       */}
       {/* {communityBool ? <></> : <div className="footer"></div>} */}
+      <Footer />
     </Router>
   );
 }
