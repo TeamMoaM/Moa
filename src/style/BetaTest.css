@@ -126,7 +126,7 @@
     height:72px;
   }
   
-  .functionsCreatePostButton{/*이부분 안맞는거 희범님 말씀드리기*/
+  .functionsCreatePostButton{/* TODO: 이부분 안맞는거 희범님 말씀드리기*/
     background-color:  var(--primary-1);
     width:180px;
     border-radius: 8px;
@@ -177,4 +177,40 @@
   }
   .footer{
     height:300px;
+  }
+
+  /* mobile */
+  .betaTest-wrap{
+    padding: 80px 20px;
+  }
+  
+  .BetaTest-body-text{
+    margin: 12px 0;
+  }
+
+  .betaTest-content{
+    justify-content: space-between;
+  }
+
+  .betaTest-item{
+    display: inline-block;
+    width: 40vw;
+    margin: 10px 8px;
+    height: 236px;
+  }
+  
+  .item-img{
+    width:152px;
+    height:128px;
+    object-fit: contain;
+    border: 1px solid var(--gray-3);
+    border-radius: 8px;
+  }
+
+  .item-title{
+    margin: 12px 0;
+  }
+
+  .item-content{
+    margin: 12px 0;
   }

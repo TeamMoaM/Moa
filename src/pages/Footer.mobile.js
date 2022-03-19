@@ -36,19 +36,26 @@ export default function Footer() {
       url: "/app/my-page",
     },
   ];
+
+  const getIsActive = (value) => {
+    if (value.url === location.pathname) {
+      return { icon: value.activeIcon, color: "primary" };
+    } else {
+      return { icon: value.icon, color: "gray" };
+    }
+  };
+
   return (
     <div className="mobile-footer shadow-gnb">
       <div className="mobile-gnb">
         {tabList.map((value, index) => {
-          const active = value.url === location.pathname;
+          const active = getIsActive(value);
           return (
             <Link to={value.url} key={index}>
               <div className="mobile-gnb-tab">
-                <img src={active ? value.activeIcon : value.icon} />
+                <img src={active.icon} />
                 <h2
-                  className={`caption100 mobile-gnb-tab-title text-${
-                    active ? "primary" : "gray"
-                  }-1`}
+                  className={`caption100 mobile-gnb-tab-title text-${active.color}-1`}
                 >
                   {value.title}
                 </h2>

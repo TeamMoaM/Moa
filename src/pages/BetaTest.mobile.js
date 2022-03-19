@@ -1,10 +1,6 @@
-import React from "react";
-import cardImage from "../icons/card.mobile.svg";
 import "../style/BetaTest.css";
 import TestImg from "../img/post/camera.svg";
-import { Link } from "react-router-dom";
-
-function Main() {
+function BetaTest() {
   const data = [
     {
       src: TestImg,
@@ -34,32 +30,42 @@ function Main() {
       commentCount: 11,
       reviewCount: 22,
     },
+    {
+      src: TestImg,
+      title: "서비스 명5",
+      content: "간략한 설명이 들어가요. 최대로 두 줄까지 쓰인답니다.",
+      commentCount: 11,
+      reviewCount: 22,
+    },
+    {
+      src: TestImg,
+      title: "서비스 명6",
+      content: "간략한 설명이 들어가요. 최대로 두 줄까지 쓰인답니다.",
+      commentCount: 11,
+      reviewCount: 22,
+    },
+    {
+      src: TestImg,
+      title: "서비스 명7",
+      content: "간략한 설명이 들어가요. 최대로 두 줄까지 쓰인답니다.",
+      commentCount: 11,
+      reviewCount: 22,
+    },
+    {
+      src: TestImg,
+      title: "서비스 명8",
+      content: "간략한 설명이 들어가요. 최대로 두 줄까지 쓰인답니다.",
+      commentCount: 11,
+      reviewCount: 22,
+    },
   ];
   return (
-    <div className="mobile-wrap">
-      <div className="mobile-main-title">
-        <h4 className="title150">
-          내 서비스를 공유하고
-          <br />
-          손쉽게 테스트 해보세요.
-        </h4>
-      </div>
-      <div className="mobile-main-subtitle">
-        <h2 className="body150">
-          MOA에서는 회원님의 서비스를 테스트하고
-          <br />
-          다른 사업자분들의 서비스도
-          <br />
-          체험해보실 수 있습니다.
-        </h2>
-      </div>
-      <div className="mobile-card">
-        <img className="mobile-card-img" src={cardImage} />
-      </div>
-      <div className="mobile-main-content">
-        <h1 className="subhead100 mobile-main-content-title">
-          베타테스트 서비스 구경하기
-        </h1>
+    <div className="betaTest-wrap">
+      <h3 className="title100 text-primary-1">β-test</h3>
+      <h3 className="body150 text-black BetaTest-body-text">
+        회원님들의 서비스를 테스트할 수 있는 곳입니다.
+      </h3>
+      <div className="betaTest-content">
         {data.map((value, index) => {
           return (
             <div key={index} className="betaTest-item">
@@ -72,13 +78,9 @@ function Main() {
             </div>
           );
         })}
-        <div className="mobile-main-content-footer">
-          <Link to="/app/beta-test">
-            <h3 className="subhead100 text-primary-1">서비스 더보기 &gt;</h3>
-          </Link>
-        </div>
       </div>
     </div>
   );
 }
-export default Main;
+
+export default BetaTest;

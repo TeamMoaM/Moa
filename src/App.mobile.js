@@ -11,7 +11,9 @@ import {
 import { auth, db } from "./firebase-config";
 import Main from "./pages/Main.mobile";
 import Login from "./pages/Login";
-import Community from "./pages/Community";
+// import Community from "./pages/Community";
+import Community from "./pages/Community.mobile";
+import BetaTest from "./pages/BetaTest.mobile";
 import BetaTest_old from "./pages/BetaTest_old";
 import BetaTest_new from "./pages/BetaTest_new";
 import Logo from "./icons/MoaLogo.svg";
@@ -62,6 +64,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/app" element={<Main setUser={setUser} />} />
+        <Route path="/app/beta-test" element={<BetaTest />} />
+        <Route path="/app/community" element={<Community />} />
       </Routes>
       {/* 
         
