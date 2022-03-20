@@ -181,7 +181,7 @@
 
   /* mobile */
   .betaTest-wrap{
-    padding: 80px 20px;
+    padding: 30px 20px;
   }
   
   .BetaTest-body-text{
@@ -194,7 +194,7 @@
 
   .betaTest-item{
     display: inline-block;
-    width: 40vw;
+    width: 45%;
     margin: 10px 8px;
     height: 236px;
   }
