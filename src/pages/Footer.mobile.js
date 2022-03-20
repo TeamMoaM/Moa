@@ -6,9 +6,11 @@ import MainPageActiveIcon from "../icons/mainPageActive.mobile.svg";
 import BetaTestActiveIcon from "../icons/betaTestActive.mobile.svg";
 import CommunityActiveIcon from "../icons/communityActive.mobile.svg";
 import MyPageActiveIcon from "../icons/myPageActive.mobile.svg";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import IconButton from "../components/IconButton";
 
 export default function Footer() {
+  const navigate = useNavigate();
   const location = useLocation();
   const tabList = [
     {
@@ -46,24 +48,34 @@ export default function Footer() {
   };
 
   return (
-    <div className="mobile-footer shadow-gnb">
-      <div className="mobile-gnb">
-        {tabList.map((value, index) => {
-          const active = getIsActive(value);
-          return (
-            <Link to={value.url} key={index}>
-              <div className="mobile-gnb-tab">
-                <img src={active.icon} />
-                <h2
-                  className={`caption100 mobile-gnb-tab-title text-${active.color}-1`}
-                >
-                  {value.title}
-                </h2>
-              </div>
-            </Link>
-          );
-        })}
+    <>
+      <div className="action-button">
+        <IconButton
+          size="lg"
+          variant="primary"
+          icon="plus"
+          onClick={() => navigate("/app/beta-test/create")}
+        />
       </div>
-    </div>
+      <div className="mobile-footer shadow-gnb">
+        <div className="mobile-gnb">
+          {tabList.map((value, index) => {
+            const active = getIsActive(value);
+            return (
+              <Link to={value.url} key={index}>
+                <div className="mobile-gnb-tab">
+                  <img src={active.icon} />
+                  <h2
+                    className={`caption100 mobile-gnb-tab-title text-${active.color}-1`}
+                  >
+                    {value.title}
+                  </h2>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+    </>
   );
 }

@@ -14,11 +14,12 @@ import Login from "./pages/Login";
 // import Community from "./pages/Community";
 import Community from "./pages/Community.mobile";
 import BetaTest from "./pages/BetaTest.mobile";
+import Post from "./pages/Post.mobile";
 import BetaTest_old from "./pages/BetaTest_old";
 import BetaTest_new from "./pages/BetaTest_new";
 import Logo from "./icons/MoaLogo.svg";
 import CreatePost from "./pages/CreatePost";
-import Post from "./pages/Post";
+// import Post from "./pages/Post";
 import CreateReview from "./pages/CreateReview";
 import MyPage from "./pages/MyPage";
 import Signup from "./pages/Signup";
@@ -62,13 +63,17 @@ function App() {
   return (
     <Router>
       <Header />
-      <Routes>
-        <Route path="/app" element={<Main setUser={setUser} />} />
-        <Route path="/app/beta-test" element={<BetaTest />} />
-        <Route path="/app/community" element={<Community />} />
-      </Routes>
+      <div className="container">
+        <Routes>
+          <Route path="/app" element={<Main setUser={setUser} />} />
+          <Route path="/app/beta-test" element={<BetaTest />} />
+          <Route path="/app/beta-test/create" element={<Post />} />
+          <Route path="/app/community" element={<Community />} />
+        </Routes>
+      </div>
+      <Footer />
+
       {/* 
-        
         <Route
           path="/Login"
           element={<Login setIsAuth={setIsAuth} setList={setList} />}
@@ -117,8 +122,6 @@ function App() {
         <Route path="/mypageInfoEdit" element={<MyPageInfoEdit />}></Route>
         <Route path="/accountSetting" element={<AccountSetting />}></Route>
       */}
-      {/* {communityBool ? <></> : <div className="footer"></div>} */}
-      <Footer />
     </Router>
   );
 }

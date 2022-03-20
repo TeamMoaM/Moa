@@ -50,7 +50,7 @@ function Main() {
   //   },
   // ];
   return (
-    <div className="mobile-wrap">
+    <div>
       <div className="mobile-main-title">
         <h4 className="title150">
           내 서비스를 공유하고
