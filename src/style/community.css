@@ -732,3 +732,25 @@ color: var(--gray-1);
   height:364px;
   background-color: var(--gray-4);
 }
+
+.mobile-community {
+  background-color: #F7F7FA;
+  height: 100%;
+  padding: 0px 20px;
+}
+
+.mobile-community-new_writing {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--gray-3);
+  margin-top: 16px;
+}
+
+.mobile-avatar {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}

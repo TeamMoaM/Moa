@@ -12,7 +12,7 @@ import IconButton from "../components/IconButton";
 export default function Footer() {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log("location", location.pathname);
+  // console.log("location", location.pathname);
   const tabList = [
     {
       icon: MainPageIcon,
