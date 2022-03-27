@@ -12,6 +12,7 @@ import IconButton from "../components/IconButton";
 export default function Footer() {
   const navigate = useNavigate();
   const location = useLocation();
+  console.log("location", location.pathname);
   const tabList = [
     {
       icon: MainPageIcon,
@@ -40,7 +41,7 @@ export default function Footer() {
   ];
 
   const getIsActive = (value) => {
-    if (value.url === location.pathname) {
+    if (location.pathname === value.url) {
       return { icon: value.activeIcon, color: "primary" };
     } else {
       return { icon: value.icon, color: "gray" };
@@ -49,14 +50,17 @@ export default function Footer() {
 
   return (
     <>
-      <div className="action-button">
-        <IconButton
-          size="lg"
-          variant="primary"
-          icon="plus"
-          onClick={() => navigate("/app/beta-test/create")}
-        />
-      </div>
+      {(location.pathname === "/app/beta-test" ||
+        location.pathname === "/app/community") && (
+        <div className="action-button">
+          <IconButton
+            size="lg"
+            variant="primary"
+            icon="plus"
+            onClick={() => navigate("/app/beta-test/create")}
+          />
+        </div>
+      )}
       <div className="mobile-footer shadow-gnb">
         <div className="mobile-gnb">
           {tabList.map((value, index) => {

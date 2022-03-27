@@ -1,54 +1,30 @@
 import React, { useEffect, useState } from "react";
 import cardImage from "../icons/card.mobile.svg";
 import "../style/BetaTest.css";
-import TestImg from "../img/post/camera.svg";
 import { Link } from "react-router-dom";
-import { collection, limit, onSnapshot, orderBy, query } from "firebase/firestore";
+import {
+  collection,
+  limit,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { db } from "../firebase-config";
 
 function Main() {
-  const [data,setData] = useState([])
-  useEffect(()=>{
+  const [data, setData] = useState([]);
+  useEffect(() => {
     const postsCollectionRef = collection(db, "posts");
-    var q = query(postsCollectionRef, orderBy("time",'desc'),limit(4));
-    onSnapshot(q, (snapshot)=>
-      {
-        setData(snapshot.docs.map((doc)=>({
-            ...doc.data()
-        }))); 
-      }
-    )
-  })
-  // const data = [
-  //   {
-  //     src: TestImg,
-  //     title: "서비스 명1",
-  //     content: "간략한 설명이 들어가요. 최대로 두 줄까지 쓰인답니다.",
-  //     commentCount: 11,
-  //     reviewCount: 22,
-  //   },
-  //   {
-  //     src: TestImg,
-  //     title: "서비스 명2",
-  //     content: "간략한 설명이 들어가요. 최대로 두 줄까지 쓰인답니다.",
-  //     commentCount: 11,
-  //     reviewCount: 22,
-  //   },
-  //   {
-  //     src: TestImg,
-  //     title: "서비스 명3",
-  //     content: "간략한 설명이 들어가요. 최대로 두 줄까지 쓰인답니다.",
-  //     commentCount: 11,
-  //     reviewCount: 22,
-  //   },
-  //   {
-  //     src: TestImg,
-  //     title: "서비스 명4",
-  //     content: "간략한 설명이 들어가요. 최대로 두 줄까지 쓰인답니다.",
-  //     commentCount: 11,
-  //     reviewCount: 22,
-  //   },
-  // ];
+    var q = query(postsCollectionRef, orderBy("time", "desc"), limit(4));
+    onSnapshot(q, (snapshot) => {
+      setData(
+        snapshot.docs.map((doc) => ({
+          ...doc.data(),
+        }))
+      );
+    });
+  }, []);
+
   return (
     <div>
       <div className="mobile-main-title">
@@ -74,7 +50,7 @@ function Main() {
         <h1 className="subhead100 mobile-main-content-title">
           베타테스트 서비스 구경하기
         </h1>
-        {data&&data.map((value, index) => {
+        {data.map((value, index) => {
           return (
             <div key={index} className="betaTest-item">
               <img src={value.imageURL} className="item-img" />
