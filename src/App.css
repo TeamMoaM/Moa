@@ -433,16 +433,6 @@ nav{
   margin: 0 auto;
 }
 
-.mobile-tab_list {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding-top: 60px;
-  width: 90%;
-  height: 48px;
-  margin-left: 20px;
-}
-
 /* mobile footer */
 .mobile-footer{
   position: fixed;
