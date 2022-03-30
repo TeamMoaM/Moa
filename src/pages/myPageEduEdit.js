@@ -16,6 +16,7 @@ function MyPageEduEdit({user}){
     });
     const [users,setUsers] = useState({});
     const [eduList,setEduList]= useState([]);
+    const [eduState,setEduState] = useState("졸업");//졸업 등등...
     onAuthStateChanged(auth,(currentUser)=>{
         setUsers(currentUser);
     })
@@ -29,7 +30,8 @@ function MyPageEduEdit({user}){
                     school:{
                         name:school,
                         major:major,
-                        time:time
+                        time:time,
+                        eduState:eduState
                     }
                 })
                 console.log("userinfo에 education 정보 올리기 성공!");

@@ -13,6 +13,7 @@ function MyPageEdit({user}){
     });
     const [users,setUsers] = useState({});
     const [careerList,setCareerList]= useState([]);
+    const [inCompany,setInCompany] = useState(false);//재직중 input check버튼으로 바꿔주십쇼
     onAuthStateChanged(auth,(currentUser)=>{
         setUsers(currentUser);
     })
@@ -26,7 +27,8 @@ function MyPageEdit({user}){
                     company:{
                         name: company.companyName,
                         role: company.companyRole,
-                        time:time
+                        time:time,
+                        inCompany: inCompany
                     }
                 })
                 console.log("userinfo에 career 정보 올리기 성공!");
