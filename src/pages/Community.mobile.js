@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import avatarIcon from "../icons/avatar.svg";
 import bronzeMedal from "../img/medals/bronzeMedal.svg";
 import dotsIcon from "../icons/dots.svg";
+import { collection, onSnapshot, orderBy, query, where } from "firebase/firestore";
+import { db } from "../firebase-config";
 function Community() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [communityPosts,setCommunityPosts] = useState([]);
   const tabList = [
     { id: 0, title: "전체" },
     { id: 1, title: "사업" },
@@ -12,10 +15,20 @@ function Community() {
     { id: 4, title: "디자인" },
     { id: 5, title: "기술" },
   ];
-
   const tabSelected = (id) => {
     setActiveIndex(id);
   };
+  useEffect(()=>{//밑에서 return 할때 한번에 map으로 가져오기 위해 useState로 post 내용들 받아오는 코드
+    var postsCollectionRef = query(collection(db, 'community'),where("tag","==",activeIndex),orderBy("time",'desc'));
+    if(activeIndex==0){
+      postsCollectionRef=query(collection(db,"community"),orderBy("time","desc"));
+    }
+    onSnapshot(postsCollectionRef, (snapshot)=>{
+      setCommunityPosts(snapshot.docs.map((doc)=>({
+        ...doc.data(),id:doc.id 
+      })))
+    })
+  },[])
 
   return (
     <div className="mobile-community">
