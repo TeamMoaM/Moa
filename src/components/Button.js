@@ -45,6 +45,8 @@ export default function Button({
   icon,
   children,
   onClick,
+  className,
+  style,
 }) {
   const sizeStyle = SIZES[size];
   const variantStyle = VARIANTS[variant];
@@ -64,6 +66,8 @@ export default function Button({
       sizeStyle={sizeStyle}
       variantStyle={variantStyle}
       onClick={onClick}
+      className={className}
+      style={style}
     >
       {icon && <img src={isIcon()} />}
 

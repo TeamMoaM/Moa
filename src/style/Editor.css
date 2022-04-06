@@ -9,12 +9,7 @@
     margin: 0;
     margin-left: -10px;
 }
-.editor{
-    margin:0;
-    width:792px;
-    margin-top:-138px;
-    padding:1px;
-}
+
 .quill > .ql-container > .ql-editor{
     font-family: Spoqa Han Sans Neo;
     font-style: normal;
@@ -26,4 +21,20 @@
     color:var(--black);
     padding:0;
     padding-left: 3px;
+}
+
+.editor{
+    margin:0;
+    width:792px;
+    margin-top:-138px;
+    padding:1px;
+}
+
+.mobile-editor {
+    margin: 0 20px;
+    height: 200px;
+    overflow-y: auto;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
 }

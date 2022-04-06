@@ -67,6 +67,9 @@
 .w-100 {
   width: 100% !important;
 }
+.w-90 {
+  width: 90% !important;
+}
 
 /* border */
 /* TODO: sm, md, lg 로 사이즈 미리 정하면 좋을 거 같아요 */
@@ -96,4 +99,8 @@
 
 .border-gray-4 {
   border: 1px solid var(--gray-4)
+}
+
+.border-bottom-gray-3 {
+  border-bottom: 1px solid var(--gray-3)
 }
