@@ -735,21 +735,10 @@ color: var(--gray-1);
 
 .mobile-community {
   background-color: #F7F7FA;
-  height: 100%;
-}
-
-.mobile-community-body {
-  padding: 0px 20px;
 }
 
 .mobile-community-new_writing {
-  display: flex;
-  align-items: center;
   padding: 8px 16px;
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid var(--gray-3);
-  margin: 16px 0px;
 }
 
 .mobile-avatar-sm {
@@ -781,12 +770,6 @@ color: var(--gray-1);
   height: 42px;
 }
 
-.mobile-tab_list-item {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
 .active {
   border-bottom: 3px solid var(--primary-1);
 }
@@ -796,16 +779,13 @@ color: var(--gray-1);
   border-radius: 8px;
   border: 1px solid var(--gray-3);
   padding: 24px;
+  margin-bottom: 16px;
 }
 
 .mobile-user_info {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.mr-8 {
-  margin-right: 8px;
 }
 
 .mobile-user_info .user-box {
@@ -818,13 +798,6 @@ color: var(--gray-1);
   justify-content: center;
 }
 
-.mt-3 {
-  margin-top: 3px;
-}
-
-.mt-16 {
-  margin-top: 16px;
-}
 
 .mobile-dot-sm {
   width: 16px;
@@ -841,14 +814,6 @@ color: var(--gray-1);
   height: 32px;
 }
 
-.d-flex {
-  display: flex;
-}
-
-.align-items-center {
-  align-items: center;
-}
-
 .chip {
   background-color: var(--primary-1);
   width: 50px;
@@ -860,6 +825,22 @@ color: var(--gray-1);
   margin-top: 16px;
 }
 
-.mobile-community-writing_card .btn_more {
-  text-align: right;
+.mobile-community-post-text{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.mobile-foot {
+  border-top: 1px solid var(--gray-4);
+  border-bottom: 1px solid var(--gray-4);
+  padding: 16px 0px;
+  margin: 14px 0px;
+}
+
+.items-icon {
+  margin-right: 4px;
+  width: 16px;
+  height: 16px;
 }
