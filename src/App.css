@@ -71,7 +71,7 @@ button.secondary{
 	background-color: var(--primary-4);
 	color:var(--primary-1);
 }
-button.teritary{
+button.tertiary{
 	height:36px;
 	background-color: var(--gray-4);
 	color:var(--black);

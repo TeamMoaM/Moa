@@ -26,7 +26,7 @@
     top: 32px;
     width: 384px;
     height: 441px;
-    padding: 32px;
+    padding: 36px;
     border: 1px solid var(--gray-3);
     box-sizing: border-box;
     border-radius: 16px;
@@ -45,8 +45,12 @@
     margin-top: 24px;
 }
 .buttonList{
-    position: absolute;
-    top: 260px;
+    position: relative;
+    margin-top: 32px;
+}
+.userCard .divider{
+    width: 312px;
+    margin-top: 32px;
 }
 .gray4Button{
     background-color: var(--gray-4);
