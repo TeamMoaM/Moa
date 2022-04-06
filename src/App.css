@@ -71,7 +71,7 @@ button.secondary{
 	background-color: var(--primary-4);
 	color:var(--primary-1);
 }
-button.tertiary{
+button.teritary{
 	height:36px;
 	background-color: var(--gray-4);
 	color:var(--black);
@@ -193,7 +193,6 @@ nav{
   width:1200px;
   padding-left: 40px;
   padding-right:40px;
-  min-width: 800px;/* TODO: 수정 필요 */
   display:flex;
   align-items: center;
   justify-content: space-between;
