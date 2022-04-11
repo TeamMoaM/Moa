@@ -734,7 +734,7 @@ color: var(--gray-1);
 }
 
 .mobile-community {
-  background-color: #F7F7FA;
+  background-color: var(--gray-4);
 }
 
 .mobile-community-new_writing {

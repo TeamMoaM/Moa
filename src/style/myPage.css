@@ -94,3 +94,31 @@
     margin-left: 8px;
 }
 /* serviceIntro1, tabListItem과 tabList class css는 post.css에 있음 */
+
+/* mobile */
+.mobile-mypage-wrap {
+    background-color: var(--gray-4);
+    padding: 0px 20px;
+  }
+  
+  .mobile-mypage-user_card {
+    margin-top: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid var(--gray-3);
+  
+    background-color: var(--white);
+  }
+  
+  .mobile-avatrar-icon {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .mobile-medal {
+    width: 27px;
+    height: 34px;
+  }

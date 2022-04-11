@@ -22,7 +22,8 @@ import Logo from "./icons/MoaLogo.svg";
 import CreatePost from "./pages/CreatePost";
 // import Post from "./pages/Post";
 import CreateReview from "./pages/CreateReview";
-import MyPage from "./pages/MyPage";
+import MyPage from "./pages/MyPage.mobile";
+// import MyPage from "./pages/MyPage";
 import Signup from "./pages/Signup";
 import MyPageInfoEdit from "./pages/MyPageInfoEdit";
 import AccountSetting from "./pages/AccountSetting";
@@ -70,6 +71,7 @@ function App() {
           <Route path="/app/beta-test" element={<BetaTest />} />
           <Route path="/app/beta-test/create" element={<Post />} />
           <Route path="/app/community" element={<Community />} />
+          <Route path="/app/my-page" element={<MyPage />} />
         </Routes>
       </div>
       <Footer />

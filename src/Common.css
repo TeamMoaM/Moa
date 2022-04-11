@@ -37,15 +37,23 @@
   margin-top: 16px;
 }
 
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.mb-8 {
+  margin-bottom: 8px;
+}
+
 .mr-8 {
   margin-right: 8px;
 }
 
-.mx-16 {
+.my-16 {
   margin: 16px 0px !important;
 }
 
-.my-16 {
+.mx-16 {
   margin: 0px 16px !important;
 }
 

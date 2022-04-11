@@ -94,7 +94,7 @@ function Community() {
         </div>
       </div>
       <div className="py-20">
-        <button className="mobile-community-new_writing d-flex align-items-center w-100 mx-16 border-radius-sm border-gray-3">
+        <button className="mobile-community-new_writing d-flex align-items-center w-100 my-16 border-radius-sm border-gray-3">
           <img src={avatarIcon} className="mobile-avatar-sm mr-8" />
           <h2 className="paragraph200 text-gray-2">
             회원님의 이야기를 공유해주세요.
