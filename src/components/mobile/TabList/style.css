@@ -1,0 +1,21 @@
+.mobile-tab_list {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--gray-3);
+}
+
+.mobile-tab_list-items {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 63px;
+  padding-bottom: 3px;
+  height: 42px;
+  width: 100%;
+}
+
+.active {
+  border-bottom: 3px solid var(--primary-1);
+}
+
+.items-title {
+  width: 10em;
+}

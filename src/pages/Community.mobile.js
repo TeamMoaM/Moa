@@ -18,6 +18,7 @@ import message from "../img/communityImg/comment.svg";
 import scrap from "../img/communityImg/bookmark.svg";
 import scrapped from "../img/communityImg/bookmarked.svg";
 import Comments from "../components/Comments";
+import TabList from "../components/mobile/TabList";
 
 function Community() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -69,30 +70,7 @@ function Community() {
 
   return (
     <div className="mobile-community">
-      <div className="mobile-tab_list">
-        <div className="mobile-tab_list-items">
-          {tabList.map((value, index) => {
-            const active = activeIndex === value.id;
-            return (
-              <div
-                key={index}
-                className={`d-flex align-items-center h-100 ${
-                  active && "active"
-                }`}
-                onClick={() => tabSelected(value.id)}
-              >
-                <h3
-                  className={`${
-                    active ? "subhead100 text-primary-1" : "body100"
-                  }`}
-                >
-                  {value.title}
-                </h3>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+      <TabList list={tabList} activeIndex={activeIndex} onClick={tabSelected} />
       <div className="py-20">
         <button className="mobile-community-new_writing d-flex align-items-center w-100 my-16 border-radius-sm border-gray-3">
           <img src={avatarIcon} className="mobile-avatar-sm mr-8" />

@@ -2,6 +2,7 @@ import "../style/BetaTest.css";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase-config";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 function BetaTest() {
   const [data, setData] = useState([]);
@@ -18,6 +19,11 @@ function BetaTest() {
     });
   }, []);
 
+  const navigate = useNavigate();
+  const goView = (id) => {
+    navigate(`/app/beta-test/${id}`);
+  };
+
   return (
     <div className="betaTest-wrap">
       <h3 className="title100 text-primary-1">β-test</h3>
@@ -27,7 +33,11 @@ function BetaTest() {
       <div className="betaTest-content">
         {data.map((value, index) => {
           return (
-            <div key={index} className="betaTest-item">
+            <div
+              key={index}
+              className="betaTest-item"
+              onClick={() => goView(value.id)}
+            >
               <img src={value.imageURL} className="item-img" />
               <h2 className="subhead100 item-title">{value.title}</h2>
               <h4 className="body150 item-content">{value.content}</h4>

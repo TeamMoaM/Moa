@@ -1,38 +1,22 @@
-import Button from "../components/Button";
-import Editor from "./Editor";
-import camera from "../img/post/camera.svg";
-import "../style/Editor.css";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import TabList from "../components/mobile/TabList";
 
-function Post() {
+export default function Post() {
+  const { id } = useParams();
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const tabList = [
+    { id: 0, title: "서비스 소개" },
+    { id: 1, title: "리뷰" },
+  ];
+  const tabSelected = (id) => {
+    setActiveIndex(id);
+  };
+
   return (
     <div className="post-wrap">
-      <div className="mobile-item_info-top border-gray-2">
-        <img className="mobile-camera-img" src={camera} />
-        <h3 className="body-100 text-gray-2">썸네일 등록하기</h3>
-      </div>
-      <div className="mobile-post-body border-bottom-gray-3">
-        <input
-          maxlength="30"
-          className="mobile-post-title"
-          placeholder="제목을 입력하세요."
-        />
-        <textarea
-          maxlength="133"
-          className="mobile-post-intro"
-          placeholder="서비스에 대한 간략한 설명을 입력하세요."
-        />
-      </div>
-      {/* // TODO: scroll 반응 */}
-      <div className="mobile-editor">
-        <Editor />
-      </div>
-      <div className="mobile-post-bottom">
-        <Button variant={"primary"} size={"md"} className="w-90">
-          서비스 등록하기
-        </Button>
-      </div>
+      <TabList list={tabList} activeIndex={activeIndex} onClick={tabSelected} />
     </div>
   );
 }
-
-export default Post;

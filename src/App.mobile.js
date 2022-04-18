@@ -11,19 +11,15 @@ import {
 } from "firebase/auth";
 import { auth, db } from "./firebase-config";
 import Main from "./pages/Main.mobile";
-import Login from "./pages/Login";
-// import Community from "./pages/Community";
-import Community from "./pages/Community.mobile";
 import BetaTest from "./pages/BetaTest.mobile";
+import CreatePost from "./pages/CreatePost.mobile";
 import Post from "./pages/Post.mobile";
-import BetaTest_old from "./pages/BetaTest_old";
-import BetaTest_new from "./pages/BetaTest_new";
-import Logo from "./icons/MoaLogo.svg";
-import CreatePost from "./pages/CreatePost";
-// import Post from "./pages/Post";
-import CreateReview from "./pages/CreateReview";
+import Community from "./pages/Community.mobile";
 import MyPage from "./pages/MyPage.mobile";
-// import MyPage from "./pages/MyPage";
+
+import Login from "./pages/Login";
+import Logo from "./icons/MoaLogo.svg";
+import CreateReview from "./pages/CreateReview";
 import Signup from "./pages/Signup";
 import MyPageInfoEdit from "./pages/MyPageInfoEdit";
 import AccountSetting from "./pages/AccountSetting";
@@ -31,6 +27,7 @@ import defaultprofileImg from "./img/communityImg/defaultprofile.svg";
 import bronzeMedal from "./img/medals/bronzeMedal.svg";
 import silverMedal from "./img/medals/silverMedal.svg";
 import goldMedal from "./img/medals/goldMedal.svg";
+
 import { doc, getDoc } from "firebase/firestore";
 import Header from "./pages/Header.mobile";
 import Footer from "./pages/Footer.mobile";
@@ -69,9 +66,10 @@ function App() {
         <Routes>
           <Route path="/app" element={<Main setUser={setUser} />} />
           <Route path="/app/beta-test" element={<BetaTest />} />
-          <Route path="/app/beta-test/create" element={<Post />} />
+          <Route path="/app/beta-test/create" element={<CreatePost />} />
           <Route path="/app/community" element={<Community />} />
           <Route path="/app/my-page" element={<MyPage />} />
+          <Route path="/app/beta-test/:id" element={<Post />} />
         </Routes>
       </div>
       <Footer />
