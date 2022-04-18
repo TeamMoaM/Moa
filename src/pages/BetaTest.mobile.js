@@ -3,6 +3,7 @@ import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase-config";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import IconButton from "../components/IconButton";
 
 function BetaTest() {
   const [data, setData] = useState([]);
@@ -47,6 +48,14 @@ function BetaTest() {
             </div>
           );
         })}
+      </div>
+      <div className="action-button">
+        <IconButton
+          size="lg"
+          variant="primary"
+          icon="plus"
+          onClick={() => navigate("/app/beta-test/create")}
+        />
       </div>
     </div>
   );

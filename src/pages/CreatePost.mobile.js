@@ -12,12 +12,12 @@ export default function CreatePost() {
       </div>
       <div className="mobile-post-body border-bottom-gray-3">
         <input
-          maxlength="30"
+          maxLength="30"
           className="mobile-post-title"
           placeholder="제목을 입력하세요."
         />
         <textarea
-          maxlength="133"
+          maxLength="133"
           className="mobile-post-intro"
           placeholder="서비스에 대한 간략한 설명을 입력하세요."
         />

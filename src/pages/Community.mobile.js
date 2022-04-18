@@ -19,8 +19,11 @@ import scrap from "../img/communityImg/bookmark.svg";
 import scrapped from "../img/communityImg/bookmarked.svg";
 import Comments from "../components/Comments";
 import TabList from "../components/mobile/TabList";
+import IconButton from "../components/IconButton";
+import { useNavigate } from "react-router-dom";
 
 function Community() {
+  const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
   const [communityPosts, setCommunityPosts] = useState([]);
 
@@ -137,6 +140,14 @@ function Community() {
             </div>
           );
         })}
+      </div>
+      <div className="action-button">
+        <IconButton
+          size="lg"
+          variant="primary"
+          icon="plus"
+          onClick={() => navigate("/app/beta-test/create")}
+        />
       </div>
     </div>
   );

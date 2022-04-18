@@ -11,13 +11,13 @@ export default function Header() {
       title: null,
     },
     {
-      active: location.pathname === "/app/beta-test",
+      active: location.pathname.includes("/app/beta-test"),
       isImg: false,
       src: null,
       title: "β-test",
     },
     {
-      active: location.pathname === "/app/community",
+      active: location.pathname.includes("/app/community"),
       isImg: false,
       src: null,
       title: "커뮤니티",

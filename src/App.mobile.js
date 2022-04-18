@@ -64,7 +64,7 @@ function App() {
       <Header />
       <div className="container">
         <Routes>
-          <Route path="/app" element={<Main setUser={setUser} />} />
+          <Route path="/app" element={<Main />} />
           <Route path="/app/beta-test" element={<BetaTest />} />
           <Route path="/app/beta-test/create" element={<CreatePost />} />
           <Route path="/app/community" element={<Community />} />
