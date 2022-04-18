@@ -4,11 +4,11 @@ export default function TabList({ list, activeIndex, onClick }) {
   return (
     <div className="mobile-tab_list">
       <div className="mobile-tab_list-items">
-        {list.map((value, index) => {
+        {list.map((value) => {
           const active = activeIndex === value.id;
           return (
             <div
-              key={index}
+              key={value.id}
               className={`d-flex align-items-center justify-content-center h-100 items-title ${
                 active ? "active" : ""
               }`}

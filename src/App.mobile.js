@@ -32,6 +32,8 @@ import { doc, getDoc } from "firebase/firestore";
 import Header from "./pages/Header.mobile";
 import Footer from "./pages/Footer.mobile";
 
+import BetaTestContextProvider from "./stores/betaTestStore";
+
 function App() {
   const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState({});
@@ -60,21 +62,22 @@ function App() {
   });
 
   return (
-    <Router>
-      <Header />
-      <div className="container">
-        <Routes>
-          <Route path="/app" element={<Main />} />
-          <Route path="/app/beta-test" element={<BetaTest />} />
-          <Route path="/app/beta-test/create" element={<CreatePost />} />
-          <Route path="/app/community" element={<Community />} />
-          <Route path="/app/my-page" element={<MyPage />} />
-          <Route path="/app/beta-test/:id" element={<Post />} />
-        </Routes>
-      </div>
-      <Footer />
+    <BetaTestContextProvider>
+      <Router>
+        <Header />
+        <div className="container">
+          <Routes>
+            <Route path="/app" element={<Main />} />
+            <Route path="/app/beta-test" element={<BetaTest />} />
+            <Route path="/app/beta-test/create" element={<CreatePost />} />
+            <Route path="/app/community" element={<Community />} />
+            <Route path="/app/my-page" element={<MyPage />} />
+            <Route path="/app/beta-test/:id" element={<Post />} />
+          </Routes>
+        </div>
+        <Footer />
 
-      {/* 
+        {/* 
         <Route
           path="/Login"
           element={<Login setIsAuth={setIsAuth} setList={setList} />}
@@ -123,7 +126,8 @@ function App() {
         <Route path="/mypageInfoEdit" element={<MyPageInfoEdit />}></Route>
         <Route path="/accountSetting" element={<AccountSetting />}></Route>
       */}
-    </Router>
+      </Router>
+    </BetaTestContextProvider>
   );
 }
 

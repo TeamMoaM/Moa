@@ -440,6 +440,14 @@ color: var(--gray-2);
   flex-direction: column;
 }
 
+.mobile-item_info {
+  padding: 24px 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-bottom: 1px solid var(--gray-3);
+}
+
 .mobile-camera-img {
   margin-bottom: 9px;
 }
@@ -505,4 +513,20 @@ color: var(--gray-2);
   line-height: 150%;
   letter-spacing: -0.01em;
   color: var(--gray-2);
+}
+
+.mobile-post-main {
+  padding: 32px 20px 140px 20px;
+  line-height: 200%;
+  font-family: 'Spoqa Han Sans Neo';
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  word-break: break-all;
+  font-size: 16px;
+}
+
+.mobile-post-main img{
+  width:100%;
+  object-fit: contain;
 }

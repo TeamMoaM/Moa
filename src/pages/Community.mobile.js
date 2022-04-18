@@ -90,7 +90,10 @@ function Community() {
                   <img src={avatarIcon} className="mobile-avatar-md mr-8" />
                   <div className="user-box">
                     <div className="user-title">
-                      <img src={bronzeMedal} className="mobile-medal" />
+                      <img
+                        src={bronzeMedal}
+                        className="mobile-community-medal"
+                      />
                       <h3 className="subhead100 mr-8">{value.author.name}</h3>
                       <h3 className="body100 text-gray-1">회사이름</h3>
                     </div>

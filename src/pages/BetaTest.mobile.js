@@ -1,11 +1,13 @@
 import "../style/BetaTest.css";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { db } from "../firebase-config";
 import { useNavigate } from "react-router-dom";
 import IconButton from "../components/IconButton";
+import { BetaTestContextStore } from "../stores/betaTestStore";
 
 function BetaTest() {
+  const { setInitialValue } = useContext(BetaTestContextStore);
   const navigate = useNavigate();
   const [data, setData] = useState([]);
 
@@ -21,8 +23,9 @@ function BetaTest() {
     });
   }, []);
 
-  const goView = (id) => {
-    navigate(`/app/beta-test/${id}`);
+  const goView = (value) => {
+    navigate(`/app/beta-test/${value.id}`);
+    setInitialValue(value);
   };
 
   return (
@@ -37,7 +40,7 @@ function BetaTest() {
             <div
               key={index}
               className="betaTest-item"
-              onClick={() => goView(value.id)}
+              onClick={() => goView(value)}
             >
               <img src={value.imageURL} className="item-img" />
               <h2 className="subhead100 item-title">{value.title}</h2>
