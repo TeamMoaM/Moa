@@ -2,10 +2,11 @@ import "../style/BetaTest.css";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase-config";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import IconButton from "../components/IconButton";
 
 function BetaTest() {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -20,7 +21,6 @@ function BetaTest() {
     });
   }, []);
 
-  const navigate = useNavigate();
   const goView = (id) => {
     navigate(`/app/beta-test/${id}`);
   };

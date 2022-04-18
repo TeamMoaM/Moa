@@ -429,6 +429,7 @@ color: var(--gray-2);
 
 /* mobile */
 .post-wrap {
+  margin-top: 61px;
 }
 
 .mobile-item_info-top {
@@ -450,10 +451,6 @@ color: var(--gray-2);
   width: 100%;
   display: flex;
   justify-content: center;
-}
-
-.mobile-post-body {
-  
 }
 
 .mobile-post-title {

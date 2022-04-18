@@ -10,7 +10,7 @@ export default function CreatePost() {
         <img className="mobile-camera-img" src={camera} />
         <h3 className="body-100 text-gray-2">썸네일 등록하기</h3>
       </div>
-      <div className="mobile-post-body border-bottom-gray-3">
+      <div className="border-bottom-gray-3">
         <input
           maxLength="30"
           className="mobile-post-title"

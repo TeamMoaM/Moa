@@ -15,7 +15,7 @@ export default function Post() {
   };
 
   return (
-    <div className="post-wrap">
+    <div>
       <TabList list={tabList} activeIndex={activeIndex} onClick={tabSelected} />
     </div>
   );
