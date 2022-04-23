@@ -422,7 +422,7 @@ nav{
   height: 60px;
   border-bottom: 1px solid var(--gray-3);
   background: var(--white);
-  z-index: 999;
+  z-index: 99;
 }
 
 .mobile-header-title{

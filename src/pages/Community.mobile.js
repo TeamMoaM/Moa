@@ -20,10 +20,9 @@ import scrapped from "../img/communityImg/bookmarked.svg";
 import Comments from "../components/Comments";
 import TabList from "../components/mobile/TabList";
 import IconButton from "../components/IconButton";
-import { useNavigate } from "react-router-dom";
+import CreateForm from "../pages/CreateCommunity.mobile";
 
 function Community() {
-  const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
   const [communityPosts, setCommunityPosts] = useState([]);
 
@@ -37,6 +36,14 @@ function Community() {
   ];
   const tabSelected = (id) => {
     setActiveIndex(id);
+  };
+
+  const [visible, setVisible] = useState(false);
+  const showForm = () => {
+    setVisible(true);
+  };
+  const hideForm = () => {
+    setVisible(false);
   };
 
   useEffect(() => {
@@ -72,87 +79,94 @@ function Community() {
   }, [activeIndex, communityPosts]);
 
   return (
-    <div className="mobile-community">
-      <TabList list={tabList} activeIndex={activeIndex} onClick={tabSelected} />
-      <div className="py-20">
-        <button className="mobile-community-new_writing d-flex align-items-center w-100 my-16 border-radius-sm border-gray-3">
-          <img src={avatarIcon} className="mobile-avatar-sm mr-8" />
-          <h2 className="paragraph200 text-gray-2">
-            회원님의 이야기를 공유해주세요.
-          </h2>
-        </button>
-        {filterCommunity.map((value, index) => {
-          const tag = tabList.filter((val) => val.id === value.tag);
-          return (
-            <div className="mobile-community-writing_card" key={index}>
-              <div className="mobile-user_info">
-                <div className="d-flex align-items-center">
-                  <img src={avatarIcon} className="mobile-avatar-md mr-8" />
-                  <div className="user-box">
-                    <div className="user-title">
-                      <img
-                        src={bronzeMedal}
-                        className="mobile-community-medal"
-                      />
-                      <h3 className="subhead100 mr-8">{value.author.name}</h3>
-                      <h3 className="body100 text-gray-1">회사이름</h3>
-                    </div>
-                    <div className="text-gray-1 mt-3">
-                      <TimeCal time={value.time} />
+    <>
+      {visible && <CreateForm hideForm={hideForm} />}
+      <div className="mobile-community">
+        <TabList
+          list={tabList}
+          activeIndex={activeIndex}
+          onClick={tabSelected}
+        />
+        <div className="py-20">
+          <button className="mobile-community-new_writing d-flex align-items-center w-100 my-16 border-radius-sm border-gray-3">
+            <img src={avatarIcon} className="mobile-avatar-sm mr-8" />
+            <h2 className="paragraph200 text-gray-2">
+              회원님의 이야기를 공유해주세요.
+            </h2>
+          </button>
+          {filterCommunity.map((value, index) => {
+            const tag = tabList.filter((val) => val.id === value.tag);
+            return (
+              <div className="mobile-community-writing_card" key={index}>
+                <div className="mobile-user_info">
+                  <div className="d-flex align-items-center">
+                    <img src={avatarIcon} className="mobile-avatar-md mr-8" />
+                    <div className="user-box">
+                      <div className="user-title">
+                        <img
+                          src={bronzeMedal}
+                          className="mobile-community-medal"
+                        />
+                        <h3 className="subhead100 mr-8">{value.author.name}</h3>
+                        <h3 className="body100 text-gray-1">회사이름</h3>
+                      </div>
+                      <div className="text-gray-1 mt-3">
+                        <TimeCal time={value.time} />
+                      </div>
                     </div>
                   </div>
+                  <div>
+                    <img src={dotsIcon} className="mobile-dot-md" />
+                  </div>
                 </div>
-                <div>
-                  <img src={dotsIcon} className="mobile-dot-md" />
+                <div className="tag_select">
+                  <div className="chip">
+                    <h2 className="caption100 text-white">{tag[0].title}</h2>
+                  </div>
+                </div>
+                <div className="mt-16">
+                  <h2 className="paragraph200 mobile-community-post-text">
+                    {value.postText}
+                  </h2>
+                </div>
+                <div className="text-right mt-16">
+                  <h1 className="caption100">더보기 &gt;</h1>
+                </div>
+                <div className="mobile-foot d-flex justify-content-around">
+                  <div>
+                    <h1 className="caption100 d-flex align-items-center">
+                      <img src={heart} className="items-icon" />
+                      공감
+                      {value.likeCount}개
+                    </h1>
+                  </div>
+                  <div>
+                    <h1 className="caption100 d-flex align-items-center">
+                      <img src={message} className="items-icon" />
+                      댓글 {value.commentCount}개
+                    </h1>
+                  </div>
+                  <div>
+                    <h1 className="caption100 d-flex align-items-center">
+                      <img src={scrap} className="items-icon" />
+                      북마크
+                    </h1>
+                  </div>
                 </div>
               </div>
-              <div className="tag_select">
-                <div className="chip">
-                  <h2 className="caption100 text-white">{tag[0].title}</h2>
-                </div>
-              </div>
-              <div className="mt-16">
-                <h2 className="paragraph200 mobile-community-post-text">
-                  {value.postText}
-                </h2>
-              </div>
-              <div className="text-right mt-16">
-                <h1 className="caption100">더보기 &gt;</h1>
-              </div>
-              <div className="mobile-foot d-flex justify-content-around">
-                <div>
-                  <h1 className="caption100 d-flex align-items-center">
-                    <img src={heart} className="items-icon" />
-                    공감
-                    {value.likeCount}개
-                  </h1>
-                </div>
-                <div>
-                  <h1 className="caption100 d-flex align-items-center">
-                    <img src={message} className="items-icon" />
-                    댓글 {value.commentCount}개
-                  </h1>
-                </div>
-                <div>
-                  <h1 className="caption100 d-flex align-items-center">
-                    <img src={scrap} className="items-icon" />
-                    북마크
-                  </h1>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
+        <div className="action-button">
+          <IconButton
+            size="lg"
+            variant="primary"
+            icon="plus"
+            onClick={showForm}
+          />
+        </div>
       </div>
-      <div className="action-button">
-        <IconButton
-          size="lg"
-          variant="primary"
-          icon="plus"
-          onClick={() => navigate("/app/beta-test/create")}
-        />
-      </div>
-    </div>
+    </>
   );
 }
 
