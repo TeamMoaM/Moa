@@ -542,7 +542,7 @@ color: var(--gray-1);
   border-radius: 16px;
   margin-right:4px;
   color:white;
-  width: 46px;
+  padding: 0px 11px;
   height: 24px;
   display:flex;
   align-items: center;
@@ -567,7 +567,7 @@ color: var(--gray-1);
 .modalUnclickedButton{
   border-radius: 16px;
   margin-right: 4px;
-  width: 46px;
+  padding: 0px 11px;
   height: 24px;
   display:flex;
   align-items: center;
