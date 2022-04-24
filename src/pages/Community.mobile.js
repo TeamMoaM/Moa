@@ -21,8 +21,9 @@ import Comments from "../components/Comments";
 import TabList from "../components/mobile/TabList";
 import IconButton from "../components/IconButton";
 import CreateForm from "../pages/CreateCommunity.mobile";
+import CommentsMobile from "../components/Comments.mobile";
 
-function Community() {
+function Community({ user, isAuth }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [communityPosts, setCommunityPosts] = useState([]);
 
@@ -153,6 +154,7 @@ function Community() {
                     </h1>
                   </div>
                 </div>
+                <CommentsMobile id={value.id} user={user} isAuth={isAuth} />
               </div>
             );
           })}

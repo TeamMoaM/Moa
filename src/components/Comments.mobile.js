@@ -105,11 +105,11 @@ function Comments({ id, user, isAuth }) {
   };
 
   return (
-    <div className="commentBox">
+    <div className="mobile-commentBox">
       {commentList.map((comment) => {
         return (
-          <div className="comment">
-            <div className="postHeader">
+          <div className="mobile-comment">
+            <div className="mobile-postHeader">
               <div className="postInformation">
                 <img className="pfpimage" src={profileDefaultImg} />
                 <div className="postProfile">

@@ -829,6 +829,37 @@ color: var(--gray-1);
   height: 16px;
 }
 
+/*comment mobile*/
+.mobile-commentBox{
+  width:100%;
+  display:flex;
+  margin-top:16px;
+  flex-direction: column;
+  align-items: center;
+  padding:4px 0;
+}
+.mobile-comment{
+  width:100%;
+  padding:4px 0;
+}
+.mobile-postHeader{
+  display: flex;
+  width: 540px;
+  justify-content: space-between;
+  align-items:center;
+  height:32px;
+  margin-bottom:8px;
+}
+
+/* .comment .mobile-postProfile1{
+  display:flex;
+  flex-direction: row;
+  color:var(--gray-1);
+  font-weight: 400;
+  border:1px solid;
+} */
+
+
 /* mobile create form */
 .form-wrap {
   z-index: 100;

@@ -70,7 +70,10 @@ function App() {
             <Route path="/app" element={<Main />} />
             <Route path="/app/beta-test" element={<BetaTest />} />
             <Route path="/app/beta-test/create" element={<CreatePost />} />
-            <Route path="/app/community" element={<Community />} />
+            <Route
+              path="/app/community"
+              element={<Community user={user} isAuth={isAuth} />}
+            />
             <Route path="/app/my-page" element={<MyPage />} />
             <Route path="/app/beta-test/:id" element={<Post />} />
           </Routes>
